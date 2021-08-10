@@ -9,20 +9,15 @@ class Solution:
         if not root:
             return 0
         
-        stack = [(root, 1)]
-        max_height = 0
-        value_sum = 0
-        while stack:
-            current, current_height = stack.pop()
-            if not current.left and not current.right:
-                if current_height > max_height:
-                    value_sum = current.val
-                    max_height = current_height
-                elif current_height == max_height:
-                    value_sum += current.val
-            else:
-                if current.right:
-                    stack.append((current.right, current_height + 1))
+        q = [root]
+        while q:
+            new_q = []
+            for current in q:
                 if current.left:
-                    stack.append((current.left, current_height + 1))
-        return value_sum
+                    new_q.append(current.left)
+                if current.right:
+                    new_q.append(current.right)
+            if new_q:
+                q = new_q
+            else:
+                return sum(current.val for current in q)
