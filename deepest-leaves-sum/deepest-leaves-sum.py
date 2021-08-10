@@ -6,23 +6,23 @@
 #         self.right = right
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        def getTreeHeight(current: TreeNode) -> int:
-            if not current:
-                return 0
-            
-            return max(
-                getTreeHeight(current.left), 
-                getTreeHeight(current.right)
-            ) + 1
+        if not root:
+            return 0
         
-        def recurse(current: TreeNode, h: int) -> int:
-            value_sum = 0
-            if current:
-                if h == height:
+        stack = [(root, 1)]
+        max_height = 0
+        value_sum = 0
+        while stack:
+            current, current_height = stack.pop()
+            if not current.left and not current.right:
+                if current_height > max_height:
+                    value_sum = current.val
+                    max_height = current_height
+                elif current_height == max_height:
                     value_sum += current.val
-                value_sum += recurse(current.left, h + 1)
-                value_sum += recurse(current.right, h + 1)
-            return value_sum
-        
-        height = getTreeHeight(root)
-        return recurse(root, 1)
+            else:
+                if current.right:
+                    stack.append((current.right, current_height + 1))
+                if current.left:
+                    stack.append((current.left, current_height + 1))
+        return value_sum
