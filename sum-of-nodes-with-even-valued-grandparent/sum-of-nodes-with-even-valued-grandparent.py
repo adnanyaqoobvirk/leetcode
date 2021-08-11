@@ -6,15 +6,13 @@
 #         self.right = right
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
-        def recurse(current: TreeNode, parent: TreeNode, grandparent: TreeNode) -> int:
-            current_sum = 0
+        stack = [(root, None, None)]
+        current_sum = 0
+        while stack:
+            current, parent, grandparent = stack.pop()
             if current:
                 if grandparent and (grandparent.val % 2 == 0):
                     current_sum += current.val
-                current_sum += recurse(
-                        current.left, current, parent
-                    ) + recurse(
-                        current.right, current, parent
-                    )
-            return current_sum
-        return recurse(root, None, None)
+                stack.append((current.right, current, parent))
+                stack.append((current.left, current, parent))
+        return current_sum
