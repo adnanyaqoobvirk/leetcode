@@ -1,29 +1,10 @@
 class Solution:
     def longestCommomSubsequence(self, arrays: List[List[int]]) -> List[int]:
-        def search(array: List[int], num: int) -> bool:
-            left, right = 0, len(array)
-            while left < right:
-                mid = left + (right - left) // 2
-                if array[mid] == num:
-                    return True
-                elif array[mid] > num:
-                    right = mid
-                else:
-                    left = mid + 1
-            return False
+        n = len(arrays)
         
-        smallest_array = None
+        num_count = {}
         for array in arrays:
-            if smallest_array is None or len(smallest_array) > len(array):
-                smallest_array = array
-        
-        result = []
-        for num in smallest_array:
-            for array in arrays:
-                if array == smallest_array:
-                    continue
-                if not search(array, num):
-                    break
-            else:
-                result.append(num)
-        return result
+            for num in array:
+                num_count[num] = num_count.get(num, 0) + 1
+                
+        return [num for num, count in num_count.items() if count == n]
