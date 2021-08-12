@@ -1,6 +1,6 @@
 class Solution:
     def sortSentence(self, s: str) -> str:
-        output = [None] * 9
-        for subStr in s.split():
-            output[int(subStr[-1]) - 1] = subStr[:len(subStr) - 1]
-        return " ".join(subStr for subStr in output if subStr)
+        word_map = {}
+        for word in s.split():
+            word_map[int(word[-1])] = word[:len(word) - 1]
+        return " ".join(word_map.get(i, "") for i in range(1, len(word_map) + 1))
