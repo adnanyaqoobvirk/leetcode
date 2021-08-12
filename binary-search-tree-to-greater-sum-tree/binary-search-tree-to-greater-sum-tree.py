@@ -6,13 +6,22 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
-        def recurse(current: TreeNode, total: int) -> int:
-            if not current:
-                return total
-            
-            right = recurse(current.right, total)
-            current.val = right + current.val
-            return recurse(current.left, current.val)
-        
-        recurse(root, 0)
+        stack = []
+        current = root
+        total = 0
+        while current or stack:
+            if current:
+                if current.left:
+                    stack.append(current.left)
+                stack.append(current)
+                current = current.right
+            else:
+                node = stack.pop()
+                node.val += total
+                total = node.val
+                if stack and node.left == stack[-1]:
+                    current = stack.pop()
         return root
+                
+                
+                
