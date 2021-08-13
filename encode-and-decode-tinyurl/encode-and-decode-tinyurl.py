@@ -1,7 +1,8 @@
-from string import ascii_letters
+from string import ascii_letters, digits
 from random import sample
 
 class Codec:
+    chars = ascii_letters + digits
     
     def __init__(self):
         self.cache = {}
@@ -11,7 +12,7 @@ class Codec:
         """
         
         while True:
-            random_str = "".join(sample(ascii_letters, 6))
+            random_str = "".join(sample(Codec.chars, 6))
             if random_str not in self.cache:
                 self.cache[random_str] = longUrl
                 return f'http://tinyurl.com/{random_str}'
