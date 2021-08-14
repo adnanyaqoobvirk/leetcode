@@ -6,17 +6,12 @@
 #         self.right = right
 class Solution:
     def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
-        def buildTree(start: int, end: int) -> TreeNode:
-            max_pos = None
-            for i in range(start, end + 1):
-                if max_pos is None:
-                    max_pos = i
-                elif nums[max_pos] < nums[i]:
-                    max_pos = i
-            if max_pos is not None:
-                return TreeNode(
-                    nums[max_pos], 
-                    buildTree(start, max_pos - 1),
-                    buildTree(max_pos + 1, end)
-                )
-        return buildTree(0, len(nums) - 1)
+        stack = []
+        for num in nums:
+            node = TreeNode(num)
+            while stack and stack[-1].val < num:
+                node.left = stack.pop()
+            if stack:
+                stack[-1].right = node
+            stack.append(node)
+        return stack[0]
