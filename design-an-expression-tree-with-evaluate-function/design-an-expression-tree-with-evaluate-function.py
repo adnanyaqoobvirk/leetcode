@@ -9,44 +9,61 @@ class Node(ABC):
     @abstractmethod
     def evaluate(self) -> int:
         pass
-
-class ENode(Node):
-    operators = set("+-*/")
     
+class BinaryNode(Node):
     def __init__(self, val=None, right=None, left=None):
         self.val = val
         self.right = right
         self.left = left
+
+class NumNode(BinaryNode):
+    def __init__(self, val=None, right=None, left=None):
+        super().__init__(val, right, left)
     
-    def evaluate(self):
-        if self.val not in ENode.operators:
-            return int(self.val)
-        elif self.left and self.right:
-            if self.val == '+':
-                return self.left.evaluate() + self.right.evaluate()
-            elif self.val == '-':
-                return self.left.evaluate() - self.right.evaluate()
-            elif self.val == '*':
-                return self.left.evaluate() * self.right.evaluate()
-            elif self.val == '/':
-                return self.left.evaluate() // self.right.evaluate()
-        return None
-"""    
-This is the TreeBuilder class.
-You can treat it as the driver code that takes the postinfix input
-and returns the expression tree represnting it as a Node.
-"""
+    def evaluate(self) -> int:
+        return int(self.val)
+
+class PlusNode(BinaryNode):
+    def __init__(self, val=None, right=None, left=None):
+        super().__init__(val, right, left)
+    
+    def evaluate(self) -> int:
+        return self.left.evaluate() + self.right.evaluate()
+
+class MinusNode(BinaryNode):
+    def __init__(self, val=None, right=None, left=None):
+        super().__init__(val, right, left)
+    
+    def evaluate(self) -> int:
+        return self.left.evaluate() - self.right.evaluate()
+
+class MultiplyNode(BinaryNode):
+    def __init__(self, val=None, right=None, left=None):
+        super().__init__(val, right, left)
+    
+    def evaluate(self) -> int:
+        return self.left.evaluate() * self.right.evaluate()
+    
+class DivideNode(BinaryNode):
+    def __init__(self, val=None, right=None, left=None):
+        super().__init__(val, right, left)
+    
+    def evaluate(self) -> int:
+        return self.left.evaluate() // self.right.evaluate()
 
 class TreeBuilder(object):
-    def buildTree(self, postfix: List[str]) -> 'Node':
+    def buildTree(self, postfix: List[str]) -> Node:
+        operators = {'+': PlusNode, '-': MinusNode, '*': MultiplyNode, '/': DivideNode}
         stack = []
         for op in postfix:
-            node = ENode(op)
-            if op in ENode.operators:
+            if op in operators:
+                node = operators[op](op)
                 if stack:
                     node.right = stack.pop()
                 if stack:
                     node.left = stack.pop()
+            else:
+                node = NumNode(op)
             stack.append(node)
         return stack[0]
         
