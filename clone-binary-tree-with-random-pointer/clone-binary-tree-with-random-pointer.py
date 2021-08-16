@@ -7,26 +7,37 @@
 #         self.random = random
 
 class Solution:
-    def copyRandomBinaryTree(self, root: 'Node') -> 'NodeCopy':
-        def recurse(current: Node) -> NodeCopy:
-            if current:
-                if current in nodeMap:
-                    node = nodeMap[current]
-                    node.val = current.val
+    def copyRandomBinaryTree(self, root: 'Node') -> 'NodeCopy':  
+        if not root:
+            return None
+        
+        nodeMap = {root: NodeCopy()}
+        stack = [root]
+        while stack:
+            current = stack.pop()
+            node = nodeMap[current]
+            node.val = current.val
+            
+            if current.right:
+                if current.right in nodeMap:
+                    node.right = nodeMap[current.right]
                 else:
-                    node = NodeCopy(current.val) 
-                    nodeMap[current] = node
-                    
-                node.left = recurse(current.left)
-                node.right = recurse(current.right)
+                    node.right = NodeCopy()
+                    nodeMap[current.right] = node.right
+                stack.append(current.right)
                 
-                if current.random:
-                    if current.random in nodeMap:
-                        node.random = nodeMap[current.random]
-                    else:
-                        node.random = NodeCopy()
-                        nodeMap[current.random] = node.random
-                return node
-                
-        nodeMap = {}
-        return recurse(root)
+            if current.left:
+                if current.left in nodeMap:
+                    node.left = nodeMap[current.left]
+                else:
+                    node.left = NodeCopy()
+                    nodeMap[current.left] = node.left
+                stack.append(current.left)
+            
+            if current.random:
+                if current.random in nodeMap:
+                    node.random = nodeMap[current.random]
+                else:
+                    node.random = NodeCopy()
+                    nodeMap[current.random] = node.random
+        return nodeMap[root]
