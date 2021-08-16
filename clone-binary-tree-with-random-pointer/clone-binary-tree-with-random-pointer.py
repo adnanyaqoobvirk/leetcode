@@ -14,9 +14,9 @@ class Solution:
                     node = nodeMap[current]
                     node.val = current.val
                 else:
-                    node = NodeCopy(current.val)
+                    node = NodeCopy(current.val) 
+                    nodeMap[current] = node
                     
-                nodeMap[current] = node
                 node.left = recurse(current.left)
                 node.right = recurse(current.right)
                 
