@@ -8,13 +8,9 @@ class Node:
 
 class Solution:
     def findRoot(self, tree: List['Node']) -> 'Node':
-        return next(
-            iter(
-                set(tree) - {
-                    child 
-                    for node in tree 
-                    for child in node.children
-                }
-            )
-        )
+        childs = {child for node in tree for child in node.children}
+        for node in tree:
+            if node not in childs:
+                return node
+        return None
         
