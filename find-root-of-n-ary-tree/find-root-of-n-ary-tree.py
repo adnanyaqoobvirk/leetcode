@@ -8,9 +8,14 @@ class Node:
 
 class Solution:
     def findRoot(self, tree: List['Node']) -> 'Node':
-        childs = {child for node in tree for child in node.children}
+        root = 0
         for node in tree:
-            if node not in childs:
+            root ^= node.val
+            for child in node.children:
+                root ^= child.val
+        
+        for node in tree:
+            if node.val == root:
                 return node
         return None
         
