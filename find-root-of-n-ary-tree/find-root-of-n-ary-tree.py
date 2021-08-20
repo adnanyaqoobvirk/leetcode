@@ -8,18 +8,13 @@ class Node:
 
 class Solution:
     def findRoot(self, tree: List['Node']) -> 'Node':
-        @functools.cache
-        def nodeCount(current: Node) -> int:
-            if current:
-                count = 1
-                for child in current.children:
-                    count += nodeCount(child)
-                return count
-            return 0
-    
-        n = len(tree)
-        for node in tree:
-            if nodeCount(node) == n:
-                return node
-        return None
+        return next(
+            iter(
+                set(tree) - {
+                    child 
+                    for node in tree 
+                    for child in node.children
+                }
+            )
+        )
         
