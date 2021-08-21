@@ -1,9 +1,13 @@
 class Solution:
     def isArmstrong(self, n: int) -> bool:
-        k = math.floor(math.log(n, 10)) + 1
+        digits = []
         m = n
-        total = 0
         while m > 0:
-            m, d = divmod(m, 10)
-            total += d ** k
+            digits.append(m % 10)
+            m //= 10
+        
+        k = len(digits)
+        total = 0
+        for d in digits:
+            total += d ** len(digits)
         return total == n
