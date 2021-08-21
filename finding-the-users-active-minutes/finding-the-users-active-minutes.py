@@ -5,7 +5,7 @@ class Solution:
             uam_map.setdefault(user, set()).add(minute)
         
         result = [0] * k
-        for _, minutes in uam_map.items():
+        for minutes in uam_map.values():
             result[len(minutes) - 1] += 1
         
         return result
