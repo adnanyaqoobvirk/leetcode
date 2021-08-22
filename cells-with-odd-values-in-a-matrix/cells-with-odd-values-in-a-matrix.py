@@ -5,7 +5,7 @@ class Solution:
             for i in range(n):
                 matrix[r][i] += 1
             for j in range(m):
-                 matrix[j][c] += 1
+                matrix[j][c] += 1
         
         odd_count = 0
         for i in range(m):
