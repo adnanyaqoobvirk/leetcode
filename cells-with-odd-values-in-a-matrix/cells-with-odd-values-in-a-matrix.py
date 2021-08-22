@@ -1,14 +1,12 @@
 class Solution:
     def oddCells(self, m: int, n: int, indices: List[List[int]]) -> int:
-        row_counts = {}
-        col_counts = {}
+        odd_rows = defaultdict(bool)
+        odd_cols = defaultdict(bool)
+        odd_rows_count = 0
+        odd_cols_count = 0
         for r, c in indices:
-            row_counts[r] = row_counts.get(r, 0) + 1
-            col_counts[c] = col_counts.get(c, 0) + 1
-        
-        odd_count = 0
-        for i in range(m):
-            for j in range(n):
-                if (row_counts.get(i, 0) + col_counts.get(j, 0)) % 2 != 0:
-                    odd_count += 1
-        return odd_count
+            odd_rows[r] ^= True
+            odd_cols[c] ^= True
+            odd_rows_count += 1 if odd_rows[r] else -1
+            odd_cols_count += 1 if odd_cols[c] else -1
+        return (m - odd_rows_count) * odd_cols_count + (n - odd_cols_count) * odd_rows_count
