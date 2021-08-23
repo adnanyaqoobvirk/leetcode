@@ -1,13 +1,11 @@
 class Solution:
     def countLetters(self, s: str) -> int:
-        c = s[0]
-        n = 1
-        count = 0
+        total = 1
+        count = 1
         for i in range(1, len(s)):
-            if c == s[i]:
-                n += 1
+            if s[i - 1] == s[i]:
+                count += 1
             else:
-                count += (n * (n + 1) // 2)
-                n = 1
-                c = s[i]
-        return count + (n * (n + 1) // 2)
+                count = 1
+            total += count
+        return total
