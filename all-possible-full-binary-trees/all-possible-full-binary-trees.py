@@ -5,19 +5,18 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def __init__(self):
-        self.cache = {1: [TreeNode()]}
+    cache = {1: [TreeNode()]}
     
     def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
         if n % 2 == 0:
             return []
-        elif n in self.cache:
-            return self.cache[n]
+        elif n in Solution.cache:
+            return Solution.cache[n]
         
         fbts = []
         for x in range(1, n, 2):
             for left in self.allPossibleFBT(x):
                 for right in self.allPossibleFBT(n - 1 - x):
                     fbts.append(TreeNode(0, left, right))
-        self.cache[n] = fbts
-        return self.cache[n]               
+        Solution.cache[n] = fbts
+        return Solution.cache[n]               
