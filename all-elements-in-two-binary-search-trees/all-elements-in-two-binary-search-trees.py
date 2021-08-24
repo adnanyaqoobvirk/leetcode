@@ -6,45 +6,27 @@
 #         self.right = right
 class Solution:
     def getAllElements(self, root1: TreeNode, root2: TreeNode) -> List[int]:
-        def sort(root: TreeNode) -> List[int]:
-            result = []
-            stack = []
-            current = root
-            while current or stack:
-                if current:
-                    stack.append(current)
-                    current = current.left
-                else:
-                    node = stack.pop()
-                    result.append(node.val)
-                    current = node.right
-            return result
-                    
-        
-        r1 = sort(root1)
-        r2 = sort(root2)
-        
         result = []
-        p1 = 0
-        p2 = 0
-        while p1 < len(r1) and p2 < len(r2):
-            if r1[p1] <= r2[p2]:
-                result.append(r1[p1])
-                p1 += 1
+        stack1 = []
+        stack2 = []
+        while root1 or root2 or stack1 or stack2:
+            while root1:
+                stack1.append(root1)
+                root1 = root1.left
+            
+            while root2:
+                stack2.append(root2)
+                root2 = root2.left
+                
+            if not stack2 or (stack1 and stack1[-1].val <= stack2[-1].val):
+                node = stack1.pop()
+                result.append(node.val)
+                root1 = node.right
             else:
-                result.append(r2[p2])
-                p2 += 1
-        
-        while p1 < len(r1):
-            result.append(r1[p1])
-            p1 += 1
-        
-        while p2 < len(r2):
-            result.append(r2[p2])
-            p2 += 1
-            
+                node = stack2.pop()
+                result.append(node.val)
+                root2 = node.right
         return result
-            
-            
+
                 
             
