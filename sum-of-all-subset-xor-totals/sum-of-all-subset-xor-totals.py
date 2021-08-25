@@ -1,5 +1,6 @@
 class Solution:
     def subsetXORSum(self, nums: List[int]) -> int:
+        @cache
         def recurse(xor: int, pos: int) -> None:
             if pos == len(nums):
                 return xor
