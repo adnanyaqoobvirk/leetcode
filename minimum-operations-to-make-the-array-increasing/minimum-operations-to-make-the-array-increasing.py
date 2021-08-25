@@ -1,12 +1,7 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        max_val = nums[0]
-        total = 0
-        for i in range(1, len(nums)):
-            if nums[i] <= max_val:
-                ops = max_val - nums[i] + 1
-                total += ops
-                max_val = nums[i] + ops
-            else:
-                max_val = nums[i]
-        return total
+        result = last = 0
+        for num in nums:
+            result += max(0, last - num + 1)
+            last = max(num, last + 1)
+        return result
