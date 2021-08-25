@@ -1,12 +1,8 @@
 SELECT
     S.user_id,
-    IF(
-        COUNT(C.action) = 0, 
-        0.00,
-        ROUND(
-            SUM(C.action = 'confirmed') / COUNT(C.action),
-            2
-        )
+    ROUND(
+        AVG(IF(C.action = 'confirmed', 1, 0)),
+        2
     ) AS confirmation_rate
 FROM
     Signups AS S
