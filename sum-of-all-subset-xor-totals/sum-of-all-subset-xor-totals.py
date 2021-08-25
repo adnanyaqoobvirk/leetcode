@@ -1,9 +1,10 @@
 class Solution:
     def subsetXORSum(self, nums: List[int]) -> int:
-        @cache
-        def recurse(xor: int, pos: int) -> None:
-            if pos == len(nums):
-                return xor
-            else:
-                return recurse(xor, pos + 1) + recurse(xor ^ nums[pos], pos + 1)
-        return recurse(0, 0)
+        total = 0
+        for i in range(1, 1 << len(nums)):
+            xor = 0
+            for j in range(len(nums)):
+                if (1 << j) & i:
+                    xor ^= nums[j]
+            total += xor
+        return total
