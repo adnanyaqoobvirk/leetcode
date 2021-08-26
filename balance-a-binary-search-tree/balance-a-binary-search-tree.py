@@ -6,24 +6,24 @@
 #         self.right = right
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
-        def traverse(current: TreeNode) -> None:
-            if current:
-                traverse(current.left)
-                nodes.append(current.val)
-                traverse(current.right)
-        
         def build(left: int, right: int) -> TreeNode:
             if left < right:
                 mid = left + (right - left) // 2
-                node = TreeNode(nodes[mid])
-                node.left = build(left, mid)
-                node.right = build(mid + 1, right)
-                return node
+                return TreeNode(nodes[mid], build(left, mid), build(mid + 1, right))
                 
         nodes = []
-        traverse(root)
-        n = len(nodes)
-        return build(0, n)
+        stack = []
+        current = root
+        while current or stack:
+            if current:
+                stack.append(current)
+                current = current.left
+            else:
+                node = stack.pop()
+                nodes.append(node.val)
+                current = node.right
+                
+        return build(0, len(nodes))
         
         
         
