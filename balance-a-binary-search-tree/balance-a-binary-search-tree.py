@@ -13,8 +13,8 @@ class Solution:
                 traverse(current.right)
         
         def build(left: int, right: int) -> TreeNode:
-            mid = left + (right - left) // 2
             if left < right:
+                mid = left + (right - left) // 2
                 node = TreeNode(nodes[mid])
                 node.left = build(left, mid)
                 node.right = build(mid + 1, right)
