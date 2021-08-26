@@ -6,19 +6,23 @@
 #         self.right = right
 class Solution:
     def equalToDescendants(self, root: Optional[TreeNode]) -> int:
-        def recurse(current: TreeNode) -> int:
-            nonlocal count
-            
-            result = 0
+        stack = []
+        result = 0
+        current = root
+        while current or stack:
             if current:
-                result += recurse(current.left)
-                result += recurse(current.right)
-                
-                if result == current.val:
-                    count += 1
-                result += current.val
-            return result
-        
-        count = 0
-        recurse(root)
-        return count
+                if current.right:
+                    stack.append([current.right, 0])
+                stack.append([current,0])
+                current = current.left
+            else:
+                node, total = stack.pop()
+                if stack and node.right == stack[-1][0]:
+                    current, _ = stack.pop()
+                    stack.append([node, total])
+                else:
+                    if node.val == total:
+                        result += 1
+                    if stack:
+                        stack[-1][1] += total + node.val
+        return result
