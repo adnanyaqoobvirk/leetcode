@@ -15,16 +15,17 @@ class Solution:
             if (mx - mn) % size:
                 result.append(False)
             else:
-                diff = [False] * (size + 1)
+                
                 pat = (mx - mn) // size
                 if pat == 0:
                     result.append(True)
                 else:
+                    seen = set()
                     for i in range(left, right + 1):
-                        if (nums[i] - mn) % pat or diff[(nums[i] - mn) // pat]:
+                        if (nums[i] - mn) % pat or nums[i] in seen:
                             result.append(False)
                             break
-                        diff[(nums[i] - mn) // pat] = True
+                        seen.add(nums[i])
                     else:
                         result.append(True)
         return result
