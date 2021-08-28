@@ -1,8 +1,3 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        sources = set()
-        destinations = set()
-        for src, des in paths:
-            sources.add(src)
-            destinations.add(des)
-        return next(iter(destinations - sources))
+        return next(iter({des for _, des in paths} - {src for src, _ in paths}))
