@@ -1,15 +1,19 @@
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
-        def backtrack(x: int, y: int) -> int:
-            if x < 0 or x > n or y < 0 or y > m or grid[x][y] == -1:
-                return 0
-            
-            result = len(path) == walkable and grid[x][y] == 2
+        def backtrack(x: int, y: int, count: int) -> int:
+            result = 0
             for i, j in [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)]:
-                if (i, j) not in path:
-                    path.add((i, j))
-                    result += backtrack(i, j)
-                    path.remove((i, j))
+                if i < 0 or i > n or j < 0 or j > m or grid[i][j] == -1:
+                    continue
+
+                if count == walkable and grid[i][j] == 2:
+                    result += 1
+                    continue
+
+                if grid[i][j] != 1:
+                    old_val, grid[i][j] = grid[i][j], 1
+                    result += backtrack(i, j, count + 1)
+                    grid[i][j] = old_val
             return result
         
         n, m = len(grid) - 1, len(grid[0]) - 1
@@ -21,6 +25,5 @@ class Solution:
                     start = (i, j)
                 if grid[i][j] != -1:
                     walkable += 1
-        path = {start}
-        return backtrack(*start)
+        return backtrack(*start, 2)
     
