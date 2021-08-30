@@ -3,11 +3,11 @@ class Solution:
         res = []
         for num in range(left, right + 1):
             n = num
-            sdn = True
-            while sdn and n > 0:
-                n, digit = divmod(n, 10)
+            while n > 1:
+                digit = n % 10
                 if digit == 0 or num % digit != 0:
-                    sdn = False
-            if sdn:
+                    break
+                n = n // 10
+            if n <= 1:
                 res.append(num)
         return res
