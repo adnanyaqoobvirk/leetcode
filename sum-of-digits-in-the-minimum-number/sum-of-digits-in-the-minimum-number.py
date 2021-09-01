@@ -5,4 +5,4 @@ class Solution:
         while n > 0:
             n, d = divmod(n, 10)
             res += d
-        return 0 if res & 1 else 1
+        return res & 1 ^ 1
