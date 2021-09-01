@@ -1,21 +1,32 @@
 WITH RECURSIVE AllIds AS (
-    SELECT 1 as ids
+    SELECT 
+        1 as ids
     
     UNION ALL
     
-    SELECT ids + 1 FROM AllIds WHERE ids < (SELECT max(customer_id) FROM Customers)
+    SELECT 
+        ids + 1 
+    FROM 
+        AllIds
+    WHERE 
+        ids < (
+            SELECT 
+                max(customer_id) 
+            FROM 
+                Customers
+        )
 )
 
 SELECT
-    A.ids
+    ids
 FROM
-    AllIds AS A
-    LEFT JOIN
-    Customers AS C
-    ON
-        A.ids = C.customer_id
+    AllIds
 WHERE
-    C.customer_id IS NULL
+    ids NOT IN (
+        SELECT
+            customer_id
+        FROM
+            Customers
+    )
 ORDER BY
-    A.ids ASC
-    
+    ids ASC
