@@ -3,14 +3,10 @@ class Solution:
         res = []
         for word in words:
             mapping = {}
-            rmapping = {}
             for i, c in enumerate(word):
-                if (
-                    mapping.setdefault(pattern[i], c) != c 
-                    or 
-                    rmapping.setdefault(c, pattern[i]) != pattern[i]
-                ):
+                if mapping.setdefault(pattern[i], c) != c:
                     break
             else:
-                res.append(word)
+                if len(set(mapping.values())) == len(mapping.keys()):
+                    res.append(word)
         return res
