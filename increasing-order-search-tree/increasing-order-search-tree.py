@@ -5,16 +5,16 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def __init__(self):
+        self.sentinal = self.current = TreeNode()
     def increasingBST(self, root: TreeNode) -> TreeNode:
         def inorder(current: TreeNode) -> int:
             if current:
-                yield from inorder(current.left)
-                yield current.val
-                yield from inorder(current.right)
-        
-        sentinal = current = TreeNode()
-        for val in inorder(root):
-            current.right = TreeNode(val)
-            current = current.right
-        return sentinal.right
+                inorder(current.left)
+                current.left = None
+                self.current.right = current
+                self.current = self.current.right
+                inorder(current.right)
+        inorder(root)
+        return self.sentinal.right
                 
