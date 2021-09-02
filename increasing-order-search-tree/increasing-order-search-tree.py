@@ -6,23 +6,15 @@
 #         self.right = right
 class Solution:
     def increasingBST(self, root: TreeNode) -> TreeNode:
-        def inorder(current: TreeNode) -> None:
+        def inorder(current: TreeNode) -> int:
             if current:
-                inorder(current.left)
-                nodes.append(current.val)
-                inorder(current.right)
+                yield from inorder(current.left)
+                yield current.val
+                yield from inorder(current.right)
         
-        nodes = []
-        inorder(root)
-        
-        nroot = None
-        current = None
-        for node in nodes:
-            nnode = TreeNode(node)
-            if not nroot:
-                current = nroot = nnode
-            else:
-                current.right = nnode
-                current = current.right
-        return nroot
+        sentinal = current = TreeNode()
+        for val in inorder(root):
+            current.right = TreeNode(val)
+            current = current.right
+        return sentinal.right
                 
