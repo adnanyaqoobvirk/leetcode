@@ -5,18 +5,11 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def increasingBST(self, root: TreeNode) -> TreeNode:
-        stack = []
-        current = root
-        ans = curr = TreeNode()
-        while current or stack:
-            if current:
-                stack.append(current)
-                current = current.left
-            else:
-                node = stack.pop()
-                curr.right = node
-                curr = curr.right
-                node.left = None
-                current = node.right
-        return ans.right
+    def increasingBST(self, root: TreeNode, parent: TreeNode = None) -> TreeNode:
+        if not root:
+            return parent
+        
+        res = self.increasingBST(root.left, root)
+        root.left = None
+        root.right = self.increasingBST(root.right, parent)
+        return res
