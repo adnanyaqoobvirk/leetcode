@@ -14,7 +14,5 @@ class Solution:
             while stack:
                 current = stack.pop()
                 ans.append(current.val)
-                if current.children:
-                    for i in range(len(current.children) - 1, -1, -1):
-                        stack.append(current.children[i])
+                stack.extend(reversed(current.children))
         return ans
