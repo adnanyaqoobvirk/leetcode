@@ -1,5 +1,6 @@
 class Solution:
     def countVowelStrings(self, n: int) -> int:
+        @cache
         def recurse(c: int, pos: int) -> int:
             if c == 1:
                 return pos
