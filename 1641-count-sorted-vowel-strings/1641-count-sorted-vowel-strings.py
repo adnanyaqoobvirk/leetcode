@@ -1,13 +1,11 @@
 class Solution:
     def countVowelStrings(self, n: int) -> int:
-        @cache
-        def recurse(c: int, pos: int) -> int:
-            if c == 1:
-                return pos
-            
-            if pos == 1:
-                return 1
-            
-            return recurse(c - 1, pos) + recurse(c, pos - 1)
+        dp = [
+            [i if j == 0 else 1 for j in range(n)] 
+            for i in range(1, 6)
+        ]
+        for i in range(1, 5):
+            for j in range(1, n):
+                dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
         
-        return recurse(n, 5)
+        return dp[4][n - 1]
