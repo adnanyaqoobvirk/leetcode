@@ -1,5 +1,6 @@
 class Solution:
     def countVowelStrings(self, n: int) -> int:
+        @cache
         def backtrack(comb: int, pos: int) -> int:
             if comb == n:
                 return 1
