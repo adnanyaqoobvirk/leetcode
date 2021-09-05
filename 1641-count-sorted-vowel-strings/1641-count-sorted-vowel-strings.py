@@ -5,9 +5,7 @@ class Solution:
                 return 1
             else:
                 ans = 0
-                for i in range(pos, len(vowels)):
+                for i in range(pos, 5):
                     ans += backtrack(comb + 1, i)
                 return ans
-        
-        vowels = 'aeiou'
         return backtrack(0, 0)
