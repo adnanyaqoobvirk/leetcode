@@ -4,16 +4,18 @@ class MovingAverage:
         """
         Initialize your data structure here.
         """
-        self.window = deque()
-        self.total = 0
+        self.window = [None] * size
+        self.count = self.total = 0
         self.size = size
 
     def next(self, val: int) -> float:
-        self.window.append(val)
+        i = self.count % self.size
         self.total += val
-        if len(self.window) > self.size:
-            self.total -= self.window.popleft()
-        return self.total / len(self.window)
+        if self.count >= self.size:
+            self.total -= self.window[i]
+        self.count += 1
+        self.window[i] = val
+        return self.total / min(self.count, self.size)
 
 
 # Your MovingAverage object will be instantiated and called as such:
