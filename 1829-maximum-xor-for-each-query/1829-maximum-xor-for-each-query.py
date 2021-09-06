@@ -1,12 +1,12 @@
 class Solution:
     def getMaximumXor(self, nums: List[int], maximumBit: int) -> List[int]:
-        xor = nums[0]
-        for j in range(1, len(nums)):
-            xor ^= nums[j]
+        xor = 0
+        for num in nums:
+            xor ^= num
             
         ans = []
         mx = (1 << maximumBit) - 1
-        for i in range(len(nums) - 1, -1, -1):
+        for num in reversed(nums):
             ans.append(mx ^ xor)
-            xor ^= nums[i]
+            xor ^= num
         return ans
