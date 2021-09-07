@@ -6,13 +6,11 @@
 #         self.right = right
 class Solution:
     def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
-        def recurse(current: TreeNode) -> TreeNode:
-            if current:
-                current.left = recurse(current.left)
-                current.right = recurse(current.right)
-                
-                if current.val == target and not current.left and not current.right:
-                    return None
-                return current
-        return recurse(root)
+        if root:
+            root.left = self.removeLeafNodes(root.left, target)
+            root.right = self.removeLeafNodes(root.right, target)
+
+            if root.val == target and not root.left and not root.right:
+                return None
+            return root
             
