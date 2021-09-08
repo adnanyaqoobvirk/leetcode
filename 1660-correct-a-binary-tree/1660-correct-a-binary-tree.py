@@ -6,23 +6,16 @@
 #         self.right = right
 class Solution:
     def correctBinaryTree(self, root: TreeNode) -> TreeNode:
-        q = [(None, root, True)]
-        while q:
-            nq = []
-            seen = set()
-            for parent, node, right in q:
-                if node.right in seen:
-                    if right:
-                        parent.right = None
-                    else:
-                        parent.left = None
-                    return root
-                seen.add(node)
-                if node.right:
-                    nq.append((node, node.right, True))
-                if node.left:
-                    nq.append((node, node.left, False))
-            q = nq
-        return root
+        def recurse(current: TreeNode) -> TreeNode:
+            if not current or current.right in seen:
+                return None
+            
+            current.right = recurse(current.right)
+            current.left = recurse(current.left)
+            seen.add(current)
+            return current
+        
+        seen = set()
+        return recurse(root)
                 
                 
