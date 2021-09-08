@@ -19,42 +19,29 @@ class Codec:
     # Encodes an n-ary tree to a binary tree.
     def encode(self, root: 'Node') -> TreeNode:
         if root:
-            broot = TreeNode(root.val)
+            node = TreeNode(root.val)
             
-            q = [(root, broot)]
-            while q:
-                nq = []
-                for node, bnode in q:
-                    if node.children:
-                        bchild = None
-                        for child in node.children:
-                            if not bchild:
-                                bnode.left = bchild = TreeNode(child.val)
-                            else:
-                                bchild.right = TreeNode(child.val)
-                                bchild = bchild.right
-                            nq.append((child, bchild))
-                q = nq
-            return broot
+            if root.children:
+                bchild = None
+                for child in root.children:
+                    if not bchild:
+                        bchild = node.left = self.encode(child)
+                    else:
+                        bchild.right = self.encode(child)
+                        bchild = bchild.right
+            return node
+                    
 	
 	# Decodes your binary tree to an n-ary tree.
     def decode(self, data: TreeNode) -> 'Node':
         if data:
-            root = Node(data.val, [])
-            
-            q = [(data, root)]
-            while q:
-                nq = []
-                for bnode, node in q:
-                    if bnode.left:
-                        current = bnode.left
-                        while current:
-                            child = Node(current.val, [])
-                            node.children.append(child)
-                            nq.append((current, child))
-                            current = current.right
-                q = nq
-            return root
+            node = Node(data.val, [])
+            if data.left:
+                current = data.left
+                while current:
+                    node.children.append(self.decode(current))
+                    current = current.right
+            return node
         
 
 # Your Codec object will be instantiated and called as such:
