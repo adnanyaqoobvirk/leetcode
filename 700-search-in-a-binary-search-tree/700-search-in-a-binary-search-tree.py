@@ -6,8 +6,12 @@
 #         self.right = right
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        if root:
-            if root.val == val:
-                return root
-            
-            return self.searchBST(root.left, val) or self.searchBST(root.right, val)
+        stack = [root]
+        while stack:
+            current = stack.pop()
+            if current.val == val:
+                return current
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
