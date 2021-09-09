@@ -11,7 +11,9 @@ class Solution:
             current = stack.pop()
             if current.val == val:
                 return current
-            if current.right:
-                stack.append(current.right)
-            if current.left:
-                stack.append(current.left)
+            elif current.val < val:
+                if current.right:
+                    stack.append(current.right)
+            else:
+                if current.left:
+                    stack.append(current.left)
