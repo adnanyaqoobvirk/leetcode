@@ -1,10 +1,10 @@
 class Solution:
     def pathInZigZagTree(self, label: int) -> List[int]:
-        ans = []
+        ans = deque()
+        lvl = int(math.log(label, 2)) + 1
         while label >= 1:
-            ans.append(label)
-            lvl = int(math.log(label, 2))
-            lvl_max = 1 << lvl + 1
-            label = (lvl_max - (1 << lvl) + lvl_max - label - 1) // 2
-        return ans[::-1]
+            ans.appendleft(label)
+            label = ((1 << lvl) + (1 << lvl - 1) - label - 1) // 2
+            lvl -= 1
+        return ans
                 
