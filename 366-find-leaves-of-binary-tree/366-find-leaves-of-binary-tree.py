@@ -6,27 +6,17 @@
 #         self.right = right
 class Solution:
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        ans = []
-        while root.left or root.right:
-            stack = [root]
-            leafs = []
-            while stack:
-                current = stack.pop()
-                if current.left:
-                    if not current.left.left and not current.left.right:
-                        leafs.append(current.left.val)
-                        current.left = None
-                    else:
-                        stack.append(current.left)
+        def recurse(current: TreeNode) -> int:
+            if not current:
+                return 0
+            
+            i = max(recurse(current.left), recurse(current.right))
+            if len(ans) < (i + 1):
+                ans.append([])
+            ans[i].append(current.val)
+
+            return i + 1
                 
-                if current.right:
-                    if not current.right.left and not current.right.right:
-                        leafs.append(current.right.val)
-                        current.right = None
-                    else:
-                        stack.append(current.right)
-            if leafs:
-                ans.append(leafs)
-        ans.append([root.val])
+        ans = []
+        recurse(root)
         return ans
-                    
