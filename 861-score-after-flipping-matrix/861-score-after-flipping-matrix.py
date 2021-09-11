@@ -8,17 +8,16 @@ class Solution:
                     grid[i][j] ^= 1
         
         for j in range(1, w):
-            zeros = 0
-            for i in range(h):
-                if grid[i][j] == 0:
-                    zeros += 1
-            if zeros > (h / 2):
+            if sum(
+                1 if not grid[i][j] else 0 
+                for i in range(h)
+            ) > (h / 2):
                 for i in range(h):
                     grid[i][j] ^= 1
         
-        score = 0
-        for i in range(h):
-            for j in range(w):
-                if grid[i][j] == 1:
-                    score += 2 ** (w - j - 1)
-        return score
+        return sum(
+            2 ** (w - j - 1) 
+            for i in range(h) 
+            for j in range(w) 
+            if grid[i][j]
+        )
