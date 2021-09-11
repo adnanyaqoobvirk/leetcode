@@ -2,7 +2,9 @@ WITH CommonFollowers AS (
     SELECT
         R1.user_id AS user1_id,
         R2.user_id AS user2_id,
-        COUNT(R2.user_id) AS fcount
+        DENSE_RANK() OVER(
+            ORDER BY COUNT(R2.user_id) DESC
+        ) AS frank
     FROM
         Relations AS R1
         INNER JOIN
@@ -22,9 +24,4 @@ SELECT
 FROM
     CommonFollowers
 WHERE
-    fcount = (
-        SELECT
-            MAX(fcount)
-        FROM
-          CommonFollowers  
-    )
+    frank = 1
