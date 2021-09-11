@@ -1,23 +1,8 @@
 class Solution:
     def matrixScore(self, grid: List[List[int]]) -> int:
         h, w = len(grid), len(grid[0])
-        
-        for i in range(h):
-            if grid[i][0] == 0:
-                for j in range(w):
-                    grid[i][j] ^= 1
-        
+        score = (1 << w - 1) * h
         for j in range(1, w):
-            if sum(
-                1 if not grid[i][j] else 0 
-                for i in range(h)
-            ) > (h / 2):
-                for i in range(h):
-                    grid[i][j] ^= 1
-        
-        return sum(
-            1 << (w - j - 1) 
-            for i in range(h) 
-            for j in range(w) 
-            if grid[i][j]
-        )
+            ones = sum(grid[i][0] == grid[i][j] for i in range(h))
+            score += (1 << w - j - 1) * max(ones, h - ones)
+        return score
