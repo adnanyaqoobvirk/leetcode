@@ -16,7 +16,7 @@ class Solution:
                     grid[i][j] ^= 1
         
         return sum(
-            2 ** (w - j - 1) 
+            1 << (w - j - 1) 
             for i in range(h) 
             for j in range(w) 
             if grid[i][j]
