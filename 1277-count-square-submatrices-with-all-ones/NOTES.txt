@@ -1,0 +1,21 @@
+**Brute Force:**
+​
+```python
+class Solution:
+def countSquares(self, matrix: List[List[int]]) -> int:
+m, n = len(matrix), len(matrix[0])
+ans = 0
+for side in range(1, min(m, n) + 1):
+for x in range(m - side + 1):
+for y in range(n - side + 1):
+for i in range(x, x + side):
+for j in range(y, y + side):
+if matrix[i][j] == 0:
+break
+else:
+continue
+break
+else:
+ans += 1
+return ans
+```
