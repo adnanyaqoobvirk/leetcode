@@ -1,25 +1,29 @@
+class Node:
+    def __init__(self, val, prev = None, next = None):
+        self.val = val
+        self.next = next
+        self.prev = prev
+        
 class BrowserHistory:
 
     def __init__(self, homepage: str):
-        self.stack = [homepage]
-        self.curr_pos = 0
-        self.stack_size = 0
+        self.curr = Node(homepage)
 
     def visit(self, url: str) -> None:
-        self.curr_pos += 1
-        self.stack_size = self.curr_pos
-        if self.curr_pos < len(self.stack):
-            self.stack[self.curr_pos] = url
-        else:
-            self.stack.append(url)
+        self.curr.next = Node(url, self.curr)
+        self.curr = self.curr.next
 
     def back(self, steps: int) -> str:
-        self.curr_pos = max(self.curr_pos - steps, 0)
-        return self.stack[self.curr_pos]
+        while self.curr.prev and steps:
+            self.curr = self.curr.prev
+            steps -= 1
+        return self.curr.val
 
     def forward(self, steps: int) -> str:
-        self.curr_pos = min(self.curr_pos + steps, self.stack_size)
-        return self.stack[self.curr_pos]
+        while self.curr.next and steps:
+            self.curr = self.curr.next
+            steps -= 1
+        return self.curr.val
 
 
 # Your BrowserHistory object will be instantiated and called as such:
