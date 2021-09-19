@@ -6,14 +6,17 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        def recurse(current: TreeNode, maximum: int) -> int:
-            if not current:
-                return 0
+        stack = [(root, root.val)]
+        ans = 0
+        while stack:
+            current, maximum = stack.pop()
             
             maximum = max(current.val, maximum)
-            return (
-                int(current.val == maximum) + 
-                recurse(current.left, maximum) + 
-                recurse(current.right, maximum)
-            )
-        return recurse(root, float('-inf'))
+            if current.val == maximum:
+                ans += 1
+            
+            if current.right:
+                stack.append((current.right, maximum))
+            if current.left:
+                stack.append((current.left, maximum))
+        return ans
