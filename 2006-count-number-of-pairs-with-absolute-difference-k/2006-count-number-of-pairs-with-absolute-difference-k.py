@@ -1,7 +1,9 @@
 class Solution:
     def countKDifference(self, nums: List[int], k: int) -> int:
-        counts = Counter(nums)
+        counts = [0] * 201
+        for num in nums:
+            counts[num] += 1
         ans = 0
         for i in range(k + 1, 201):
-            ans += counts.get(i, 0) * counts.get(i - k, 0)
+            ans += counts[i] * counts[i - k]
         return ans
