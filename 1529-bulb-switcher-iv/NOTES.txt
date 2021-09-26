@@ -1,0 +1,22 @@
+class Solution:
+def minFlips(self, target: str) -> int:
+org = list(map(int, target))
+bits = [0] * len(org)
+flips = 0
+while True:
+for i in range(len(org) - 1, -1, -1):
+if org[i] != bits[i]:
+break
+else:
+return flips
+
+for j in range(i, -1, -1):
+if org[j] == bits[j]:
+break
+else:
+j = -1
+
+for k in range(j + 1, len(org)):
+bits[k] ^= 1
+
+flips += 1
