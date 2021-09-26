@@ -1,10 +1,15 @@
 class Solution:
     def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        @cache
+        def recurse(pos: int, time: int) -> int:
+            if pos == n:
+                return 0
+            
+            return max(
+                satisfaction[pos] * time + recurse(pos + 1, time + 1),
+                recurse(pos + 1, time)
+            )
+        
+        n = len(satisfaction)
         satisfaction.sort()
-        maxltc = 0
-        for i in range(len(satisfaction)):
-            ltc = 0
-            for idx, j in enumerate(range(i, len(satisfaction)), 1):
-                ltc += satisfaction[j] * idx
-            maxltc = max(maxltc, ltc)
-        return maxltc
+        return recurse(0, 1)
