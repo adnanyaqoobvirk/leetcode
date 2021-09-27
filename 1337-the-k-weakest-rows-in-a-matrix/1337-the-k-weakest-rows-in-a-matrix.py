@@ -3,14 +3,14 @@ class Solution:
         n, m = len(mat), len(mat[0])
         counts = {}
         for i in range(n):
-            left, right = 0, m - 1
+            left, right = 0, m
             while left < right:
-                mid = left + (right - left) // 2
+                mid = left + (right - left >> 1)
                 if mat[i][mid] == 1:
                     left = mid + 1
                 else:
-                    right = mid - 1
-            counts.setdefault(left if mat[i][left] == 0 else left + 1, []).append(i)
+                    right = mid
+            counts.setdefault(left, []).append(i)
         
         ans = []
         for j in range(m + 1):
