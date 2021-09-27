@@ -16,7 +16,6 @@ class Solution:
         for j in range(m + 1):
             indices = counts.get(j, [])
             if indices:
-                indices.sort()
                 for i in indices:
                     ans.append(i)
                     if len(ans) == k:
