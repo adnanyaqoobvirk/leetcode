@@ -3,17 +3,21 @@ class Solution:
         n, m = len(mat), len(mat[0])
         counts = {}
         for i in range(n):
-            ones = 0
-            for j in range(m):
-                if mat[i][j] == 0:
-                    break
-                ones += 1
-            counts.setdefault(ones, []).append(i)
+            left, right = 0, m - 1
+            while left < right:
+                mid = left + (right - left) // 2
+                if mat[i][mid] == 1:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            counts.setdefault(left if mat[i][left] == 0 else left + 1, []).append(i)
         
         ans = []
         for j in range(m + 1):
-            if j in counts:
-                for i in sorted(counts[j]):
+            indices = counts.get(j, [])
+            if indices:
+                indices.sort()
+                for i in indices:
                     ans.append(i)
                     if len(ans) == k:
                         return ans
