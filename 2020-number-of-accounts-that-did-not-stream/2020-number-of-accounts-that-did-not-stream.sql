@@ -1,5 +1,5 @@
 SELECT
-    COUNT(DISTINCT account_id) AS accounts_count
+    COUNT(account_id) AS accounts_count
 FROM
     Subscriptions
 WHERE
