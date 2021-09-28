@@ -5,7 +5,7 @@ class Solution:
             ones = 0
             while i > 0:
                 ones += 1
-                i = i & (i - 1)
+                i &= (i - 1)
             ans.append(ones)
         return ans
             
