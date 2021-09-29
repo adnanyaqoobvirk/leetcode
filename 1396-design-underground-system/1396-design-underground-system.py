@@ -11,12 +11,13 @@ class UndergroundSystem:
         startStation, startTime = self.customers[id]
         
         travelStats = self.times.setdefault((startStation, stationName), [0, 0])
-        travelStats[0] += t - startTime
+        travelStats[0] = (travelStats[0] * travelStats[1] + t - startTime) / (travelStats[1] + 1)
         travelStats[1] += 1
+        
+        del self.customers[id]
 
     def getAverageTime(self, startStation: str, endStation: str) -> float:
-        totalTime, totalTrips = self.times[(startStation, endStation)]
-        return totalTime / totalTrips
+        return self.times[(startStation, endStation)][0]
 
 
 # Your UndergroundSystem object will be instantiated and called as such:
