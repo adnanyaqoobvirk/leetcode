@@ -5,7 +5,5 @@ class Solution:
         while left >= 0:
             if (nums[left] - right + left) >= 0:
                 right = left
-                left -= 1
-            else:
-                left -= 1
+            left -= 1
         return False if right else True
