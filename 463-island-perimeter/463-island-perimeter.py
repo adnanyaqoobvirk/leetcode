@@ -5,15 +5,11 @@ class Solution:
         for i in range(n):
             for j in range(m):
                 if grid[i][j]:
-                    if i + 1 >= n or grid[i + 1][j] == 0:
-                        ans += 1
+                    ans += 4
                     
-                    if i - 1 < 0 or grid[i - 1][j] == 0:
-                        ans += 1
-                        
-                    if j + 1 >= m or grid[i][j + 1] == 0:
-                        ans += 1
-                        
-                    if j - 1 < 0 or grid[i][j - 1] == 0:
-                        ans += 1
+                    if i > 0 and grid[i - 1][j]:
+                        ans -= 2
+                    
+                    if j > 0 and grid[i][j - 1]:
+                        ans -= 2
         return ans
