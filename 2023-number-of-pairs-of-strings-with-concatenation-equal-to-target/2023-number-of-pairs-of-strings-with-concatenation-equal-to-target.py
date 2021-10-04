@@ -1,8 +1,11 @@
 class Solution:
     def numOfPairs(self, nums: List[str], target: str) -> int:
+        freq = Counter(nums)
         ans = 0
-        for i in range(len(nums)):
-            for j in range(len(nums)):
-                if i != j and nums[i] + nums[j] == target:
-                    ans += 1
+        for k, v in freq.items():
+            if target.startswith(k):
+                suffix = target[len(k):]
+                ans += v * freq[suffix]
+                if k == suffix:
+                    ans -= v
         return ans
