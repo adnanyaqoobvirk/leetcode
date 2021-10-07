@@ -9,14 +9,8 @@
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         n, m = binaryMatrix.dimensions()
-        ans = m
+        j = m - 1
         for i in range(n):
-            left, right = 0, m
-            while left < right:
-                mid = left + (right - left) // 2
-                if binaryMatrix.get(i, mid):
-                    right = mid
-                else:
-                    left = mid + 1
-            ans = min(ans, left)
-        return ans if ans != m else -1
+            while j >= 0 and binaryMatrix.get(i, j):
+                j -= 1
+        return j + 1 if j != m - 1 else -1
