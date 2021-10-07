@@ -4,20 +4,20 @@ class Solution:
             if pos == w:
                 return True
             
+            if 0 > i or i >= n or 0 > j or j >= m or board[i][j] != word[pos]:
+                return False
+            
+            board[i][j] = None
             for x, y in [(i - 1, j), (i, j + 1), (i + 1, j), (i, j - 1)]:
-                if 0 <= x < n and 0 <= y < m and board[x][y] == word[pos]:
-                    board[x][y] = None
-                    if backtrack(x, y, pos + 1):
-                        return True
-                    board[x][y] = word[pos]
+                if backtrack(x, y, pos + 1):
+                    return True
+            board[i][j] = word[pos]
+            
             return False
         
         n, m, w = len(board), len(board[0]), len(word)
         for k in range(n):
             for l in range(m):
-                if board[k][l] == word[0]:
-                    board[k][l] = None
-                    if backtrack(k, l, 1):
-                        return True
-                    board[k][l] = word[0]
+                if backtrack(k, l, 0):
+                    return True
         return False
