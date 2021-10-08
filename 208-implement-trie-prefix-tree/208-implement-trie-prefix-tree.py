@@ -13,7 +13,7 @@ class Trie:
             pos += 1
         curr[1] = True
 
-    def search(self, word: str) -> bool:
+    def search(self, word: str, prefix = False) -> bool:
         pos, curr = 0, self.nodes
         while pos < len(word):
             char = word[pos]
@@ -21,17 +21,10 @@ class Trie:
                 return False
             curr = curr[0][char]
             pos += 1
-        return curr[1]
+        return curr[1] or prefix
     
     def startsWith(self, prefix: str) -> bool:
-        pos, curr = 0, self.nodes
-        while pos < len(prefix):
-            char = prefix[pos]
-            if char not in curr[0]:
-                return False
-            curr = curr[0][char]
-            pos += 1
-        return True
+        return self.search(prefix, True)
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
