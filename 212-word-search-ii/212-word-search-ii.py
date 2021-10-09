@@ -3,27 +3,27 @@ from typing import Any, List
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         def backtrack(i: int, j: int, t: Any, w: List[str]):
-            if 0 <= i < n and 0 <= j < m and board[i][j] in t[0]:
+            if 0 <= i < n and 0 <= j < m and board[i][j] in t:
                 l = board[i][j]
                 w.append(l)
                 board[i][j] = '#'
                 for x, y in [(i + 1, j), (i, j + 1), (i - 1, j), (i, j - 1)]:
-                    backtrack(x, y, t[0][l], w)
+                    backtrack(x, y, t[l], w)
                 board[i][j] = l
-                if t[0][l][1]:
+                if t[l].get('$', False):
                     ans.add("".join(w[::]))
-                    if not t[0][l][0]:
-                        del t[0][l]
+                    if len(t[l]) == 1:
+                        t.pop(l)
                 w.pop()
         
-        trie = [{}, False]
+        trie = {}
         for word in words:
             curr = trie
             for c in word:
-                if c not in curr[0]:
-                    curr[0][c] = [{}, False]
-                curr = curr[0][c]
-            curr[1] = True
+                if c not in curr:
+                    curr[c] = {}
+                curr = curr[c]
+            curr['$'] = True
         
         n, m = len(board), len(board[0])
         ans = set()
