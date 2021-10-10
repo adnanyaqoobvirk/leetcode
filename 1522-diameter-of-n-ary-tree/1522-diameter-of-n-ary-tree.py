@@ -7,23 +7,22 @@ class Node:
 """
 
 class Solution:
-    def diameter(self, root: 'Node') -> int:
-        def recurse(current: int) -> int:
-            if not current:
-                return 0
-            
-            mx = smx = 0
-            for child in current.children:
-                height = recurse(child)
-                if height > mx:
-                    smx, mx = mx, height
-                elif height > smx:
-                    smx = height
-                    
-            height = 1 + mx
-            diameter[0] = max(diameter[0], height + smx)
-            return height
+    def dfs(self, current: int) -> int:
+        if not current:
+            return 0
+
+        first = second = 0
+        for child in current.children:
+            height = self.dfs(child)
+            if height > first:
+                second, first = first, height
+            elif height > second:
+                second = height
                 
-        diameter = [0]
-        recurse(root)
-        return diameter[0] - 1
+        self.dia = max(self.dia, first + second)
+        return 1 + first
+    
+    def diameter(self, root: 'Node') -> int:
+        self.dia = 0
+        self.dfs(root)
+        return self.dia
