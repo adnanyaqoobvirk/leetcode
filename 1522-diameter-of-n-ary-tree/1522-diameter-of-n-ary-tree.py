@@ -14,15 +14,15 @@ class Solution:
             
             mx = smx = 0
             for child in current.children:
-                depth = recurse(child)
-                if depth > mx:
-                    smx, mx = mx, depth
-                elif depth > smx:
-                    smx = depth
+                height = recurse(child)
+                if height > mx:
+                    smx, mx = mx, height
+                elif height > smx:
+                    smx = height
                     
-            depth = 1 + mx
-            diameter[0] = max(diameter[0], depth + smx)
-            return depth
+            height = 1 + mx
+            diameter[0] = max(diameter[0], height + smx)
+            return height
                 
         diameter = [0]
         recurse(root)
