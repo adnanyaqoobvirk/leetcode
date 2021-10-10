@@ -1,26 +1,24 @@
 class Solution:
     def maxScoreWords(self, words: List[str], letters: List[str], score: List[int]) -> int:
-        counts = Counter(letters)
-        n = len(words)
-        maxScore = 0
-        for num in range(1 << (n + 1)):
-            currCounts = counts.copy()
-            currScore = 0
-            for i in range(n):
-                if num & (1 << i):
-                    tmpScore = 0
-                    for j in range(len(words[i])):
-                        c = words[i][j]
-                        tmpScore += score[ord(c) - ord('a')]
-                        if not currCounts[c]:
-                            break
-                        currCounts[c] -= 1
-                    else:
-                        currScore += tmpScore
-                        continue
+        def backtrack(pos: int, maxScore: int) -> int:
+            currMaxScore = maxScore
+            for i in range(pos, n):
+                currScore = 0
+                for j in range(len(words[i])):
+                    c = words[i][j]
+                    currScore += score[ord(c) - ord('a')]
+                    if not counts[c]:
+                        break
+                    counts[c] -= 1
+                else:
+                    currMaxScore = max(currMaxScore, backtrack(i + 1, maxScore + currScore))
+                    j += 1
                     
-                    for k in range(j):
-                        currCounts[words[i][k]] += 1
-            maxScore = max(maxScore, currScore)
-        return maxScore
+                for j in range(j):
+                    counts[words[i][j]] += 1
+            return currMaxScore                    
+            
+        n = len(words)
+        counts = Counter(letters)
+        return backtrack(0, 0)
                 
