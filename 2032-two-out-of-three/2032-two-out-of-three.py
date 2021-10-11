@@ -9,6 +9,6 @@ class Solution:
                 if count == 1:
                     ans.append(num)
                     freq[num] = float('-inf')
-                else:
+                elif count != float('-inf'):
                     freq[num] = count + 1
         return ans
