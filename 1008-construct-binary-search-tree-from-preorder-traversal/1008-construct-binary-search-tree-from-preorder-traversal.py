@@ -9,14 +9,13 @@ class Solution:
         root = TreeNode(preorder[0])
         stack = [root]
         for i in range(1, len(preorder)):
-            parent = stack[-1]
-            while stack and stack[-1].val < preorder[i]:
+            parent, child = stack[-1], TreeNode(preorder[i])
+            while stack and stack[-1].val < child.val:
                 parent = stack.pop()
             
-            if preorder[i] > parent.val:
-                parent.right = TreeNode(preorder[i])
-                stack.append(parent.right)
+            stack.append(child)
+            if child.val > parent.val:
+                parent.right = child
             else:
-                parent.left = TreeNode(preorder[i])
-                stack.append(parent.left)
+                parent.left = child
         return root
