@@ -1,0 +1,15 @@
+@cache
+def recurse(num: int, total: int) -> int:
+if num > sn or total > n:
+return float('inf')
+
+if total == n:
+return 0
+​
+return min(
+1 + recurse(num, total + (num ** 2)),
+recurse(num + 1, total)
+)
+
+sn = math.ceil(math.sqrt(n))
+return recurse(1, 0)
