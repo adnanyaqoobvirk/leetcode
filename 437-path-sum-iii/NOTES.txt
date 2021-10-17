@@ -1,0 +1,19 @@
+class Solution:
+def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+def recurse(current: TreeNode, path: List[TreeNode], total: int) -> int:
+count = 0
+if current:
+path.append(current)
+newTotal = total + current.val
+if newTotal == targetSum:
+p = tuple(path)
+if p not in seen:
+seen.add(p)
+count += 1
+
+count += recurse(current.left, path, newTotal) + recurse(current.left, [], 0)
+count += recurse(current.right, path, newTotal) + recurse(current.right, [], 0)
+path.pop()
+return count
+seen = set()
+return recurse(root, [], 0)
