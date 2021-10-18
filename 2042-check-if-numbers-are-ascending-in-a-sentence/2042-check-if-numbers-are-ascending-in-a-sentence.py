@@ -1,10 +1,12 @@
 class Solution:
     def areNumbersAscending(self, s: str) -> bool:
-        pd = 0
-        for ss in s.split(): 
-            if ss.isdigit():
-                d = int(ss)
-                if d <= pd:
+        digits = set(string.digits)
+        curr = prev = 0
+        for c in s: 
+            if c in digits:
+                curr = 10 * curr + (ord(c) - ord('0'))
+            elif c == ' ' and curr:
+                if curr <= prev:
                     return False
-                pd = d
-        return True
+                prev, curr = curr, 0
+        return not curr or curr > prev
