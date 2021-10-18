@@ -6,27 +6,18 @@
 #         self.right = right
 class Solution:
     def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
-        stack = [(root, 0)]
+        def dfs(current: TreeNode, parent: TreeNode, depth: int) -> None:
+            nonlocal xparent, yparent, xdepth, ydepth
+            
+            if current:
+                if current.val == x:
+                    xparent, xdepth = parent, depth
+                elif current.val == y:
+                    yparent, ydepth = parent, depth
+                
+                dfs(current.left, current, depth + 1)
+                dfs(current.right, current, depth + 1)
+        
         xparent = yparent = xdepth = ydepth = None
-        
-        while stack:
-            current, depth = stack.pop()
-            
-            ndepth = depth + 1
-            if current.left:
-                stack.append((current.left, ndepth))
-                
-                if current.left.val == x:
-                    xparent, xdepth = current, ndepth
-                elif current.left.val == y:
-                    yparent, ydepth = current, ndepth
-            
-            if current.right:
-                stack.append((current.right, ndepth))
-                
-                if current.right.val == x:
-                    xparent, xdepth = current, ndepth
-                elif current.right.val == y:
-                    yparent, ydepth = current, ndepth
-        
+        dfs(root, None, 0)
         return xparent != yparent and xdepth == ydepth
