@@ -9,14 +9,14 @@ class Solution:
         if not root:
             return None
         
-        q = [root]
-        while q:
-            nq = []
-            for node in q:
-                node.left, node.right = node.right, node.left
-                if node.left:
-                    nq.append(node.left)
-                if node.right:
-                    nq.append(node.right)
-            q = nq
+        stack = [root]
+        while stack:
+            current = stack.pop()
+            
+            current.left, current.right = current.right, current.left
+            
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
         return root
