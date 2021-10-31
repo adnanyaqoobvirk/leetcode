@@ -17,13 +17,12 @@ class Solution:
         stack = [head]
         while stack:
             node = stack.pop()
-            current.next = Node(node.val, current, None, None)
-            current = current.next
-            
             if node.next:
                 stack.append(node.next)
-            
             if node.child:
                 stack.append(node.child)
+                
+            node.prev, node.child, current.next = current, None, node
+            current = current.next
         sentinal.next.prev = None
         return sentinal.next
