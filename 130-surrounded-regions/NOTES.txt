@@ -1,0 +1,23 @@
+class Solution:
+def solve(self, board: List[List[str]]) -> None:
+"""
+Do not return anything, modify board in-place instead.
+"""
+
+def backtrack(i: int, j: int) -> bool:
+if i == 0 or i == n - 1 or j == 0 or j == m - 1:
+return True
+
+for x, y in [(i, j), (i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
+if 0 <= x < n and 0 <= y < m and board[x][y] == 'O':
+board[x][y] = 'X'
+if backtrack(x, y):
+board[x][y] = 'O'
+return True
+return False
+
+n, m = len(board), len(board[0])
+for i in range(1, n - 1):
+for j in range(1, m - 1):
+if board[i][j] == 'O':
+backtrack(i, j)
