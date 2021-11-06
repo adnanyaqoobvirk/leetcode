@@ -1,8 +1,12 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        seen_once = 0
-        seen_twice = 0
+        seen = [0] * 32
         for num in nums:
-            seen_once = ~seen_twice & (seen_once ^ num)
-            seen_twice = ~seen_once & (seen_twice ^ num)
-        return seen_once
+            for i in range(32):
+                if (1 << i) & num:
+                    seen[i] += 1
+        ans = 0
+        for i, count in enumerate(seen):
+            if count != 0 and count % 3 != 0:
+                ans += (1 << i)
+        return ans if seen[31] % 3 == 0 else ans - (1 << 32) 
