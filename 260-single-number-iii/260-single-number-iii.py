@@ -3,15 +3,11 @@ class Solution:
         mask = 0
         for num in nums:
             mask ^= num
-        mask = mask & -mask
+            
+        first_mask = mask & -mask
         
         first = 0
         for num in nums:
-            if mask & num:
+            if first_mask & num:
                 first ^= num
-                
-        second = 0
-        for num in nums:
-            if num != first:
-                second ^= num
-        return [first, second]
+        return [first, mask ^ first]
