@@ -1,9 +1,17 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
-        seen = set()
+        mask = 0
         for num in nums:
-            if num in seen:
-                seen.remove(num)
-            else:
-                seen.add(num)
-        return seen
+            mask ^= num
+        mask = mask & -mask
+        
+        first = 0
+        for num in nums:
+            if mask & num:
+                first ^= num
+                
+        second = 0
+        for num in nums:
+            if num != first:
+                second ^= num
+        return [first, second]
