@@ -11,7 +11,7 @@ class Solution:
                 cuts += 1
             return cuts >= k + 1
     
-        left, right = min(sweetness), sum(sweetness) + 1
+        left, right = min(sweetness), sum(sweetness) // (k + 1)
         while left <= right:
             mid = left + (right - left >> 1)
             
