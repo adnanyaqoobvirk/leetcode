@@ -1,0 +1,10 @@
+ans = []
+words = [set(word) for word in words]
+for puzzle in puzzles:
+pchars = set(puzzle)
+valids = 0
+for wchars in words:
+if len(wchars & pchars) == len(wchars) and puzzle[0] in wchars:
+valids += 1
+ans.append(valids)
+return ans
