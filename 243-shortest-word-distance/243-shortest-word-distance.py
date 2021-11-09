@@ -1,11 +1,13 @@
 class Solution:
     def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
-        words = {}
+        dist = float('inf')
+        w1 = w2 = None
         for i, word in enumerate(wordsDict):
-            words.setdefault(word, []).append(i)
-        
-        distance = float('inf')
-        for d1 in words[word1]:
-            for d2 in words[word2]:
-                distance = min(abs(d1 - d2), distance)
-        return distance
+            if word == word1:
+                w1 = i
+            elif word == word2:
+                w2 = i
+            
+            if w1 is not None and w2 is not None:
+                dist = min(abs(w1 - w2), dist)
+        return dist
