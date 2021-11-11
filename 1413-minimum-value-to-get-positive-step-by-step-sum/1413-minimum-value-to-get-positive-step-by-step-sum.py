@@ -4,5 +4,5 @@ class Solution:
         for num in nums:
             rsum += num
             minimum = min(rsum, minimum)
-        return abs(minimum) + 1
+        return 1 - minimum
         
