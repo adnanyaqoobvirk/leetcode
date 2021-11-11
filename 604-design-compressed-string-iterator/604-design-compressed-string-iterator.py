@@ -1,31 +1,30 @@
 class StringIterator:
-
+    digits = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9}
+    
     def __init__(self, compressedString: str):
-        self.chars = []
-        
-        digits = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9}
-        count = ""
-        for c in reversed(compressedString):
-            if c in digits:
-                count = c + count
-            else:
-                cnt = int(count)
-                if cnt > 0:
-                    self.chars.append([c, cnt])
-                count = ""
+        self.cs = compressedString
+        self.count = self.pos = 0
+        self.ch = " "
                 
     def next(self) -> str:
-        if self.chars:
-            c, count = self.chars[-1]
-            if count == 1:
-                self.chars.pop()
-            else:
-                self.chars[-1][1] -= 1
-            return c
-        return " "
+        if self.count == 0:
+            if self.pos >= len(self.cs):
+                return " "
+            
+            self.ch = self.cs[self.pos]
+            self.pos += 1
+            count = ""
+            while self.pos < len(self.cs) and self.cs[self.pos] in StringIterator.digits:
+                count += self.cs[self.pos]
+                self.pos += 1
+            self.count = int(count) - 1
+        else:
+            self.count -= 1
+            
+        return self.ch
 
     def hasNext(self) -> bool:
-        return self.chars
+        return self.pos < len(self.cs) or self.count > 0
 
 
 # Your StringIterator object will be instantiated and called as such:
