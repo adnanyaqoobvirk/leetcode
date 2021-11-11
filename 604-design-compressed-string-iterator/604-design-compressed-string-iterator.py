@@ -9,7 +9,9 @@ class StringIterator:
             if c in digits:
                 count = c + count
             else:
-                self.chars.append([c, int(count)])
+                cnt = int(count)
+                if cnt > 0:
+                    self.chars.append([c, cnt])
                 count = ""
                 
     def next(self) -> str:
