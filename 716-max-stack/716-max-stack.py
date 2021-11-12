@@ -2,17 +2,23 @@ class MaxStack:
 
     def __init__(self):
         self.stack = []
-        self.max = float('-inf')
+        self.max, self.maxi = float('-inf'), None
+        
+    def setMax(self) -> None:
+        self.max, self.maxi = float('-inf'), None
+        for i in reversed(range(len(self.stack))):
+            if self.stack[i] > self.max:
+                self.max, self.maxi = self.stack[i], i
 
     def push(self, x: int) -> None:
         self.stack.append(x)
-        if x > self.max:
-            self.max = x
+        if x >= self.max:
+            self.max, self.maxi = x, len(self.stack) - 1
 
     def pop(self) -> int:
         v = self.stack.pop()
         if v == self.max:
-            self.max = max(self.stack) if self.stack else float('-inf')
+            self.setMax()
         return v
 
     def top(self) -> int:
@@ -22,11 +28,9 @@ class MaxStack:
         return self.max
 
     def popMax(self) -> int:
-        for i in reversed(range(len(self.stack))):
-            if self.stack[i] == self.max:
-                v = self.stack.pop(i)
-                self.max = max(self.stack) if self.stack else float('-inf')
-                return v
+        v = self.stack.pop(self.maxi)
+        self.setMax()
+        return v
 
 
 # Your MaxStack object will be instantiated and called as such:
