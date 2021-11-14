@@ -10,19 +10,18 @@ class CombinationIterator:
                     backtrack(i + 1)
                     comb.pop()
         n = len(characters)
-        comb = []
         self.combs = []
-        self.cpos = 0
+        comb = []
         backtrack(0)
+        self.pos = 0
 
     def next(self) -> str:
-        ans = self.combs[self.cpos]
-        self.cpos += 1
-        return ans
-
+        c = self.combs[self.pos]
+        self.pos += 1
+        return c
+    
     def hasNext(self) -> bool:
-        return self.cpos < len(self.combs)
-
+        return self.pos < len(self.combs)
 
 # Your CombinationIterator object will be instantiated and called as such:
 # obj = CombinationIterator(characters, combinationLength)
