@@ -1,0 +1,23 @@
+class Solution:
+def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+def helper(pos: int, ss: Tuple[int]) -> Tuple[int]:
+if pos == n:
+return ss
+
+ess = helper(pos + 1, ss)
+if ss:
+if nums[pos] % ss[-1] == 0 or ss[-1] % nums[pos] == 0:
+nss = helper(pos + 1, ss + (nums[pos], ))
+else:
+nss = ()
+else:
+nss = helper(pos + 1, ss + (nums[pos], ))
+
+if len(ess) > len(nss):
+return ess
+else:
+return nss
+
+nums.sort()
+n = len(nums)
+return helper(0, ())
