@@ -2,10 +2,10 @@ class Solution:
     def isMajorityElement(self, nums: List[int], target: int) -> bool:
         left, right = 0, len(nums) - 1
         while left <= right:
-            if nums[left] < target:
-                left += 1
-            elif nums[right] > target:
-                right -= 1
+            mid = left + (right - left) // 2
+            
+            if nums[mid] >= target:
+                right = mid - 1
             else:
-                break
-        return right - left + 1 > len(nums) // 2
+                left = mid + 1
+        return left + len(nums) // 2 < len(nums) and target == nums[left + len(nums) // 2]
