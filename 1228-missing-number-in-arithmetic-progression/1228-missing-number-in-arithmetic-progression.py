@@ -1,7 +1,11 @@
 class Solution:
     def missingNumber(self, arr: List[int]) -> int:
-        diff = min(arr[1] - arr[0], arr[2] - arr[1])
-        for i in range(len(arr) - 1):
-            if arr[i + 1] - arr[i] != diff:
-                return arr[i + 1] - arr[i] - diff + arr[i]
-        return arr[0]
+        diff = (arr[-1] - arr[0]) // len(arr)
+        left, right = 0, len(arr) - 1
+        while left < right:
+            mid = left + (right - left) // 2
+            if arr[mid] == arr[0] + diff * mid:
+                left = mid + 1
+            else:
+                right = mid
+        return arr[0] + left * diff
