@@ -15,6 +15,7 @@ class Solution:
                 count += 1
             else:
                 ans = max(ans, count)
+                break
             ans = max(ans, count)
             i = i + 1 if second_char_start is None else second_char_start 
         return ans
