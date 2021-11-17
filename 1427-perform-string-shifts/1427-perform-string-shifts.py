@@ -2,18 +2,12 @@ class Solution:
     def stringShift(self, s: str, shift: List[List[int]]) -> str:
         q = deque(s)
         
-        shifts = 0
-        for direction, amount in shift:
-            if direction:
-                shifts += amount
-            else:
-                shifts -= amount
-                
-        if shifts > 0:
-            for _ in range(shifts):
+        ops = sum(amount if direction else -amount for direction, amount in shift)
+        if ops > 0:
+            for _ in range(ops):
                 q.appendleft(q.pop())
         else:
-            for _ in range(-shifts):
+            for _ in range(-ops):
                 q.append(q.popleft())
                 
         return "".join(q)
