@@ -7,16 +7,11 @@ class Solution:
             s, t = t, s
         
         n, m = len(s), len(t)
-        i = j = diff = 0
-        while i < n and diff <= 1:
-            if j < m:
-                if s[i] == t[j]:
-                    j += 1
+        for i in range(m):
+            if s[i] != t[i]:
+                if n == m:
+                    return s[i + 1:] == t[i + 1:]
                 else:
-                    diff += 1
-                    if n == m:
-                        j += 1
-            else:
-                diff += 1
-            i += 1
-        return diff == 1
+                    return s[i + 1:] == t[i:]
+        return m + 1 == n
+                
