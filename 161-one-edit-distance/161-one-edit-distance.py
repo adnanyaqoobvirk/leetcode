@@ -8,7 +8,7 @@ class Solution:
         
         n, m = len(s), len(t)
         i = j = diff = 0
-        while i < n:
+        while i < n and diff <= 1:
             if j < m:
                 if s[i] == t[j]:
                     j += 1
