@@ -1,0 +1,19 @@
+class WordDistance:
+​
+def __init__(self, wordsDict: List[str]):
+n = len(wordsDict)
+
+self.distances = {}
+for i in range(n):
+for j in range(i + 1, n):
+key = (wordsDict[i], wordsDict[j])
+self.distances[key] = min(
+self.distances.get(key, float('inf')),
+abs(i - j)
+)
+​
+def shortest(self, word1: str, word2: str) -> int:
+return min(
+self.distances.get((word1, word2), float('inf')),
+self.distances.get((word2, word1), float('inf'))
+)
