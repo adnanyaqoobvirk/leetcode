@@ -1,0 +1,28 @@
+class Solution:
+def findStrobogrammatic(self, n: int) -> List[str]:
+def backtrack() -> None:
+if len(chars) == n:
+s = "".join(chars)
+rchars = []
+for c in chars:
+if c == "6":
+rchars.append("9")
+elif c == "9":
+rchars.append("6")
+else:
+rchars.append(c)
+if s == "".join(reversed(rchars)):
+ans.add(s)
+else:
+for i in range(5):
+if chars and chars[0] == "0":
+continue
+chars.append(allowed[i])
+backtrack()
+chars.pop()
+
+allowed = ["0", "1", "6", "8", "9"]
+chars = []
+ans = set()
+backtrack()
+return ans
