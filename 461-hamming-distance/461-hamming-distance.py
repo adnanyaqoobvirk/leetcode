@@ -1,8 +1,8 @@
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
-        n = x^y
+        xor = x ^ y
         ans = 0
-        while n > 0:
+        while xor > 0:
+            xor &= (xor - 1)
             ans += 1
-            n = n & n - 1
         return ans
