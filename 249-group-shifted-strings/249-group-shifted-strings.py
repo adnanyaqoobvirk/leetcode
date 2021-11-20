@@ -1,5 +1,19 @@
 class Solution:
     def groupStrings(self, strings: List[str]) -> List[List[str]]:
+        def distance(c1: str, c2: str) -> int:
+            diff = ord(c1) - ord(c2)
+            return 26 + diff if diff < 0 else diff
+        
+        def same(x: int, y: int) -> bool:
+            if len(strings[i]) != len(strings[j]):
+                return False
+            
+            d = distance(strings[x][0], strings[y][0])
+            for k in range(1, len(strings[i])):
+                if distance(strings[i][k], strings[j][k]) != d:
+                    return False
+            return True
+                    
         n = len(strings)
         ans = []
         done = set()
@@ -8,15 +22,8 @@ class Solution:
                 done.add(i)
                 group = [strings[i]]
                 for j in range(i + 1, n):
-                    if j not in done and len(strings[i]) == len(strings[j]):
-                        diff = ord(strings[i][0]) - ord(strings[j][0])
-                        l = (26 + diff if diff < 0 else diff)
-                        for k in range(1, len(strings[i])):
-                            diff = ord(strings[i][k]) - ord(strings[j][k])
-                            if (26 + diff if diff < 0 else diff) != l:
-                                break
-                        else:
-                            done.add(j)
-                            group.append(strings[j])
+                    if j not in done and same(i, j):
+                        done.add(j)
+                        group.append(strings[j])
                 ans.append(group)
         return ans
