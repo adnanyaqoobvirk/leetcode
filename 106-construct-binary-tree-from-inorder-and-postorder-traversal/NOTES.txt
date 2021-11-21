@@ -1,0 +1,19 @@
+class Solution:
+def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+def helper(pstart: int, pend: int, istart: int, iend: int) -> TreeNode:
+if pstart <= pend and istart <= iend:
+current = TreeNode(postorder[pend])
+
+ipos = inorder_map[current.val]
+if ipos > istart:
+ppos = postorder_map[inorder[ipos - 1]]
+else:
+ppos = ipos - 1
+
+current.left = helper(pstart, ppos, istart, ipos - 1)
+current.right = helper(ppos + 1, pend - 1, ipos + 1, iend)
+
+return current
+inorder_map = {v: i for i, v in enumerate(inorder)}
+postorder_map = {v: i for i, v in enumerate(postorder)}
+return helper(0, len(postorder) - 1, 0, len(inorder))
