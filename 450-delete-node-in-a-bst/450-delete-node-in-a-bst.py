@@ -12,10 +12,11 @@ class Solution:
             
             if current.val == key:
                 if current.right:
-                    node = current.right
-                    while node.left:
-                        node = node.left
-                    node.left = current.left
+                    if current.left:
+                        node = current.right
+                        while node.left:
+                            node = node.left
+                        node.left = current.left
                     return current.right
                 elif current.left:
                     return current.left
