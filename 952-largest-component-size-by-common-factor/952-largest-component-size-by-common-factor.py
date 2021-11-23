@@ -22,27 +22,14 @@ class DisjoinSet:
     
 class Solution:
     def largestComponentSize(self, nums: List[int]) -> int:
-        def primeFactors(a: int) -> List[int]:
-            factor = 2
-            prime_factors = []
-            while a >= factor * factor:
-                if a % factor == 0:
-                    prime_factors.append(factor)
-                    a = a // factor
-                else:
-                    factor += 1
-            prime_factors.append(a)
-            return prime_factors
-        
         ds = DisjoinSet(max(nums))
-        factor_map = {}
         for num in nums:
-            pfs = list(set(primeFactors(num)))
-            factor_map[num] = pfs[0]
-            for i in range(len(pfs) - 1):
-                ds.union(pfs[i], pfs[i + 1])
+            for f in range(2, int(sqrt(num)) + 1):
+                if num % f == 0:
+                    ds.union(num, f)
+                    ds.union(num, num // f)
         
         counts = defaultdict(int)
         for num in nums:
-            counts[ds.find(factor_map[num])] += 1
+            counts[ds.find(num)] += 1
         return max(counts.values())
