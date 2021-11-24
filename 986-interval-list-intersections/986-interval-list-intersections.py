@@ -6,20 +6,18 @@ class Solution:
         while p1 < n and p2 < m:
             p1start, p1end = firstList[p1]
             p2start, p2end = secondList[p2]
-            if p1start <= p2start:
-                if p1start <= p2start <= p1end:
-                    if p2end <= p1end:
-                        ans.append([p2start, p2end])
-                    else:
-                        ans.append([p2start, p1end])
-            else:
-                if p2start <= p1start <= p2end:
-                    if p1end <= p2end:
-                        ans.append([p1start, p1end])
-                    else:
-                        ans.append([p1start, p2end])
+            
             if p1end >= p2end:
                 p2 += 1
             else:
                 p1 += 1
+                
+            if p1start > p2start:
+                p1start, p1end, p2start, p2end = p2start, p2end, p1start, p1end
+            
+            if p1start <= p2start <= p1end:
+                if p2end <= p1end:
+                    ans.append([p2start, p2end])
+                else:
+                    ans.append([p2start, p1end])
         return ans
