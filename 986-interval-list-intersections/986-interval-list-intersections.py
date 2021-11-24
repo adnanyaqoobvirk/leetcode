@@ -12,12 +12,7 @@ class Solution:
             else:
                 p1 += 1
                 
-            if p1start > p2start:
-                p1start, p1end, p2start, p2end = p2start, p2end, p1start, p1end
-            
-            if p1start <= p2start <= p1end:
-                if p2end <= p1end:
-                    ans.append([p2start, p2end])
-                else:
-                    ans.append([p2start, p1end])
+            lo, hi = max(p1start, p2start), min(p1end, p2end)
+            if lo <= hi:
+                ans.append([lo, hi])
         return ans
