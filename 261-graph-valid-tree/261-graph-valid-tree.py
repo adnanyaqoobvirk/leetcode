@@ -21,14 +21,18 @@ class DisjointSet:
                 self.nodes[xp] = yp
                 self.nodes[yp] -= 1
             self.roots -= 1
+            return True
+        else:
+            return False
 
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        if len(edges) > n - 1:
+        if len(edges) != n - 1:
             return False
         
         ds = DisjointSet(n)
         for i, j in edges:
-            ds.union(i, j)
+            if not ds.union(i, j):
+                return False
         
         return ds.roots == 1
