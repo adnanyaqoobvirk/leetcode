@@ -1,13 +1,13 @@
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        def recurse(pos: int, path: List[int]) -> None:
-            if pos == len(graph) - 1:
-                paths.append(path[::])
+        def helper(pos: int) -> None:
+            if pos == n:
+                ans.append(path[::])
             else:
-                for node in graph[pos]:
-                    path.append(node)
-                    recurse(node, path)
+                for i in graph[pos]:
+                    path.append(i)
+                    helper(i)
                     path.pop()
-        paths = []
-        recurse(0, [0])
-        return paths
+        n, ans, path = len(graph) - 1, [], [0]
+        helper(0)
+        return ans
