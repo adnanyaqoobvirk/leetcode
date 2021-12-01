@@ -1,12 +1,6 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        @cache
-        def helper(pos: int) -> int:
-            if pos >= len(nums):
-                return 0
-            
-            return max(
-                nums[pos] + helper(pos + 2),
-                helper(pos + 1)
-            )
-        return helper(0)
+        dp = [0] * (len(nums) + 2)
+        for i in reversed(range(len(nums))):
+            dp[i] = max(nums[i] + dp[i + 2], dp[i + 1])
+        return dp[0]
