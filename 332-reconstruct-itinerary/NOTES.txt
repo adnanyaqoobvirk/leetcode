@@ -1,0 +1,24 @@
+class Solution:
+def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+def backtrack(src: str, count: int) -> None:
+if count == n:
+nonlocal ans
+ans = min(ans, ",".join(path))
+else:
+for dst in graph[src]:
+if visited[(src, dst)] < counts[(src, dst)]:
+path.append(dst)
+visited[(src, dst)] += 1
+backtrack(dst, count + 1)
+path.pop()
+visited[(src, dst)] -= 1
+
+counts = defaultdict(int)
+graph = defaultdict(list)
+for src, dst in tickets:
+graph[src].append(dst)
+counts[(src, dst)] += 1
+
+n, ans, visited, path = len(tickets), 'jfk', defaultdict(int), ['JFK']
+backtrack('JFK', 0)
+return ans.split(',')
