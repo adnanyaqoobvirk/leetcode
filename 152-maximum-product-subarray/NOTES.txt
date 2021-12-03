@@ -1,0 +1,26 @@
+class Solution:
+def maxProduct(self, nums: List[int]) -> int:
+ans = float('-inf')
+for i in range(len(nums)):
+product = 1
+for j in range(i, len(nums)):
+product *= nums[j]
+ans = max(ans, product)
+return ans
+
+-----------------------------------------------------
+​
+class Solution:
+def maxProduct(self, nums: List[int]) -> int:
+@cache
+def helper(pos: int, product: int) -> int:
+if pos == len(nums):
+return product
+
+return max(
+nums[pos] * product,
+helper(pos + 1, nums[pos] * product),
+helper(pos + 1, nums[pos])
+)
+
+return helper(0, 1)
