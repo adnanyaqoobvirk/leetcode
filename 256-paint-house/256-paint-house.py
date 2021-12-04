@@ -1,13 +1,12 @@
 class Solution:
-    def minCost(self, costs: List[List[int]]) -> int:
-        @cache
-        def helper(pos: int, prev: int) -> int:
-            if pos >= len(costs):
-                return 0
-            
-            cost = float('inf')
-            for i in range(3):
-                if i != prev:
-                    cost = min(cost, costs[pos][i] + helper(pos + 1, i))
-            return cost
-        return helper(0, -1)
+    def minCost(self, costs: List[List[int]]) -> int:    
+        n = len(costs)
+        dp = [[0] * 3 for _ in range(n + 1)]
+        for i in range(n):
+            for j in range(3):
+                cost = float('inf')
+                for k in range(3):
+                    if k != j:
+                        cost = min(cost, costs[i][k] + dp[i - 1][k])
+                dp[i][j] = cost
+        return min(dp[n - 1])
