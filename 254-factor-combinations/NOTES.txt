@@ -1,0 +1,22 @@
+class Solution:
+def getFactors(self, n: int) -> List[List[int]]:
+def backtrack(product: int) -> None:
+if product == n and comb:
+ans.add(tuple(sorted(comb[:])))
+elif product < n:
+for f in factors:
+if product * f > n:
+break
+comb.append(f)
+backtrack(product * f)
+comb.pop()
+
+factors = []
+for f in range(2, n // 2 + 1):
+if n % f == 0:
+factors.append(f)
+
+ans = set()
+comb = []
+backtrack(1)
+return ans
