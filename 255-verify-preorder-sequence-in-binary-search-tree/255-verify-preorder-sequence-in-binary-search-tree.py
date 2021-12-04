@@ -1,10 +1,12 @@
 class Solution:
     def verifyPreorder(self, preorder: List[int]) -> bool:
-        stack, root = [], float('-inf')
-        for num in preorder:
-            while stack and stack[-1] < num:
-                root = stack.pop()
-            if num < root:
+        pos, root = -1, float('-inf')
+        for i in range(len(preorder)):
+            while pos >= 0 and preorder[pos] < preorder[i]:
+                root = preorder[pos]
+                pos -= 1
+            if preorder[i] < root:
                 return False
-            stack.append(num)
+            pos += 1
+            preorder[pos] = preorder[i]
         return True
