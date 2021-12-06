@@ -2,12 +2,7 @@ class Codec:
     def encode(self, strs: [str]) -> str:
         """Encodes a list of strings to a single string.
         """
-        estr = []
-        for s in strs:
-            estr.append(s)
-            estr.append(chr(257))
-        estr.pop()
-        return "".join(estr)
+        return chr(257).join(strs)
 
     def decode(self, s: str) -> [str]:
         """Decodes a single string to a list of strings.
