@@ -1,0 +1,26 @@
+class Solution:
+def generatePalindromes(self, s: str) -> List[str]:
+def isPalindrome(comb: List[str]) -> bool:
+left, right = 0, len(comb) - 1
+while left < right:
+if comb[left] != comb[right]:
+return False
+left += 1
+right -= 1
+return True
+
+def backtrack() -> None:
+if len(comb) == len(s):
+keys = [c for c, i in comb.keys()]
+if isPalindrome(keys):
+ans.add("".join(keys))
+else:
+for i, c in enumerate(s):
+if (c, i) not in comb:
+comb[(c, i)] = True
+backtrack()
+del comb[(c, i)]
+ans = set()
+comb = {}
+backtrack()
+return ans
