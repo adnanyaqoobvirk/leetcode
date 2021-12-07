@@ -3,16 +3,8 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        
-        cnums = sorted(nums)
-        
-        lo, hi = 0, len(nums) - 1
-        i = 0
-        while lo < hi:
-            nums[i], nums[i + 1] = cnums[lo], cnums[hi]
-            lo += 1
-            hi -= 1
-            i += 2
-        
-        if lo == hi:
-            nums[-1] = cnums[lo]
+        less = True
+        for i in range(len(nums) - 1):
+            if (less and nums[i] > nums[i + 1]) or (not less and nums[i] < nums[i + 1]):
+                nums[i], nums[i + 1] = nums[i + 1], nums[i]
+            less = not less
