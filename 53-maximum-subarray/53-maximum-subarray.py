@@ -1,10 +1,9 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        maximum = float('-inf')
-        curr = 0
+        largest_sum, total = float('-inf'), 0
         for num in nums:
-            curr += num
-            if curr < num:
-                curr = num
-            maximum = max(curr, maximum)
-        return maximum
+            total += num
+            if total < num:
+                total = num
+            largest_sum = max(largest_sum, total)
+        return largest_sum
