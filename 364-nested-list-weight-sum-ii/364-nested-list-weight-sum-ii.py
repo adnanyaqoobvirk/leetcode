@@ -43,21 +43,19 @@
 
 class Solution:
     def depthSumInverse(self, nestedList: List[NestedInteger]) -> int:
-        def helper(ni: NestedInteger, depth: int) -> int:
-            nonlocal max_depth
-            
-            if ni.isInteger():
-                ints.append(ni.getInteger())
-                depths.append(depth)
-                max_depth = max(max_depth, depth)
-            else:
-                for nii in ni.getList():
-                    helper(nii, depth + 1)
-        
         max_depth, depths, ints = 0, [], []
         for ni in nestedList:
-            helper(ni, 1)
-        
+            stack = [(ni, 1)]
+            while stack:
+                curr, depth = stack.pop()
+                if curr.isInteger():
+                    ints.append(curr.getInteger())
+                    depths.append(depth)
+                    max_depth = max(max_depth, depth)
+                else:
+                    for ni in curr.getList():
+                        stack.append((ni, depth + 1))
+                        
         ans = 0
         for i, ni in enumerate(ints):
             ans += (max_depth - depths[i] + 1) * ni
