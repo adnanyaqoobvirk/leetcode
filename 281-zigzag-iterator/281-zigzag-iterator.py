@@ -1,31 +1,21 @@
 class ZigzagIterator:
     def __init__(self, v1: List[int], v2: List[int]):
-        self.v1, self.v2 = v1, v2
-        self.p1 = self.p2 = 0
-        self.p1_turn = True
+        self.vs = [v1, v2]
+        self.q = deque([[0, 0], [1, 0]])
 
     def next(self) -> int:
-        ans = None
-        if self.p1_turn:
-            if self.p1 < len(self.v1):
-                ans = self.v1[self.p1]
-                self.p1 += 1
-            else:
-                ans = self.v2[self.p2]
-                self.p2 += 1
-        else:
-            if self.p2 < len(self.v2):
-                ans = self.v2[self.p2]
-                self.p2 += 1
-            else:
-                ans = self.v1[self.p1]
-                self.p1 += 1
-        self.p1_turn = not self.p1_turn
-        return ans
-
+        while self.q:
+            v, p = self.q.popleft()
+            if p < len(self.vs[v]):
+                self.q.append([v, p + 1])
+                return self.vs[v][p]
+                
     def hasNext(self) -> bool:
-        return self.p1 < len(self.v1) or self.p2 < len(self.v2)
-
+        for v, p in self.q:
+            if p < len(self.vs[v]):
+                return True
+        return False
+    
 # Your ZigzagIterator object will be instantiated and called as such:
 # i, v = ZigzagIterator(v1, v2), []
 # while i.hasNext(): v.append(i.next())
