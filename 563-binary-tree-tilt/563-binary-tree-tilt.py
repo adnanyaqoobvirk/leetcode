@@ -6,18 +6,31 @@
 #         self.right = right
 class Solution:
     def findTilt(self, root: Optional[TreeNode]) -> int:
-        def helper(curr: Optional[TreeNode]) -> int:
-            if not curr:
-                return 0
-            
-            left_sum = helper(curr.left)
-            right_sum = helper(curr.right)
-            
-            nonlocal tilt_sum
-            tilt_sum += abs(left_sum - right_sum)
-            
-            return curr.val + left_sum + right_sum
+        if not root:
+            return 0
         
-        tilt_sum = 0
-        helper(root)
+        tilt_sum, stack, processed = 0, [root], defaultdict(int)
+        while stack:
+            curr = stack[-1]
+            
+            if curr not in processed:
+                if curr.right:
+                    stack.append(curr.right)
+
+                if curr.left:
+                    stack.append(curr.left)
+                    
+                processed[curr] = 0
+            else:
+                stack.pop()
+                
+                left_sum, right_sum = processed[curr.left], processed[curr.right]
+                
+                tilt_sum += abs(left_sum - right_sum)
+                
+                processed[curr] = curr.val + left_sum + right_sum
         return tilt_sum
+                
+            
+            
+            
