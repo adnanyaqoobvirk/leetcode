@@ -44,14 +44,15 @@
 class Solution:
     def depthSumInverse(self, nestedList: List[NestedInteger]) -> int:
         max_depth, ints_sum, ints_product_sum = 0, 0, 0
-        stack = [(ni, 1) for ni in nestedList]
-        while stack:
-            curr, depth = stack.pop()
-            if curr.isInteger():
-                num = curr.getInteger()
-                ints_sum, ints_product_sum  = ints_sum + num, ints_product_sum + num * depth  
-                max_depth = max(max_depth, depth)
-            else:
-                for ni in curr.getList():
-                    stack.append((ni, depth + 1))
+        q = nestedList
+        while q:
+            nq, max_depth = [], max_depth + 1
+            for curr in q:
+                if curr.isInteger():
+                    num = curr.getInteger()
+                    ints_sum, ints_product_sum  = ints_sum + num, ints_product_sum + num * max_depth  
+                else:
+                    for ni in curr.getList():
+                        nq.append(ni)
+            q = nq
         return (max_depth + 1) * ints_sum - ints_product_sum
