@@ -5,13 +5,14 @@ class Solution:
             if k <= 2:
                 return k
             
-            return domino(k - 1) + domino(k - 2) + 2 * tromino(k - 2)
+            return (domino(k - 1) + domino(k - 2) + 2 * tromino(k - 2)) % mod
         
         @cache
         def tromino(k: int) -> int:
             if k <= 2:
                 return k
             
-            return tromino(k - 1) + domino(k - 1)
+            return (tromino(k - 1) + domino(k - 1)) % mod
         
-        return domino(n) % (10**9 + 7)
+        mod = 10**9 + 7
+        return domino(n)
