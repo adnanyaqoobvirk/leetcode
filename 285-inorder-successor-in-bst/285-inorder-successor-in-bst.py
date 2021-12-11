@@ -7,18 +7,10 @@
 
 class Solution:
     def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'Optional[TreeNode]':
-        def helper(curr: TreeNode) -> None:
-            nonlocal successor, foundp
-            if curr:
-                helper(curr.left)
-                
-                if not successor and foundp:
-                    successor = curr
-                else:
-                    if curr == p:
-                        foundp = True
-
-                    helper(curr.right)
-        successor, foundp = None, False
-        helper(root)
+        curr, successor = root, None
+        while curr:
+            if curr.val <= p.val:
+                curr = curr.right
+            else:
+                successor, curr = curr, curr.left
         return successor
