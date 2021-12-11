@@ -11,17 +11,15 @@ class Node:
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if root:
-            q = [root]
-            while q:
-                nq, prev = [], None
-                for node in q:
+            curr = root
+            while curr:
+                lcurr, prev = curr, None
+                while lcurr:
                     if prev:
-                        prev.next = node
-
-                    prev = node
-                    if node.left:
-                        nq.append(node.left)
-                    if node.right:
-                        nq.append(node.right)
-                q = nq
+                        prev.next = lcurr.left
+                    if lcurr.left:
+                        lcurr.left.next = lcurr.right
+                        prev = lcurr.right
+                    lcurr = lcurr.next
+                curr = curr.left
         return root
