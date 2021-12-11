@@ -10,16 +10,11 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        if root:
-            curr = root
-            while curr:
-                lcurr, prev = curr, None
-                while lcurr:
-                    if prev:
-                        prev.next = lcurr.left
-                    if lcurr.left:
-                        lcurr.left.next = lcurr.right
-                        prev = lcurr.right
-                    lcurr = lcurr.next
-                curr = curr.left
+        def helper(curr: Optional[Node], nxt: Optional[Node]) -> None:
+            if curr:
+                curr.next = nxt
+                helper(curr.left, curr.right)
+                helper(curr.right, nxt.left if nxt else None)
+        helper(root, None)
         return root
+            
