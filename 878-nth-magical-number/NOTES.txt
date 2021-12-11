@@ -1,0 +1,12 @@
+class Solution:
+def nthMagicalNumber(self, n: int, a: int, b: int) -> int:
+ta = tb = 0
+for i in range(n):
+if ta == tb:
+ta += a
+tb += b
+elif ta < tb:
+ta += a
+else:
+tb += b
+return min(ta, tb) % (10**9 + 7)
