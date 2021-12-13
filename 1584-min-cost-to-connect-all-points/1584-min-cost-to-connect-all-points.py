@@ -1,4 +1,3 @@
-from heapq import heapify, heappop
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         def find(x: int) -> int:
