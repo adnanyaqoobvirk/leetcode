@@ -1,25 +1,14 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        def find(x: int) -> int:
-            if nodes[x] != x:
-                nodes[x] = find(nodes[x])
-            return nodes[x]
-        
-        n = len(points)
-        edges = [            
-            (abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1]), i, j)
-            for i in range(n)
-            for j in range(i + 1, n)
-        ]
-        heapify(edges)
-        
-        nodes = [i for i in range(n)]
-        min_cost = edge_count = 0
-        while edge_count < n - 1:
-            d, i, j = heappop(edges)
-            pi, pj = find(i), find(j)
-            if pi != pj:
-                nodes[pj] = pi
-                min_cost += d
-                edge_count += 1
-        return min_cost
+        n, ans = len(points), 0
+        edges, visited, not_visited, i = [], {0}, set(range(n)), 0
+        while len(visited) < n:
+            for j in not_visited:
+                (xi, yi), (xj, yj) = points[i], points[j]
+                heappush(edges, (abs(xi - xj) + abs(yi - yj), j))
+            while edges[0][1] in visited: heappop(edges)
+            d, i = heappop(edges)
+            visited.add(i)
+            not_visited.discard(i)
+            ans += d
+        return ans
