@@ -6,16 +6,14 @@ SELECT
 FROM
     (
         SELECT
-            customer_id,
-            MIN(order_date) AS first_order_date
+            order_date,
+            customer_pref_delivery_date,
+            RANK() OVER(
+                PARTITION BY customer_id
+                ORDER BY order_date ASC
+            ) AS orank
         FROM
             Delivery
-        GROUP BY
-            customer_id
-    ) AS F
-    INNER JOIN
-    Delivery AS D
-    ON
-        F.customer_id = D.customer_id
-        AND
-        F.first_order_date = D.order_date
+    ) AS D
+WHERE
+    D.orank = 1
