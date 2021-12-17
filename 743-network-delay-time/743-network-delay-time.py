@@ -4,18 +4,12 @@ class Solution:
         for src, dst, time in times:
             graph[src].append((dst, time))
         
-        nodes, visited, minheap = {i: float('inf') for i in range(1, n + 1)}, set(), [(0, k)]
-        nodes[k] = 0
+        nodes, minheap = {}, [(0, k)]
         while minheap:
             distance, curr_node = heappop(minheap)
-            if curr_node not in visited:
-                if distance == float('inf'):
-                    return -1
-
+            if curr_node not in nodes:
+                nodes[curr_node] = distance
                 for dst, time in graph[curr_node]:
-                    nodes[dst] = min(nodes[dst], nodes[curr_node] + time)
-                    heappush(minheap, (nodes[dst], dst))
-
-                visited.add(curr_node)
-        ans = max(nodes.values())
-        return -1 if ans == float('inf') else ans
+                    if dst not in nodes:
+                        heappush(minheap, (distance + time, dst))
+        return max(nodes.values()) if len(nodes) == n else -1
