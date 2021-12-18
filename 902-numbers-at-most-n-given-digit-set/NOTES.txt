@@ -1,0 +1,15 @@
+class Solution:
+def atMostNGivenDigitSet(self, digits: List[str], n: int) -> int:
+def backtrack() -> None:
+if len(path) <= nsize:
+if path and int("".join(path)) <= n:
+nonlocal ans
+ans += 1
+for d in digits:
+path.append(d)
+backtrack()
+path.pop()
+
+nsize, path, ans = len(str(n)), [], 0
+backtrack()
+return ans
