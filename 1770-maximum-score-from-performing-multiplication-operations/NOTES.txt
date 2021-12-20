@@ -1,0 +1,19 @@
+class Solution:
+def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
+def dp(left: int, right: int) -> int:
+i = left + n - 1 - right
+
+if i == m:
+return 0
+
+k = (left, right)
+if k not in memo:
+memo[k] = max(
+nums[left] * multipliers[i] + dp(left + 1, right),
+nums[right] * multipliers[i] + dp(left, right - 1)
+)
+
+return memo[k]
+
+n, m, memo = len(nums), len(multipliers), {}
+return dp(0, n - 1)
