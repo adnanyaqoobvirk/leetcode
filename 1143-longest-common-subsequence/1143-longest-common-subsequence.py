@@ -5,11 +5,12 @@ class Solution:
             if i < 0 or j < 0:
                 return 0
             
-            return max(
-                dp(i, j - 1),
-                dp(i - 1, j),
-                (text1[i] == text2[j]) + dp(i - 1, j - 1)
-            )
-        
-        n, m = len(text1), len(text2)
-        return dp(n - 1, m - 1)
+            if text1[i] == text2[j]:
+                ans = 1 + dp(i - 1, j - 1)
+            else:
+                ans = max(
+                    dp(i, j - 1),
+                    dp(i - 1, j)
+                )
+            return ans
+        return dp(len(text1) - 1, len(text2) - 1)
