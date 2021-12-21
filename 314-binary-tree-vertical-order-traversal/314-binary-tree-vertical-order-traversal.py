@@ -10,16 +10,20 @@ class Solution:
             return []
         
         col_map, q = defaultdict(list), [(root, 0)]
+        min_col, max_col = float('inf'), float('-inf')
         while q:
             nq = []
             for node, col in q:
                 col_map[col].append(node.val)
+                min_col = min(min_col, col)
+                max_col = max(max_col, col)
+                
                 if node.left:
                     nq.append((node.left, col - 1))
                 if node.right:
                     nq.append((node.right, col + 1))
             q = nq
             
-        return [col_map[col] for col in range(min(col_map), max(col_map) + 1)]
+        return [col_map[col] for col in range(min_col, max_col + 1)]
         
         
