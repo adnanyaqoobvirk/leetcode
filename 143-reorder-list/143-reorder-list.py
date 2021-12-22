@@ -13,13 +13,11 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         
-        prev, curr, slow.next = slow, slow.next, None
+        prev, curr = None, slow
         while curr:
             curr.next, prev, curr = prev, curr, curr.next
         
         left, right = head, prev
-        while left and right:
-            lnode, rnode = left.next, right.next
-            left.next = right
-            right.next = lnode if lnode and rnode else None
-            left, right = lnode, rnode
+        while right.next:
+            left.next, left = right, left.next
+            right.next, right = left, right.next
