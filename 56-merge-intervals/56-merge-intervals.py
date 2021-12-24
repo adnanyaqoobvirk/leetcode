@@ -2,15 +2,12 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort()
         
-        ans, curr_start, curr_end = [], intervals[0][0], intervals[0][1]
+        ans = [intervals[0]]
         for i in range(1, len(intervals)):
-            start, end = intervals[i]
-            if curr_start <= start <= curr_end:
-                if end > curr_end:
-                    curr_end = end
+            (_, curr_end), (start, end) = ans[-1], intervals[i]
+            if start <= curr_end:
+                ans[-1][1] = max(end, curr_end)
             else:
-                ans.append([curr_start, curr_end])
-                curr_start, curr_end = start, end
-        ans.append([curr_start, curr_end])
+                ans.append([start, end])
         return ans
             
