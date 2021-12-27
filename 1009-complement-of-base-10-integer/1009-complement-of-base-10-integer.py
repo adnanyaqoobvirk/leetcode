@@ -3,9 +3,10 @@ class Solution:
         if n == 0:
             return 1
         
-        ans = count = 0
-        while n > 0:
-            if not (n & 1): ans |= (1 << count)
-            n >>= 1
-            count += 1
-        return ans
+        bitmask = n
+        bitmask |= bitmask >> 1
+        bitmask |= bitmask >> 2
+        bitmask |= bitmask >> 4
+        bitmask |= bitmask >> 8
+        bitmask |= bitmask >> 16
+        return n ^ bitmask
