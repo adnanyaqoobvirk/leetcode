@@ -1,8 +1,9 @@
 class Solution:
     def findComplement(self, num: int) -> int:
-        ans = count = 0
-        while num > 0:
-            if not (num & 1): ans |= (1 << count)
-            num >>= 1
-            count += 1
-        return ans
+        bitmask = num
+        bitmask |= bitmask >> 1
+        bitmask |= bitmask >> 2
+        bitmask |= bitmask >> 4
+        bitmask |= bitmask >> 8
+        bitmask |= bitmask >> 16
+        return num ^ bitmask
