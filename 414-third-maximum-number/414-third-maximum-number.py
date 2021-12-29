@@ -1,14 +1,9 @@
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
-        first = second = third = float(-inf)
-        for num in nums:
-            if num == first or num == second or num == third:
-                continue
-                
-            if num > first:
-                first, second, third = num, first, second
-            elif num > second:
-                second, third = num, second
-            elif num > third:
-                third = num
-        return first if third == float('-inf') else third
+        nums = list(set(nums))
+        h = [nums[i] for i in range(min(len(nums), 3))]
+        heapify(h)
+        for i in range(3, len(nums)):
+            if h[0] < nums[i]:
+                heappushpop(h, nums[i])
+        return h[0] if len(h) >= 3 else max(h)
