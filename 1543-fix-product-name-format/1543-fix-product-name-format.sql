@@ -4,7 +4,5 @@ SELECT
     COUNT(product_name) AS total
 FROM
     Sales
-GROUP BY 1,2
-ORDER BY
-    product_name,
-    sale_date
+GROUP BY 1, 2
+ORDER BY 1, 2
