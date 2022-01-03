@@ -3,13 +3,12 @@ class Solution:
         if len(trust) < n - 1:
             return -1
         
-        indegrees = [0] * (n + 1)
-        outdegrees = [0] * (n + 1)
+        degrees = [0] * (n + 1)
         for p, j in trust:
-            indegrees[j] += 1
-            outdegrees[p] += 1
+            degrees[j] += 1
+            degrees[p] -= 1
         
         for i in range(1, n + 1):
-            if indegrees[i] == n - 1 and outdegrees[i] == 0:
+            if degrees[i] == n - 1:
                 return i
         return -1
