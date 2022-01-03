@@ -3,7 +3,7 @@ class Solution:
         if len(trust) < n - 1:
             return -1
         
-        degrees = [0] * (n + 1)
+        degrees = defaultdict(int)
         for p, j in trust:
             degrees[j] += 1
             degrees[p] -= 1
