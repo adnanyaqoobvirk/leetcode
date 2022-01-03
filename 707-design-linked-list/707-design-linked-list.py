@@ -6,6 +6,7 @@ class MyLinkedList:
 
     def __init__(self):
         self.sentinal, self.size = Node(), 0
+        self.tail = self.sentinal
 
     def get(self, index: int) -> int:
         if 0 > index or index >= self.size:
@@ -22,7 +23,9 @@ class MyLinkedList:
         self.addAtIndex(0, val)
 
     def addAtTail(self, val: int) -> None:
-        self.addAtIndex(self.size, val)
+        self.tail.next = Node(val)
+        self.tail = self.tail.next
+        self.size += 1
         
     def addAtIndex(self, index: int, val: int) -> None:
         if 0 > index or index > self.size:
@@ -35,6 +38,7 @@ class MyLinkedList:
         
         if not curr:
             prev.next = Node(val)
+            self.tail = prev.next
         else:
             prev.next = Node(val, curr)
         self.size += 1
@@ -49,6 +53,8 @@ class MyLinkedList:
             i += 1
         
         prev.next, curr.next = curr.next, None
+        if index == self.size - 1:
+            self.tail = prev if not prev.next else prev.next
         self.size -= 1
 
 # Your MyLinkedList object will be instantiated and called as such:
