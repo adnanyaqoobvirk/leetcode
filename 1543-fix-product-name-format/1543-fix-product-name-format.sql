@@ -4,9 +4,7 @@ SELECT
     COUNT(product_name) AS total
 FROM
     Sales
-GROUP BY
-    LOWER(TRIM(product_name)),
-    DATE_FORMAT(sale_date, '%Y-%m')
+GROUP BY 1,2
 ORDER BY
     product_name,
     sale_date
