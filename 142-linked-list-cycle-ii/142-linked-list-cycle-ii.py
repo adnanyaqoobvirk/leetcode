@@ -9,17 +9,16 @@ class Solution:
         if not head:
             return None
         
-        slow, fast = head, head.next
+        slow = fast = head
         while fast and fast.next:
-            if slow == fast:
-                break
             slow = slow.next
             fast = fast.next.next
-        
-        if slow != fast:
+            if slow == fast:
+                break
+        else:
             return None
         
-        p1, p2 = head, slow.next
+        p1, p2 = head, slow
         while p1 != p2:
             p1, p2 = p1.next, p2.next
         return p1
