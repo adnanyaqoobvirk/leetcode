@@ -5,9 +5,6 @@
 #         self.next = next
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-        if not head:
-            return head
-        
         sentinal = ListNode(0, head)
         prev, curr = sentinal, sentinal.next
         while curr:
