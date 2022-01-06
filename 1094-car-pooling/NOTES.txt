@@ -1,0 +1,13 @@
+class Solution:
+def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
+trips.sort(key=lambda x: x[1])
+stack, curr_cap = [], capacity
+for pcount, f, t in trips:
+while stack and f >= stack[-1][1]:
+curr_cap += stack[-1][0]
+stack.pop()
+
+curr_cap -= pcount
+if curr_cap < 0: return False
+stack.append([pcount, t])
+return True
