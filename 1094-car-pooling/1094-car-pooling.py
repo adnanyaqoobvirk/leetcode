@@ -1,14 +1,13 @@
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
-        events = defaultdict(list)
+        events = defaultdict(int)
         for pcount, pick, drop in trips:
-            events[pick].append(pcount)
-            events[drop].append(-pcount)
+            events[pick] += pcount
+            events[drop] += -pcount
         
         curr_cap = 0
         for i in range(1001):
-            for pcount in events[i]:
-                curr_cap += pcount
+            curr_cap += events[i]
             if curr_cap > capacity:
                 return False
         return True
