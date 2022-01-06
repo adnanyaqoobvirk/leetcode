@@ -1,6 +1,6 @@
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
-        events = defaultdict(int)
+        events = [0] * 1001
         for pcount, pick, drop in trips:
             events[pick] += pcount
             events[drop] += -pcount
