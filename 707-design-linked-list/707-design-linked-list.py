@@ -1,62 +1,79 @@
 class Node:
-    def __init__(self, val: int = 0, nxt: 'Node' = None) -> None:
-        self.val, self.next = val, nxt
-    
+    def __init__(self, val: int = 0, prev: 'Node' = None, next: 'Node' = None) -> None:
+        self.val, self.prev, self.next = val, prev, next
+        
 class MyLinkedList:
 
     def __init__(self):
-        self.sentinal, self.size = Node(), 0
-        self.tail = self.sentinal
-
+        self.fdummy = Node()
+        self.bdummy = Node(prev=self.fdummy)
+        self.fdummy.next = self.bdummy
+        self.size = 0
+        
     def get(self, index: int) -> int:
-        if 0 > index or index >= self.size:
+        if index < 0 or index >= self.size:
             return -1
         
-        curr, i = self.sentinal.next, 0
-        while curr and i < index:
-            curr = curr.next
-            i += 1
-            
-        return -1 if not curr else curr.val
-
+        if index > (self.size // 2):
+            curr = self.bdummy
+            while index < self.size:
+                curr = curr.prev
+                index += 1
+            return curr.val
+        else:
+            curr = self.fdummy
+            while index >= 0:
+                curr = curr.next
+                index -= 1
+        return curr.val
+        
     def addAtHead(self, val: int) -> None:
-        self.addAtIndex(0, val)
+        self.fdummy.next.prev = Node(val, self.fdummy, self.fdummy.next)
+        self.fdummy.next = self.fdummy.next.prev
+        self.size += 1
 
     def addAtTail(self, val: int) -> None:
-        self.tail.next = Node(val)
-        self.tail = self.tail.next
+        self.bdummy.prev.next = Node(val, self.bdummy.prev, self.bdummy)
+        self.bdummy.prev = self.bdummy.prev.next
         self.size += 1
         
-    def addAtIndex(self, index: int, val: int) -> None:
-        if 0 > index or index > self.size:
+    def getNodeAtIndex(self, index: int) -> Node:
+        if index < 0 or index >= self.size:
             return
         
-        prev, curr, i = self.sentinal, self.sentinal.next, 0
-        while curr and i < index:
-            prev, curr = curr, curr.next
-            i += 1
-        
-        if not curr:
-            prev.next = Node(val)
-            self.tail = prev.next
+        if index > (self.size // 2):
+            curr = self.bdummy
+            while index < self.size:
+                curr = curr.prev
+                index += 1
         else:
-            prev.next = Node(val, curr)
-        self.size += 1
+            curr = self.fdummy
+            while index >= 0:
+                curr = curr.next
+                index -= 1
+        return curr
 
-    def deleteAtIndex(self, index: int) -> None:
-        if 0 > index or index >= self.size:
+    def addAtIndex(self, index: int, val: int) -> None:
+        if index == 0:
+            self.addAtHead(val)
             return
         
-        prev, curr, i = self.sentinal, self.sentinal.next, 0
-        while curr and i < index:
-            prev, curr = curr, curr.next
-            i += 1
+        if index == self.size:
+            self.addAtTail(val)
+            return
         
-        prev.next, curr.next = curr.next, None
-        if index == self.size - 1:
-            self.tail = prev if not prev.next else prev.next
-        self.size -= 1
-
+        curr = self.getNodeAtIndex(index)
+        if curr:
+            curr.prev.next = Node(val, curr.prev, curr)
+            curr.prev = curr.prev.next
+            self.size += 1
+            
+    def deleteAtIndex(self, index: int) -> None:
+        curr = self.getNodeAtIndex(index)
+        if curr:
+            curr.prev.next, curr.next.prev = curr.next, curr.prev
+            self.size -= 1
+            
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
 # param_1 = obj.get(index)
