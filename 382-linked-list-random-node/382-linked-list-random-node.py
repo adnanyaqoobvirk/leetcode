@@ -8,13 +8,17 @@ from random import sample
 class Solution:
 
     def __init__(self, head: Optional[ListNode]):
-        self.values = []
-        while head:
-            self.values.append(head.val)
-            head = head.next
+        self.head = head
 
     def getRandom(self) -> int:
-        return sample(self.values, 1)[0]
+        r = self.head.val
+        curr, cnt = self.head.next, 2
+        while curr:
+            if randint(1, cnt) == 1:
+                r = curr.val
+            cnt += 1
+            curr = curr.next
+        return r
 
 
 # Your Solution object will be instantiated and called as such:
