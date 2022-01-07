@@ -8,10 +8,10 @@ from random import sample
 class Solution:
 
     def __init__(self, head: Optional[ListNode]):
-        self.values, curr = [], head
-        while curr:
-            self.values.append(curr.val)
-            curr = curr.next
+        self.values = []
+        while head:
+            self.values.append(head.val)
+            head = head.next
 
     def getRandom(self) -> int:
         return sample(self.values, 1)[0]
