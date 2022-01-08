@@ -1,0 +1,26 @@
+class Solution:
+def cherryPickup(self, grid: List[List[int]]) -> int:
+def helper(i: int, j: int, k: int, l: int) -> int:
+if i >= n or k >= n or j < 0 or j >= m or l < 0 or l >= m:
+return 0
+
+ans, r1, r2 = 0, grid[i][j], grid[k][l]
+if grid[i][j] > 0:
+ans = grid[i][j]
+grid[i][j] = -grid[i][j]
+
+if (i != k or j != l) and grid[k][l] > 0:
+ans += grid[k][l]
+grid[k][l] = -grid[k][l]
+
+max_r1 = 0
+for a in [j, j + 1, j - 1]:
+max_r1 = max(max_r1, helper(i + 1, a, k, l))
+
+max_r2 = 0
+for b in [l, l + 1, l - 1]:
+max_r2 = max(max_r2, helper(i, j, k + 1, b))
+
+grid[i][j], grid[k][l] = r1, r2
+
+return ans + max(max_r1, max_r2)
