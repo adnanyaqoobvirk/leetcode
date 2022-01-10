@@ -9,20 +9,17 @@ class Node:
 """
 
 class Solution:
-    def flatten(self, head: 'Node') -> 'Node':
-        if not head:
-            return None
-        
-        current = sentinal = Node(0, None, None, None)
-        stack = [head]
-        while stack:
-            node = stack.pop()
-            if node.next:
-                stack.append(node.next)
-            if node.child:
-                stack.append(node.child)
-                
-            node.prev, node.child, current.next = current, None, node
-            current = current.next
-        sentinal.next.prev = None
-        return sentinal.next
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        def helper(curr: Node) -> Node:
+            prev = None
+            while curr:
+                if curr.child:
+                    tail = helper(curr.child)
+                    tail.next, curr.child.prev, curr.next, curr.child = curr.next, curr, curr.child, None
+                    if tail.next: tail.next.prev = tail
+                    prev, curr = tail, tail.next
+                else:
+                    prev, curr = curr, curr.next
+            return prev
+        helper(head)
+        return head
