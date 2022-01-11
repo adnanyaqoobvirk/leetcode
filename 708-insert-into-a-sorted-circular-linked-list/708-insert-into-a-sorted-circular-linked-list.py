@@ -7,20 +7,18 @@ class Node:
 """
 
 class Solution:
-    def insert(self, head: 'Node', insertVal: int) -> 'Node':
+    def insert(self, head: 'Optional[Node]', insertVal: int) -> 'Node':
         if not head:
-            node = Node(insertVal)
-            node.next = node
-            return node
-        
-        sentinal = Node(None, head)
-        prev, curr = sentinal, head
-        while curr and prev != curr:
-            if prev.val:
-                if prev.val <= insertVal <= curr.val or (curr.val < prev.val and (insertVal <= curr.val or insertVal >= prev.val)):
-                    break
-            prev, curr = curr, curr.next
-            if curr == head:
+            head = Node(insertVal)
+            head.next = head
+            return head
+    
+        prev, curr = head, head.next
+        while curr != head:
+            if prev.val <= insertVal <= curr.val:
                 break
-        prev.next = Node(insertVal, curr)
-        return sentinal.next
+            elif prev.val > curr.val and (insertVal >= prev.val or insertVal <= curr.val):
+                break
+            prev, curr = curr, curr.next
+        prev.next = Node(insertVal, prev.next)
+        return head
