@@ -8,22 +8,18 @@ class Solution:
         if not head or not head.next:
             return head
         
-        vals, curr = [], head
+        size, tail, curr = 0, None, head
         while curr:
-            vals.append(curr.val)
-            curr = curr.next
+            size += 1
+            tail, curr = curr, curr.next
             
-        ops = k % len(vals)
+        ops = k % size
         if not ops:
             return head
-        
+    
         curr = head
-        for i in range(-ops, 0, 1):
-            curr.val = vals[i]
+        for i in range(size - ops - 1):
             curr = curr.next
+        nhead, tail.next, curr.next = curr.next, head, None 
         
-        for i in range(len(vals) - ops):
-            curr.val = vals[i]
-            curr = curr.next
-        
-        return head
+        return nhead
