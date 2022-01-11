@@ -6,15 +6,15 @@
 #         self.right = right
 class Solution:
     def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
-        def recurse(current: TreeNode, num: int) -> int:
-            if not current:
-                return 0
-            
-            num = num * 2 + current.val
-            
-            if not current.left and not current.right:
-                return num
-            
-            return recurse(current.left, num) + recurse(current.right, num)
-        
-        return recurse(root, 0)
+        def helper(curr: TreeNode, num: int) -> None:
+            if curr:
+                num = num * 2 + curr.val
+                if not curr.left and not curr.right:
+                    nonlocal ans
+                    ans += num
+                else:
+                    helper(curr.left, num)
+                    helper(curr.right, num)
+        ans = 0
+        helper(root, 0)
+        return ans
