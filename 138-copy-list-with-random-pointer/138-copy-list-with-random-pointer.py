@@ -9,24 +9,24 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head:
-            return head
+        if not head: return head
         
-        randoms, sentinal = {}, Node(0)
-        ocurr, curr = head, sentinal
-        while ocurr:
-            if ocurr not in randoms:
-                randoms[ocurr] = Node(ocurr.val)
-            curr.next = randoms[ocurr]
+        curr = head
+        while curr:
+            curr.next = Node(curr.val, curr.next)
+            curr = curr.next.next
             
-            if ocurr.random:
-                if ocurr.random not in randoms:
-                    randoms[ocurr.random] = Node(ocurr.random.val)
-                curr.next.random = randoms[ocurr.random]
+        curr = head
+        while curr:
+            if curr.random:
+                curr.next.random = curr.random.next
+            curr = curr.next.next
+        
+        nhead, curr = head.next, head
+        while curr:
+            if curr.next.next:
+                curr.next.next, curr.next, curr = curr.next.next.next, curr.next.next, curr.next.next
+            else:
+                curr.next, curr = curr.next.next, curr.next.next
                 
-            if ocurr.next:
-                if ocurr.next not in randoms:
-                    randoms[ocurr.next] = Node(ocurr.next.val)
-                curr.next.next = randoms[ocurr.next]
-            ocurr, curr = ocurr.next, curr.next
-        return sentinal.next
+        return nhead
