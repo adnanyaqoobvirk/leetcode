@@ -9,4 +9,20 @@ class Solution:
         if not root:
             return 0
         
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+        stack, curr, ans, depth = [], root, 0, 0
+        while curr or stack:
+            if curr:
+                depth += 1
+                ans = max(ans, depth)
+                if curr.right:
+                    stack.append(curr.right)
+                stack.append(curr)
+                curr = curr.left
+            else:
+                depth -= 1
+                node = stack.pop()
+                if stack and node.right == stack[-1]:
+                    depth += 1
+                    curr = stack.pop()
+                    stack.append(node)
+        return ans
