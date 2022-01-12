@@ -9,15 +9,13 @@ class Solution:
         if not root:
             return []
         
-        stack, ans = [(root, False)], []
-        while stack:
-            curr, done = stack.pop()
-            if done:
-                ans.append(curr.val)
+        stack, curr, ans = [], root, []
+        while curr or stack:
+            if curr:
+                stack.append(curr)
+                curr = curr.left
             else:
-                if curr.right:
-                    stack.append((curr.right, False))
-                stack.append((curr, True))
-                if curr.left:
-                    stack.append((curr.left, False))
+                node = stack.pop()
+                ans.append(node.val)
+                curr = node.right
         return ans
