@@ -10,14 +10,10 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        head = root
-        while head and head.left:
-            prev, curr = None, head
-            while curr:
-                if prev:
-                    prev.right.next = curr.left
-                curr.left.next = curr.right
-                prev, curr = curr, curr.next
-            head = head.left
+        lvl_head = root
+        while lvl_head:
+            lvl_head, prev, curr = lvl_head.left, None, lvl_head
+            while curr and curr.left:
+                if prev: prev.right.next = curr.left
+                curr.left.next, prev, curr = curr.right, curr, curr.next
         return root
-                
