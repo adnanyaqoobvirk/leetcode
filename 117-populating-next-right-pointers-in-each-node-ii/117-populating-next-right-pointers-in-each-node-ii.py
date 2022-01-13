@@ -15,18 +15,12 @@ class Solution:
             curr, prev, head = head, None, None
             while curr:
                 if curr.left:
-                    if not head:
-                        head = curr.left
-                        
-                    if prev:
-                        prev.next = curr.left
+                    if not head: head = curr.left
+                    if prev: prev.next = curr.left
                     prev = curr.left
                 if curr.right:
-                    if not head:
-                        head = curr.right
-                        
-                    if prev:
-                        prev.next = curr.right
+                    if not head: head = curr.right 
+                    if prev: prev.next = curr.right
                     prev = curr.right
                 curr = curr.next
         return root
