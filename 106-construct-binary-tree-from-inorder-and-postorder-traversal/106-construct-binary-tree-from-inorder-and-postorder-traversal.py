@@ -7,10 +7,11 @@
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         def helper(i: int, j: int) -> TreeNode:
-            for p in range(i, j + 1):
-                if inorder[p] == postorder[-1]:
-                    curr = TreeNode(postorder.pop())
-                    curr.right = helper(p + 1, j)
-                    curr.left = helper(i, p - 1)
-                    return curr
+            if i <= j:
+                curr = TreeNode(postorder.pop())
+                p = inorder[curr.val]
+                curr.right = helper(p + 1, j)
+                curr.left = helper(i, p - 1)
+                return curr
+        inorder = {num: i for i, num in enumerate(inorder)}
         return helper(0, len(inorder) - 1)
