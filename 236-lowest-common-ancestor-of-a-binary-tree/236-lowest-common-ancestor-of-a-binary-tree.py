@@ -12,13 +12,12 @@ class Solution:
             
             if not curr: return False
             
-            status = curr == p or curr == q
+            mid = curr == p or curr == q
             left, right = helper(curr.left), helper(curr.right)
             
-            if (left and right) or (left and status) or (right and status):
+            if mid + left + right >= 2:
                 ans = curr
-                return False
-            return status or left or right
+            return mid or left or right
         
         ans = None
         helper(root)
