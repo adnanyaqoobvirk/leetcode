@@ -1,18 +1,9 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        @cache
-        def helper(i: int) -> int:
-            if i > n:
-                return float('inf')
-            
-            if i == n:
-                return 0
-            
-            ans = float('inf')
-            for j in range(1, min(n + 1, nums[i] + 1)):
-                ans = min(ans, 1 + helper(i + j))
-            
-            return ans
-        
-        n = len(nums) - 1
-        return helper(0)
+        n = len(nums)
+        dp = [float('inf') for _ in range(n + 1)]
+        dp[n - 1] = 0
+        for i in reversed(range(n)):
+            for j in range(i + 1, min(n, i + nums[i] + 1)):
+                dp[i] = min(dp[i], 1 + dp[j])
+        return dp[0]
