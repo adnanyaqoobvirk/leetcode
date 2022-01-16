@@ -17,10 +17,9 @@ class Codec:
             if not curr:
                 ans.append('#')
             else:
-                ans.append(str(curr.val))
                 helper(curr.left)
                 helper(curr.right)
-                
+                ans.append(str(curr.val))
         ans = []
         helper(root)
         return ",".join(ans)
@@ -34,12 +33,12 @@ class Codec:
         def helper():
             val = arr.pop()
             if val != '#':
+                right, left = helper(), helper()
                 node = TreeNode(int(val))
-                node.left = helper()
-                node.right = helper()
+                node.left, node.right = left, right
                 return node
         
-        arr = data.split(",")[::-1]
+        arr = data.split(",")
         return helper()
 
 # Your Codec object will be instantiated and called as such:
