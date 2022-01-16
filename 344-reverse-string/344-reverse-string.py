@@ -3,8 +3,7 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        def helper(left: int, right: int) -> None:
-            if left < right:
-                s[left], s[right] = s[right], s[left]
-                helper(left + 1, right - 1)
-        helper(0, len(s) - 1)
+        lo, hi = 0, len(s) - 1
+        while lo < hi:
+            s[lo], s[hi] = s[hi], s[lo]
+            lo, hi = lo + 1, hi - 1
