@@ -5,4 +5,5 @@ class Solution:
             if flowerbed[i] == 0 and (i == 0 or flowerbed[i - 1] == 0) and (i == fl - 1 or flowerbed[i + 1] == 0):
                     flowerbed[i] = 1
                     ans += 1
-        return ans >= n
+            if ans >= n: return True
+        return False
