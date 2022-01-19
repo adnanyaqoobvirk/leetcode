@@ -1,10 +1,11 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        @cache
-        def helper(i: int, j: int) -> int:
-            if i == 0 or j == 0 or i == j:
-                return 1
+        row = [1]
+        for _ in range(rowIndex):
+            nrow = [1]
+            for i in range(len(row) - 1):
+                nrow.append(row[i] + row[i + 1])
+            nrow.append(1)
+            row = nrow
+        return row
             
-            return helper(i - 1, j - 1) + helper(i - 1, j)
-        
-        return [helper(rowIndex, k) for k in range(rowIndex + 1)]
