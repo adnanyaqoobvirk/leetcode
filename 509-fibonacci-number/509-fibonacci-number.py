@@ -1,7 +1,7 @@
 class Solution:
     def fib(self, n: int) -> int:
-        f0, f1 = 0, 1
-        for i in range(n):
-            f0, f1 = f1, f0 + f1
-        return f0
+        prev, curr = 0, 1
+        for _ in range(n):
+            prev, curr = curr, prev + curr
+        return prev
             
