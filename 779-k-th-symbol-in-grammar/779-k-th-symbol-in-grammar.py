@@ -1,6 +1,6 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
-        if k == 1: return 0
-        
-        if k & 1: return self.kthGrammar(n, math.ceil(k / 2))
-        else: return int(not self.kthGrammar(n, k // 2))
+        def helper(m: int) -> bool:
+            if m == 1: return False
+            return helper((m + 1) // 2) if m & 1 else not helper(m // 2)
+        return int(helper(k))
