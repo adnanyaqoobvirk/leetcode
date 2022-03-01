@@ -8,16 +8,13 @@ class Node:
 
 class Solution:
     def __init__(self) -> None:
-        self.visited = {}
+        self.seen = {}
         
-    def cloneGraph(self, node: 'Node') -> 'Node':
-        if node:
-            ans = Node(node.val, [])
-            self.visited[node.val] = ans
-            for v in node.neighbors:
-                ans.neighbors.append(
-                    self.cloneGraph(v) 
-                    if v.val not in self.visited 
-                    else self.visited[v.val]
-                )
-            return ans
+    def cloneGraph(self, root: 'Node') -> 'Node':
+        if not root: return None
+
+        if root not in self.seen:
+            nroot = self.seen[root] = Node(root.val)
+            for child in root.neighbors:
+                nroot.neighbors.append(self.cloneGraph(child))
+        return self.seen[root]
