@@ -14,8 +14,8 @@ class Solution:
         if not root: return None
 
         if root not in self.seen:
-            nroot = Node(root.val)
+            self.seen[root] = nroot = Node(root.val)
             for child in root.children:
                 nroot.children.append(self.cloneTree(child))
-            self.seen[root] = nroot
+            
         return self.seen[root]
