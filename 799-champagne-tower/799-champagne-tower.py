@@ -11,4 +11,4 @@ class Solution:
                     val += (ans[j] - 1) / 2
                 row.append(val)
             ans = row
-        return 1.0 if ans[query_glass] > 1 else ans[query_glass]
+        return min(1.0, ans[query_glass])
