@@ -6,10 +6,11 @@ class Solution:
         else:
             ans = [""]
             
-        for i in range(0, n, 2):
+        for i in range(n, 0, -2):
             nans = []
             for left, right in ["00", "11", "88", "69", "96"]:
-                for num in ans:
-                    nans.append(f"{left}{num}{right}")
+                if i != 2 or left != "0":
+                    for num in ans:
+                        nans.append(f"{left}{num}{right}")
             ans = nans
-        return [num for num in ans if len(num) == 1 or num[0] != "0"]
+        return ans
