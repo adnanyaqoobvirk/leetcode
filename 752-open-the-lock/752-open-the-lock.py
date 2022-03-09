@@ -6,27 +6,19 @@ class Solution:
         while q:
             nq = []
             for a, b, c, d, turns in q:
-                if (a, b, c, d) == target:
+                t = (a,b,c,d)
+                if t == target:
                     return turns
                 
-                if (a, b, c, d) in visited:
+                if t in visited:
                     continue
                 
-                visited.add((a, b, c, d))
-                for na in [a - 1, a + 1]:
-                    na %= 10
-                    nq.append((na, b, c, d, turns + 1))
-                
-                for nb in [b - 1, b + 1]:
-                    nb %= 10
-                    nq.append((a, nb, c, d, turns + 1))
-                    
-                for nc in [c - 1, c + 1]:
-                    nc %= 10
-                    nq.append((a, b, nc, d, turns + 1))
-                    
-                for nd in [d - 1, d + 1]:
-                    nd %= 10
-                    nq.append((a, b, c, nd, turns + 1))
+                visited.add(t)
+                turns += 1
+                for diff in [-1, 1]:
+                    nq.append(((a + diff) % 10, b, c, d, turns))
+                    nq.append((a, (b + diff) % 10, c, d, turns))
+                    nq.append((a, b, (c + diff) % 10, d, turns))
+                    nq.append((a, b, c, (d + diff) % 10, turns))
             q = nq
         return -1
