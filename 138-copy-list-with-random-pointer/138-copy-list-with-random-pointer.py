@@ -9,12 +9,26 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        def helper(curr: 'Optional[Node]') -> 'Optional[Node]':
-            if curr:
-                node_map[curr] = node = Node(curr.val)
-                node.next = helper(curr.next)
-                if curr.random:
-                    node.random = node_map[curr.random]
-                return node
-        node_map = defaultdict(Node)
-        return helper(head)
+        if not head:
+            return head
+        
+        curr = head
+        while curr:
+            curr.next = Node(curr.val, curr.next, curr.random)
+            curr = curr.next.next
+        
+        curr = head
+        while curr:
+            if curr.next.random:
+                curr.next.random = curr.next.random.next
+            curr = curr.next.next
+        
+        curr, nhead = head, head.next
+        while curr:
+            ncurr = curr.next
+            curr.next = curr.next.next
+            if ncurr.next:
+                ncurr.next = ncurr.next.next
+            curr = curr.next
+            
+        return nhead
