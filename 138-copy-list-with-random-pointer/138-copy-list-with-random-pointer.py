@@ -11,22 +11,20 @@ class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if not head: return head
         
-        curr = head
+        nodes = defaultdict(Node)
+        ncurr = sentinal = Node(0)
+        curr, nodes[head] = head, Node(head.val)
         while curr:
-            curr.next = Node(curr.val, curr.next)
-            curr = curr.next.next
-            
-        curr = head
-        while curr:
+            node = nodes[curr]
             if curr.random:
-                curr.next.random = curr.random.next
-            curr = curr.next.next
-        
-        nhead, curr = head.next, head
-        while curr:
-            if curr.next.next:
-                curr.next.next, curr.next, curr = curr.next.next.next, curr.next.next, curr.next.next
-            else:
-                curr.next, curr = curr.next.next, curr.next.next
+                if curr.random not in nodes:
+                    nodes[curr.random] = Node(curr.random.val)
+                node.random = nodes[curr.random] = nodes[curr.random]
                 
-        return nhead
+            if curr.next:
+                if curr.next not in nodes:
+                    nodes[curr.next] = Node(curr.next.val)
+                node.next = nodes[curr.next] = nodes[curr.next]
+            
+            curr, ncurr.next, ncurr = curr.next, node, node
+        return sentinal.next
