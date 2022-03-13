@@ -7,17 +7,20 @@ class Node:
 """
 
 class Solution:
-    def __init__(self):
-        self.processed = {}
-        
     def cloneGraph(self, node: 'Node') -> 'Node':
-        if node:
-            if node in self.processed:
-                return self.processed[node]
-            
-            self.processed[node] = curr = Node(node.val)
-            for neighbor in node.neighbors:
-                n = self.cloneGraph(neighbor)
-                if n:
-                    curr.neighbors.append(n)
-            return curr
+        if not node:
+            return node
+        
+        visited, q = {node: Node(node.val)}, [node]
+        while q:
+            nq = []
+            for curr in q:
+                for neighbor in curr.neighbors:
+                    if neighbor not in visited:
+                        visited[neighbor] = Node(neighbor.val)
+                        nq.append(neighbor)
+                    visited[curr].neighbors.append(visited[neighbor])
+            q = nq
+        return visited[node]
+                
+                
