@@ -2,9 +2,10 @@ class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         def helper(room: int) -> None:
             for key in rooms[room]:
-                if key not in unlocked:
-                    unlocked.add(key)
+                if not unlocked[key]:
+                    unlocked[key] = True
                     helper(key)
-        unlocked = {0}
+        unlocked = [False] * len(rooms)
+        unlocked[0] = True
         helper(0)
-        return len(unlocked) == len(rooms)
+        return all(unlocked)
