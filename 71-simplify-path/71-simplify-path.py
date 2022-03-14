@@ -5,10 +5,8 @@ class Solution:
             if p == '..':
                 if stack:
                     stack.pop()
-                    stack.pop()
             elif p == '.' or not p:
                 continue
             else:
-                stack.append('/')
-                stack.append(p)
+                stack.append(f'/{p}')
         return ''.join(stack) if stack else '/'
