@@ -1,21 +1,19 @@
 class Solution:
     def decodeString(self, s: str) -> str:
         def helper(i: int) -> Tuple[int, str]:
-            ans, r = [], 0
+            ans, k = [], 0
             while i < n:
-                c = s[i]
-                if c == '[':
+                if s[i] == '[':
                     i, ss = helper(i + 1)
-                    while r > 0:
-                        ans.extend(ss)
-                        r -= 1
-                elif c == ']':
+                    ans.extend(ss * k)
+                    k = 0
+                elif s[i] == ']':
                     break
-                elif c in digits:
-                    r = r * 10 + digits[c]
+                elif s[i] in digits:
+                    k = k * 10 + digits[s[i]]
                 else:
-                    ans.append(c)
+                    ans.append(s[i])
                 i += 1
             return i, ans
-        digits, n = {str(i): i for i in range(10)}, len(s)
+        n, digits = len(s), {c: int(c) for c in "0123456789"}
         return "".join(helper(0)[1])
