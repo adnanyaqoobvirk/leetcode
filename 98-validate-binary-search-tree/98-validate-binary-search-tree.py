@@ -5,22 +5,11 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def helper(curr: Optional[TreeNode]) -> Tuple[float, float]:
-            if not curr:
-                return [float('inf'), float('-inf')]
+    def isValidBST(self, root: Optional[TreeNode], minimum: int = float('-inf'), maximum: int = float('inf')) -> bool:
+            if not root:
+                return True
             
-            if not curr.left and not curr.right:
-                return [curr.val, curr.val]
+            if root.val <= minimum or root.val >= maximum:
+                return False
             
-            left_min, left_max = helper(curr.left)
-            right_min, right_max = helper(curr.right)
-            
-            if left_max >= curr.val or right_min <= curr.val:
-                return [float('-inf'), float('inf')]
-            
-            return [min(left_min, right_min, curr.val), max(left_max, right_max, curr.val)]
-        
-        left, right = helper(root)
-        return False if left == float('-inf') and right == float('inf') else True
-            
+            return self.isValidBST(root.left, minimum, root.val) and self.isValidBST(root.right, root.val, maximum)
