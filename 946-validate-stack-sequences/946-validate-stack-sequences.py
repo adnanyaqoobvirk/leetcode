@@ -3,7 +3,7 @@ class Solution:
         stack, i = [], 0
         for p in pushed:
             stack.append(p)
-            while stack and i < len(popped) and stack[-1] == popped[i]:
+            while stack and stack[-1] == popped[i]:
                 stack.pop()
                 i += 1
         return not stack
