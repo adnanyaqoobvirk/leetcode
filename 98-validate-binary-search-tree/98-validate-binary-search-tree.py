@@ -8,15 +8,12 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         curr, stack, prev = root, [], float('-inf')
         while stack or curr:
-            if curr:
+            while curr:
                 stack.append(curr)
                 curr = curr.left
-            else:
-                node = stack.pop()
-                if node.val <= prev:
-                    return False
-                prev = node.val
-                curr = node.right
-        return True    
-            
-        
+            curr = stack.pop()
+            if curr.val <= prev:
+                return False
+            prev = curr.val
+            curr = curr.right
+        return True
