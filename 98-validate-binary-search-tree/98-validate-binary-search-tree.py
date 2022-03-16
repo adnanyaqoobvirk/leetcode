@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode], minimum: int = float('-inf'), maximum: int = float('inf')) -> bool:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
         stack = [(root, float('-inf'), float('inf'))]
         while stack:
             curr, minimum, maximum = stack.pop()
