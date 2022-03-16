@@ -5,17 +5,25 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def __init__(self):
+        self.curr = float('-inf')
+        
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        stack = [(root, float('-inf'), float('inf'))]
-        while stack:
-            curr, minimum, maximum = stack.pop()
-            
-            if curr.val <= minimum or curr.val >= maximum:
-                return False
-            
-            if curr.right:
-                stack.append((curr.right, curr.val, maximum))
-            
-            if curr.left:
-                stack.append((curr.left, minimum, curr.val))
+        if not root:
+            return True
+        
+        left = self.isValidBST(root.left)
+        if not left:
+            return False
+        
+        if root.val <= self.curr:
+            return False
+        
+        self.curr = root.val
+        
+        right = self.isValidBST(root.right)
+        if not right:
+            return False
+        
         return True
+        
