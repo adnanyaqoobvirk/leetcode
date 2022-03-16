@@ -1,26 +1,26 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        def helper(start: int, end: int) -> List[int]:
-            n = end - start
-            if n <= 1:
-                return nums[start:end]
-
-            left_nums, right_nums = helper(start, start + n // 2), helper(start + n // 2, end)
-
-            sorted_nums = []
-            lp = rp = 0
-            while lp < len(left_nums) and rp < len(right_nums):
-                if left_nums[lp] <= right_nums[rp]:
-                    sorted_nums.append(left_nums[lp])
-                    lp += 1
-                else:
-                    sorted_nums.append(right_nums[rp])
-                    rp += 1
-
-            extended_nums, p = (left_nums, lp) if lp < len(left_nums) else (right_nums, rp)
-            while p < len(extended_nums):
-                sorted_nums.append(extended_nums[p])
-                p += 1
-
-            return sorted_nums
-        return helper(0, len(nums))
+        q = [[num] for num in nums]
+        while len(q) > 1:
+            nq = []
+            for i in range(0, len(q), 2):
+                left, right = q[i], q[i + 1] if i + 1 < len(q) else []
+                
+                merged, n, m = [], len(left), len(right)
+                lp = rp = 0
+                while lp < n and rp < m:
+                    if left[lp] <= right[rp]:
+                        merged.append(left[lp])
+                        lp += 1
+                    else:
+                        merged.append(right[rp])
+                        rp += 1
+                
+                remaining, p, l = (left, lp, n) if lp < n else (right, rp, m)
+                while p < l:
+                    merged.append(remaining[p])
+                    p += 1
+                
+                nq.append(merged)
+            q = nq
+        return q[0]
