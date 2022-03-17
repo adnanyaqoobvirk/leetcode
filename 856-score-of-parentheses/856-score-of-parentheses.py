@@ -7,6 +7,6 @@ class Solution:
             else:
                 depth -= 1
                 if s[i - 1] == '(':
-                    score += 2 ** depth
+                    score += 1 << depth
         return score
             
