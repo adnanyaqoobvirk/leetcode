@@ -1,5 +1,3 @@
-from typing import Tuple
-
 # """
 # This is the robot's control interface.
 # You should not implement it, or speculate about its implementation
@@ -34,24 +32,26 @@ from typing import Tuple
 
 class Solution:
     def cleanRoom(self, robot):
-        def backtrack(cell: Tuple[int, int], d: int) -> None:
-            robot.clean()
-            seen.add(cell)
-            
-            for i in range(4):
-                nd = (d + i) % 4
-                ncell = (cell[0] + directions[nd][0], cell[1] + directions[nd][1])
-                if ncell not in seen and robot.move():
-                    backtrack(ncell, nd)
-                    robot.turnRight()
-                    robot.turnRight()
-                    robot.move()
-                    robot.turnRight()
-                    robot.turnRight()
+        """
+        :type robot: Robot
+        :rtype: None
+        """
+        def backtrack(i: int, j: int, d: int) -> None:
+            for k in range(4):
+                nd = (d + k) % 4
+                x, y = i + dmap[nd][0], j + dmap[nd][1]
+                if (x, y) not in cleaned:
+                    if robot.move():
+                        robot.clean()
+                        cleaned.add((x, y))
+                        backtrack(x, y, nd)
+                        robot.turnRight()
+                        robot.turnRight()
+                        robot.move()
+                        robot.turnRight()
+                        robot.turnRight()
                 robot.turnRight()
-                
-        directions = [(0, -1), (1, 0), (0, 1), (-1, 0)]
-        seen = set()
-        backtrack((0, 0), 0)
-        
-            
+        dmap = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
+        cleaned = {(0, 0)}
+        robot.clean()
+        backtrack(0, 0, 0)
