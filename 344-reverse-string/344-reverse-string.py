@@ -3,7 +3,7 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        lo, hi = 0, len(s) - 1
-        while lo < hi:
-            s[lo], s[hi] = s[hi], s[lo]
-            lo, hi = lo + 1, hi - 1
+        left, right = 0, len(s) - 1
+        while left < right:
+            s[left], s[right] = s[right], s[left]
+            left, right = left + 1, right - 1
