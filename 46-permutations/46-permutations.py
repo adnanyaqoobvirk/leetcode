@@ -5,10 +5,12 @@ class Solution:
                 ans.append(perm[:])
             else:
                 for i in range(n):
-                    if nums[i] not in perm:
+                    if nums[i] not in seen:
                         perm.append(nums[i])
+                        seen.add(nums[i])
                         helper()
                         perm.pop()
-        n, ans, perm = len(nums), [], [] 
+                        seen.discard(nums[i])
+        n, ans, perm, seen = len(nums), [], [], set()
         helper()
         return ans
