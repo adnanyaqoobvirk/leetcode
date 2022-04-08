@@ -7,10 +7,9 @@ class KthLargest:
         self.nums, self.k = nums, k
 
     def add(self, val: int) -> int:
-        if len(self.nums) < self.k :
-            heappush(self.nums, val)
-        elif self.nums[0] <= val:
-            heappushpop(self.nums, val)
+        heappush(self.nums, val)
+        if len(self.nums) > self.k :
+            heappop(self.nums)
         return self.nums[0]
 
 # Your KthLargest object will be instantiated and called as such:
