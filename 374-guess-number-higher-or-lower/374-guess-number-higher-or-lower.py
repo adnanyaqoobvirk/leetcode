@@ -5,25 +5,14 @@
 
 class Solution:
     def guessNumber(self, n: int) -> int:
-        left, right = 1, n
-        while left <= right:
-            ss = (right - left) // 3
-            mid1 = left + ss
-            mid2 = mid1 + ss
-            
-            result1 = guess(mid1)
-            result2 = guess(mid2)
-            
-            if result1 == 0:
-                return mid1
-            elif result1 == -1:
-                right = mid1 - 1
+        lo, hi = 1, n
+        while lo <= hi:
+            mid = lo + (hi - lo) // 2
+            res = guess(mid)
+            if res == 0:
+                return mid
+            elif res == 1:
+                lo = mid + 1
             else:
-                left = mid1 + 1
-                
-            if result2 == 0:
-                return mid2
-            elif result2 == -1:
-                right = mid2 - 1
-            else:
-                left = mid2 + 1
+                hi = mid - 1
+        return -1
