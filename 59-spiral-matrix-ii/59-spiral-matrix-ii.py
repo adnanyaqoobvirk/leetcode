@@ -1,27 +1,22 @@
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        n2 = n * n
-        num = 0
-        a, b, c, d = 0, 0, n - 1, n - 1
-        ans = [[None] * n for _ in range(n)]
-        while num < n2:
-            i = a
-            for j in range(b, d + 1):
-                num += 1
-                ans[i][j] = num
+        def helper(i: int, j: int, d: str) -> None:
+            if i < 0 or j < 0 or i >= n or j >= n or ans[i][j] != 0:
+                return
             
-            i += 1
-            for i in range(i, c + 1):
-                num += 1
-                ans[i][j] = num
+            nonlocal counter
+            counter += 1
+            ans[i][j] = counter
             
-            for j in reversed(range(b, d)):
-                num += 1
-                ans[i][j] = num
+            if d == 'u':
+                helper(i - 1, j, 'u')
             
-            for i in reversed(range(a + 1, c)):
-                num += 1
-                ans[i][j] = num
-            
-            a, b, c, d = a + 1, b + 1, c - 1, d - 1
+            helper(i, j + 1, 'r')
+            helper(i + 1, j, 'd')
+            helper(i, j - 1, 'l')
+            helper(i - 1, j, 'u')
+        
+        counter = 0
+        ans = [[0] * n for _ in range(n)]
+        helper(0, 0, 'r')
         return ans
