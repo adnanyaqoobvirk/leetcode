@@ -9,8 +9,4 @@ class Solution:
                 ans *= product
             product *= product
             n //= 2
-            
         return ans
-        
-        
-        
