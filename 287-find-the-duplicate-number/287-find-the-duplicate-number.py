@@ -5,16 +5,13 @@ class Solution:
         masks = [(1 << i) for i in range(max_bits)]
         
         original_bit_count = [0] * max_bits
-        for num in range(1, n + 1):
-            for i in range(max_bits):
-                if num & masks[i]:
-                    original_bit_count[i] += 1
-        
         bit_count = [0] * max_bits
-        for num in nums:
-            for i in range(max_bits):
-                if num & masks[i]:
-                    bit_count[i] += 1
+        for i in range(1, n + 2):
+            for j in range(max_bits):
+                if i <= n and i & masks[j]:
+                    original_bit_count[j] += 1
+                if nums[i - 1] & masks[j]:
+                    bit_count[j] += 1
         ans = 0
         for i in range(max_bits):
             if bit_count[i] - original_bit_count[i] > 0:
