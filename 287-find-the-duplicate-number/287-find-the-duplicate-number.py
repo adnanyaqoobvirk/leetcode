@@ -2,17 +2,18 @@ class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         n = len(nums) - 1
         max_bits = int(math.log2(n)) + 1
+        masks = [(1 << i) for i in range(max_bits)]
         
         original_bit_count = [0] * max_bits
         for num in range(1, n + 1):
             for i in range(max_bits):
-                if num & (1 << i):
+                if num & masks[i]:
                     original_bit_count[i] += 1
         
         bit_count = [0] * max_bits
         for num in nums:
             for i in range(max_bits):
-                if num & (1 << i):
+                if num & masks[i]:
                     bit_count[i] += 1
         ans = 0
         for i in range(max_bits):
