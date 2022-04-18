@@ -7,7 +7,8 @@ class Solution:
         h = []
         for i in range(n):
             for j in range(n):
-                heappush(h, -matrix[i][j])
-                if len(h) > k:
-                    heappop(h)
+                if len(h) < k:
+                    heappush(h, -matrix[i][j])
+                else:
+                    heappushpop(h, -matrix[i][j])
         return -h[0]
