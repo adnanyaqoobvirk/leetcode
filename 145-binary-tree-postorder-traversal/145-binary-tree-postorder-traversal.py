@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        ans = deque()
+        ans = []
         while root:
             if root.right:
                 pre = root.right
@@ -15,12 +15,12 @@ class Solution:
                 
                 if not pre.left:
                     pre.left = root
-                    ans.appendleft(root.val)
+                    ans.append(root.val)
                     root = root.right
                 else:
                     pre.left = None
                     root = root.left
             else:
-                ans.appendleft(root.val)
+                ans.append(root.val)
                 root = root.left
-        return ans
+        return reversed(ans)
