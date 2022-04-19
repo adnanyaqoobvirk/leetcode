@@ -10,10 +10,14 @@ class Solution:
         while curr:
             if curr.left:
                 node = curr.left
-                while node.right:
+                while node.right and node.right != curr:
                     node = node.right
-                node.right = curr
-                curr.left, curr = None, curr.left
+                if not node.right:
+                    node.right, curr = curr, curr.left
+                else:
+                    node.right = None
+                    ans.append(curr.val)
+                    curr = curr.right
             else:
                 ans.append(curr.val)
                 curr = curr.right
