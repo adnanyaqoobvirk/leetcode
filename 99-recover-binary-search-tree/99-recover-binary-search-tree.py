@@ -9,26 +9,23 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        vals, stack, head = [], [], root
+        nodes, stack, head = [], [], root
         while head or stack:
             if head:
                 stack.append(head)
                 head = head.left
             else:
                 curr = stack.pop()
-                vals.append(curr.val)
+                nodes.append(curr)
                 if curr.right:
                     head = curr.right
         
-        vals.sort()
+        left, right, n = 0, 1, len(nodes)
+        while right < n and nodes[left].val < nodes[right].val:
+            left += 1
+            right += 1
         
-        head = root
-        while head or stack:
-            if head:
-                stack.append(head)
-                head = head.right
-            else:
-                curr = stack.pop()
-                curr.val = vals.pop()
-                if curr.left:
-                    head = curr.left
+        while right < n and nodes[left].val > nodes[right].val:
+            right += 1
+            
+        nodes[left].val, nodes[right - 1].val = nodes[right - 1].val, nodes[left].val
