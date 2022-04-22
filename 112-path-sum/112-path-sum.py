@@ -9,20 +9,18 @@ class Solution:
         if not root:
             return False
         
-        stack = [(root, 0)]
+        stack, path = [root], []
         while stack:
-            curr, total = stack.pop()
-            total += curr.val
-            
-            if not curr.left and not curr.right and total == targetSum:
-                return True
-            
-            if curr.right:
-                stack.append((curr.right, total))
-                
-            if curr.left:
-                stack.append((curr.left, total))
+            root = stack[-1]
+            if path and path[-1][0] == root:
+                if path[-1][1] == targetSum and not root.right and not root.left:
+                    return True
+                path.pop()
+                stack.pop()
+            else:
+                path.append((root, root.val + (path[-1][1] if path else 0)))
+                if root.right:
+                    stack.append(root.right)
+                if root.left:
+                    stack.append(root.left)
         return False
-
-            
-            
