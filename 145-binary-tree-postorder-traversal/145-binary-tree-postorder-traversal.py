@@ -6,17 +6,35 @@
 #         self.right = right
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        ans, stack, prev = [], [], None
-        while root or stack:
-            if root:
-                stack.append(root)
-                root = root.left
-            else:
-                curr = stack[-1]
-                if not curr.right or prev == curr.right:
+        def reverse(f: Optional[TreeNode], t: Optional[TreeNode]) -> None:
+            prev, curr = f, f.right
+            while prev != t:
+                node = curr.right
+                curr.right = prev
+                prev, curr = curr, node
+        
+        ans = []
+        dummy = TreeNode(left=root)
+        root = dummy
+        while root:
+            if root.left:
+                node = root.left
+                while node.right and node.right != root:
+                    node = node.right
+                
+                if node.right:
+                    reverse(root.left, node)
+                    curr = node
+                    while curr != root.left:
+                        ans.append(curr.val)
+                        curr = curr.right
                     ans.append(curr.val)
-                    prev = curr
-                    stack.pop()
+                    reverse(node, root.left)
+                    node.right = None
+                    root = root.right
                 else:
-                    root = curr.right
+                    node.right = root
+                    root = root.left
+            else:
+                root = root.right
         return ans
