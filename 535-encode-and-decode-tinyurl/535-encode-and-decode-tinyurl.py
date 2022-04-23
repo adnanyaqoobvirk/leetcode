@@ -1,15 +1,16 @@
-from random import sample
+from hashlib import blake2b
+from base64 import b64encode
 
 class Codec:
-    charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
-    
     def __init__(self):
         self.map = {}
         
     def encode(self, longUrl: str) -> str:
         """Encodes a URL to a shortened URL.
         """
-        key = "".join(sample(Codec.charset, 6))
+        h = blake2b(digest_size=6)
+        h.update(longUrl.encode())
+        key = str(b64encode(h.digest())).replace('/','')
         self.map[key] = longUrl
         return f"http://tinyurl.com/{key}"
 
