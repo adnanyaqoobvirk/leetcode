@@ -12,7 +12,6 @@ class UndergroundSystem:
         avgTime = self.avgTimes[(startStation, stationName)]
         avgTime[0] += t - startTime
         avgTime[1] += 1
-        del self.checkins[id]
 
     def getAverageTime(self, startStation: str, endStation: str) -> float:
         total, count = self.avgTimes[(startStation, endStation)]
