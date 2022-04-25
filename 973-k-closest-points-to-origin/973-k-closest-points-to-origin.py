@@ -1,33 +1,27 @@
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        def getCounts(guess: int) -> Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]:
-            closer, farther = [], []
-            for d, i in dpoints:
-                if d <= guess:
-                    closer.append((d, i))
-                else:
-                    farther.append((d, i))
-            return closer, farther
+        def partition(left: int, right: int, pivot_idx: int) -> int:
+            points[pivot_idx], points[right] = points[right], points[pivot_idx]
+            
+            pivot, dpivot = left, points[right][0]**2 + points[right][1]**2
+            for i in range(left, right):
+                if (points[i][0]**2 + points[i][1]**2) <= dpivot:
+                    points[i], points[pivot] = points[pivot], points[i]
+                    pivot += 1
+            points[pivot], points[right] = points[right], points[pivot]
+            return pivot
         
-        dpoints, maxd = [], float('-inf')
-        for i, (x, y) in enumerate(points):
-            d = x**2 + y**2
-            maxd = max(maxd, d)
-            dpoints.append((d, i))
-        
-        lo, hi, ans = 0, maxd, []
-        while k:
-            mid = lo + (hi - lo) / 2
-            closer, farther = getCounts(mid)
-            if len(closer) > k:
-                hi = mid
-                dpoints = closer
+        def select(left: int, right: int) -> int:
+            if left == right:
+                return left
+            
+            pivot = partition(left, right, randint(left, right))
+            if pivot == k - 1:
+                return pivot
+            elif pivot >= k:
+                return select(left, pivot - 1)
             else:
-                lo = mid
-                for _, i in closer:
-                    ans.append(points[i])
-                k -= len(closer)
-                dpoints = farther
-        return ans
+                return select(pivot + 1, right)
+        return points[:select(0, len(points) - 1) + 1]
         
         
