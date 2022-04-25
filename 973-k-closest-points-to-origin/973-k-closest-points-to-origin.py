@@ -3,9 +3,9 @@ class Solution:
         def partition(left: int, right: int, pivot_idx: int) -> int:
             points[pivot_idx], points[right] = points[right], points[pivot_idx]
             
-            pivot, dpivot = left, points[right][0]**2 + points[right][1]**2
+            pivot = left
             for i in range(left, right):
-                if (points[i][0]**2 + points[i][1]**2) <= dpivot:
+                if points[i][0] <= points[right][0]:
                     points[i], points[pivot] = points[pivot], points[i]
                     pivot += 1
             points[pivot], points[right] = points[right], points[pivot]
@@ -22,6 +22,8 @@ class Solution:
                 return select(left, pivot - 1)
             else:
                 return select(pivot + 1, right)
-        return points[:select(0, len(points) - 1) + 1]
+        points = [(point[0]**2 + point[1]**2, point) for point in points]
+        right = select(0, len(points) - 1)
+        return [points[i][1] for i in range(right + 1)]
         
         
