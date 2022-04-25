@@ -1,10 +1,16 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        intervals.sort()
-        h, rooms = [], 0
+        points = []
         for start, end in intervals:
-            while h and h[0] <= start:
-                heappop(h)
-            heappush(h, end)
-            rooms = max(rooms, len(h))
-        return rooms
+            points.append((start, 'b'))
+            points.append((end, 'a'))
+        points.sort()
+        
+        rooms = ans = 0
+        for _, status in points:
+            if status == 'b':
+                rooms += 1
+                ans = max(ans, rooms)
+            else:
+                rooms -= 1
+        return ans
