@@ -1,14 +1,13 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
         n = len(matrix)
-        if k * k == n:
-            return matrix[n - 1][n - 1]
-        
+        double = n * n
+        half = double // 2
+        sign, hmax = (-1, k) if k < half else (1, double - k + 1)
         h = []
-        for i in range(n):
-            for j in range(n):
-                if len(h) < k:
-                    heappush(h, -matrix[i][j])
-                else:
-                    heappushpop(h, -matrix[i][j])
-        return -h[0]
+        for row in matrix:
+            for col in row:
+                heappush(h, sign * col)
+                if len(h) > hmax:
+                    heappop(h)
+        return sign * h[0]
