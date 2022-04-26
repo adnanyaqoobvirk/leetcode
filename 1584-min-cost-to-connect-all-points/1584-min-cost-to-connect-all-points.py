@@ -1,7 +1,6 @@
 class UF:
     def __init__(self, n: int) -> None:
         self.nodes = list(range(n))
-        self.rank = [0] * n
         
     def find(self, node: int) -> int:
         if self.nodes[node] != node:
@@ -13,13 +12,7 @@ class UF:
         if pnode1 == pnode2:
             return False
         
-        if self.rank[pnode1] > self.rank[pnode2]:
-            self.nodes[pnode2] = pnode1
-        elif self.rank[pnode1] < self.rank[pnode2]:
-            self.nodes[pnode1] = pnode2
-        else:
-            self.nodes[pnode1] = pnode2
-            self.rank[pnode2] += 1
+        self.nodes[pnode1] = pnode2
         return True
         
 class Solution:
