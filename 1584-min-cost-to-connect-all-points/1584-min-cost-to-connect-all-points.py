@@ -1,18 +1,25 @@
 class UF:
     def __init__(self, n: int) -> None:
-        self.nodes = list(range(n))
+        self.root = [-1] * n
         
     def find(self, node: int) -> int:
-        if self.nodes[node] != node:
-            self.nodes[node] = self.find(self.nodes[node])
-        return self.nodes[node]
+        if self.root[node] >= 0:
+            self.root[node] = self.find(self.root[node])
+            return self.root[node]
+        return node
         
     def union(self, node1: int, node2: int) -> bool:
-        pnode1, pnode2 = self.find(node1), self.find(node2)
-        if pnode1 == pnode2:
+        root1, root2 = self.find(node1), self.find(node2)
+        if root1 == root2:
             return False
         
-        self.nodes[pnode1] = pnode2
+        if self.root[root1] < self.root[root2]:
+            self.root[root2] = root1
+        elif self.root[root1] > self.root[root2]:
+            self.root[root1] = root2
+        else:
+            self.root[root1] = root2
+            self.root[root2] -= 1
         return True
         
 class Solution:
