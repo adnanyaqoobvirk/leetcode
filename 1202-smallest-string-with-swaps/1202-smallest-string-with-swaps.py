@@ -2,8 +2,8 @@ class Solution:
     def smallestStringWithSwaps(self, s: str, pairs: List[List[int]]) -> str:
         def helper(node: int) -> None:
             for child in graph[node]:
-                if child not in seen:
-                    seen.add(child)
+                if child in unseen:
+                    group.append(child)
                     unseen.remove(child)
                     helper(child)
         
@@ -16,9 +16,9 @@ class Solution:
         
         groups = []
         while unseen:
-            seen = {unseen.pop()}
-            helper(next(iter(seen)))
-            groups.append(sorted(seen))
+            group = [unseen.pop()]
+            helper(group[0])
+            groups.append(sorted(group))
         
         slist = list(s)
         for group in groups:
