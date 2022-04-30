@@ -42,7 +42,6 @@ class Codec:
                     node.children.append(self.decode(current))
                     current = current.right
             return node
-        
 
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
