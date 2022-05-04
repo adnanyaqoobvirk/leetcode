@@ -1,11 +1,11 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        ops, counts = 0, Counter(nums)
-        for num in counts:
-            pair = k - num
-            if pair == num:
-                ops += counts[num] // 2
-            elif pair in counts:
-                ops += min(counts[pair], counts[num])
-                counts[pair] = 0
+        ops, counts = 0, defaultdict(int)
+        for num in nums:
+            comp = k - num
+            if counts[comp] > 0:
+                ops += 1
+                counts[comp] -= 1
+            else:
+                counts[num] += 1
         return ops
