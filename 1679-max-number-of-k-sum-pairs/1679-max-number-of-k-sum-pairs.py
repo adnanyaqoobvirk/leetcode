@@ -1,16 +1,11 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        
-        ops, left, right = 0, 0, len(nums) - 1
-        while left < right:
-            total = nums[left] + nums[right]
-            if total > k:
-                right -= 1
-            elif total < k:
-                left += 1
-            else:
-                right -= 1
-                left += 1
-                ops += 1
+        ops, counts = 0, Counter(nums)
+        for num in counts:
+            pair = k - num
+            if pair == num:
+                ops += counts[num] // 2
+            elif pair in counts:
+                ops += min(counts[pair], counts[num])
+                counts[pair] = 0
         return ops
