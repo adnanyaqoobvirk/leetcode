@@ -4,16 +4,12 @@ class Solution:
         for src, dst, time in times:
             graph[src].append((dst, time))
             
-        stack, node_times = [k], defaultdict(lambda: float('inf'))
-        node_times[k] = 0
-        while stack:
-            src = stack.pop()
-            for dst, time in graph[src]:
-                if node_times[dst] > (node_times[src] + time):
-                    node_times[dst] = node_times[src] + time
-                    stack.append(dst)
-        
-        if len(node_times) != n:
-            return -1
-        
-        return max(node_times.values())
+        heap, node_times = [(0, k)], {}
+        while heap:
+            stime, src = heappop(heap)
+            if src not in node_times:
+                node_times[src] = stime
+                for dst, time in graph[src]:
+                    if dst not in node_times:
+                        heappush(heap, (time + stime, dst))
+        return max(node_times.values()) if len(node_times) == n else -1
