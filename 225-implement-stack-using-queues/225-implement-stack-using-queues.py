@@ -2,19 +2,25 @@ class MyStack:
 
     def __init__(self):
         self.q = deque()
+        self.t = None
 
     def push(self, x: int) -> None:
         self.q.append(x)
-
+        self.t = x
+        
     def pop(self) -> int:
+        nq, last = deque(), None
         for _ in range(len(self.q) - 1):
-            self.q.append(self.q.popleft())
-        return self.q.popleft()
+            last = self.q.popleft()
+            nq.append(last)
+        self.t = last
+        ans = self.q.popleft()
+        self.q = nq
+        return ans
 
     def top(self) -> int:
-        if self.q:
-            return self.q[-1]
-        
+        return self.t
+
     def empty(self) -> bool:
         return not self.q
 
