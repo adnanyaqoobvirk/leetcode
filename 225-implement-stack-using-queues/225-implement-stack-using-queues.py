@@ -9,13 +9,12 @@ class MyStack:
         self.t = x
         
     def pop(self) -> int:
-        nq, last = deque(), None
+        last = None
         for _ in range(len(self.q) - 1):
             last = self.q.popleft()
-            nq.append(last)
+            self.q.append(last)
         self.t = last
         ans = self.q.popleft()
-        self.q = nq
         return ans
 
     def top(self) -> int:
