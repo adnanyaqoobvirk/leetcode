@@ -4,19 +4,19 @@ class Solution:
         for f, t, p in flights:
             graph[f].append((t, p))
         
-        q, price, prices, count = [src], float('inf'), defaultdict(lambda: float('inf')), 0
-        prices[(src, 0)] = 0
-        while q and count <= k:
-            nq = []
+        heap, node_prices = [(0, 0, src)], defaultdict(lambda: (float('inf'), float('inf')))
+        node_prices[src] = (0, 0)
+        while heap:
+            price, stops, s = heappop(heap)
             
-            for s in q:
+            if s == dst:
+                break
+            
+            if stops <= k:
                 for d, p in graph[s]:
-                    if p + prices[(s, count)] < prices[(d, count + 1)]:
-                        if d == dst:
-                            price = min(price, p + prices[(s, count)])
-                        else:
-                            prices[(d, count + 1)] = p + prices[(s, count)]
-                            nq.append(d)
-            q = nq
-            count += 1
-        return price if price != float('inf') else -1
+                    if price + p < node_prices[d][0]:
+                        node_prices[d] = (price + p, stops + 1)
+                        heappush(heap, (price + p, stops + 1, d))
+                    elif stops <= node_prices[d][1]:
+                        heappush(heap, (price + p, stops + 1, d))
+        return node_prices[dst][0] if dst in node_prices else -1
