@@ -22,27 +22,29 @@
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        self.stack = [[nestedList, 0]]
+        self.gen = self._generator(nestedList)
+        self.nxt = None
+        
+    def _generator(self, nl: [NestedInteger]) -> None:
+        for node in nl:
+            if node.isInteger():
+                yield node.getInteger()
+            else:
+                yield from self._generator(node.getList())
         
     def next(self) -> int:
-        if self.hasNext():
-            ans = self.stack[-1][0][self.stack[-1][1]]
-            self.stack[-1][1] += 1
-            return ans
+        ans = self.nxt
+        self.nxt = None
+        return ans
     
     def hasNext(self) -> bool:
-        while self.stack:
-            nl, pos = self.stack[-1]
-            if pos >= len(nl):
-                self.stack.pop()
-                continue
-            
-            if nl[pos].isInteger():
-                break
-            else:
-                self.stack[-1][1] = pos + 1
-                self.stack.append([nl[pos].getList(), 0])
-        return len(self.stack) > 0
+        if not self.nxt:
+            try:
+                self.nxt = next(self.gen)
+                return True
+            except:
+                return False
+        return True
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
