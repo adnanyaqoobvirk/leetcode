@@ -36,22 +36,20 @@ class Solution:
         :type robot: Robot
         :rtype: None
         """
-        def backtrack(i: int, j: int, d: int) -> None:
+        def helper(i: int, j: int, d: int) -> None:
+            robot.clean()
+            done.add((i, j))
             for k in range(4):
                 nd = (d + k) % 4
-                x, y = i + dmap[nd][0], j + dmap[nd][1]
-                if (x, y) not in cleaned:
-                    if robot.move():
-                        robot.clean()
-                        cleaned.add((x, y))
-                        backtrack(x, y, nd)
-                        robot.turnRight()
-                        robot.turnRight()
-                        robot.move()
-                        robot.turnRight()
-                        robot.turnRight()
+                x, y = i + directions[nd][0], j + directions[nd][1]
+                if (x, y) not in done and robot.move():
+                    helper(x, y, nd)
+                    robot.turnRight()
+                    robot.turnRight()
+                    robot.move()
+                    robot.turnRight()
+                    robot.turnRight()
                 robot.turnRight()
-        dmap = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}
-        cleaned = {(0, 0)}
-        robot.clean()
-        backtrack(0, 0, 0)
+        done = set()
+        directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+        helper(0, 0, 0)
