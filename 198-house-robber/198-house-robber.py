@@ -1,10 +1,6 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-        dp = [0] * (n + 2)
-        for i in range(n):
-            dp[i] = max(
-                nums[i] + dp[i - 2],
-                dp[i - 1]
-            )
-        return dp[n - 1]
+        prev = curr = 0
+        for i in range(len(nums)):
+            prev, curr = curr, max(nums[i] + prev, curr)
+        return curr
