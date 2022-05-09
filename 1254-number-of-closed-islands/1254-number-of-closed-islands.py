@@ -1,16 +1,11 @@
 class Solution:
     def closedIsland(self, grid: List[List[int]]) -> int:
         m, n, islands = len(grid), len(grid[0]), 0
-        for i in range(m):
-            for j in range(n):
+        for i in range(1, m - 1):
+            for j in range(1, n - 1):
                 if grid[i][j] == 1:
                     continue
-                q = [(i, j)] 
-                closed = (
-                    False 
-                    if i == 0 or i == m - 1 or j == 0 or j == n - 1 
-                    else True
-                )
+                q, closed = [(i, j)] , True
                 while q:
                     nq = []
                     for a, b in q:
