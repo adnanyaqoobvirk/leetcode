@@ -25,12 +25,7 @@ class UF:
     
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
-        nodes = set()
-        for src, dst in edges:
-            nodes.add(src)
-            nodes.add(dst)
-        
-        uf, extra = UF(len(nodes) + 1), None
+        uf, extra = UF(len(edges) + 1), None
         for src, dst in edges:
             if not uf.union(src, dst):
                 extra = [src, dst]
