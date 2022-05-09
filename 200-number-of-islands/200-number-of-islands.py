@@ -1,15 +1,23 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        def exploreIslands(a: int, b: int) -> None:
-            grid[a][b] = '2'
-            for x, y in [(a, b - 1), (a, b + 1), (a + 1, b), (a - 1, b)]:
-                if 0 <= x < n and 0 <= y < m and grid[x][y] == '1':
-                    exploreIslands(x, y)
+        m, n = len(grid), len(grid[0])
+        lands = {
+            (i, j) 
+            for i in range(m) 
+            for j in range(n) 
+            if grid[i][j] == '1'
+        }
         
-        islands, n, m = 0, len(grid), len(grid[0])
-        for i in range(n):
-            for j in range(m):
-                if grid[i][j] == '1':
-                    islands += 1
-                    exploreIslands(i, j)
-        return islands
+        ans = 0
+        while lands:
+            q = [lands.pop()]
+            while q:
+                nq = []
+                for i, j in q:
+                    for x, y in [(i, j - 1), (i, j + 1), (i - 1, j), (i + 1, j)]:
+                        if 0 <= x < m and 0 <= y < n and (x, y) in lands:
+                            lands.discard((x, y))
+                            nq.append((x, y))
+                q = nq
+            ans += 1
+        return ans
