@@ -1,6 +1,13 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        prev = curr = 0
-        for num in nums:
-            prev, curr = curr, max(num + prev, curr) 
-        return curr
+        @cache
+        def helper(pos: int) -> int:
+            if pos >= n:
+                return 0
+            
+            return max(
+                nums[pos] + helper(pos + 2),
+                helper(pos + 1)
+            )
+        n = len(nums)
+        return helper(0)
