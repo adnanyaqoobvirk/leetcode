@@ -3,7 +3,7 @@ class Solution:
         if not digits:
             return []
         
-        digit_map = {
+        num_char_map = {
             "2": "abc",
             "3": "def",
             "4": "ghi",
@@ -14,14 +14,15 @@ class Solution:
             "9": "wxyz"
         }
         
-        def helper(pos: int) -> None:
-            if len(comb) == n:
+        def helper(i: int) -> None:
+            if i == n:
                 ans.append("".join(comb))
             else:
-                for c in digit_map[digits[pos]]:
+                for c in num_char_map[digits[i]]:
                     comb.append(c)
-                    helper(pos + 1)
+                    helper(i + 1)
                     comb.pop()
+        
         n, ans, comb = len(digits), [], []
         helper(0)
         return ans
