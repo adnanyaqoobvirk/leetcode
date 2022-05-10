@@ -5,7 +5,8 @@ class Solution:
             for j in range(n):
                 if grid2[i][j] != 1:
                     continue
-                q, grid2[i][j], is_subisland = [(i, j)], 0, True if grid1[i][j] == 1 else False
+                q, grid2[i][j] = [(i, j)], 0
+                is_subisland = True if grid1[i][j] == 1 else False
                 while q:
                     nq = []
                     for a, b in q:
