@@ -2,13 +2,15 @@ class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         def helper() -> None:
             if len(comb) == n:
-                combs.add(tuple(num for num, _ in comb))
+                combs.append(comb[:])
             else:
-                for i, num in enumerate(nums):
-                    if (num, i) not in comb:
-                        comb.append((num, i))
+                for num in counts.keys():
+                    if counts[num] > 0:
+                        counts[num] -= 1
+                        comb.append(num)
                         helper()
                         comb.pop()
-        n, combs, comb = len(nums), set(), []
+                        counts[num] += 1
+        n, combs, comb, counts = len(nums), [], [], Counter(nums)
         helper()
         return combs
