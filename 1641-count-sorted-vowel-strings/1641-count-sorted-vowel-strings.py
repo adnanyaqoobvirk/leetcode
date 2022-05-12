@@ -1,15 +1,8 @@
 class Solution:
     def countVowelStrings(self, n: int) -> int:
-        @cache
-        def helper(pos: int, count: int) -> int:
-            if pos >= 5:
-                return 0
-            
-            if count == n:
-                return 1
-            
-            ans = 0
-            for i in range(pos, 5):
-                ans += helper(i, count + 1)
-            return ans
-        return helper(0, 0)
+        dp = [[0] * 6 for _ in range(n + 1)]
+        dp[n] = [1] * 6
+        for i in reversed(range(5)):
+            for j in reversed(range(n)):
+                dp[j][i] = dp[j][i + 1] + dp[j + 1][i]
+        return dp[0][0]
