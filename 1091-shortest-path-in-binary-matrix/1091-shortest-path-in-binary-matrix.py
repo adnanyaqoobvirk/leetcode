@@ -1,20 +1,24 @@
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        if grid[0][0]:
+        if grid[0][0] != 0:
             return -1
         
-        n, m = len(grid), len(grid[0])
-        sides = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
-        done, q = {(0, 0)}, [[0, 0, 1]]
+        n, q, ans = len(grid), [(0, 0)], 1
+        ne = [
+            (-1, -1),(-1, 0),(-1, 1),
+            (0, -1),(0, 1),
+            (1, -1),(1, 0),(1, 1)
+        ]
         while q:
             nq = []
-            for x, y, l in q:
-                if x == n - 1 and y == m - 1:
-                    return l
-                
-                for i, j in sides:
-                    if 0 <= x + i < n and 0 <= y + j < m and (x + i, y + j) not in done and not grid[x + i][y + j]:
-                        done.add((x + i, y + j))
-                        nq.append([x + i, y + j, l + 1])
+            for i, j in q:
+                if i == n - 1 and j == n - 1:
+                    return ans
+                for x, y in ne:
+                    x, y = i + x, j + y
+                    if 0 <= x < n and 0 <= y < n and grid[x][y] == 0:
+                        grid[x][y] = 1
+                        nq.append((x, y))
             q = nq
+            ans += 1
         return -1
