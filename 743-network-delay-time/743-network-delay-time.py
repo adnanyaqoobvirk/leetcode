@@ -1,15 +1,15 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
-        for src, dst, time in times:
-            graph[src].append((dst, time))
-            
-        heap, node_times = [(0, k)], {}
+        for u, v, w in times:
+            graph[u].append((w, v))
+        
+        heap, nodes, max_time = [(0, k)], defaultdict(int), 0
         while heap:
-            stime, src = heappop(heap)
-            if src not in node_times:
-                node_times[src] = stime
-                for dst, time in graph[src]:
-                    if dst not in node_times:
-                        heappush(heap, (time + stime, dst))
-        return max(node_times.values()) if len(node_times) == n else -1
+            time, src = heappop(heap)
+            if src not in nodes:
+                nodes[src] = time
+                max_time = max(max_time, time)
+                for w, dst in graph[src]:
+                    heappush(heap, (time + w, dst))
+        return -1 if len(nodes) != n else max_time
