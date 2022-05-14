@@ -4,12 +4,13 @@ class Solution:
         for u, v, w in times:
             graph[u].append((w, v))
         
-        heap, nodes, max_time = [(0, k)], defaultdict(int), 0
-        while heap:
-            time, src = heappop(heap)
-            if src not in nodes:
-                nodes[src] = time
-                max_time = max(max_time, time)
+        q, max_time, nodes = [(k, 0)], 0, defaultdict(lambda: float('inf'))
+        while q:
+            nq = []
+            for src, time in q:
+                nodes[src] = min(nodes[src], time)
                 for w, dst in graph[src]:
-                    heappush(heap, (time + w, dst))
-        return -1 if len(nodes) != n else max_time
+                    if time + w < nodes[dst]:
+                        nq.append((dst, time + w))
+            q = nq
+        return -1 if len(nodes) != n else max(nodes.values())
