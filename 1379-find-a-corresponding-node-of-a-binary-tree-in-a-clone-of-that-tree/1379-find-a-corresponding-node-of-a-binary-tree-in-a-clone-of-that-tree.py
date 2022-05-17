@@ -7,12 +7,23 @@
 
 class Solution:
     def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
-        stack = [(original, cloned)]
-        while stack:
-            onode, cnode = stack.pop()
-            if onode == target:
-                return cnode
-            if onode.right:
-                stack.append((onode.right, cnode.right))
-            if onode.left:
-                stack.append((onode.left, cnode.left))
+        root, found = (original, cloned), None
+        while root[0]:
+            if root[0].left:
+                onode, cnode = root[0].left, root[1].left
+                while onode.right and onode.right != root[0]:
+                    onode, cnode = onode.right, cnode.right
+                    
+                if not onode.right:
+                    if root[0] == target:
+                        found = root[1]
+                    onode.right, cnode.right = root[0], root[1]
+                    root = (root[0].left, root[1].left)
+                else:
+                    onode.right, cnode.right = None, None
+                    root = (root[0].right, root[1].right)
+            else:
+                if root[0] == target:
+                    found = root[1]
+                root = (root[0].right, root[1].right)
+        return found
