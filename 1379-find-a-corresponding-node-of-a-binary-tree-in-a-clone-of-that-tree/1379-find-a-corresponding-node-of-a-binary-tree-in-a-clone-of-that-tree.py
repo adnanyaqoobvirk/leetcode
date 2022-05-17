@@ -15,12 +15,12 @@ class Solution:
                     onode, cnode = onode.right, cnode.right
                     
                 if not onode.right:
-                    if root[0] == target:
-                        found = root[1]
                     onode.right, cnode.right = root[0], root[1]
                     root = (root[0].left, root[1].left)
                 else:
                     onode.right, cnode.right = None, None
+                    if root[0] == target:
+                        found = root[1]
                     root = (root[0].right, root[1].right)
             else:
                 if root[0] == target:
