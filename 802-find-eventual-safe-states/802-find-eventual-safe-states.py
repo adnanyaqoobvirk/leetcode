@@ -1,28 +1,24 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         def helper(curr: int) -> bool:
-            if seen[curr] == 1:
+            if color[curr] == GREY:
                 return False
             
-            if seen[curr] == 2:
+            if color[curr] == BLACK:
                 return True
             
-            seen[curr] += 1
-            
-            is_safe = True
+            color[curr] = GREY
             for neighbor in graph[curr]:
                 if not helper(neighbor):
-                    is_safe = False
+                    safe_nodes.discard(curr)
+                    return False
+            color[curr] = BLACK
             
-            if not is_safe:
-                safe_nodes.discard(curr)
-                return False
-            
-            seen[curr] += 1
             return True
         
-        safe_nodes, seen = {node for node in range(len(graph))}, defaultdict(int)
+        WHITE, GREY, BLACK = 0, 1, 2
+        safe_nodes, color = {node for node in range(len(graph))}, defaultdict(int)
         for node in range(len(graph)):
-            if seen[node] == 0:
+            if color[node] == WHITE:
                 helper(node)
         return sorted(safe_nodes)
