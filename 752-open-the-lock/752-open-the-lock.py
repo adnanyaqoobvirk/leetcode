@@ -1,24 +1,21 @@
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
-        target = tuple(int(c) for c in target)
-        visited = set((int(a), int(b), int(c), int(d)) for a, b, c, d in deadends)
-        q = [(0,0,0,0,0)]
+        q, seen, deadends, moves = ["0000"], {"0000"}, set(deadends), 0
         while q:
             nq = []
-            for a, b, c, d, turns in q:
-                t = (a,b,c,d)
-                if t == target:
-                    return turns
-                
-                if t in visited:
+            for comb in q:
+                if comb in deadends:
                     continue
+                    
+                if comb == target:
+                    return moves
                 
-                visited.add(t)
-                turns += 1
-                for diff in [-1, 1]:
-                    nq.append(((a + diff) % 10, b, c, d, turns))
-                    nq.append((a, (b + diff) % 10, c, d, turns))
-                    nq.append((a, b, (c + diff) % 10, d, turns))
-                    nq.append((a, b, c, (d + diff) % 10, turns))
+                for i in range(4):
+                    for move in [-1, 1]:
+                        ncomb = f"{comb[0:i]}{(int(comb[i]) + move) % 10}{comb[i+1:]}"
+                        if ncomb not in seen:
+                            seen.add(ncomb)
+                            nq.append(ncomb)
             q = nq
+            moves += 1
         return -1
