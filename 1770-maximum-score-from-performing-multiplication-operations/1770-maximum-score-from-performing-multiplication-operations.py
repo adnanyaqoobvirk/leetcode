@@ -1,16 +1,12 @@
 class Solution:
     def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
-        @lru_cache(2000)
-        def dp(left: int, right: int) -> int:
-            i = left + n - 1 - right
-            
-            if i == m:
-                return 0
-            
-            return max(
-                nums[left] * multipliers[i] + dp(left + 1, right),
-                nums[right] * multipliers[i] + dp(left, right - 1)
-            )
-        
         n, m = len(nums), len(multipliers)
-        return dp(0, n - 1)
+        dp = [[0] * (m + 1) for _ in range(m + 1)]
+        for i in reversed(range(m)):
+            for left in reversed(range(i + 1)):
+                right = n - 1 - (i - left)
+                dp[i][left] = max(
+                    nums[left] * multipliers[i] + dp[i + 1][left + 1],
+                    nums[right] * multipliers[i] + dp[i + 1][left]
+                )
+        return dp[0][0]
