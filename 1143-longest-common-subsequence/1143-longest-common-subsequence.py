@@ -1,8 +1,5 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        if len(text2) > len(text1):
-            text1, text2 = text2, text1
-            
         m, n = len(text1), len(text2)
         prev, curr = [0] * (n + 1), [0] * (n + 1)
         for i in reversed(range(m)):
