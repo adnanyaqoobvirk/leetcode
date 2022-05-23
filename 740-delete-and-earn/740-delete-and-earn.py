@@ -5,10 +5,10 @@ class Solution:
             num_map[num] += num
             max_num = max(max_num, num)
         
-        dp = [0] * (max_num + 3)
+        prev = curr = 0
         for num in reversed(range(max_num + 1)):
-            dp[num] = max(
-                num_map[num] + dp[num + 2],
-                dp[num + 1]
+            prev, curr = curr, max(
+                num_map[num] + prev,
+                curr
             )
-        return dp[0]
+        return curr
