@@ -1,16 +1,12 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        @cache
-        def helper(i: int, j: int) -> int:
-            if i >= m or j >= n:
-                return 0
-            
-            return max(
-                (helper(i + 1, j + 1) + 1) if text1[i] == text2[j] else 0,
-                helper(i + 1, j),
-                helper(i, j + 1)
-            )
-        
         m, n = len(text1), len(text2)
-        return helper(0, 0)
-        
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                dp[i][j] = max(
+                    (dp[i + 1][j + 1] + 1) if text1[i] == text2[j] else 0,
+                    dp[i + 1][j],
+                    dp[i][j + 1]
+                )
+        return dp[0][0]
