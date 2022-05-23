@@ -4,11 +4,13 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        for a in range(n):
-            for b in range(n):
-                if a != b:
-                    if not knows(b, a) or knows(a, b):
-                        break
-            else:
-                return a
-        return -1
+        a = 0
+        for b in range(1, n):
+            if knows(a, b):
+                a = b
+        
+        for b in range(n):
+            if a != b:
+                if knows(a, b) or not knows(b, a):
+                    return -1
+        return a
