@@ -1,12 +1,17 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        n = len(coins)
-        dp = [float('inf')] * (amount + 1)
-        dp[0] = 0
-        for coin in coins:
-            for r in range(coin, amount + 1):
-                dp[r] = min(
-                    dp[r],
-                    dp[r - coin] + 1
-                )
-        return -1 if dp[amount] == float('inf') else dp[amount]
+        coin_count = 0
+        q, seen = [amount], {amount}
+        while q:
+            nq = []
+            for r in q:
+                if r == 0:
+                    return coin_count
+                for coin in coins:
+                    nr = r - coin
+                    if nr >= 0 and nr not in seen:
+                        nq.append(nr)
+                        seen.add(nr)
+            q = nq
+            coin_count += 1
+        return -1
