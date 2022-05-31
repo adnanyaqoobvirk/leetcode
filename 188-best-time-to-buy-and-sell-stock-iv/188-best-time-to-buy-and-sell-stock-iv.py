@@ -1,25 +1,23 @@
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
-        @cache
-        def helper(pos: int, bought: bool, t: int) -> int:
-            if t == 0 or pos >= n:
-                return 0
-            
-            buy_stock = 0
-            if not bought:
-                buy_stock = -prices[pos] + helper(pos + 1, True, t)
-            
-            skip = helper(pos + 1, bought, t)
-            
-            sell_stock = 0
-            if bought:
-                sell_stock = prices[pos] + helper(pos + 1, False, t - 1)
-                
-            return max(
-                buy_stock,
-                skip,
-                sell_stock
-            )
-        
         n = len(prices)
-        return helper(0, False, k)
+        dp = [[[0] * (k + 1) for _ in range(2)] for _ in range(n + 1)]
+        for pos in reversed(range(n)):
+            for bought in reversed(range(2)):
+                for t in range(1, k + 1):
+                    buy_stock = 0
+                    if not bought:
+                        buy_stock = -prices[pos] + dp[pos + 1][1][t]
+
+                    skip = dp[pos + 1][bought][t]
+
+                    sell_stock = 0
+                    if bought:
+                        sell_stock = prices[pos] + dp[pos + 1][0][t - 1]
+
+                    dp[pos][bought][t] = max(
+                        buy_stock,
+                        skip,
+                        sell_stock
+                    )
+        return dp[0][0][k]
