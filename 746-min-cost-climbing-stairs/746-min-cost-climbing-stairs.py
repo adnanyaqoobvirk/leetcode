@@ -3,13 +3,10 @@ class Solution:
         cost.append(0)
         n = len(cost)
         
-        dp = [float('inf')] * n
-        dp[0] = cost[0]
-        dp[1] = cost[1]
-        
+        prev, curr = cost[0], cost[1]
         for pos in range(2, n):
-            dp[pos] = cost[pos] + min(
-                dp[pos - 1],
-                dp[pos - 2]
+            prev, curr = curr, cost[pos] + min(
+                curr,
+                prev
             )
-        return dp[n - 1]
+        return curr
