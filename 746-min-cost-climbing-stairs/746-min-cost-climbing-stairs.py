@@ -1,18 +1,15 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
-        @cache
-        def helper(pos: int) -> int:
-            if pos < 0:
-                return float('inf')
-
-            if pos <= 1:
-                return cost[pos]
-            
-            return cost[pos] + min(
-                helper(pos - 1),
-                helper(pos - 2)
-            )
         cost.append(0)
         n = len(cost)
-        return helper(n - 1)
         
+        dp = [float('inf')] * n
+        dp[0] = cost[0]
+        dp[1] = cost[1]
+        
+        for pos in range(2, n):
+            dp[pos] = cost[pos] + min(
+                dp[pos - 1],
+                dp[pos - 2]
+            )
+        return dp[n - 1]
