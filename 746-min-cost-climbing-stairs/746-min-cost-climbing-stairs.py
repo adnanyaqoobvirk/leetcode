@@ -3,14 +3,16 @@ class Solution:
         @cache
         def helper(pos: int) -> int:
             if pos < 0:
-                return 0
-            
-            if pos == 1:
+                return float('inf')
+
+            if pos <= 1:
                 return cost[pos]
             
-            return min(
-                cost[pos] + helper(pos - 2),
-                cost[pos] + helper(pos - 1)
+            return cost[pos] + min(
+                helper(pos - 1),
+                helper(pos - 2)
             )
+        cost.append(0)
         n = len(cost)
-        return min(helper(n - 1), helper(n - 2))
+        return helper(n - 1)
+        
