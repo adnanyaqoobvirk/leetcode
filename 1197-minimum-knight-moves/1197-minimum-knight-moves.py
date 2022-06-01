@@ -7,27 +7,18 @@ class Solution:
             (2, 1), (2, -1)
         ]
         
-        start_seen, end_seen = {(0, 0): 0}, {(x, y): 0}
-        q = [(0, 0, 0, False), (x, y, 0, True)]
+        x, y = abs(x), abs(y)
+        q, moves, seen = [(0, 0)], 0, {(0, 0)}
         while q:
             nq = []
-            for i, j, steps, end in q:
-                if end:
-                    if (i, j) in start_seen:
-                        return start_seen[(i, j)] + steps
-                else:
-                    if (i, j) in end_seen:
-                        return end_seen[(i, j)] + steps
-                
+            for i, j in q:
+                if i == x and j == y:
+                    return moves
                 for a, b in possible_moves:
-                    a, b = a + i, b + j
-                    if end:
-                        if (a, b) not in end_seen:
-                            nq.append((a, b, steps + 1, end))
-                            end_seen[(a, b)] = steps + 1
-                    else:
-                        if (a, b) not in start_seen:
-                            nq.append((a, b, steps + 1, end))
-                            start_seen[(a, b)] = steps + 1
+                    ab = abs(a + i), abs(b + j)
+                    if ab not in seen:
+                        seen.add(ab)
+                        nq.append(ab)
             q = nq
+            moves += 1
         return -1
