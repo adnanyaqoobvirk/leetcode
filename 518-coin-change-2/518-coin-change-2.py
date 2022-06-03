@@ -1,14 +1,13 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        n = len(coins)
-        dp = [[0] * (amount + 1) for _ in range(n + 1)]
-        for pos in range(n):
-            dp[pos][0] = 1
-            
-        for pos in reversed(range(n)):
+        prev, curr = [0] * (amount + 1), [0] * (amount + 1)
+        prev[0] = curr[0] = 1
+        for pos in reversed(range(len(coins))):
             for remaining in range(1, amount + 1):
-                dp[pos][remaining] = (
-                    ((dp[pos][remaining - coins[pos]]) if remaining >= coins[pos] else 0)
-                    + dp[pos + 1][remaining]
+                curr[remaining] = (
+                    ((curr[remaining - coins[pos]]) if remaining >= coins[pos] else 0)
+                    + prev[remaining]
                 )
-        return dp[0][amount]
+            prev, curr = curr, [0] * (amount + 1)
+            curr[0] = 1
+        return prev[amount]
