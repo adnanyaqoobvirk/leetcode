@@ -1,13 +1,14 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        @cache
-        def helper(pos: int, remaining: int) -> int:
-            if remaining == 0:
-                return 1
-            
-            if pos >= n or remaining < 0:
-                return 0
-            
-            return helper(pos, remaining - coins[pos]) + helper(pos + 1, remaining)
         n = len(coins)
-        return helper(0, amount)
+        dp = [[0] * (amount + 1) for _ in range(n + 1)]
+        for pos in range(n):
+            dp[pos][0] = 1
+            
+        for pos in reversed(range(n)):
+            for remaining in range(1, amount + 1):
+                dp[pos][remaining] = (
+                    ((dp[pos][remaining - coins[pos]]) if remaining >= coins[pos] else 0)
+                    + dp[pos + 1][remaining]
+                )
+        return dp[0][amount]
