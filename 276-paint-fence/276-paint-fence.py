@@ -1,12 +1,8 @@
 class Solution:
     def numWays(self, n: int, k: int) -> int:
-        @cache
-        def helper(pos: int) -> int:
-            if pos == 1:
-                return k
-            
-            if pos == 2:
-                return k * k
-            
-            return (k - 1) * (helper(pos - 1) + helper(pos - 2))
-        return helper(n)
+        dp = [0] * (n + 2)
+        dp[1] = k
+        dp[2] = k * k
+        for pos in range(3, n + 1):
+            dp[pos] = (k - 1) * (dp[pos - 1] + dp[pos - 2])
+        return dp[n]
