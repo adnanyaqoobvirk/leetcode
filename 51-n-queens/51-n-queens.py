@@ -5,56 +5,24 @@ class Solution:
                 solutions.append(["".join(r) for r in board])
             else:
                 for col in range(n):
-                    if invalids[(row, col)] <= 0:
-                        for i in range(n):
-                            invalids[(row, i)] += 1
-                            invalids[(i, col)] += 1
-                            
-                        c = col
-                        for r in reversed(range(row)):
-                            c += 1
-                            invalids[(r, c)] += 1
-                        c = col
-                        for r in reversed(range(row)):
-                            c -= 1
-                            invalids[(r, c)] += 1
-                            
-                        c = col
-                        for r in range(row + 1, n):
-                            c += 1
-                            invalids[(r, c)] += 1
-                        c = col
-                        for r in range(row + 1, n):
-                            c -= 1
-                            invalids[(r, c)] += 1
+                    if (
+                        col not in cols and 
+                        row - col not in diags and 
+                        row + col not in adiags
+                    ):
+                        cols.add(col)
+                        diags.add(row - col)
+                        adiags.add(row + col)
                             
                         board[row][col] = 'Q'
                         backtrack(row + 1)
                         board[row][col] = '.'
                         
-                        for i in range(n):
-                            invalids[(row, i)] -= 1
-                            invalids[(i, col)] -= 1
+                        cols.remove(col)
+                        diags.remove(row - col)
+                        adiags.remove(row + col)
                             
-                        c = col
-                        for r in reversed(range(row)):
-                            c += 1
-                            invalids[(r, c)] -= 1
-                        c = col
-                        for r in reversed(range(row)):
-                            c -= 1
-                            invalids[(r, c)] -= 1
-                            
-                        c = col
-                        for r in range(row + 1, n):
-                            c += 1
-                            invalids[(r, c)] -= 1
-                        c = col
-                        for r in range(row + 1, n):
-                            c -= 1
-                            invalids[(r, c)] -= 1
-                            
-        solutions, invalids = [], defaultdict(int)
+        solutions, cols, diags, adiags = [], set(), set(), set()
         board = [['.'] * n for _ in range(n)]
         backtrack(0)
         return solutions
