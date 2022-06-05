@@ -18,7 +18,5 @@ class Solution:
                     adiagonals.remove(adiagonal)
             return ans
                       
-        columns = set()
-        diagonals = set()
-        adiagonals = set()
+        columns, diagonals, adiagonals = set(), set(), set()
         return backtrack(0)
