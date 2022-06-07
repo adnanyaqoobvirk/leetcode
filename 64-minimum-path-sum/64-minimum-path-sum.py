@@ -11,5 +11,5 @@ class Solution:
                         prev[j],
                         curr[j + 1]
                     )
-            prev, curr = curr, [float('inf')] * (n + 1)
+            prev, curr = curr, prev
         return prev[0]
