@@ -1,6 +1,6 @@
 class Solution:
     def minSwaps(self, data: List[int]) -> int:
-        n, one_count = len(data), Counter(data)[1]
+        n, one_count = len(data), sum(data)
         
         min_zero_count = 0
         for i in range(one_count):
