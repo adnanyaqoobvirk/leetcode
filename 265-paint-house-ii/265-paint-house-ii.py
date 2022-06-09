@@ -8,6 +8,7 @@ class Solution:
                 for c in range(k):
                     if c == rc:
                         continue
-                    curr[rc] = min(curr[rc], costs[house][c] + prev[c])
+                    curr[rc] = min(curr[rc], prev[c])
+                curr[rc] += costs[house][rc]
             prev, curr = curr, prev
         return min(prev)
