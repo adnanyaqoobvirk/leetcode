@@ -1,19 +1,15 @@
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
+        n = len(nums)
+        
         k = sum(nums) - x
-        
-        if k == 0:
-            return len(nums)
-        
-        prefix_map, prefix, max_len = {0: -1}, 0, 0
-        for i, num in enumerate(nums):
-            prefix += num
-            
-            if prefix not in prefix_map:
-                prefix_map[prefix] = i
-            
-            y = prefix - k
-            if y in prefix_map:
-                max_len = max(max_len, i - prefix_map[y])
-        
-        return len(nums) - max_len if max_len != 0 else -1
+        left = prefix = 0
+        max_len = -1
+        for right in range(n):
+            prefix += nums[right]
+            while left <= right and prefix > k:
+                prefix -= nums[left]
+                left += 1
+            if prefix == k:
+                max_len = max(max_len, right - left + 1)
+        return n - max_len if max_len != -1 else -1
