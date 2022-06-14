@@ -1,22 +1,21 @@
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
-        @cache
-        def helper(pos: int, pchar: str) -> int:
-            if pos == 0:
-                return 1
-            
-            if pchar == 'a':
-                return helper(pos - 1, 'e') % MOD
-            elif pchar == 'e':
-                return (helper(pos - 1, 'a') + helper(pos - 1, 'i')) % MOD
-            elif pchar == 'i':
-                return sum(helper(pos - 1, ch) for ch in 'aeou') % MOD
-            elif pchar == 'o':
-                return (helper(pos - 1, 'i') + helper(pos - 1, 'u')) % MOD
-            elif pchar == 'u':
-                return helper(pos - 1, 'a') % MOD
-            else:
-                return sum(helper(pos - 1, ch) for ch in 'aeiou') % MOD
-        
         MOD = 10**9 + 7
-        return helper(n, '#')
+        A, E, I, O, U = 0, 1, 2, 3, 4
+        
+        prev, curr = [1] * 5, [0] * 5
+        for _ in range(n - 1):
+            for pchar in range(5):
+                if pchar == A:
+                    curr[pchar] = prev[E]
+                elif pchar == E:
+                    curr[pchar] = (prev[A] + prev[I]) % MOD
+                elif pchar == I:
+                    curr[pchar] = sum(prev[ch] for ch in [0,1,3,4]) % MOD
+                elif pchar == O:
+                    curr[pchar] = (prev[I] + prev[U]) % MOD
+                elif pchar == U:
+                    curr[pchar] = prev[A]
+            prev, curr = curr, prev
+        return sum(prev) % MOD
+        
