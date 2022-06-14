@@ -1,18 +1,17 @@
 class Solution:
     def numTilings(self, n: int) -> int:
         @cache
-        def domino(k: int) -> int:
-            if k <= 2:
-                return k
+        def domino(pos: int) -> int:
+            if pos <= 2:
+                return pos
             
-            return (domino(k - 1) + domino(k - 2) + 2 * tromino(k - 2)) % mod
+            return (domino(pos - 1) + domino(pos - 2) + 2 * tromino(pos - 2)) % MOD
         
         @cache
-        def tromino(k: int) -> int:
-            if k <= 2:
-                return k
+        def tromino(pos: int) -> int:
+            if pos <= 2:
+                return pos
             
-            return (tromino(k - 1) + domino(k - 1)) % mod
-        
-        mod = 10**9 + 7
+            return (tromino(pos - 1) + domino(pos - 1)) % MOD
+        MOD = 10**9+7
         return domino(n)
