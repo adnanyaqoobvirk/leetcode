@@ -14,5 +14,4 @@ class Solution:
             if min_curr > num:
                 min_curr = num
             min_sum = min(min_sum, min_curr)
-        ans = max(max_sum, total - min_sum)
-        return ans if ans != 0 else max_sum
+        return max(max_sum, total - min_sum) if max_sum > 0 else max_sum
