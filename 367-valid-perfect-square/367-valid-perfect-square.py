@@ -1,6 +1,6 @@
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
-        lo, hi = 1, num
+        lo, hi = 1, num // 2 + 1
         while lo <= hi:
             mid = lo + (hi - lo) // 2
             mid_double = mid * mid
