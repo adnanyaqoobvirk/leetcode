@@ -3,15 +3,19 @@ select
 from
     (
         select
-            distinct
-            salary
+            salary,
+            dense_rank() over(order by salary desc) srank
         from    
             Employee
         
         union all
         
-        select null
+        select 
+            null,
+            2
     ) t
+where
+    t.srank = 2
 order by
-    salary desc
-limit 1, 1
+    t.salary desc
+limit 1
