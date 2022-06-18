@@ -1,13 +1,9 @@
 class Solution:
     def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
-        vpoints = [
-            (abs(x - px) + abs(y - py), i)
-            for i, (px, py) in enumerate(points)
-            if px == x or py == y
-        ]
-        
-        if not vpoints:
-            return -1
-        
-        vpoints.sort()
-        return vpoints[0][1]
+        min_dis, min_idx = inf, -1
+        for i, (px, py) in enumerate(points):
+            if px == x or py == y:
+                dis = abs(px - x) + abs(py - y)
+                if dis < min_dis:
+                    min_dis, min_idx = dis, i
+        return min_idx
