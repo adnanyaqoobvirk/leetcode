@@ -10,4 +10,4 @@ class Solution:
                 hi = mid
             else:
                 lo = mid + 1
-        return lo if isBadVersion(lo) else lo + 1
+        return lo
