@@ -3,8 +3,7 @@ class Solution:
         lo, hi = 1, n + 1
         while lo < hi:
             mid = lo + (hi - lo) // 2
-            total = mid * (mid + 1) // 2
-            if total > n:
+            if (mid * (mid + 1) // 2) > n:
                 hi = mid
             else:
                 lo = mid + 1
