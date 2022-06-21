@@ -1,14 +1,14 @@
 class Solution:
     def wordsAbbreviation(self, words: List[str]) -> List[str]:
-        ans = {}
+        ans = [""] * len(words)
         abbrs = defaultdict(lambda: [1,[]])
-        for word in words:
+        for i, word in enumerate(words):
             if len(word) <= 3:
                 abbr = word
             else:
                 abbr = f"{word[0]}{len(word) - 2}{word[-1]}"
-            abbrs[abbr][1].append(word)
-            ans[word] = abbr
+            abbrs[abbr][1].append(i)
+            ans[i] = abbr
             
         stop = False
         while not stop:
@@ -19,12 +19,13 @@ class Solution:
                     
                     del abbrs[abbr]
                     
-                    for word in awords:
+                    for i in awords:
+                        word = words[i]
                         if len(word) - idx - 2 < 2:
                             abbr = word
                         else:
                             abbr = f"{word[:idx + 1]}{len(word) - idx - 2}{word[-1]}"
                         abbrs[abbr][0] = idx + 1
-                        abbrs[abbr][1].append(word)
-                        ans[word] = abbr
-        return [ans[word] for word in words]
+                        abbrs[abbr][1].append(i)
+                        ans[i] = abbr
+        return ans
