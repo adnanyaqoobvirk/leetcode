@@ -1,31 +1,31 @@
-class Solution:
-    def wordsAbbreviation(self, words: List[str]) -> List[str]:
-        ans = [""] * len(words)
-        abbrs = defaultdict(lambda: [1,[]])
-        for i, word in enumerate(words):
-            if len(word) <= 3:
-                abbr = word
-            else:
-                abbr = f"{word[0]}{len(word) - 2}{word[-1]}"
-            abbrs[abbr][1].append(i)
-            ans[i] = abbr
-            
-        stop = False
-        while not stop:
-            stop = True
-            for abbr, (idx, awords) in list(abbrs.items()):
-                if len(awords) > 1:
-                    stop = False
-                    
-                    del abbrs[abbr]
-                    
-                    for i in awords:
-                        word = words[i]
-                        if len(word) - idx - 2 < 2:
-                            abbr = word
-                        else:
-                            abbr = f"{word[:idx + 1]}{len(word) - idx - 2}{word[-1]}"
-                        abbrs[abbr][0] = idx + 1
-                        abbrs[abbr][1].append(i)
-                        ans[i] = abbr
+class Solution(object):
+    def wordsAbbreviation(self, words):
+        def longest_common_prefix(a, b):
+            i = 0
+            while i < len(a) and i < len(b) and a[i] == b[i]:
+                i += 1
+            return i
+
+        ans = [None for _ in words]
+
+        groups = defaultdict(list)
+        for index, word in enumerate(words):
+            groups[len(word), word[0], word[-1]].append((word, index))
+
+        for (size, first, last), enum_words in groups.items():
+            enum_words.sort()
+            lcp = [0] * len(enum_words)
+            for i, (word, _) in enumerate(enum_words):
+                if i:
+                    word2 = enum_words[i-1][0]
+                    lcp[i] = longest_common_prefix(word, word2)
+                    lcp[i-1] = max(lcp[i-1], lcp[i])
+
+            for (word, index), p in zip(enum_words, lcp):
+                delta = size - 2 - p
+                if delta <= 1:
+                    ans[index] = word
+                else:
+                    ans[index] = word[:p+1] + str(delta) + last
+
         return ans
