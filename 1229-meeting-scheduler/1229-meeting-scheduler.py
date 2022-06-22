@@ -3,25 +3,16 @@ class Solution:
         slots1.sort()
         slots2.sort()
         
-        n = len(slots2)
+        m, n = len(slots1), len(slots2)
         
-        left = 0
-        for start, end in slots1:
-            if end - start < duration:
-                continue
-            
-            while left < n:
-                cstart, cend = slots2[left]
-                if cend - cstart >= duration:
-                    if cstart == start:
-                        return [start, start + duration]
-                    elif cstart < start:
-                        if cend > end or (cend <= end and cend - start >= duration):
-                            return [start, start + duration]
-                    else:
-                        if cend < end or (end <= cend and end - cstart >= duration):
-                            return [cstart, cstart + duration]
-                        else:
-                            break
-                left += 1
+        p1 = p2 = 0
+        while p1 < m and p2 < n:
+            start = max(slots1[p1][0], slots2[p2][0])
+            end = min(slots1[p1][1], slots2[p2][1])
+            if end - start >= duration:
+                return [start, start + duration]
+            elif slots1[p1][1] < slots2[p2][1]:
+                p1 += 1
+            else:
+                p2 += 1
         return []
