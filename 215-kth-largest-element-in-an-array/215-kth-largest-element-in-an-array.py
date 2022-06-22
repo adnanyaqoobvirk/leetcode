@@ -3,13 +3,13 @@ class Solution:
         def partition(lo: int, hi: int, i: int) -> int:
             nums[i], nums[hi] = nums[hi], nums[i]
             
-            k = lo
+            s = lo
             for j in range(lo, hi):
                 if nums[j] < nums[hi]:
-                    nums[j], nums[k] = nums[k], nums[j]
-                    k += 1
-            nums[k], nums[hi] = nums[hi], nums[k]
-            return k
+                    nums[j], nums[s] = nums[s], nums[j]
+                    s += 1
+            nums[s], nums[hi] = nums[hi], nums[s]
+            return s
         
         def select(left: int, right: int, ns: int) -> int:
             if left == right:
