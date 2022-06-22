@@ -1,6 +1,11 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        scounts = Counter(s)
-        for ch, count in Counter(t).items():
-            if scounts[ch] != count:
-                return ch
+        ans = 0
+        
+        for c in s:
+            ans ^= ord(c)
+        
+        for c in t:
+            ans ^= ord(c)
+        
+        return chr(ans)
