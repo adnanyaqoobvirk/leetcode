@@ -5,8 +5,8 @@ class Solution:
         h = []
         total_duration = 0
         for duration, last_day in courses:
-            heapq.heappush(h, -duration)
+            heappush(h, -duration)
             total_duration += duration
             if total_duration > last_day:
-                total_duration += heapq.heappop(h)
+                total_duration += heappop(h)
         return len(h)
