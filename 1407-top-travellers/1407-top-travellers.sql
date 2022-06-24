@@ -1,6 +1,6 @@
 select
     name,
-    sum(ifnull(distance, 0)) as travelled_distance
+    ifnull(sum(distance), 0) as travelled_distance
 from
     Users as u
     left join
