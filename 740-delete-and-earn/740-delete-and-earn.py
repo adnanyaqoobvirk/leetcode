@@ -1,14 +1,17 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
-        max_num, num_map = 0, defaultdict(int)
-        for num in nums:
-            num_map[num] += num
-            max_num = max(max_num, num)
-        
-        prev = curr = 0
-        for num in reversed(range(max_num + 1)):
-            prev, curr = curr, max(
-                num_map[num] + prev,
-                curr
+        @cache
+        def helper(num: int) -> int:
+            if num > max_val:
+                return 0
+            
+            if num not in counts:
+                return helper(num + 1)
+            
+            return max(
+                num * counts[num] + helper(num + 2),
+                helper(num + 1)
             )
-        return curr
+        
+        min_val, max_val, counts = min(nums), max(nums), Counter(nums)
+        return helper(min_val)
