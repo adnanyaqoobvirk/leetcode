@@ -1,13 +1,22 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        pprev, prev, curr = [0] * 2, [0] * 2, [0] * 2
-        for pos in reversed(range(n)):
-            for bought in reversed(range(2)):
-                curr[bought] = max(
-                    -prices[pos] + prev[1],
-                    prev[bought],
-                    (prices[pos] + pprev[0]) if bought else 0
+        @cache
+        def helper(pos: int, bought: int) -> int:
+            if pos >= n:
+                return -inf
+            
+            if bought:
+                return max(
+                    prices[pos],
+                    prices[pos] + helper(pos + 2, False),
+                    helper(pos + 1, True)
                 )
-            pprev, prev, curr = prev, curr, pprev
-        return prev[0]
+            else:
+                return max(
+                    -prices[pos] + helper(pos + 1, True),
+                    helper(pos + 1, False)
+                )
+        
+        n = len(prices)
+        ans = helper(0, 0)
+        return 0 if ans < 0 else ans
