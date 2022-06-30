@@ -1,7 +1,7 @@
 class Solution:
     def maxScoreSightseeingPair(self, values: List[int]) -> int:
         @cache
-        def helper(pos: int, picked: bool) -> int:
+        def helper(pos: int, picked: int) -> int:
             if picked and pos == n - 1:
                 return values[pos] - pos
             
@@ -15,9 +15,11 @@ class Solution:
                 )
             else:
                 return max(
-                    helper(pos + 1, False),
-                    values[pos] + pos + helper(pos + 1, True)
+                    helper(pos + 1, 0),
+                    values[pos] + pos + helper(pos + 1, 1)
                 )
         
         n = len(values)
-        return helper(0, False)
+        return helper(0, 0)
+    
+        
