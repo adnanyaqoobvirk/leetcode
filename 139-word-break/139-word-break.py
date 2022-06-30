@@ -1,20 +1,5 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        @cache
-        def helper(pos: int) -> bool:
-            if pos == n:
-                return True
-            
-            t = trie
-            for i in range(pos, n):
-                if s[i] not in t:
-                    return False
-                
-                t = t[s[i]]
-                if '#' in t and helper(i + 1):
-                    return True
-            return False
-                    
         trie = {}
         for word in wordDict:
             t = trie
@@ -25,4 +10,18 @@ class Solution:
             t['#'] = True
         
         n = len(s)
-        return helper(0)
+        
+        dp = [False] * (n + 1)
+        dp[n] = True
+        
+        for pos in reversed(range(n)):
+            t = trie
+            for i in range(pos, n):
+                if s[i] not in t:
+                    break
+                    
+                t = t[s[i]]
+                if '#' in t and dp[i + 1]:
+                    dp[pos] = True
+                    break
+        return dp[0]
