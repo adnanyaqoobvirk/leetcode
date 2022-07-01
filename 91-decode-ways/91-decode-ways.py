@@ -1,13 +1,20 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        n = len(s)
-        prev, curr = 0, 1
-        for pos in reversed(range(n)):
-            count = 0
-            if s[pos] != '0':
-                count += curr
+        @cache
+        def helper(pos: int) -> int:
+            if pos >= n:
+                return 1
             
-            if pos < n - 1 and 10 <= int(f"{s[pos]}{s[pos + 1]}") <= 26:
-                count += prev
-            prev, curr = curr, count
-        return curr
+            if s[pos] == '0':
+                return 0
+            
+            ans = helper(pos + 1)
+            
+            if pos < n - 1:
+                if s[pos] == '1' or (s[pos] == '2' and int(s[pos + 1]) <= 6):
+                    ans += helper(pos + 2)
+            
+            return ans
+        
+        n = len(s)
+        return helper(0)
