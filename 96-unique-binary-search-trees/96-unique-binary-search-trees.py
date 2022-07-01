@@ -1,13 +1,18 @@
 class Solution:
     def numTrees(self, n: int) -> int:
         @cache
-        def helper(left: int, right: int) -> int:
-            if right - left <= 0:
+        def helper(m: int) -> int:
+            if m == 0:
                 return 1
             
+            if m <= 2:
+                return m
+            
             ans = 0
-            for i in range(left, right + 1):
-                ans += helper(left, i - 1) * helper(i + 1, right)
+            for i in range(1, m + 1):
+                ans += helper(i - 1) * helper(m - i)
                 
             return ans
-        return helper(1, n)
+        return helper(n)
+    
+        
