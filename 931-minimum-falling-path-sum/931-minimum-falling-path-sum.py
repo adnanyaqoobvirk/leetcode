@@ -1,17 +1,18 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
-        n = len(matrix)
-        
-        prev = [matrix[n - 1][j] for j in range(n)]
-        prev.append(float('inf'))
-        curr = [float('inf')] * (n + 1)
+        @cache
+        def helper(row: int, col: int) -> int:
+            if col < 0 or col >= n:
+                return inf
             
-        for i in reversed(range(n - 1)):
-            for j in reversed(range(n)):
-                curr[j] = matrix[i][j] + min(
-                    prev[j - 1],
-                    prev[j],
-                    prev[j + 1]
-                )
-            prev, curr = curr, prev
-        return min(prev)
+            if row == n - 1:
+                return matrix[row][col]
+            
+            return matrix[row][col] + min(
+                helper(row + 1, col - 1),
+                helper(row + 1, col),
+                helper(row + 1, col + 1)
+            )
+        
+        n = len(matrix)
+        return min(helper(0, col) for col in range(n))
