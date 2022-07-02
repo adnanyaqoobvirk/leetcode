@@ -1,14 +1,16 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
-        @cache
-        def helper(i: int, j: int) -> int:
-            if i < 0 or i >= m or j < 0 or j >= n or obstacleGrid[i][j] == 1:
-                return 0
-            
-            if i == m - 1 and j == n - 1:
-                return 1
-            
-            return helper(i + 1, j) + helper(i, j + 1)
-        
         m, n = len(obstacleGrid), len(obstacleGrid[0])
-        return helper(0, 0)
+        
+        prev, curr = [0] * (n + 1), [0] * (n + 1)
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                if obstacleGrid[i][j] == 1:
+                    continue
+                    
+                if i == m - 1 and j == n - 1:
+                    curr[j] = 1
+                else:
+                    curr[j] = prev[j] + curr[j + 1]
+            prev, curr = curr, [0] * (n + 1)
+        return prev[0]
