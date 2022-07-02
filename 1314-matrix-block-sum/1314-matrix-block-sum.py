@@ -1,16 +1,21 @@
 class Solution:
     def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
-        h, w = len(mat) + 1, len(mat[0]) + 1
+        m, n = len(mat), len(mat[0])
         
-        ii = [[0] * w for _ in range(h)]
-        for y in range(1, h):
-            for x in range(1, w):
-                ii[y][x] = mat[y - 1][x - 1] + ii[y][x - 1] + ii[y - 1][x] - ii[y - 1][x - 1]
+        cmat = [[0] * (n + 1) for _ in range(m + 1)]
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                cmat[i][j] = (
+                    mat[i - 1][j - 1] + cmat[i - 1][j] - cmat[i - 1][j - 1] + cmat[i][j - 1]
+                )
         
-        ans = [[0] * (w - 1) for _ in range(h - 1)]
-        for y in range(1, h):
-            by_min, by_max = max(y - k, 1), min(y + k, h - 1)
-            for x in range(1, w):
-                bx_min, bx_max = max(x - k, 1), min(x + k, w - 1)
-                ans[y - 1][x - 1] = ii[by_max][bx_max] - ii[by_min - 1][bx_max] - ii[by_max][bx_min - 1] + ii[by_min - 1][bx_min - 1]
+        ans = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                r1, c1 = max(i - k, 0) + 1, max(j - k, 0) + 1
+                r2, c2 = min(i + k, m - 1) + 1, min(j + k, n - 1) + 1
+                
+                ans[i][j] = (
+                    cmat[r2][c2] - cmat[r1 - 1][c2] - cmat[r2][c1 - 1] + cmat[r1 - 1][c1 - 1]
+                )
         return ans
