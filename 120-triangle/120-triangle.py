@@ -1,13 +1,16 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        @cache
-        def helper(row: int, col: int) -> int:
-            if row == n - 1:
-                return triangle[row][col]
-            
-            return triangle[row][col] + min(
-                helper(row + 1, col),
-                helper(row + 1, col + 1)
-            )
         n = len(triangle)
-        return helper(0, 0)
+        
+        prev = triangle[-1][::]
+        curr = [0] * (len(triangle[-1]) - 1)
+        for row in reversed(range(n - 1)):
+            for col in range(row + 1):
+                curr[col] = triangle[row][col] + min(
+                    prev[col],
+                    prev[col + 1]
+                )
+            prev, curr = curr, [0] * row
+        return prev[0]
+    
+        
