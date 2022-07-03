@@ -1,18 +1,9 @@
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
-        @cache
-        def helper(pos: int, ppos: int, psign: bool) -> int:
-            if pos == n:
-                return 1
-            
-            diff = nums[pos] - nums[ppos]
-            if diff == 0 or (diff > 0 if psign else diff < 0):
-                return helper(pos + 1, ppos, psign)
-            else:
-                return max(
-                    1 + helper(pos + 1, pos, diff > 0),
-                    helper(pos + 1, pos, True),
-                    helper(pos + 1, pos, False)
-                )
-        n = len(nums)
-        return max(helper(1, 0, True), helper(1, 0, False))
+        pdiff, seq_len = 0, 1
+        for i in range(1, len(nums)):
+            diff = nums[i] - nums[i - 1]
+            if diff == 0 or (diff < 0 and pdiff < 0) or (diff > 0 and pdiff > 0):
+                continue
+            pdiff, seq_len = diff, seq_len + 1
+        return seq_len
