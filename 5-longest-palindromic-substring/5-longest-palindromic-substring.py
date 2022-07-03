@@ -9,16 +9,14 @@ class Solution:
                 left -= 1
                 right += 1
             
-            pd = s[left + 1:right]
-            if len(pd) > len(max_pd):
-                max_pd = pd
+            if (right - left - 1) > len(max_pd):
+                max_pd = s[left + 1:right]
             
             left, right = i - 1, i
             while left >= 0 and right < n and s[left] == s[right]:
                 left -= 1
                 right += 1
             
-            pd = s[left + 1:right]
-            if len(pd) > len(max_pd):
-                max_pd = pd
+            if (right - left - 1) > len(max_pd):
+                max_pd = s[left + 1:right]
         return max_pd
