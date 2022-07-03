@@ -1,13 +1,16 @@
 class Solution:
     def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
-        lesser, equal, greater = [], [], []
+        ans, pcount = [], 0
         for num in nums:
             if num < pivot:
-                lesser.append(num)
+                ans.append(num)
             elif num == pivot:
-                equal.append(num)
-            else:
-                greater.append(num)
-        lesser.extend(equal)
-        lesser.extend(greater)
-        return lesser
+                pcount += 1
+                
+        for _ in range(pcount):
+            ans.append(pivot)
+            
+        for num in nums:
+            if num > pivot:
+                ans.append(num)
+        return ans
