@@ -1,26 +1,31 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int ans = helper(
-            coins, amount, new int[amount + 1]
-        );
+        ArrayList<Integer> q = new ArrayList<>();
+        q.add(amount);
         
-        return (ans == Integer.MAX_VALUE) ? -1 : ans;
-    }
-    
-    private int helper(int[] coins, int remaining, int[] dp) {
-        if (remaining < 0) 
-            return Integer.MAX_VALUE;
+        HashSet<Integer> seen = new HashSet<Integer>();
+        seen.add(amount);
         
-        if (remaining == 0)
-            return 0;
-        
-        if (dp[remaining] == 0){
-            int ans = Integer.MAX_VALUE;
-            for (int coin : coins)
-                ans = Math.min(ans, helper(coins, remaining - coin, dp));
-            dp[remaining] = (ans == Integer.MAX_VALUE) ? Integer.MAX_VALUE : ans + 1;
+        int ans = 0;
+        while (q.size() > 0){
+            ArrayList<Integer> nq = new ArrayList<Integer>();
+            
+            for(Integer r : q){
+                if (r == 0)
+                    return ans;
+                
+                if (r > 0)
+                    for (int coin : coins){
+                        if (seen.contains(r - coin))
+                            continue;
+                        nq.add(r - coin);
+                        seen.add(r - coin);
+                    }
+            }
+            q = nq;
+            ans += 1;
         }
         
-        return dp[remaining];
+        return -1; 
     }
 }
