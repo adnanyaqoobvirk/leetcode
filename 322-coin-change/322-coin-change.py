@@ -1,18 +1,20 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         @cache
-        def helper(i: int, remaining: int) -> int:
-            if i == n or remaining < 0:
+        def helper(remaining: int) -> int:
+            if remaining < 0:
                 return inf
             
             if remaining == 0:
                 return 0
             
-            return min(
-                1 + helper(i, remaining - coins[i]),
-                helper(i + 1, remaining)
-            )
+            ans = inf
+            for coin in coins:
+                ans = min(
+                    ans, helper(remaining - coin)
+                )
+            return ans + 1
         
         n = len(coins)
-        ans = helper(0, amount)
+        ans = helper(amount)
         return ans if ans != inf else -1
