@@ -8,7 +8,7 @@ where
         and 
         customer_id in (
             select
-                customer_id
+                distinct customer_id
             from
                 Orders
             where
