@@ -5,7 +5,7 @@ from
 where
     customer_id not in (
         select
-            distinct customer_id
+            customer_id
         from
             Orders
         where
@@ -21,7 +21,7 @@ from
 where
     customer_id in (
         select
-            distinct customer_id
+            customer_id
         from
             Orders
         where
