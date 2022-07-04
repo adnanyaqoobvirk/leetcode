@@ -1,17 +1,18 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        coin_count = 0
-        q, seen = [amount], {amount}
-        while q:
-            nq = []
-            for r in q:
-                if r == 0:
-                    return coin_count
-                for coin in coins:
-                    nr = r - coin
-                    if nr >= 0 and nr not in seen:
-                        nq.append(nr)
-                        seen.add(nr)
-            q = nq
-            coin_count += 1
-        return -1
+        @cache
+        def helper(i: int, remaining: int) -> int:
+            if i == n or remaining < 0:
+                return inf
+            
+            if remaining == 0:
+                return 0
+            
+            return min(
+                1 + helper(i, remaining - coins[i]),
+                helper(i + 1, remaining)
+            )
+        
+        n = len(coins)
+        ans = helper(0, amount)
+        return ans if ans != inf else -1
