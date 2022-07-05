@@ -1,14 +1,33 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        n, ans = len(nums) - 1, float('-inf')
-        prefix_product = postfix_product = 1
-        for i in range(n + 1):
-            prefix_product *= nums[i]
-            postfix_product *= nums[n - i]
-            ans = max(ans, prefix_product, postfix_product)
-            if not prefix_product:
-                prefix_product = 1
-            if not postfix_product:
-                postfix_product = 1
-        return ans
+        @cache
+        def maxp(pos: int, start: bool) -> int:
+            if pos == n:
+                return 1 if start else -inf
             
+            if start:
+                return max(
+                    nums[pos] * (
+                        minp(pos + 1) if nums[pos] < 0 else maxp(pos + 1, True)
+                    ),
+                    1
+                )
+            else:
+                return max(
+                    nums[pos] * (
+                        minp(pos + 1) if nums[pos] < 0 else maxp(pos + 1, True)
+                    ),
+                    maxp(pos + 1, False)
+                )
+        @cache
+        def minp(pos: int) -> int:
+            if pos == n:
+                return 1
+            
+            if nums[pos] < 0:
+                return nums[pos] * maxp(pos + 1, True)
+            else:
+                return nums[pos] * minp(pos + 1)
+            
+        n = len(nums)
+        return maxp(0, False)
