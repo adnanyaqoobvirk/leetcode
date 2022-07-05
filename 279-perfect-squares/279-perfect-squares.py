@@ -1,13 +1,22 @@
 class Solution:
     def numSquares(self, n: int) -> int:
-        m = int(sqrt(n)) + 1
-        squares = [num**2 for num in range(1, m)]
+        squares = [num**2 for num in range(1, int(sqrt(n)) + 1)]
         
-        curr = [inf] * (n + 1)
-        curr[0] = 0
-        for remaining in range(1, n + 1):
-            for i in range(int(sqrt(remaining))):
-                curr[remaining] = min(
-                    curr[remaining], 1 + curr[remaining - squares[i]]
-                )
-        return curr[n]
+        q = [n]
+        seen = {n}
+        ans = 0
+        while q:
+            nq = []
+            for remaining in q:
+                if remaining == 0:
+                    return ans
+                
+                for square in squares:
+                    if remaining - square < 0:
+                        break
+                    if remaining - square not in seen:
+                        seen.add(remaining - square)
+                        nq.append(remaining - square)
+            q = nq
+            ans += 1
+        return ans
