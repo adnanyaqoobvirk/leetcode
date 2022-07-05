@@ -11,12 +11,11 @@ class Solution:
                 if remaining == 0:
                     return ans
                 
-                for square in squares:
-                    if remaining - square < 0:
-                        break
-                    if remaining - square not in seen:
-                        seen.add(remaining - square)
-                        nq.append(remaining - square)
+                for j in range(int(sqrt(remaining))):
+                    nr = remaining - squares[j]
+                    if nr not in seen:
+                        seen.add(nr)
+                        nq.append(nr)
             q = nq
             ans += 1
         return ans
