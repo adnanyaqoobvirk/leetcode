@@ -6,14 +6,21 @@ class Solution {
         
         int ans = 0;
         for(int num : nums){
-            if(!numSet.contains(num - 1)){
-                int count = 0;
-                while(numSet.contains(num)){
-                    num++;
-                    count++;
-                }
-                ans = Math.max(ans, count);
+            int count = 0;
+            int nnum = num;
+            while(numSet.contains(nnum)){
+                numSet.remove(nnum);
+                nnum--;
+                count++;
             }
+            
+            nnum = num + 1;
+            while(numSet.contains(nnum)){
+                numSet.remove(nnum);
+                nnum++;
+                count++;
+            }
+            ans = Math.max(ans, count);
         }
         return ans;
     }
