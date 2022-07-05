@@ -1,15 +1,15 @@
 class Solution:
     def integerBreak(self, n: int) -> int:
-        @cache
-        def helper(num: int, remaining: int) -> int:
-            if num == n or remaining < 0:
-                return -inf
-            
-            if remaining == 0:
-                return 1
-            
-            return max(
-                num * helper(num, remaining - num),
-                helper(num + 1, remaining)
-            )
-        return helper(1, n)
+        prev, curr = [-inf] * (n + 1), [-inf] * (n + 1)
+        prev[0] = 1
+        for num in reversed(range(1, n)):
+            for remaining in range(n + 1):
+                if remaining - num < 0:
+                    curr[remaining] = prev[remaining]
+                else:
+                    curr[remaining] = max(
+                        num * curr[remaining - num],
+                        prev[remaining]
+                    )
+            prev, curr = curr, prev
+        return prev[n]
