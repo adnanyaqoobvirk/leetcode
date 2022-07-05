@@ -3,10 +3,9 @@ class Solution:
         curr = [-inf] * (n + 1)
         curr[0] = 1
         for num in reversed(range(1, n)):
-            for remaining in range(n + 1):
-                if remaining - num >= 0:
-                    curr[remaining] = max(
-                        num * curr[remaining - num],
-                        curr[remaining]
-                    )
+            for remaining in range(num, n + 1):
+                curr[remaining] = max(
+                    num * curr[remaining - num],
+                    curr[remaining]
+                )
         return curr[n]
