@@ -1,15 +1,12 @@
 class Solution:
     def integerBreak(self, n: int) -> int:
-        prev, curr = [-inf] * (n + 1), [-inf] * (n + 1)
-        prev[0] = 1
+        curr = [-inf] * (n + 1)
+        curr[0] = 1
         for num in reversed(range(1, n)):
             for remaining in range(n + 1):
-                if remaining - num < 0:
-                    curr[remaining] = prev[remaining]
-                else:
+                if remaining - num >= 0:
                     curr[remaining] = max(
                         num * curr[remaining - num],
-                        prev[remaining]
+                        curr[remaining]
                     )
-            prev, curr = curr, prev
-        return prev[n]
+        return curr[n]
