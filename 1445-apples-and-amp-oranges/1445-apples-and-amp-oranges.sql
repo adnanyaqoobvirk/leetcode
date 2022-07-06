@@ -5,3 +5,5 @@ from
     Sales
 group by
     sale_date
+order by
+    sale_date asc
