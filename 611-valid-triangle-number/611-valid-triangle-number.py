@@ -16,6 +16,6 @@ class Solution:
                     if nums[mid] >= total:
                         hi = mid
                     else:
-                        lo = lo + 1
+                        lo = mid + 1
                 combs += max(0, lo - j - 1)
         return combs
