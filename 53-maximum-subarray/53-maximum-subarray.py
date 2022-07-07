@@ -1,9 +1,19 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        max_sum = total = float('-inf')
-        for num in nums:
-            total += num
-            if total < num:
-                total = num
-            max_sum = max(max_sum, total)
-        return max_sum
+        @cache
+        def helper(pos: int, pick: bool) -> int:
+            if pos == n:
+                return 0 if pick else -inf
+            
+            if pick:
+                return max(
+                    nums[pos] + helper(pos + 1, True),
+                    0
+                )
+            else:
+                return max(
+                    nums[pos] + helper(pos + 1, True),
+                    helper(pos + 1, False)
+                )
+        n = len(nums)
+        return helper(0, False)
