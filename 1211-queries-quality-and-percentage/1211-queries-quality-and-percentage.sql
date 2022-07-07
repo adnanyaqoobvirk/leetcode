@@ -1,15 +1,12 @@
-SELECT
+select
     query_name,
-    ROUND(
-        AVG(rating / position),
+    round(avg(rating / position), 2) as quality,
+    round(
+        sum(rating < 3) * 100 / count(query_name),
         2
-    ) AS quality,
-    ROUND(
-        SUM(rating < 3) * 100 / COUNT(query_name),
-        2
-    ) AS poor_query_percentage
-FROM
+    ) as poor_query_percentage
+from
     Queries
-GROUP BY
+group by
     query_name
     
