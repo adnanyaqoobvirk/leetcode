@@ -10,15 +10,19 @@ class Solution:
             for p2 in reversed(range(n2 + 1)):
                 p3 = p1 + p2
                 
-                if p1 == n1 and p2 == n2 and p3 == n3:
+                if p3 == n3:
                     curr[p2] = True
-                else:
-                    curr[p2] = False
-                    if p1 < n1 and s1[p1] == s3[p3]:
-                        curr[p2] |= prev[p2]
-
-                    if p2 < n2 and s2[p2] == s3[p3]:
-                        curr[p2] |= curr[p2 + 1]
+                    continue
+                
+                curr[p2] = False
+                if p1 < n1 and s1[p1] == s3[p3]:
+                    curr[p2] = prev[p2]
+                
+                if p2 < n2 and s2[p2] == s3[p3]:
+                    curr[p2] |= curr[p2 + 1]
             prev, curr = curr, prev
         return prev[0]
-        
+                
+                
+                
+                
