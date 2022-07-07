@@ -1,19 +1,15 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        @cache
-        def helper(pos: int, pick: bool) -> int:
-            if pos == n:
-                return 0 if pick else -inf
-            
-            if pick:
-                return max(
-                    nums[pos] + helper(pos + 1, True),
-                    0
-                )
-            else:
-                return max(
-                    nums[pos] + helper(pos + 1, True),
-                    helper(pos + 1, False)
-                )
         n = len(nums)
-        return helper(0, False)
+        curr_picked, curr_not_picked = 0, -inf
+        for pos in reversed(range(n)):
+            curr_picked, curr_not_picked = max(
+                nums[pos] + curr_picked,
+                0
+            ), max(
+                nums[pos] + curr_picked,
+                curr_not_picked
+            )
+        return curr_not_picked
+            
+            
