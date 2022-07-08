@@ -10,24 +10,14 @@ class Node:
 
 class Solution:
     def inorderSuccessor(self, node: 'Node') -> 'Optional[Node]':
-        root = node
-        while root.parent:
-            root = root.parent
+        if node.right:
+            curr = node.right
+            while curr.left:
+                curr = curr.left
+            return curr
         
-        node_found = False
-        stack = []
-        while root or stack:
-            if root:
-                stack.append(root)
-                root = root.left
-            else:
-                curr = stack.pop()
-                
-                if node_found:
-                    return curr
-                
-                if curr == node:
-                    node_found = True
-                
-                root = curr.right
-        return None
+        curr = node
+        while curr.parent and curr.parent.right == curr:
+            curr = curr.parent
+        return curr.parent
+        
