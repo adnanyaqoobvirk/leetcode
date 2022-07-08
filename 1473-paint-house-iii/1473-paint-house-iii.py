@@ -3,7 +3,7 @@ class Solution:
         @cache
         def helper(i: int, nhs: int, pcolor: int) -> int:
             if i == m:
-                return inf if nhs != 0 else 0
+                return inf if nhs != target else 0
             
             if nhs < 0:
                 return inf
@@ -11,7 +11,7 @@ class Solution:
             if houses[i] != 0:
                 return helper(
                     i + 1, 
-                    nhs - 1 if pcolor != houses[i] else nhs,
+                    nhs + 1 if pcolor != houses[i] else nhs,
                     houses[i]
                 )
             
@@ -21,10 +21,12 @@ class Solution:
                     ans, 
                     cost[i][j] + helper(
                         i + 1, 
-                        nhs - 1 if pcolor != j + 1 else nhs,
+                        nhs + 1 if pcolor != j + 1 else nhs,
                         j + 1
                     )
                 )
             return ans
-        res = helper(0, target, 0)
+        res = helper(0, 0, 0)
         return -1 if res == inf else res
+    
+    
