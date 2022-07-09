@@ -1,22 +1,25 @@
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        ans = []
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        LinkedList<Pair<Integer, Integer>> q = new LinkedList<>();
+        int[] ans = new int[nums.length - k + 1];
         
-        q = deque()
-        for i in range(k):
-            while q and q[-1][0] < nums[i]:
-                q.pop()
-            q.append((nums[i], i))
-        ans.append(q[0][0])
+        for(int i = 0; i < k; i++){
+            while(q.size() > 0 && q.getLast().getKey() < nums[i])
+                q.removeLast();
+            q.add(new Pair(nums[i], i));
+        }
+        ans[0] = q.getFirst().getKey();
         
-        for i in range(k, len(nums)):
-            while q and q[0][1] <= i - k:
-                q.popleft()
-                
-            while q and q[-1][0] < nums[i]:
-                q.pop()
-                
-            q.append((nums[i], i))
-            ans.append(q[0][0])
+        for(int i = k; i < nums.length; i++){
+            while(q.size() > 0 && q.getFirst().getValue() <= i - k)
+                q.removeFirst();
             
-        return ans
+            while(q.size() > 0 && q.getLast().getKey() < nums[i])
+                q.removeLast();
+            q.add(new Pair(nums[i], i));
+            ans[i - k + 1] = q.getFirst().getKey();
+        }
+        
+        return ans;
+    }
+}
