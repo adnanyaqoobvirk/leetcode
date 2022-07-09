@@ -1,15 +1,12 @@
-from sortedcontainers import SortedSet
-
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        sl = SortedSet()
-        for i in range(k):
-            sl.add((nums[i], i))
-            
-        ans = [sl[-1][0]]
-        for i in range(k, len(nums)):
-            sl.remove((nums[i - k], i - k))
-            sl.add((nums[i], i))
-            ans.append(sl[-1][0])
-        return ans
+        window = [(-nums[i], i) for i in range(k)]
+        heapify(window)
         
+        ans = [-window[0][0]]
+        for i in range(k, len(nums)):
+            while window and window[0][1] <= (i - k):
+                heappop(window)
+            heappush(window, (-nums[i], i))
+            ans.append(-window[0][0])
+        return ans
