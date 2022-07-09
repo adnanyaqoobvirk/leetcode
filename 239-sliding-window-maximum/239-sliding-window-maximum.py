@@ -1,8 +1,8 @@
-from sortedcontainers import SortedList
+from sortedcontainers import SortedSet
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        sl = SortedList()
+        sl = SortedSet()
         for i in range(k):
             sl.add((nums[i], i))
             
