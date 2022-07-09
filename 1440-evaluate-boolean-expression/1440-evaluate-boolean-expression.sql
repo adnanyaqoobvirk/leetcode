@@ -2,11 +2,15 @@ select
     e.left_operand,
     e.operator,
     e.right_operand,
-    case
-        when operator = '>' then if(lv.value > rv.value, 'true', 'false')
-        when operator = '<' then if(lv.value < rv.value, 'true', 'false')
-        else if(lv.value = rv.value, 'true', 'false')
-    end as value
+    if(
+        case
+            when operator = '>' then lv.value > rv.value
+            when operator = '<' then lv.value < rv.value
+            else lv.value = rv.value
+        end,
+        'true',
+        'false'
+    ) as value
 from
     Expressions as e
     inner join
