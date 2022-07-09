@@ -1,34 +1,23 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        SortedSet<Integer> window = new TreeSet<>();
-        HashMap<Integer, Integer> counts = new HashMap<>();
+        LinkedList<Pair<Integer, Integer>> q = new LinkedList<>();
         int[] ans = new int[nums.length - k + 1];
         
         for(int i = 0; i < k; i++){
-            Integer count = counts.get(nums[i]);
-            if(count == null){
-                counts.put(nums[i], 1);
-                window.add(nums[i]);
-            } else
-                counts.put(nums[i], count + 1);
+            while(q.size() > 0 && q.getLast().getKey() < nums[i])
+                q.removeLast();
+            q.add(new Pair(nums[i], i));
         }
-
-        ans[0] = window.last();
+        ans[0] = q.getFirst().getKey();
+        
         for(int i = k; i < nums.length; i++){
-            Integer count = counts.get(nums[i - k]);
-            if(count == 1){
-                counts.remove(nums[i - k]);
-                window.remove(nums[i - k]);
-            } else
-                counts.put(nums[i - k], count - 1);
+            while(q.size() > 0 && q.getFirst().getValue() <= i - k)
+                q.removeFirst();
             
-            count = counts.get(nums[i]);
-            if(count == null){
-                counts.put(nums[i], 1);
-                window.add(nums[i]);
-            } else
-                counts.put(nums[i], count + 1);
-            ans[i - k + 1] = window.last();
+            while(q.size() > 0 && q.getLast().getKey() < nums[i])
+                q.removeLast();
+            q.add(new Pair(nums[i], i));
+            ans[i - k + 1] = q.getFirst().getKey();
         }
         
         return ans;
