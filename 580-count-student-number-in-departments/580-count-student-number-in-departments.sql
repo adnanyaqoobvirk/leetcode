@@ -1,6 +1,6 @@
 select
     d.dept_name,
-    sum(if(s.student_id is null, 0, 1)) as student_number
+    count(s.student_id) as student_number
 from
     Department as d
     left join
