@@ -1,13 +1,16 @@
-SELECT
-    P1.id AS p1,
-    P2.id AS p2,
-    ABS(p1.x_value - p2.x_value) * ABS(p1.y_value - p2.y_value) AS area
-FROM
-    Points P1
-    INNER JOIN Points P2 ON P1.id < P2.id
-HAVING
+select
+    p1.id as p1,
+    p2.id as p2,
+    abs(p1.x_value - p2.x_value) * abs(p1.y_value - p2.y_value) as area
+from
+    Points p1
+    inner join 
+    Points p2 
+    on 
+        p1.id < p2.id
+having
     area > 0
-ORDER BY
-    area DESC,
-    p1 ASC,
-    p2 ASC
+order by
+    area desc,
+    p1 asc,
+    p2 asc
