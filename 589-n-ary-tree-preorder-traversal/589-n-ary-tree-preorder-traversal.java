@@ -20,16 +20,20 @@ class Node {
 class Solution {
     public List<Integer> preorder(Node root) {
         List<Integer> res = new ArrayList<>();
-        helper(root, res);
-        return res;
-    }
-    
-    private void helper(Node curr, List<Integer> res){
-        if(curr != null){
+        if(root == null)
+            return res;
+        
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        
+        while(stack.size() > 0){
+            Node curr = stack.pop();
             res.add(curr.val);
-            for(Node child : curr.children){
-                helper(child, res);
-            }
+            
+            for(int i = curr.children.size() - 1; i >= 0; i--)
+                stack.push(curr.children.get(i));
         }
+        
+        return res;
     }
 }
