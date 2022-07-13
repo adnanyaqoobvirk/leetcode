@@ -2,12 +2,9 @@ class Solution {
     public int sumOddLengthSubarrays(int[] arr) {
         int ans = 0;
         for(int i = 0; i < arr.length; i++){
-            int total = 0;
-            for(int j = i; j < arr.length; j++){
-                total += arr[j];
-                if((i - j) % 2 == 0)
-                    ans += total;
-            }
+            int subArrayCount = (arr.length - i) * (i + 1);
+            int oddSubArrayCount = (subArrayCount + 1) / 2;
+            ans += arr[i] * oddSubArrayCount;
         }
         return ans;
     }
