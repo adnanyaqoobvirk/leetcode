@@ -1,30 +1,30 @@
-WITH LatestProductSales AS (
-    SELECT
+with LatestProductSales as (
+    select
         product_id,
         order_id,
         order_date,
-        RANK() OVER(
-            PARTITION BY product_id
-            ORDER BY order_date DESC
-        ) AS drank
-    FROM
+        rank() over(
+            partition by product_id
+            order by order_date desc
+        ) as drank
+    from
         Orders
 )
 
-SELECT
-    P.product_name,
-    L.product_id,
-    L.order_id,
-    L.order_date
-FROM
-    LatestProductSales AS L
-    INNER JOIN
-    Products AS P
-    ON 
-        L.drank = 1 
-        AND 
-        L.product_id = P.product_id
-ORDER BY
-    P.product_name,
-    P.product_id,
-    L.order_id
+select
+    p.product_name,
+    l.product_id,
+    l.order_id,
+    l.order_date
+from
+    LatestProductSales as l
+    inner join
+    Products as p
+    on 
+        l.drank = 1 
+        and 
+        l.product_id = p.product_id
+order by
+    p.product_name,
+    p.product_id,
+    l.order_id
