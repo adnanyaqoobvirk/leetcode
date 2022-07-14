@@ -14,7 +14,7 @@ class Solution {
         
         ListNode curr = head;
         while(curr != null){
-            ans = ans * 2 + curr.val;
+            ans = (ans << 1) | curr.val;
             curr = curr.next;
         }
         
