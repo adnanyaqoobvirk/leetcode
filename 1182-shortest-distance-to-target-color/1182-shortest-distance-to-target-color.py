@@ -11,21 +11,11 @@ class Solution:
                 ans.append(-1)
                 continue
             
-            lo, hi = 0, len(indices) - 1
-            while lo < hi:
-                mid = lo + (hi - lo) // 2
-                if indices[mid] >= i:
-                    hi = mid
-                else:
-                    lo = mid + 1
-            if lo > 0:
-                ans.append(
-                    min(
-                        abs(indices[lo - 1] - i),
-                        abs(indices[lo] - i)
-                    )
+            idx = bisect_left(indices, i)
+            ans.append(
+                min(
+                    abs(indices[min(idx, len(indices) - 1)] - i),
+                    abs(indices[max(idx - 1, 0)] - i)
                 )
-            else:
-                ans.append(abs(indices[lo] - i))
+            )
         return ans
-            
