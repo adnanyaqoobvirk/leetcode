@@ -11,34 +11,29 @@ class Solution {
     }
     
     private int helper(int m, int n, int maxMove, int[][][] dp, int x, int y, int moves){
+        if(x < 0 || x >= m || y < 0 || y >= n)
+            return 1;
+        
         if(moves == maxMove)
             return 0;
         
         if(dp[x][y][moves] == -1){
-            dp[x][y][moves] = 0;
-            
-            int i = x;
-            for(int j : new int[]{y - 1, y + 1}){
-                if(0 <= i && i < m && 0 <= j && j < n){
-                    dp[x][y][moves] += this.helper(
-                        m, n, maxMove, dp, i, j, moves + 1
-                    );
-                    dp[x][y][moves] %= MOD;
-                }
-                else
-                    dp[x][y][moves]++;
-            }
-            int j = y;
-            for(int xi : new int[]{x - 1, x + 1}){
-                if(0 <= xi && xi < m && 0 <= j && j < n){
-                    dp[x][y][moves] += this.helper(
-                        m, n, maxMove, dp, xi, j, moves + 1
-                    );
-                    dp[x][y][moves] %= MOD;
-                }
-                else
-                    dp[x][y][moves]++;
-            }
+            dp[x][y][moves] = (
+                (
+                    this.helper(
+                        m, n, maxMove, dp, x + 1, y, moves + 1
+                    ) + this.helper(
+                        m, n, maxMove, dp, x - 1, y, moves + 1
+                    )
+                ) % MOD + 
+                (
+                    this.helper(
+                        m, n, maxMove, dp, x, y + 1, moves + 1
+                    ) + this.helper(
+                        m, n, maxMove, dp, x, y - 1, moves + 1
+                    )
+                ) % MOD
+            ) % MOD;
         }
         return dp[x][y][moves];
     }
