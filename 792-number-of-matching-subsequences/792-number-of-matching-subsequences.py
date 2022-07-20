@@ -1,24 +1,19 @@
 class Solution:
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
         buckets = defaultdict(list)
-        for i, c in enumerate(s):
-            buckets[c].append(i)
+        for word in words:
+            itr = iter(word)
+            buckets[next(itr)].append(itr)
         
         ans = 0
-        for word in words:
-            i = 0
-            for c in word:
-                b = buckets[c]
-                lo, hi = 0, len(b)
-                while lo < hi:
-                    mid = lo + (hi - lo) // 2
-                    if b[mid] >= i:
-                        hi = mid
-                    else:
-                        lo = mid + 1
-                if lo == len(b):
-                    break
-                i = b[lo] + 1
-            else:
-                ans += 1
+        for c in s:
+            b = buckets[c]
+            buckets[c] = []
+            
+            for itr in b:
+                nitr = next(itr, None)
+                if nitr:
+                    buckets[nitr].append(itr)
+                else:
+                    ans += 1
         return ans
