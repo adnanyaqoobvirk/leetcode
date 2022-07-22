@@ -10,13 +10,17 @@ class Solution:
         
         curr = head
         while curr:
+            ncurr = curr.next
+            curr.next = None
+            
             if curr.val < x:
-                lcurr.next = ListNode(curr.val)
+                lcurr.next = curr
                 lcurr = lcurr.next
             else:
-                gcurr.next = ListNode(curr.val)
+                gcurr.next = curr
                 gcurr = gcurr.next
-            curr = curr.next
+            
+            curr = ncurr
             
         lcurr.next = ghead.next
         
