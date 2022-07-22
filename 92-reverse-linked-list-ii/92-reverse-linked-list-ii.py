@@ -4,36 +4,21 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverseBetween(self, head: Optional[ListNode], m: int, n: int) -> Optional[ListNode]:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        if left == right or not head or not head.next:
+            return head
         
-        # Empty list
-        if not head:
-            return None
-
-        # Move the two pointers until they reach the proper starting point
-        # in the list.
-        cur, prev = head, None
-        while m > 1:
-            prev = cur
-            cur = cur.next
-            m, n = m - 1, n - 1
-
-        # The two pointers that will fix the final connections.
-        tail, con = cur, prev
-
-        # Iteratively reverse the nodes until n becomes 0.
-        while n:
-            third = cur.next
-            cur.next = prev
-            prev = cur
-            cur = third
-            n -= 1
-
-        # Adjust the final connections as explained in the algorithm
-        if con:
-            con.next = prev
-        else:
-            head = prev
-        tail.next = cur
-        return head
+        sentinal = ListNode(0, head)
         
+        ltail = sentinal
+        for i in range(left - 1):
+            ltail = ltail.next
+        
+        prev, curr = ltail.next, ltail.next.next
+        for _ in range(right - left):
+            ncurr, curr.next = curr.next, prev
+            prev, curr = curr, ncurr
+        ltail.next.next = curr
+        ltail.next = prev
+        
+        return sentinal.next
