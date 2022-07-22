@@ -1,28 +1,23 @@
 class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        graph = defaultdict(set)
-        for src, dst in edges:
-            graph[src].add(dst)
-        
-        visited, stack = {}, [source]
-        while stack:
-            curr = stack[-1]
+        def helper(curr: int) -> bool:
+            if curr in node_color:
+                return node_color[curr] == 1
             
             if not graph[curr] and curr != destination:
                 return False
             
-            for node in graph[curr]:
-                if node not in visited or not visited[node]:
-                    break
-            else:
-                visited[curr] = True
-                stack.pop()
-                continue
-
-            visited[curr] = False
-            for node in graph[curr]:
-                if node in visited and not visited[node]:
+            node_color[curr] = 0
+            for child in graph[curr]:
+                if not helper(child):
                     return False
-                stack.append(node)
-        return True
-        
+            node_color[curr] = 1
+            
+            return True
+            
+        graph = defaultdict(list)
+        for src, dst in edges:
+            graph[src].append(dst)
+            
+        node_color = {}
+        return helper(source)
