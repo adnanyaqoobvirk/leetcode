@@ -6,7 +6,7 @@ class Solution {
             seen.add(roll);
             
             if(seen.size() == k){
-                seen.clear();
+                seen = new HashSet<>();
                 ans += 1;
             }
         }
