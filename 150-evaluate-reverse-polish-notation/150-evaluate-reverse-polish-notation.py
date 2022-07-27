@@ -1,8 +1,10 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
+        specials = {'+','-','*','/'}
+        
         stack = []
         for token in tokens:
-            if token not in {'+','-','*','/'}:
+            if token not in specials:
                 stack.append(int(token))
             else:
                 b, a = stack.pop(), stack.pop()
