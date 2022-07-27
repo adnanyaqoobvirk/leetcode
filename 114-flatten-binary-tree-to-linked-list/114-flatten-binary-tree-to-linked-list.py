@@ -9,19 +9,13 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        curr = root
-        while curr:
-            if curr.right:
-                if curr.left:
-                    pre = curr.left
-                    while pre.right:
-                        pre = pre.right
-                    pre.right = curr.right
+        while root:
+            if root.left:
+                pre = root.left
+                while pre.right:
+                    pre = pre.right
+                pre.right = root.right
 
-                    curr.right = curr.left
-                    curr.left = None
-                curr = curr.right
-            else:
-                curr.right = curr.left
-                curr.left = None
-                curr = curr.right
+                root.right = root.left
+                root.left = None
+            root = root.right
