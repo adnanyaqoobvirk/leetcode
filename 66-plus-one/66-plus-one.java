@@ -11,9 +11,7 @@ class Solution {
         
         int[] ans = new int[digits.length + 1];
         ans[0] = 1;
-        for(int i = 1; i < ans.length; i++){
-            ans[i] = digits[i - 1];
-        }
+        System.arraycopy(digits, 0, ans, 1, digits.length);
         return ans;
     }
 }
