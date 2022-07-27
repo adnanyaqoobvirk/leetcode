@@ -1,30 +1,32 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        n, h = len(needle), len(haystack)
-        if n > h:
+        n, m = len(haystack), len(needle)
+        if m > n:
             return -1
         
-        MAX_CHARS = 26
-        
-        nhash = 0
-        for i, c in enumerate(needle):
-            nhash += MAX_CHARS**i + ord(c)
-        
-        hhash = 0
-        for i in range(n):
-            hhash += MAX_CHARS**i + ord(haystack[i])
-        
-        for i in range(n, h + 1):
-            k = i - n
-            if hhash == nhash:
-                for j in range(n):
-                    if haystack[k + j] != needle[j]:
-                        break
+        lps = [0] * m
+        i, j = 0, 1
+        while j < m:
+            if needle[i] == needle[j]:
+                i += 1
+                lps[j] = i
+                j += 1
+            else:
+                if i != 0:
+                    i = lps[i - 1]
                 else:
-                    return k
-            if i < h:
-                hhash -= ord(haystack[k])
-                hhash += ord(haystack[i])
+                    j += 1
         
+        i = j = 0
+        while i < n:
+            if haystack[i] == needle[j]:
+                i += 1
+                j += 1
+            else:
+                if j == 0:
+                    i += 1
+                else:
+                    j = lps[j - 1]
+            if j == m:
+                return i - m
         return -1
-                
