@@ -15,28 +15,24 @@
  */
 class Solution {
     public void flatten(TreeNode root) {
-        if(root != null){
-            this.helper(root);
+        while(root != null){
+            if(root.right != null){
+                if(root.left != null){
+                    TreeNode pre = root.left;
+                    while(pre.right != null){
+                        pre = pre.right;
+                    }
+                    pre.right = root.right;
+                    
+                    root.right = root.left;
+                    root.left = null;
+                }
+                root = root.right;
+            } else {
+                root.right = root.left;
+                root.left = null;
+                root = root.right;
+            }
         }
-    }
-    
-    private TreeNode[] helper(TreeNode curr){
-        TreeNode tail = curr, left = curr.left, right = curr.right;
-        
-        if(left != null){
-            TreeNode[] res = this.helper(left);
-            tail.right = res[0];
-            tail = res[1];
-        }
-        
-        curr.left = null;
-        
-        if(right != null){
-            TreeNode[] res = this.helper(right);
-            tail.right = res[0];
-            tail = res[1];
-        }
-        
-        return new TreeNode[]{curr, tail};
     }
 }
