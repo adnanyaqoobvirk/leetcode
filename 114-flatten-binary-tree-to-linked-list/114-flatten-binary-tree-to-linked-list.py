@@ -9,20 +9,19 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        if not root:
-            return None
-        
-        def helper(curr: Optional[TreeNode]) -> Tuple[TreeNode, TreeNode]:
-            tail, left, right = curr, curr.left, curr.right
-            
-            if left:
-                tail.right, tail = helper(left)
-            
-            curr.left = None
-                
-            if right:
-                tail.right, tail = helper(right)
-            
-            return curr, tail
-        
-        helper(root)
+        curr = root
+        while curr:
+            if curr.right:
+                if curr.left:
+                    pre = curr.left
+                    while pre.right:
+                        pre = pre.right
+                    pre.right = curr.right
+
+                    curr.right = curr.left
+                    curr.left = None
+                curr = curr.right
+            else:
+                curr.right = curr.left
+                curr.left = None
+                curr = curr.right
