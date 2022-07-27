@@ -1,44 +1,41 @@
 class Solution {
-    public static final int MAX_CHARS = 26;
-    public static final int MOD = 900001;
-    
     public int strStr(String haystack, String needle) {
-        int m = haystack.length(), n = needle.length();
-        if(n > m){
+        int n = haystack.length(), m = needle.length();
+        if(m > n){
             return -1;
         }
         
-        int h = 1;
-        for(int i = 0; i < n - 1; i++){
-            h = (MAX_CHARS * h) % MOD;
-        }
-        
-        int nhash = 0, mhash = 0;
-        for(int i = 0; i < n; i++){
-            nhash = (MAX_CHARS * nhash + needle.charAt(i)) % MOD;
-            mhash = (MAX_CHARS * mhash + haystack.charAt(i)) % MOD;
-        }
-        
-        for(int i = n; i <= m; i++){
-            int k = i - n;
-            if(nhash == mhash){
-                int j;
-                for(j = 0; j < n; j++){
-                    if(needle.charAt(j) != haystack.charAt(j + k)){
-                        break;
-                    }
+        int[] lps = new int[m];
+        int i = 0, j = 1;
+        while(j < m){
+            if(needle.charAt(i) == needle.charAt(j)){
+                i++;
+                lps[j] = i;
+                j++;
+            } else {
+                if(i == 0){
+                    j++;
+                } else {
+                    i = lps[i - 1];
                 }
-                if(j == n){
-                    return k;
+            }
+        }
+        
+        i = j = 0;
+        while(i < n){
+            if(haystack.charAt(i) == needle.charAt(j)){
+                i++;
+                j++;
+            } else {
+                if(j == 0){
+                    i++;
+                } else {
+                    j = lps[j - 1];
                 }
             }
             
-            if(i < m){
-                mhash = (MAX_CHARS * (mhash - haystack.charAt(k) * h) + haystack.charAt(i)) % MOD;
-                
-                if(mhash < 0){
-                    mhash = (MOD + mhash);
-                }
+            if(j == m){
+                return i - m;
             }
         }
         
