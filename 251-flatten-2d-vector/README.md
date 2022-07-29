@@ -1,4 +1,4 @@
-<h2>251. Flatten 2D Vector</h2><h3>Medium</h3><hr><div><p>Design an iterator to flatten a 2D vector. It should support the <code>next</code> and <code>hasNext</code> operations.</p>
+<h2><a href="https://leetcode.com/problems/flatten-2d-vector/">251. Flatten 2D Vector</a></h2><h3>Medium</h3><hr><div><p>Design an iterator to flatten a 2D vector. It should support the <code>next</code> and <code>hasNext</code> operations.</p>
 
 <p>Implement the <code>Vector2D</code> class:</p>
 
