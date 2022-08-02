@@ -1,32 +1,34 @@
 class Solution {
     public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
-        int m = l.length, n = nums.length;
-        
         List<Boolean> ans = new ArrayList<>();
-        for(int i = 0; i < m; ++i){
-            int sl = r[i] - l[i] + 1;
-            if(sl == 1){
+        for(int i = 0; i < l.length; ++i){
+            int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+            for(int j = l[i]; j <= r[i]; ++j){
+                min = Math.min(min, nums[j]);
+                max = Math.max(max, nums[j]);
+            }
+            
+            int size = r[i] - l[i];
+            if((max - min) % size != 0){
                 ans.add(false);
-            } else if(sl == 2){
-                ans.add(true);
             } else {
-                int[] ss = new int[sl];
-                for(int j = 0; j < sl; ++j){
-                    ss[j] = nums[j + l[i]];
-                }
-                Arrays.sort(ss);
-                
-                int diff = ss[1] - ss[0];
-                int j = 2;
-                for(; j < sl; ++j){
-                    if(diff != ss[j] - ss[j - 1]){
-                        ans.add(false);
-                        break;
-                    }
-                }
-                
-                if(j == sl){
+                int diff = (max - min) / size;
+                if(diff == 0){
                     ans.add(true);
+                } else {
+                    Set<Integer> seen = new HashSet<>();
+                    int j = l[i];
+                    for(; j <= r[i]; ++j){
+                        if((nums[j] - min) % diff != 0 || seen.contains(nums[j])){
+                            ans.add(false);
+                            break;
+                        }
+                        seen.add(nums[j]);
+                    }
+                    
+                    if(j > r[i]){
+                        ans.add(true);
+                    }
                 }
             }
         }
