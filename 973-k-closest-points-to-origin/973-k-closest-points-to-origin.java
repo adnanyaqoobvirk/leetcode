@@ -6,12 +6,15 @@ class Solution {
             distances[i][1] = i;
         }
         
-        Comparator<int[]> comparator = (d1, d2) -> Integer.compare(d1[0], d2[0]);
         Arrays.sort(
             distances, 
-            comparator.thenComparing(
-             (d1, d2) -> Integer.compare(d1[1], d2[1])
-            )
+            (d1, d2) -> {
+                if(Integer.compare(d1[0], d2[0]) == 0){
+                    return Integer.compare(d1[1], d2[1]);
+                } else {
+                    return Integer.compare(d1[0], d2[0]);
+                }
+            }
         );
         
         int[][] ans = new int[k][];
