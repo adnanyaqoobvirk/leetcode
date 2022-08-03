@@ -2,9 +2,10 @@ class SeatManager {
     private PriorityQueue<Integer> heap;
     
     public SeatManager(int n) {
-        this.heap = new PriorityQueue<Integer>(
-            IntStream.range(1, n + 1).boxed().collect(Collectors.toList())
-        );
+        this.heap = new PriorityQueue<Integer>();
+        for(int i = 1; i <= n; ++i){
+            heap.add(i);
+        }
     }
     
     public int reserve() {
