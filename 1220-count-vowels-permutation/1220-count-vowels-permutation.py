@@ -1,7 +1,7 @@
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
         MOD = 10**9 + 7
-        A, E, I, O, U = 0, 1, 2, 3, 4
+        A, E, I, O, U = range(5)
         
         prev, curr = [1] * 5, [0] * 5
         for _ in range(n - 1):
@@ -18,4 +18,3 @@ class Solution:
                     curr[pchar] = prev[A]
             prev, curr = curr, prev
         return sum(prev) % MOD
-        
