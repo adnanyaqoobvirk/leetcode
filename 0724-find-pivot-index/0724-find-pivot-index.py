@@ -1,17 +1,9 @@
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
-        n = len(nums)
-        
-        prefixes = []
+        total = sum(nums)
         prefix = 0
-        for i in reversed(range(n)):
-            prefixes.append(prefix)
-            prefix += nums[i]
-        
-        prefix = 0
-        for i in range(n):
-            if prefix == prefixes[n - i - 1]:
+        for i, num in enumerate(nums):
+            if prefix == total - prefix - num:
                 return i
-            prefix += nums[i]
-        
+            prefix += num
         return -1
