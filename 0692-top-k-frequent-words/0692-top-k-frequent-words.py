@@ -19,4 +19,4 @@ class Solution:
             heappush(h, fword)
             if len(h) > k:
                 heappop(h)
-        return [fword.word for fword in sorted(h, key = lambda x: (-x.freq, x.word))]
+        return [fword.word for fword in sorted(h, reverse = True)]
