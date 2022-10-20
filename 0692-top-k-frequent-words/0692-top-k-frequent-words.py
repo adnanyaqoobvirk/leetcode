@@ -4,12 +4,9 @@ class FWord:
         self.freq = freq
         
     def __lt__(self, other):
-        if self.freq < other.freq:
-            return True
-        elif self.freq > other.freq:
-            return False
-        else:
-            return self.word > other.word
+        return self.freq < other.freq or (
+            self.freq == other.freq and self.word > other.word
+        )
     
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
