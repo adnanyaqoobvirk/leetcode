@@ -11,9 +11,20 @@ class Solution:
         if not list2:
             return list1
         
-        if list1.val <= list2.val:
-            list1.next = self.mergeTwoLists(list1.next, list2)
-            return list1
+        curr = dummy = ListNode()
+        l1, l2 = list1, list2
+        while l1 and l2:
+            if l1.val <= l2.val:
+                curr.next = l1
+                l1 = l1.next
+            else:
+                curr.next = l2
+                l2 = l2.next
+            curr = curr.next
+        
+        if not l1:
+            curr.next = l2
         else:
-            list2.next = self.mergeTwoLists(list1, list2.next)
-            return list2
+            curr.next = l1
+        
+        return dummy.next
