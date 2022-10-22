@@ -1,7 +1,21 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        max_profit = max_right = 0
-        for price in reversed(prices):
-            max_right = max(max_right, price)
-            max_profit = max(max_profit, max_right - price)
-        return max_profit
+        @cache
+        def helper(i: int, bought: bool) -> int:
+            if i >= n:
+                return -inf
+            
+            if bought:
+                return max(
+                    prices[i],
+                    helper(i + 1, True)
+                )
+            
+            return max(
+                helper(i + 1, False),
+                helper(i + 1, True) - prices[i]
+            )
+        
+        n = len(prices)
+        ans = helper(0, False)
+        return 0 if ans < 0 else ans
