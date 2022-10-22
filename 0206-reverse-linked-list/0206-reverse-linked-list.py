@@ -8,16 +8,12 @@ class Solution:
         if not head:
             return head
         
-        def helper(curr: Optional[ListNode]) -> Optional[ListNode]:
-            if not curr.next:
-                nonlocal nhead
-                nhead = curr
-                return curr
-
-            helper(curr.next).next = curr
-            curr.next = None
-            return curr
+        prev, curr = head, head.next
+        prev.next = None
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
         
-        nhead = None
-        helper(head)
-        return nhead
+        return prev
