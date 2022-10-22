@@ -1,14 +1,12 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        dp = [[-inf] * (n + 1) for _ in range(2)]
-        for i in reversed(range(n)):
-            dp[1][i] = max(
+        bought = unbought = -inf
+        for i in reversed(range(len(prices))):
+            bought, unbought = max(
                 prices[i],
-                dp[1][i + 1]
+                bought
+            ), max(
+                unbought,
+                bought - prices[i]
             )
-            dp[0][i] = max(
-                dp[0][i + 1],
-                dp[1][i + 1] - prices[i]
-            )
-        return 0 if dp[0][0] < 0 else dp[0][0]
+        return 0 if unbought < 0 else unbought
