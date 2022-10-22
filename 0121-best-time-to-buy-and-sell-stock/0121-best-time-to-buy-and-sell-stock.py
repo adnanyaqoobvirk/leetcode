@@ -1,21 +1,17 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        @cache
-        def helper(i: int, bought: bool) -> int:
-            if i >= n:
-                return -inf
-            
-            if bought:
-                return max(
-                    prices[i],
-                    helper(i + 1, True)
-                )
-            
-            return max(
-                helper(i + 1, False),
-                helper(i + 1, True) - prices[i]
-            )
-        
         n = len(prices)
-        ans = helper(0, False)
-        return 0 if ans < 0 else ans
+        dp = [[-inf] * (n + 1) for _ in range(2)]
+        for i in reversed(range(n)):
+            for bought in range(2):
+                if bought:
+                    dp[1][i] = max(
+                        prices[i],
+                        dp[1][i + 1]
+                    )
+                else:
+                    dp[0][i] = max(
+                        dp[0][i + 1],
+                        dp[1][i + 1] - prices[i]
+                    )
+        return 0 if dp[0][0] < 0 else dp[0][0]
