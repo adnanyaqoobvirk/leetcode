@@ -1,5 +1,6 @@
 class Solution:
     def findBall(self, grid: List[List[int]]) -> List[int]:
+        @cache
         def helper(r: int, c: int) -> int:
             if r >= m:
                 return c
