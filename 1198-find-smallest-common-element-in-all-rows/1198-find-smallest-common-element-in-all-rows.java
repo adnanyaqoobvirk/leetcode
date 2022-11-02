@@ -4,10 +4,11 @@ class Solution {
         Map<Integer, Integer> counts = new HashMap<>();
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
-                counts.put(mat[i][j], counts.getOrDefault(mat[i][j], 0) + 1);
-                if(counts.get(mat[i][j]) == m){
+                int count = counts.getOrDefault(mat[i][j], 0) + 1;
+                if(count == m){
                     return mat[i][j];
                 }
+                counts.put(mat[i][j], count);
             }
         }
         return -1;
