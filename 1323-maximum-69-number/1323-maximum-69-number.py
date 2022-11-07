@@ -3,6 +3,6 @@ class Solution:
         num = str(num)
         first_six = num.find('6')
         if first_six == -1:
-            return num
+            return int(num)
         else:
-            return num[:first_six] + '9' + num[first_six + 1:]
+            return int(num[:first_six] + '9' + num[first_six + 1:])
