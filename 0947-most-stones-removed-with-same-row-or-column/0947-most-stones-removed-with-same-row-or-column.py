@@ -2,22 +2,19 @@ class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         n = len(stones)
         
-        graph = defaultdict(list)
+        UF = {i: i for i in range(n)}
+        
+        def find(x):
+            if x != UF[x]:
+                UF[x] = find(UF[x])
+            return UF[x]
+        
+        def union(x, y):
+            UF[find(x)] = find(y)
+            
         for i in range(n):
             for j in range(i + 1, n):
                 if stones[i][0] == stones[j][0] or stones[i][1] == stones[j][1]:
-                    graph[i].append(j)
-                    graph[j].append(i)
+                    union(i, j)
         
-        subgraphs = 0
-        unseen = set(range(n))
-        while unseen:
-            stack = [unseen.pop()]
-            while stack:
-                node = stack.pop()
-                for neighbor in graph[node]:
-                    if neighbor in unseen:
-                        stack.append(neighbor)
-                        unseen.remove(neighbor)
-            subgraphs += 1
-        return n - subgraphs
+        return n - len({find(i) for i in range(n)})
