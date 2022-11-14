@@ -2,7 +2,7 @@ class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         n = len(stones)
         
-        UF = {i: i for i in range(n)}
+        UF = {}
         
         def find(x):
             if x != UF[x]:
@@ -10,11 +10,11 @@ class Solution:
             return UF[x]
         
         def union(x, y):
+            UF.setdefault(x, x)
+            UF.setdefault(y, y)
             UF[find(x)] = find(y)
             
-        for i in range(n):
-            for j in range(i + 1, n):
-                if stones[i][0] == stones[j][0] or stones[i][1] == stones[j][1]:
-                    union(i, j)
+        for i, j in stones:
+            union(i, j + 10001)
         
-        return n - len({find(i) for i in range(n)})
+        return n - len({find(i) for i in UF})
