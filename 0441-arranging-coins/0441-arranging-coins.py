@@ -1,6 +1,6 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        lo, hi = 1, math.ceil(n / 2) + 1
+        lo, hi = 1, int(math.sqrt(2 * n)) + 1
         while lo + 1 < hi:
             mid = lo + (hi - lo) // 2
             
