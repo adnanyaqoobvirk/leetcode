@@ -3,12 +3,11 @@
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-        l, r = 1, n
-        while l < r:
-            m = l + (r - l) // 2
-            
-            if isBadVersion(m):
-                r = m
+        lo, hi = 0, n
+        while lo + 1 < hi:
+            guess = lo + (hi - lo) // 2
+            if isBadVersion(guess):
+                hi = guess
             else:
-                l = m + 1
-        return l
+                lo = guess
+        return hi
