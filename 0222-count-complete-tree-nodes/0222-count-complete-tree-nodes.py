@@ -15,22 +15,28 @@ class Solution:
             curr = curr.left
             h += 1
         
-        hcount = 0
-        stack = [(root, 1)]
-        while stack:
-            curr, lvl = stack.pop()
-            
-            if lvl == h:
-                if not curr.left:
-                    return 2**h + hcount * 2 - 1
-                
-                if not curr.right:
-                    return 2**h + hcount * 2
-                
-                hcount += 1
-            elif lvl < h:
-                stack.append((curr.right, lvl + 1))
-                stack.append((curr.left, lvl + 1))
-                
-        return 2**(h + 1) - 1
+        if h == 0:
+            return 1
         
+        def exists(node):
+            left, right, curr = 0, 2**h - 1, root
+            for _ in range(h):
+                mid = (left + right) // 2
+                if node <= mid:
+                    curr = curr.left
+                    right = mid
+                else:
+                    curr = curr.right
+                    left = mid + 1
+            return curr is not None
+        
+        l, r = 1, 2**h - 1
+        while l <= r:
+            m = (l + r) // 2
+            if exists(m):
+                l = m + 1
+            else:
+                r = m - 1
+                
+        return 2**h - 1 + l
+                
