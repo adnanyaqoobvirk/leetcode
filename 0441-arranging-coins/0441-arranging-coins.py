@@ -1,11 +1,3 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        lo, hi = 1, math.ceil(n / 2) + 1
-        while lo + 1 < hi:
-            mid = lo + (hi - lo) // 2
-            
-            if (mid * (mid + 1) // 2) <= n:
-                lo = mid
-            else:
-                hi = mid
-        return lo
+        return int(math.sqrt(2 * n + 0.25) - 0.5)
