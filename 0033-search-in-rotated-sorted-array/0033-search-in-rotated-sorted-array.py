@@ -9,10 +9,7 @@ class Solution:
             else:
                 hi = mid
         
-        if target < nums[hi]:
-            return -1
-        
-        if hi == 0 or target < nums[0]:
+        if target <= nums[-1]:
             lo, hi = hi - 1, len(nums) - 1
         else:
             lo, hi = -1, hi - 1
