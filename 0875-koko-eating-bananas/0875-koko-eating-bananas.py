@@ -8,7 +8,7 @@ class Solution:
                     return False
             return True
         
-        lo, hi = 0, max(piles)
+        lo, hi = math.ceil(sum(piles) / h) - 1, max(piles)
         while lo + 1 < hi:
             guess = lo + (hi - lo) // 2
             
