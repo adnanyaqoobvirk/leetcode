@@ -8,7 +8,7 @@ class Solution:
                     return True
             return False
         
-        lo, hi = 1, max(ribbons) + 1
+        lo, hi = 0, max(ribbons) + 1
         while lo + 1 < hi:
             mid = lo + (hi - lo) // 2
             
@@ -16,4 +16,4 @@ class Solution:
                 lo = mid
             else:
                 hi = mid
-        return lo if possible(lo) else 0
+        return lo
