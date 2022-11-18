@@ -3,9 +3,12 @@ class Solution:
         def possible(guess):
             count = 0
             for i in range(n):
-                for j in range(n):
-                    if matrix[i][j] <= guess:
-                        count += 1
+                if matrix[i][-1] <= guess:
+                    count += n
+                else:
+                    for j in range(n):
+                        if matrix[i][j] <= guess:
+                            count += 1
             return count
         
         n = len(matrix)
