@@ -4,9 +4,6 @@ class Solution:
         
         q = deque()
         for i in range(k):
-            while q and nums[q[0]] <= nums[i]:
-                q.popleft()
-                
             while q and nums[q[-1]] <= nums[i]:
                 q.pop()
                 
@@ -15,9 +12,9 @@ class Solution:
         ans.append(nums[q[0]])
         
         for i in range(k, len(nums)):
-            while q and (q[0] == i - k or nums[q[0]] <= nums[i]):
+            if q[0] == i - k:
                 q.popleft()
-            
+                
             while q and nums[q[-1]] <= nums[i]:
                 q.pop()
             
