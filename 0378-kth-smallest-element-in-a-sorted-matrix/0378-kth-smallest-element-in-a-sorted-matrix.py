@@ -2,15 +2,14 @@ class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
         def possible(guess):
             count = 0
-            for i in range(n):
-                if matrix[i][-1] <= guess:
-                    count += n
+            j = 0
+            i = n - 1
+            while j < n and i >= 0:
+                if guess >= matrix[i][j]:
+                    count += i + 1
+                    j += 1
                 else:
-                    for j in range(n):
-                        if matrix[i][j] <= guess:
-                            count += 1
-                        else:
-                            break
+                    i -= 1
             return count
         
         n = len(matrix)
