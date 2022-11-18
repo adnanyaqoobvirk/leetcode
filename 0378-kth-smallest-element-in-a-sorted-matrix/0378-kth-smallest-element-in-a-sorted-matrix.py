@@ -9,6 +9,8 @@ class Solution:
                     for j in range(n):
                         if matrix[i][j] <= guess:
                             count += 1
+                        else:
+                            break
             return count
         
         n = len(matrix)
