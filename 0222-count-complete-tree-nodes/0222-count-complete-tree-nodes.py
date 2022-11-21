@@ -15,28 +15,23 @@ class Solution:
             curr = curr.left
             h += 1
         
-        if h == 0:
-            return 1
-        
         def exists(node):
-            left, right, curr = 0, 2**h - 1, root
-            for _ in range(h):
-                mid = (left + right) // 2
-                if node <= mid:
-                    curr = curr.left
-                    right = mid
-                else:
-                    curr = curr.right
-                    left = mid + 1
+            steps = []
+            while node > 1:
+                steps.append(True if node & 1 else False)
+                node //= 2
+        
+            curr = root
+            for s in reversed(steps):
+                curr = curr.right if s else curr.left
             return curr is not None
         
-        l, r = 1, 2**h - 1
-        while l <= r:
-            m = (l + r) // 2
-            if exists(m):
-                l = m + 1
+        lo, hi = 2**h, 2**(h + 1)
+        while lo + 1 < hi:
+            mid = lo + (hi - lo) // 2
+            
+            if exists(mid):
+                lo = mid
             else:
-                r = m - 1
-                
-        return 2**h - 1 + l
-                
+                hi = mid
+        return lo
