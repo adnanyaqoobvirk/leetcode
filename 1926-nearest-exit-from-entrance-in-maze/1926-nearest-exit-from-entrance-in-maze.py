@@ -1,20 +1,27 @@
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-        m, n, (ex, ey) = len(maze), len(maze[0]), entrance
-        directions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
-        maze[ex][ey] = '-'
-        ans, q = 0, [(ex, ey)]
+        m, n = len(maze), len(maze[0])
+        entrance = (entrance[0], entrance[1])
+        
+        q = [entrance]
+        seen = {entrance}
+        steps = 0
         while q:
             nq = []
-            for i, j in q:
-                for x, y in directions:
-                    x, y = i + x, j + y
-                    if 0 <= x < m and 0 <= y < n:
-                        if maze[x][y] == '.':
-                            maze[x][y] = '-'
-                            nq.append((x, y))
-                    elif i != ex or j != ey:
-                        return ans
-            ans += 1
+            for x, y in q:
+                if (x, y) != entrance and (
+                    x == 0 or x == m - 1 or y == 0 or y == n - 1
+                ):
+                    return steps
+                for i, j in [
+                    (x + 1, y), (x - 1, y),
+                    (x, y + 1), (x, y - 1)
+                ]:
+                    cell = (i, j)
+                    if 0 <= i < m and 0 <= j < n and maze[i][j] == '.' and cell not in seen:
+                        nq.append(cell)
+                        seen.add(cell)
             q = nq
+            steps += 1
         return -1
+                 
