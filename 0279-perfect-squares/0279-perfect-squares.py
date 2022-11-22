@@ -1,6 +1,6 @@
 class Solution:
     def numSquares(self, n: int) -> int:
-        nsqrt = int(math.sqrt(n)) + 1
+        squares = [p * p for p in reversed(range(int(math.sqrt(n)) + 1))]
         
         q = [n]
         seen = {n}
@@ -11,8 +11,8 @@ class Solution:
                 if r == 0:
                     return ans
                 
-                for p in reversed(range(nsqrt)):
-                    d = r - p * p
+                for s in squares:
+                    d = r - s
                     if d >= 0 and d not in seen:
                         seen.add(d)
                         nq.append(d)
