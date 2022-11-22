@@ -11,7 +11,7 @@ class Solution:
                 if r == 0:
                     return ans
                 
-                for p in range(nsqrt):
+                for p in reversed(range(nsqrt)):
                     d = r - p * p
                     if d >= 0 and d not in seen:
                         seen.add(d)
