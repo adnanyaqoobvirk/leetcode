@@ -1,7 +1,7 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         def atMost(s):
-            total = count = lo = hi = 0
+            total = count = lo = 0
             for hi in range(len(nums)):
                 total += nums[hi]
                 while lo <= hi and total > s:
