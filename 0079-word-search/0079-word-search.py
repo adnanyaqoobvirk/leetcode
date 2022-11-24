@@ -18,6 +18,19 @@ class Solution:
             return False
         
         m, n, k = len(board), len(board[0]), len(word)
+        
+        if k > m * n:
+            return False
+        
+        bcounts = defaultdict(int)
+        for row in board:
+            for col in row:
+                bcounts[col] += 1
+        
+        for c, count in Counter(word).items():
+            if bcounts[c] < count:
+                return False
+        
         for x in range(m):
             for y in range(n):
                 if helper(x, y, 0):
