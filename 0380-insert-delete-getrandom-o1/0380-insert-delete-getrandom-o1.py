@@ -1,4 +1,4 @@
-from random import randint
+from random import choice
 
 class RandomizedSet:
 
@@ -24,7 +24,7 @@ class RandomizedSet:
         return True
 
     def getRandom(self) -> int:
-        return self.vlist[randint(0, len(self.vlist) - 1)]
+        return choice(self.vlist)
 
 
 # Your RandomizedSet object will be instantiated and called as such:
