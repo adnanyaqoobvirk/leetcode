@@ -1,24 +1,29 @@
+from threading import Lock
+
 class MyCircularQueue:
 
     def __init__(self, k: int):
         self.data = [0] * k
         self.start = self.size = 0
         self.cap = k
+        self.qlock = Lock()
         
     def enQueue(self, value: int) -> bool:
-        if self.isFull():
-            return False
-        
-        self.data[(self.start + self.size) % self.cap] = value
-        self.size += 1
+        with self.qlock: 
+            if self.isFull():
+                return False
+
+            self.data[(self.start + self.size) % self.cap] = value
+            self.size += 1
         return True
 
     def deQueue(self) -> bool:
-        if self.isEmpty():
-            return False
-        
-        self.start = (self.start + 1) % self.cap
-        self.size -= 1
+        with self.qlock:
+            if self.isEmpty():
+                return False
+
+            self.start = (self.start + 1) % self.cap
+            self.size -= 1
         return True
 
     def Front(self) -> int:
