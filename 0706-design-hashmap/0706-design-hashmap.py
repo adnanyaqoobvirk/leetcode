@@ -1,48 +1,62 @@
+class Node:
+    def __init__(self, key = -1, val = -1, nxt = None):
+        self.key, self.val, self.nxt = key, val, nxt
+        
 class MyHashMap:
 
     def __init__(self, capacity = 64, load_factor = 0.8):
         self.lf = load_factor
         self.cap = capacity
-        self.data = [[] for _ in range(self.cap)]
+        self.data = [Node() for _ in range(self.cap)]
         self.size = 0
 
     def _resize(self, size):
         self.cap = size
-        data = [[] for _ in range(self.cap)]
-        for l in self.data:
-            for k, v in l:
-                data[k % self.cap].append([k, v])
+        data = [Node() for _ in range(self.cap)]
+        for head in self.data:
+            curr = head.nxt
+            while curr:
+                nhead = data[curr.key % self.cap]
+                nhead.nxt = Node(curr.key, curr.val, nhead.nxt)
+                curr = curr.nxt
         self.data = data
         
     def put(self, key: int, value: int) -> None:
         if self.size / self.cap > self.lf:
             self._resize(self.cap * 2)
             
-        l = self.data[key % self.cap]
-        for kv in l:
-            if kv[0] == key:
-                kv[1] = value
+        head = self.data[key % self.cap]
+        curr = head.nxt
+        while curr:
+            if curr.key == key:
+                curr.val = value
                 break
+            curr = curr.nxt
         else:
-            l.append([key, value])
+            head.nxt = Node(key, value, head.nxt)
             self.size += 1
         
     def get(self, key: int) -> int:
-        for kv in self.data[key % self.cap]:
-            if kv[0] == key:
-                return kv[1]
+        curr = self.data[key % self.cap].nxt
+        while curr:
+            if curr.key == key:
+                return curr.val
+            curr = curr.nxt
         return -1
     
     def remove(self, key: int) -> None:
         if self.size / self.lf < self.lf / 2:
             self._resize(self.cap // 2)
         
-        l = self.data[key % self.cap]
-        for i in range(len(l)):
-            if l[i][0] == key:
-                l.pop(i)
+        curr = self.data[key % self.cap]
+        while curr.nxt:
+            if curr.nxt.key == key:
+                nxt = curr.nxt
+                curr.nxt = nxt.nxt
+                nxt.nxt = None
                 self.size -= 1
                 break
+            curr = curr.nxt
 
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
