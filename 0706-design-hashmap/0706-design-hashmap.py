@@ -41,8 +41,8 @@ class MyHashMap:
         for i in range(len(l)):
             if l[i][0] == key:
                 l.pop(i)
+                self.size -= 1
                 break
-
 
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
