@@ -4,7 +4,7 @@ class Node:
         
 class MyHashMap:
 
-    def __init__(self, capacity = 64, load_factor = 0.8):
+    def __init__(self, capacity = 61, load_factor = 0.7):
         self.lf = load_factor
         self.cap = capacity
         self.data = [Node() for _ in range(self.cap)]
@@ -45,7 +45,7 @@ class MyHashMap:
         return -1
     
     def remove(self, key: int) -> None:
-        if self.size / self.lf < self.lf / 2:
+        if self.size / self.lf < self.lf / 4:
             self._resize(self.cap // 2)
         
         curr = self.data[key % self.cap]
