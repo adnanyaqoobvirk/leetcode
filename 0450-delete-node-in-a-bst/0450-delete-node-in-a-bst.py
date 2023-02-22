@@ -6,21 +6,34 @@
 #         self.right = right
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        def helper(curr):
-            if not curr:
-                return None
-            
-            if curr.val == key:
-                if curr.right:
-                    right = node = curr.right
-                    while node.left:
-                        node = node.left
-                    node.left = curr.left
-                    return right
+        if not root:
+            return root
+        
+        sentinal = TreeNode(left = root)
+        q = [(root, sentinal, True)]
+        while q:
+            nq = []
+            for curr, parent, left in q:
+                if curr.val == key:
+                    right = curr.left
+                    if curr.right:
+                        node = curr.right
+                        while node.left:
+                            node = node.left
+                        node.left = curr.left
+                        right = curr.right
+                    if left:
+                        parent.left = right
+                    else:
+                        parent.right = right
+                    break
                 else:
-                    return curr.left
+                    if curr.left:
+                        nq.append((curr.left, curr, True))
+                    if curr.right:
+                        nq.append((curr.right, curr, False))
             else:
-                curr.left = helper(curr.left)
-                curr.right = helper(curr.right)
-                return curr
-        return helper(root)
+                q = nq
+                continue
+            break
+        return sentinal.left
