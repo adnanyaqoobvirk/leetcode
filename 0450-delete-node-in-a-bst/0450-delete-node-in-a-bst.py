@@ -9,31 +9,32 @@ class Solution:
         if not root:
             return root
         
-        sentinal = TreeNode(left = root)
-        q = [(root, sentinal, True)]
+        def delete(node):
+            if node.right:
+                p = node.right
+                while p.left:
+                    p = p.left
+                p.left = node.left
+                return node.right
+            else:
+                return node.left
+        
+        if root.val == key:
+            return delete(root)
+        
+        q = [root]
         while q:
             nq = []
-            for curr, parent, left in q:
-                if curr.val == key:
-                    right = curr.left
-                    if curr.right:
-                        node = curr.right
-                        while node.left:
-                            node = node.left
-                        node.left = curr.left
-                        right = curr.right
-                    if left:
-                        parent.left = right
-                    else:
-                        parent.right = right
-                    break
-                else:
-                    if curr.left:
-                        nq.append((curr.left, curr, True))
-                    if curr.right:
-                        nq.append((curr.right, curr, False))
-            else:
-                q = nq
-                continue
-            break
-        return sentinal.left
+            for curr in q:
+                if curr.left:
+                    if curr.left.val == key:
+                        curr.left = delete(curr.left)
+                        return root
+                    nq.append(curr.left)
+                if curr.right:
+                    if curr.right.val == key:
+                        curr.right = delete(curr.right)
+                        return root
+                    nq.append(curr.right)
+            q = nq
+        return root
