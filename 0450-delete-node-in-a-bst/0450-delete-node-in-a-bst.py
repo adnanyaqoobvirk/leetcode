@@ -26,15 +26,17 @@ class Solution:
         while q:
             nq = []
             for curr in q:
-                if curr.left:
-                    if curr.left.val == key:
-                        curr.left = delete(curr.left)
-                        return root
-                    nq.append(curr.left)
-                if curr.right:
-                    if curr.right.val == key:
-                        curr.right = delete(curr.right)
-                        return root
-                    nq.append(curr.right)
+                if key < curr.val:
+                    if curr.left:
+                        if curr.left.val == key:
+                            curr.left = delete(curr.left)
+                            return root
+                        nq.append(curr.left)
+                else:
+                    if curr.right:
+                        if curr.right.val == key:
+                            curr.right = delete(curr.right)
+                            return root
+                        nq.append(curr.right)
             q = nq
         return root
