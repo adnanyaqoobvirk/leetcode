@@ -8,7 +8,7 @@ class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         def helper(lo, hi):
             nonlocal idx
-            if idx >= n or lo > hi:
+            if lo > hi:
                 return None
             
             val = preorder[idx]
