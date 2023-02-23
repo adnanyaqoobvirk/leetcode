@@ -10,37 +10,38 @@ class Codec:
     def serialize(self, root: Optional[TreeNode]) -> str:
         """Encodes a tree to a single string.
         """
-        def recurse(curr):
-            if not curr:
-                ans.append("#")
-                return
-            
-            ans.append(str(curr.val))
-            recurse(curr.left)
-            recurse(curr.right)
         ans = []
-        recurse(root)
+        stack = [root]
+        while stack:
+            curr = stack.pop()
+            if not curr:
+                continue
+                
+            ans.append(str(curr.val))
+            stack.append(curr.right)
+            stack.append(curr.left)
         return ",".join(ans)
 
     def deserialize(self, data: str) -> Optional[TreeNode]:
         """Decodes your encoded data to tree.
         """
-        def recurse():
-            nonlocal pos
-            pos += 1
-            
-            if pos >= n or data[pos] == "#":
-                return None
-            
-            node = TreeNode(int(data[pos]))
-            node.left = recurse()
-            node.right = recurse()
-            return node
-        
-        data = data.split(",")
-        n = len(data)
-        pos = -1
-        return recurse()
+        if data:
+            data = data.split(",")
+            root = TreeNode(int(data[0]))
+            stack = [root]
+            for i in range(1, len(data)):
+                curr, child = stack[-1], TreeNode(int(data[i]))
+                
+                while stack and stack[-1].val < child.val:
+                    curr = stack.pop()
+                    
+                if curr.val < child.val:
+                    curr.right = child
+                else:
+                    curr.left = child
+                
+                stack.append(child)
+            return root
 
 # Your Codec object will be instantiated and called as such:
 # Your Codec object will be instantiated and called as such:
