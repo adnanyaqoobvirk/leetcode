@@ -2,16 +2,16 @@ class SegmentTree:
     def __init__(self, arr):
         self.arr = arr
         self.n = len(arr)
-        self.t = [0] * (2 ** (ceil(log2(self.n)) + 1) - 1)
+        self.t = [0] * (2 ** (ceil(log2(self.n)) + 1))
         
-        self._build(0, 0, self.n - 1)
+        self._build(1, 0, self.n - 1)
     
     def _build(self, ti, l, r):
         if l == r:
             self.t[ti] = self.arr[l]
         else:
             m = (l + r) // 2
-            self.t[ti] = self._build(ti * 2 + 1, l, m) + self._build(ti * 2 + 2, m + 1, r)
+            self.t[ti] = self._build(ti * 2, l, m) + self._build(ti * 2 + 1, m + 1, r)
         return self.t[ti]
     
     def _update(self, v, i, ti, l, r):
@@ -20,10 +20,10 @@ class SegmentTree:
         else:
             m = (l + r) // 2
             if i <= m:
-                self._update(v, i, ti * 2 + 1, l, m)
+                self._update(v, i, ti * 2, l, m)
             else:
-                self._update(v, i, ti * 2 + 2, m + 1, r)
-            self.t[ti] = self.t[ti * 2 + 1] + self.t[ti * 2 + 2]
+                self._update(v, i, ti * 2 + 1, m + 1, r)
+            self.t[ti] = self.t[ti * 2] + self.t[ti * 2 + 1]
     
     def _query(self, ti, i, j, l, r):
         if l > j or r < i:
@@ -33,13 +33,13 @@ class SegmentTree:
             return self.t[ti]
     
         m = (l + r) // 2
-        return self._query(ti * 2 + 1, i, j, l, m) + self._query(ti * 2 + 2, i, j, m + 1, r)
+        return self._query(ti * 2, i, j, l, m) + self._query(ti * 2 + 1, i, j, m + 1, r)
     
     def update(self, i, v):
-        self._update(v, i, 0, 0, self.n - 1)
+        self._update(v, i, 1, 0, self.n - 1)
         
     def query(self, i, j):
-        return self._query(0, i, j, 0, self.n - 1)
+        return self._query(1, i, j, 0, self.n - 1)
         
 class NumArray:
 
