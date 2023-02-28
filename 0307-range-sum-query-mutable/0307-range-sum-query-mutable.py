@@ -1,44 +1,42 @@
-class SegmentTree:
+class FenwickTree:
     def __init__(self, arr):
-        self.n = len(arr)
-        self.t = [0] * self.n + arr
-        for i in range(len(arr) - 1, 0, -1):
-            self.t[i] = self.t[i << 1] + self.t[i << 1 | 1]
-    
+        self.arr = arr
+        self.n = len(arr) + 1
+        self.t = [0] + arr
+        for i in range(1, self.n):
+            p = i + (i & -i)
+            if p < self.n:
+                self.t[p] += self.t[i]
+        
     def update(self, i, v):
-        i += self.n
-        self.t[i] = v
-        i >>= 1
-        while i >= 1:
-            self.t[i] = self.t[i << 1] + self.t[i << 1 | 1]
-            i >>= 1
-            
-    def query(self, i, j):
-        i += self.n
-        j += self.n
+        d = v - self.arr[i]
+        self.arr[i] = v
+        i += 1
+        while i < self.n:
+            self.t[i] += d
+            i += i & -i
+        
+    def query(self, i):
+        i += 1
         ans = 0
-        while i <= j:
-            if i & 1:
-                ans += self.t[i]
-                i += 1
-            i >>= 1
-            if not (j & 1):
-                ans += self.t[j]
-                j -= 1
-            j >>= 1
+        while i > 0:
+            ans += self.t[i]
+            i -= i & -i
         return ans
     
 class NumArray:
 
     def __init__(self, nums: List[int]):
-        self.t = SegmentTree(nums)
+        self.t = FenwickTree(nums)
 
     def update(self, index: int, val: int) -> None:
         self.t.update(index, val)
 
     def sumRange(self, left: int, right: int) -> int:
-        return self.t.query(left, right)
-
+        if left == 0:
+            return self.t.query(right)
+        else:
+            return self.t.query(right) - self.t.query(left - 1)
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
