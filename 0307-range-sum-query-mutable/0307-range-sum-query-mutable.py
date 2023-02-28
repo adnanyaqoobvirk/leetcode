@@ -8,8 +8,9 @@ class SegmentTree:
     def update(self, i, v):
         i += self.n
         self.t[i] = v
-        while i > 1:
-            self.t[i >> 1] = self.t[i] + self.t[i ^ 1]
+        i >>= 1
+        while i >= 1:
+            self.t[i] = self.t[i << 1] + self.t[i << 1 | 1]
             i >>= 1
             
     def query(self, i, j):
