@@ -1,46 +1,32 @@
 class SegmentTree:
     def __init__(self, arr):
-        self.arr = arr
         self.n = len(arr)
-        self.t = [0] * (2 ** (ceil(log2(self.n)) + 1))
-        
-        self._build(1, 0, self.n - 1)
-    
-    def _build(self, ti, l, r):
-        if l == r:
-            self.t[ti] = self.arr[l]
-        else:
-            m = (l + r) >> 1
-            self.t[ti] = self._build(ti << 1, l, m) + self._build(ti << 1 | 1, m + 1, r)
-        return self.t[ti]
-    
-    def _update(self, v, i, ti, l, r):
-        if l == r:
-            self.t[ti] = v
-        else:
-            m = (l + r) >> 1
-            if i <= m:
-                self._update(v, i, ti << 1, l, m)
-            else:
-                self._update(v, i, ti << 1 | 1, m + 1, r)
-            self.t[ti] = self.t[ti << 1] + self.t[ti << 1 | 1]
-    
-    def _query(self, ti, i, j, l, r):
-        if l > j or r < i:
-            return 0
-        
-        if l >= i and r <= j:
-            return self.t[ti]
-    
-        m = (l + r) >> 1
-        return self._query(ti << 1, i, j, l, m) + self._query(ti << 1 | 1, i, j, m + 1, r)
+        self.t = [0] * self.n + arr
+        for i in range(len(arr) - 1, 0, -1):
+            self.t[i] = self.t[i << 1] + self.t[i << 1 | 1]
     
     def update(self, i, v):
-        self._update(v, i, 1, 0, self.n - 1)
-        
+        i += self.n
+        self.t[i] = v
+        while i > 1:
+            self.t[i >> 1] = self.t[i] + self.t[i ^ 1]
+            i >>= 1
+            
     def query(self, i, j):
-        return self._query(1, i, j, 0, self.n - 1)
-        
+        i += self.n
+        j += self.n
+        ans = 0
+        while i <= j:
+            if i & 1:
+                ans += self.t[i]
+                i += 1
+            i >>= 1
+            if not (j & 1):
+                ans += self.t[j]
+                j -= 1
+            j >>= 1
+        return ans
+    
 class NumArray:
 
     def __init__(self, nums: List[int]):
