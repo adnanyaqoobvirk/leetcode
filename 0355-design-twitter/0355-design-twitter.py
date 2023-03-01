@@ -14,13 +14,7 @@ class Twitter:
         for followeeId in self.follows[userId]:
             h.extend(self.tweets[followeeId])
         heapify(h)
-        
-        ans = []
-        for _ in range(10):
-            if not h:
-                break
-            ans.append(heappop(h)[1])
-        return ans
+        return [heappop(h)[1] for _ in range(min(len(h), 10))]
     
     def follow(self, followerId: int, followeeId: int) -> None:
         self.follows[followerId].add(followeeId)
