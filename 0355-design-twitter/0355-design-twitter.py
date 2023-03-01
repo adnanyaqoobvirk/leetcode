@@ -1,20 +1,25 @@
+import time
+
 class Twitter:
 
     def __init__(self):
-        self.tweets = []
+        self.tweets = defaultdict(list)
         self.follows = defaultdict(set)
 
     def postTweet(self, userId: int, tweetId: int) -> None:
-        self.tweets.append((userId, tweetId))
+        self.tweets[userId].append((-time.time(), tweetId))
 
     def getNewsFeed(self, userId: int) -> List[int]:
-        followees = self.follows[userId]
+        h = self.tweets[userId][::]
+        for followeeId in self.follows[userId]:
+            h.extend(self.tweets[followeeId])
+        heapify(h)
+        
         ans = []
-        for followeeId, tweetId in reversed(self.tweets):
-            if followeeId == userId or followeeId in followees:
-                ans.append(tweetId)
-            if len(ans) == 10:
+        for _ in range(10):
+            if not h:
                 break
+            ans.append(heappop(h)[1])
         return ans
     
     def follow(self, followerId: int, followeeId: int) -> None:
