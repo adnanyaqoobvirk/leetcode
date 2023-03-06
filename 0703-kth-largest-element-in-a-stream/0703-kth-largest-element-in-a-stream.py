@@ -1,6 +1,8 @@
 class MinHeap:
-    def __init__(self):
-        self.h = []
+    def __init__(self, arr):
+        self.h = arr[::]
+        for i in reversed(range(len(self.h))):
+            self._siftDown(i)
     
     def _swap(self, l, r):
         self.h[l], self.h[r] = self.h[r], self.h[l]
@@ -50,9 +52,7 @@ class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
         self.k = k
-        self.h = MinHeap()
-        for num in nums:
-            self.h.push(num)
+        self.h = MinHeap(nums)
 
     def add(self, val: int) -> int:
         self.h.push(val)
