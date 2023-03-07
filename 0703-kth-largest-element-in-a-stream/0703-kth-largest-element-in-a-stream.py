@@ -1,4 +1,4 @@
-class MinHeap:
+class MaxHeap:
     def __init__(self, arr):
         self.h = arr[::]
         for i in reversed(range(len(self.h))):
@@ -12,11 +12,11 @@ class MinHeap:
         l = i * 2 + 1
         while l < n:
             r = i * 2 + 2
-            if r >= n or self.h[l] < self.h[r]:
+            if r >= n or self.h[l] > self.h[r]:
                 j = l
             else:
                 j = r
-            if self.h[j] < self.h[i]:
+            if self.h[j] > self.h[i]:
                 self._swap(j, i)
                 i = j
                 l = i * 2 + 1
@@ -25,7 +25,7 @@ class MinHeap:
                     
     def _siftUp(self, i):
         p = (i - 1) // 2
-        while i > 0 and self.h[p] > self.h[i]:
+        while i > 0 and self.h[p] < self.h[i]:
             self._swap(p, i)
             i = p
             p = (i - 1) // 2
@@ -52,13 +52,13 @@ class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
         self.k = k
-        self.h = MinHeap(nums)
+        self.h = MaxHeap([-num for num in nums])
 
     def add(self, val: int) -> int:
-        self.h.push(val)
+        self.h.push(-val)
         while self.h.size() > self.k:
             self.h.pop()
-        return self.h.peek()
+        return -self.h.peek()
     
 # Your KthLargest object will be instantiated and called as such:
 # obj = KthLargest(k, nums)
