@@ -12,19 +12,26 @@
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         def helper(lo, hi):
+            nonlocal curr
+            
             if lo > hi:
                 return None
             
-            if lo == hi:
-                return nodes[lo]
-            
             mid = lo + hi >> 1
-            nodes[mid].left = helper(lo, mid - 1)
-            nodes[mid].right = helper(mid + 1, hi)
-            return nodes[mid]
-        
-        nodes, curr = [], head
-        while curr:
-            nodes.append(TreeNode(curr.val))
+            
+            left = helper(lo, mid - 1)
+            
+            root = TreeNode(curr.val, left)
             curr = curr.next
-        return helper(0, len(nodes) - 1)
+            
+            root.right = helper(mid + 1, hi)
+            
+            return root
+        
+        size, curr = 0, head
+        while curr:
+            size += 1
+            curr = curr.next
+            
+        curr = head
+        return helper(0, size - 1)
