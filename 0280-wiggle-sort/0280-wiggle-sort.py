@@ -3,6 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        nums.sort()
-        for i in range(2, len(nums), 2):
-            nums[i], nums[i - 1] = nums[i - 1], nums[i]
+        for i in range(1, len(nums)):
+            if (i % 2 == 0 and nums[i] > nums[i - 1]) or (i & 1 and nums[i] < nums[i - 1]):
+                nums[i], nums[i - 1] = nums[i - 1], nums[i]
