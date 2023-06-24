@@ -1,27 +1,28 @@
 class Solution:
     def shortestWay(self, source: str, target: str) -> int:
-        idx_map = defaultdict(list)
+        imap = defaultdict(list)
         for i, c in enumerate(source):
-            idx_map[c].append(i)
-        
-        ss_count = 1
-        prev_idx = -1
-        for c in target:
-            char_indices = idx_map[c]
+            imap[c].append(i)
             
-            if not char_indices:
+        scount, spos = 1, -1
+        for c in target:
+            ilist = imap[c]
+            
+            if not ilist:
                 return -1
-
-            lo, hi = -1, len(char_indices) - 1
-            while lo + 1 < hi:
-                mid = lo + hi >> 1
-                if char_indices[mid] > prev_idx:
-                    hi = mid
+            
+            l, h = -1, len(ilist) - 1
+            while l + 1 < h:
+                m = (l + h) >> 1
+                
+                if ilist[m] > spos:
+                    h = m
                 else:
-                    lo = mid
-            if char_indices[hi] <= prev_idx:
-                ss_count += 1
-                prev_idx = char_indices[0]
+                    l = m
+            if ilist[h] <= spos:
+                scount += 1
+                spos = ilist[0]
             else:
-                prev_idx = char_indices[hi]
-        return ss_count
+                spos = ilist[h]
+        return scount
+        
