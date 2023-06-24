@@ -1,5 +1,7 @@
 class Solution:
     def stringShift(self, s: str, shift: List[List[int]]) -> str:
-        ops = sum(-amount if direction else amount for direction, amount in shift)
-        ops %= len(s)
-        return s[ops:] + s[:ops]
+        diff = 0
+        for d, a in shift:
+            diff += a if d else -a
+        mid = len(s) - (diff % len(s))
+        return s[mid:] + s[:mid]
