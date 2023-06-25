@@ -1,14 +1,16 @@
 class Solution:
     def numKLenSubstrNoRepeats(self, s: str, k: int) -> int:
-        counts = {}
-        ans = 0
-        for i in range(len(s)):
-            if i >= k:
-                if counts[s[i - k]] == 1:
-                    del counts[s[i - k]]
-                else:
-                    counts[s[i - k]] -= 1
-            counts[s[i]] = counts.get(s[i], 0) + 1
-            if len(counts) == k:
-                ans += 1
-        return ans
+        scount = l = 0
+        chars = set()
+        for r in range(len(s)):
+            while s[r] in chars:
+                chars.remove(s[l])
+                l += 1
+                
+            chars.add(s[r])
+            
+            if len(chars) >= k:
+                scount += 1
+                chars.remove(s[l])
+                l += 1
+        return scount
