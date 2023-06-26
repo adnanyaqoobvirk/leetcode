@@ -1,8 +1,9 @@
 class Solution:
     def calculateTime(self, keyboard: str, word: str) -> int:
-        keyboard = {k: i for i, k in enumerate(keyboard)}
-        t = curr = 0
+        lookup = {c:i for i, c in enumerate(keyboard)}
+        ans = pre = 0
         for c in word:
-            t += abs(keyboard[c] - curr)
-            curr = keyboard[c]
-        return t
+            cur = lookup[c]
+            ans += abs(cur - pre)
+            pre = cur
+        return ans
