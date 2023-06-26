@@ -1,10 +1,11 @@
 class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
-        m, n = len(mat), len(mat[0])
-        counts = defaultdict(int)
-        for row in mat:
-            for col in row:
-                counts[col] += 1
-                if counts[col] == m:
-                    return col
+        m, n = len(mat) - 1, len(mat[0])
+        freq = defaultdict(int)
+        for i in range(m):
+            for j in range(n):
+                freq[mat[i][j]] += 1
+        for num in mat[-1]:
+            if freq[num] == m:
+                return num
         return -1
