@@ -6,13 +6,11 @@ class Solution:
         mapping = defaultdict(set)
         for w1, w2 in similarPairs:
             mapping[w1].add(w2)
+            mapping[w2].add(w1)
             
         for i in range(len(sentence1)):
-            if (
-                sentence1[i] != sentence2[i] and 
-                not sentence2[i] in mapping[sentence1[i]] and 
-                not sentence1[i] in mapping[sentence2[i]]
-            ):
+            mapping[sentence1[i]].add(sentence1[i])
+            if not sentence2[i] in mapping[sentence1[i]]:
                 return False
         
         return True
