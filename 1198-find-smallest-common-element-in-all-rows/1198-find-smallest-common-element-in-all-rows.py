@@ -4,7 +4,9 @@ class Solution:
         for num in mat[-1]:
             for i in range(m):
                 pos = bisect_left(mat[i], num)
-                if pos == n or mat[i][pos] != num:
+                if pos == n:
+                    return -1
+                if mat[i][pos] != num:
                     break
             else:
                 return num
