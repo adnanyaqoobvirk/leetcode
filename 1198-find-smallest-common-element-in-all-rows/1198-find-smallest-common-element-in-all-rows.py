@@ -1,13 +1,7 @@
 class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
-        m, n = len(mat) - 1, len(mat[0])
-        for num in mat[-1]:
-            for i in range(m):
-                pos = bisect_left(mat[i], num)
-                if pos == n:
-                    return -1
-                if mat[i][pos] != num:
-                    break
-            else:
-                return num
-        return -1
+        itr = iter(mat)
+        s = set(next(itr))
+        for row in itr:
+            s &= set(row)
+        return min(s, default=-1)
