@@ -6,7 +6,8 @@ class Solution:
                 if picture[i][j] == "B":
                     row_map[i] += 1
                     col_map[j] += 1
-                    blacks.append((i, j))
+                    if row_map[i] == 1 and col_map[j] == 1:
+                        blacks.append((i, j))
         
         count = 0
         for i, j in blacks:
