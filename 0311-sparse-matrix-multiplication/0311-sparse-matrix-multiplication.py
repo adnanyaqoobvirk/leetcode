@@ -3,11 +3,12 @@ class Solution:
         m, k, n = len(mat1), len(mat1[0]), len(mat2[0])
         ans = [[0] * n for _ in range(m)]
                     
-        smat2 = defaultdict(list)
+        smat2 = []
         for i in range(k):
+            smat2.append([])
             for j in range(n):
                 if mat2[i][j] != 0:
-                    smat2[i].append((j, mat2[i][j]))
+                    smat2[-1].append((j, mat2[i][j]))
         
         for i in range(m):
             for j in range(k):
