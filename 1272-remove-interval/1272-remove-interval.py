@@ -7,9 +7,6 @@ class Solution:
                 ans.append([start, end])
                 continue
                 
-            if start >= rstart and end <= rend:
-                continue
-            
             if start < rstart:
                 ans.append([start, rstart])
             
