@@ -1,22 +1,19 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
-        def backtrack(pos: int) -> int:
-            if pos == n:
-                return max(distribution)
+        def backtrack(i: int, maximum: int, zeros: int):
+            if n - i < zeros:
+                return inf
             
-            min_unfairness = inf
-            for child in range(k):
-                if distribution[child] + cookies[pos] > max_allowed_cookies:
-                    continue
-                    
-                distribution[child] += cookies[pos]
-                min_unfairness = min(
-                    min_unfairness,
-                    backtrack(pos + 1)
-                )
-                distribution[child] -= cookies[pos]
-            return min_unfairness
+            if i == n:
+                return maximum
+            
+            m = inf
+            for j in range(k):
+                childs[j] += cookies[i]
+                m = min(m, backtrack(i + 1, max(maximum, childs[j]), zeros - 1 if childs[j] - cookies[i] == 0 else zeros))
+                childs[j] -= cookies[i]
+            return m
+        
         n = len(cookies)
-        max_allowed_cookies = sum(sorted(cookies, reverse=True)[:ceil(n/k)])
-        distribution = [0] * k
-        return backtrack(0)
+        childs = [0] * k
+        return backtrack(0, 0, k)
