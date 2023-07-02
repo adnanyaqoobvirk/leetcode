@@ -1,19 +1,24 @@
 class Solution:
     def minTransfers(self, transactions: List[List[int]]) -> int:
-        def backtrack(i: int, t: int) -> int:
+        def backtrack(i: int, t: int):
+            nonlocal ans
+            
+            if t > ans:
+                return 
+            
             if i == n:
-                return t
+                ans = t
+                return
             
             if accounts[i] <= 0:
                 return backtrack(i + 1, t)
             
-            ans = inf
             for j in range(n):
                 if j != i and accounts[j] < 0:
                     diff = min(-accounts[j], accounts[i])
                     accounts[j] += diff
                     accounts[i] -= diff
-                    ans = min(ans, backtrack(i, t + 1))
+                    backtrack(i, t + 1)
                     accounts[j] -= diff
                     accounts[i] += diff
             return ans
@@ -23,5 +28,9 @@ class Solution:
             accounts[fr] -= am
             accounts[to] += am
             n = max(n, fr, to)
+            
         n = n + 1
-        return backtrack(0, 0)
+        ans = inf
+        backtrack(0, 0)
+        
+        return ans
