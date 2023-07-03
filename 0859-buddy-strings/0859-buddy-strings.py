@@ -7,6 +7,6 @@ class Solution:
         if c == 2:
             return Counter(s) == Counter(g)
         elif c == 0:
-            return max(Counter(s).values()) > 1
+            return Counter(s).most_common(1)[0][1] > 1
         else:
             return False
