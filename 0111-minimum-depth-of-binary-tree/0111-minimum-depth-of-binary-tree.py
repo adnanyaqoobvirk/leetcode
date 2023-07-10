@@ -6,15 +6,19 @@
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        
-        def helper(curr: TreeNode) -> int:
+        stack, vis = [root], {None: inf}
+        while stack:
+            curr = stack.pop()
+            
             if not curr:
-                return inf
+                continue
             
-            if not curr.left and not curr.right:
-                return 1
-            
-            return 1 + min(helper(curr.left), helper(curr.right))
-        return helper(root)
+            if curr.left in vis and curr.right in vis:
+                d = min(vis[curr.left], vis[curr.right])
+                vis[curr] = 1 + (0 if d == inf else d)
+            else:
+                stack.append(curr)
+                stack.append(curr.left)
+                stack.append(curr.right)
+        
+        return 0 if vis[root] == inf else vis[root]
