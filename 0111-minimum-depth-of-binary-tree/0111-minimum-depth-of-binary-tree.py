@@ -8,16 +8,17 @@ class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         stack, vis = [root], {None: inf}
         while stack:
-            curr = stack.pop()
+            curr = stack[-1]
             
             if not curr:
+                stack.pop()
                 continue
             
             if curr.left in vis and curr.right in vis:
                 d = min(vis[curr.left], vis[curr.right])
                 vis[curr] = 1 + (0 if d == inf else d)
+                stack.pop()
             else:
-                stack.append(curr)
                 stack.append(curr.left)
                 stack.append(curr.right)
         
