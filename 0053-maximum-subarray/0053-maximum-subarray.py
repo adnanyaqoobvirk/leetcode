@@ -1,7 +1,13 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        ans, total = -inf, 0
-        for num in nums:
-            total = max(total + num, num)
-            ans = max(ans, total)
-        return ans
+        @cache
+        def dp(i: int, sa: bool) -> int:
+            if i >= n:
+                return 0 if sa else -inf
+            
+            if sa:
+                return max(0, nums[i] + dp(i + 1, True))
+            else:
+                return max(nums[i] + dp(i + 1, True), dp(i + 1, False))
+        n = len(nums)
+        return dp(0, False)
