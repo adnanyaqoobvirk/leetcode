@@ -1,16 +1,19 @@
 class Solution:
     def parseTernary(self, e: str) -> str:
-        stack = []
+        stack, pc = [], ""
         for c in reversed(e):
-            if len(stack) >= 4 and stack[-2] == "?":
-                res = stack[-3] if stack[-1] == 'T' else stack[-4]
-                for _ in range(4):
+            if c not in "?:":
+                stack.append(c)
+                
+            if len(stack) >= 3 and pc == "?":
+                res = stack[-2] if stack[-1] == 'T' else stack[-3]
+                for _ in range(3):
                     stack.pop()
                 stack.append(res)
-            if c != ":":
-                stack.append(c)
+                
+            pc = c
         
         if len(stack) > 1:
-            return stack[-3] if stack[-1] == 'T' else stack[-4]
+            return stack[-2] if stack[-1] == 'T' else stack[-3]
         else:
             return stack[-1]
