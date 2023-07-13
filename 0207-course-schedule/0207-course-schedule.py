@@ -1,18 +1,23 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        indegrees, graph = defaultdict(int), defaultdict(list)
-        for a, b in prerequisites:
-            indegrees[a] += 1
-            graph[b].append(a)
+        def dfs(curr: int) -> bool:
+            if curr in seen:
+                return not seen[curr]
+        
+            seen[curr] = False
+            for nei in graph[curr]:
+                if dfs(nei):
+                    return True
+            seen[curr] = True
             
-        courses, q = [], [i for i in range(numCourses) if indegrees[i] == 0]
-        while q:
-            nq = []
-            for c in q:
-                courses.append(c)
-                for d in graph[c]:
-                    indegrees[d] -= 1
-                    if indegrees[d] == 0:
-                        nq.append(d)
-            q = nq
-        return len(courses) == numCourses
+            return False
+        
+        graph = defaultdict(list)
+        for dst, src in prerequisites:
+            graph[dst].append(src)
+        
+        seen = {}
+        for i in range(numCourses):
+            if dfs(i):
+                return False
+        return True
