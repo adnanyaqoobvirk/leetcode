@@ -1,22 +1,20 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        def dfs(curr: int) -> bool:
-            if curr in safe:
-                return safe[curr]
-            
-            safe[curr] = False
-            
-            is_safe = True
-            for nei in graph[curr]:
-                is_safe = is_safe and dfs(nei)
-            
-            safe[curr] = is_safe
-            
-            return is_safe
-            
-        safe, ans = {}, []
-        for i in range(len(graph)):
-            if dfs(i):
-                ans.append(i)
+        outdegrees, ograph = defaultdict(int), defaultdict(list)
+        for i, node in enumerate(graph):
+            outdegrees[i] += len(node)
+            for nei in node:
+                ograph[nei].append(i)
         
-        return ans
+        n = len(graph)
+        ans, q = [False] * n, [i for i in range(n) if outdegrees[i] == 0]
+        while q:
+            nq = []
+            for node in q:
+                ans[node] = True
+                for nei in ograph[node]:
+                    outdegrees[nei] -= 1
+                    if outdegrees[nei] == 0:
+                        nq.append(nei)
+            q = nq
+        return [i for i in range(n) if ans[i]]
