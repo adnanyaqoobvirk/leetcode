@@ -6,7 +6,7 @@ class Solution:
                 return 0
             
             if s:
-                if i not in nmap:
+                if nmap[i] == -1:
                     return events[i][2]
                 return events[i][2] + max(dp(nmap[i], c + 1, True), dp(nmap[i], c + 1, False))
             else:
@@ -15,7 +15,7 @@ class Solution:
         n = len(events)
         events.sort()
         
-        nmap = {}
+        nmap = [-1] * n
         for i in range(n):
             l, r = i, n - 1
             while l + 1 < r:
