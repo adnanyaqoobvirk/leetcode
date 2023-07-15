@@ -1,15 +1,5 @@
 class Solution:
     def maxValue(self, events: List[List[int]], k: int) -> int:
-        @cache
-        def dp(i: int, c: int) -> int:
-            if i >= n or c >= k:
-                return 0
-                
-            return max(
-                dp(i + 1, c), events[i][2] + 
-                (0 if nmap[i] == -1 else dp(nmap[i], c + 1))
-            )
-        
         n = len(events)
         events.sort()
         
@@ -24,5 +14,12 @@ class Solution:
                     l = m
             if events[r][0] > events[i][1]:
                 nmap[i] = r
-                
-        return dp(0, 0)
+        
+        dp = [[0] * (k + 1) for _ in range(n + 1)]
+        for i in reversed(range(n)):
+            for j in reversed(range(k)):
+                dp[i][j] = max(
+                    dp[i + 1][j],
+                    events[i][2] + (0 if nmap[i] == -1 else dp[nmap[i]][j + 1])
+                )
+        return dp[0][0]
