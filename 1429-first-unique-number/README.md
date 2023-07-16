@@ -1,4 +1,4 @@
-<h2>1429. First Unique Number</h2><h3>Medium</h3><hr><div><p>You have a queue of integers, you need to retrieve the first unique integer in the queue.</p>
+<h2><a href="https://leetcode.com/problems/first-unique-number/">1429. First Unique Number</a></h2><h3>Medium</h3><hr><div><p>You have a queue of integers, you need to retrieve the first unique integer in the queue.</p>
 
 <p>Implement the <code>FirstUnique</code>&nbsp;class:</p>
 
@@ -9,7 +9,7 @@
 </ul>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
 <pre><b>Input: </b>
 ["FirstUnique","showFirstUnique","add","showFirstUnique","add","showFirstUnique","add","showFirstUnique"]
@@ -27,7 +27,7 @@ firstUnique.add(3);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // the queue is now
 firstUnique.showFirstUnique(); // return -1
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><b>Input: </b>
 ["FirstUnique","showFirstUnique","add","add","add","add","add","showFirstUnique"]
@@ -45,7 +45,7 @@ firstUnique.add(17);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// the queue is now
 firstUnique.showFirstUnique(); // return 17
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
 <pre><b>Input: </b>
 ["FirstUnique","showFirstUnique","add","showFirstUnique"]
