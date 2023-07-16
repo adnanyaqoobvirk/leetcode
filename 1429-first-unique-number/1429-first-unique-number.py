@@ -1,25 +1,24 @@
 class FirstUnique:
 
     def __init__(self, nums: List[int]):
-        self.uniques = {}
-        self.duplicates = set()
+        self.dmap = defaultdict(int)
+        self.q = deque()
         
         for num in nums:
-            self.add(num)
-        
+            self.dmap[num] += 1
+            self.q.append(num)
+
     def showFirstUnique(self) -> int:
-        if len(self.uniques) > 0:
-            return next(iter(self.uniques))
-        else:
-            return -1
+        while self.q and self.dmap[self.q[0]] > 1:
+            self.q.popleft()
         
+        return self.q[0] if self.q else -1
+
     def add(self, value: int) -> None:
-        if value not in self.duplicates:
-            if value in self.uniques:
-                del self.uniques[value]
-                self.duplicates.add(value)
-            else:
-                self.uniques[value] = True
+        self.dmap[value] += 1
+        if self.dmap[value] <= 1:
+            self.q.append(value)
+
 
 # Your FirstUnique object will be instantiated and called as such:
 # obj = FirstUnique(nums)
