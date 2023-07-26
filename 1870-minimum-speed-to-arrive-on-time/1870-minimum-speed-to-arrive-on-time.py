@@ -9,7 +9,7 @@ class Solution:
                     return False
             return True
         
-        l, r = 0, max(dist) * 100
+        l, r = 0, 10**7
         while l + 1 < r:
             m = l + r >> 1
             if valid(m):
