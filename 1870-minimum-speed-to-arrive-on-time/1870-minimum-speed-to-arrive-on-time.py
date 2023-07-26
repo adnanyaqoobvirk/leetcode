@@ -5,7 +5,9 @@ class Solution:
             for d in dist:
                 c = math.ceil(c)
                 c += d / v
-            return c <= hour
+                if c > hour:
+                    return False
+            return True
         
         l, r = 0, max(dist) * 100
         while l + 1 < r:
