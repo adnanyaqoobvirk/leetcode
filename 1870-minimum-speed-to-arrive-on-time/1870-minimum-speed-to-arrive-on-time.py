@@ -7,7 +7,7 @@ class Solution:
                 c += d / v
             return c <= hour
         
-        l, r = 0, sum(dist) * 10 * 10
+        l, r = 0, max(dist) * 100
         while l + 1 < r:
             m = l + r >> 1
             if valid(m):
