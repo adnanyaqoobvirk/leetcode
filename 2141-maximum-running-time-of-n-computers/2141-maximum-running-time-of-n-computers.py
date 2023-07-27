@@ -6,7 +6,7 @@ class Solution:
                 extra += min(p, minutes)
             return extra // n >= minutes
         
-        l, h = 0, sum(batteries) + 1
+        l, h = 0, sum(batteries) // n + 1
         while l + 1 < h:
             m = l + h >> 1
             if valid(m):
