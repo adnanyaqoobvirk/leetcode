@@ -8,21 +8,13 @@
 
 class Solution:
     def printLinkedListInReverse(self, head: 'ImmutableListNode') -> None:
-        size = 0
-        curr = head
+        size, curr = 0, head
         while curr:
-            size += 1
-            curr = curr.next
+            size, curr = size + 1, curr.next
         
-        bsize = int(math.sqrt(size))
-        buckets = [head]
-        curr = head
-        count = 0
-        while curr:
-            if count < bsize:
-                count += 1
-            else:
-                count = 1
+        bsize, buckets, curr, count = int(math.sqrt(size)), [], head, 0
+        for i in range(size):
+            if i % bsize == 0:
                 buckets.append(curr)
             curr = curr.next
         
@@ -34,6 +26,5 @@ class Solution:
                 stack.append(curr)
                 curr = curr.next
             
-            for n in reversed(stack):
-                n.printValue()
-            
+            for curr in reversed(stack):
+                curr.printValue()
