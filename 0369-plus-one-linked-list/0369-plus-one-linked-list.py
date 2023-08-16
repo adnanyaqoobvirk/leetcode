@@ -5,20 +5,22 @@
 #         self.next = next
 class Solution:
     def plusOne(self, head: ListNode) -> ListNode:
-        stack = []
-        curr = head
+        def reverse(root: ListNode):
+            prev, curr = root, root.next
+            prev.next = None
+            while curr:
+                curr.next, prev, curr = prev, curr, curr.next
+            return prev
         
-        while curr:
-            stack.append(curr)
-            curr = curr.next
+        head = reverse(head)
+        
+        curr, carry = head, 1
+        while curr and carry:
+            carry, curr.val = divmod(curr.val + carry, 10)
+            prev, curr = curr, curr.next
             
-        carry = 1
-        while stack and carry:
-            node = stack.pop()
-            carry, node.val = divmod(node.val + carry, 10)
-        
         if carry:
-            head = ListNode(1, head)
-        
-        return head
+            prev.next = ListNode(carry)
             
+        return reverse(head)
+        
