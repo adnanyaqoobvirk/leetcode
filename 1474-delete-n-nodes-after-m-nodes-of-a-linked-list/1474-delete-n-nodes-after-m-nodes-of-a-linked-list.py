@@ -5,17 +5,18 @@
 #         self.next = next
 class Solution:
     def deleteNodes(self, head: ListNode, m: int, n: int) -> ListNode:
-        sentinal = curr = ListNode()
         i = j = 0
-        while head:
+        curr = prev = head
+        while curr:
             if i == m:
                 if j < n:
                     j += 1
-                    head = head.next
+                    curr = curr.next
                     continue
                 else:
+                    prev.next = curr
                     i = j = 0
             i += 1
-            curr.next = ListNode(head.val)
-            curr, head = curr.next, head.next
-        return sentinal.next
+            prev, curr = curr, curr.next
+        prev.next = None
+        return head
