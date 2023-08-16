@@ -8,10 +8,10 @@
 
 class Solution:
     def printLinkedListInReverse(self, head: 'ImmutableListNode') -> None:
-        stack = []
-        while head:
-            stack.append(head)
-            head = head.getNext()
-        
-        for curr in reversed(stack):
+        tail = None
+        while not tail or tail != head:
+            curr = head
+            while curr.next and curr.next != tail:
+                curr = curr.next
             curr.printValue()
+            tail = curr
