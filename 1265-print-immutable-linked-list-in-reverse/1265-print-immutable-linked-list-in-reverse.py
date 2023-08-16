@@ -8,14 +8,17 @@
 
 class Solution:
     def printLinkedListInReverse(self, head: 'ImmutableListNode', tail: 'ImmutableListNode' = None) -> None:
-        if head:
-            if head == tail:
-                head.printValue()
-            else:
-                slow = fast = head
-                while fast and fast.next and fast != tail and fast.next != tail:
-                    slow = slow.next
-                    fast = fast.next.next
+        if not head:
+            return 
+        
+        if head == tail:
+            head.printValue()
+            return
+            
+        slow = fast = head
+        while fast and fast.getNext() and fast != tail and fast.getNext() != tail:
+            slow = slow.getNext()
+            fast = fast.getNext().getNext()
 
-                self.printLinkedListInReverse(slow.next, tail)
-                self.printLinkedListInReverse(head, slow)
+        self.printLinkedListInReverse(slow.getNext(), tail)
+        self.printLinkedListInReverse(head, slow)
