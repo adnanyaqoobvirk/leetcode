@@ -1,23 +1,21 @@
-from sortedcontainers import SortedDict
-
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        mapping = SortedDict()
+        q = deque()
         for i in range(k):
-            if nums[i] not in mapping:
-                mapping[nums[i]] = set()
-            mapping[nums[i]].add(i)
-        
-        ans = [mapping.keys()[-1]]
+            while q and nums[q[-1]] <= nums[i]:
+                q.pop()
+            q.append(i)
+            
+        ans = [nums[q[0]]]
         for i in range(k, len(nums)):
-            v = nums[i - k]
-            mapping[v].remove(i - k)
-            if not mapping[v]:
-                del mapping[v]
+            start = i - k + 1
             
-            if nums[i] not in mapping:
-                mapping[nums[i]] = set()
-            mapping[nums[i]].add(i)
-            
-            ans.append(mapping.keys()[-1])
+            while q and q[0] < start:
+                q.popleft()
+                
+            while q and nums[q[-1]] <= nums[i]:
+                q.pop()
+
+            q.append(i)
+            ans.append(nums[q[0]])
         return ans
