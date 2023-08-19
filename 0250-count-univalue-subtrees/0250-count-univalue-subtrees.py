@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
-        def helper(curr: TreeNode) -> Tuple[int, int]:
+        def helper(curr: Optional[TreeNode]) -> int:
             if not curr:
                 return -inf
 
