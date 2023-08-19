@@ -8,14 +8,18 @@ class Solution:
     def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
         def helper(curr: TreeNode) -> Tuple[int, int]:
             if not curr:
-                return -inf, 0
+                return -inf
 
-            left_val, left_cnt = helper(curr.left)
-            right_val, right_cnt = helper(curr.right)
+            left_val = helper(curr.left)
+            right_val = helper(curr.right)
 
             if (left_val == -inf or left_val == curr.val) and (right_val == -inf or right_val == curr.val):
-                return curr.val, left_cnt + right_cnt + 1
+                nonlocal ans
+                ans += 1
+                return curr.val
             else:
-                return inf, left_cnt + right_cnt
-        return helper(root)[1]
+                return inf
+        ans = 0
+        helper(root)
+        return ans
     
