@@ -14,12 +14,11 @@ class Solution:
             right_val = helper(curr.right)
 
             if (left_val == -inf or left_val == curr.val) and (right_val == -inf or right_val == curr.val):
-                nonlocal ans
-                ans += 1
+                self.cnt += 1
                 return curr.val
             else:
                 return inf
-        ans = 0
+        self.cnt = 0
         helper(root)
-        return ans
+        return self.cnt
     
