@@ -6,39 +6,20 @@
 #         self.right = right
 class Solution:
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        outdegrees, parents, stack = {}, {root: None}, [root]
-        while stack:
-            curr = stack.pop()
-                
-            degree = 0
-            if curr.left:
-                degree += 1
-                stack.append(curr.left)
-                parents[curr.left] = curr
-            
-            if curr.right:
-                degree += 1
-                stack.append(curr.right)
-                parents[curr.right] = curr
-            
-            outdegrees[curr] = degree
+        def helper(curr: Optional[TreeNode]) -> int:
+            if not curr:
+                return -1
         
-        ans, q = [], [curr for curr, degree in outdegrees.items() if degree == 0]
-        while q:
-            nq, level = [], []
+            left, right = helper(curr.left), helper(curr.right)
             
-            for curr in q:
-                level.append(curr.val)
-                
-                parent = parents[curr]
-                
-                if parent:
-                    outdegrees[parent] -= 1
-
-                    if outdegrees[parent] == 0:
-                        nq.append(parent)
-            ans.append(level)
-            q = nq
+            h = max(left, right) + 1
             
+            if len(ans) <= h:
+                ans.append([])
+                
+            ans[h].append(curr.val)
+            
+            return h
+        ans = []
+        helper(root)
         return ans
-                    
