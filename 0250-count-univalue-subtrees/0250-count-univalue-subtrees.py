@@ -9,9 +9,6 @@ class Solution:
         def helper(curr: TreeNode) -> Tuple[int, int]:
             if not curr:
                 return -inf, 0
-            
-            if not curr.left and not curr.right:
-                return curr.val, 1
 
             left_val, left_cnt = helper(curr.left)
             right_val, right_cnt = helper(curr.right)
