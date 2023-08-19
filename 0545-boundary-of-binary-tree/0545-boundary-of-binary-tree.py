@@ -17,23 +17,18 @@ class Solution:
             else:
                 curr = curr.right
             
-        stack = []
-        if root.right:
-            stack.append(root.right)
-            
-        if root.left:
-            stack.append(root.left)
-            
+        stack = [root.right, root.left]
         while stack:
             curr = stack.pop()
+            
+            if not curr:
+                continue
             
             if not curr.left and not curr.right:
                 ans.append(curr.val)
             else:
-                if curr.right:
-                    stack.append(curr.right)
-                if curr.left:
-                    stack.append(curr.left)
+                stack.append(curr.right)
+                stack.append(curr.left)
         
         curr = root.right
         right_boundry = []
