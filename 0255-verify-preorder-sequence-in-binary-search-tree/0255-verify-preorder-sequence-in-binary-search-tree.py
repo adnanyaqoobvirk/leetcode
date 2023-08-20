@@ -3,7 +3,7 @@ class Solution:
         stack, minlimit = [], -inf
         for v in preorder:
             while stack and stack[-1] < v:
-                minlimit = max(minlimit, stack.pop())
+                minlimit = stack.pop()
             if v <= minlimit:
                 return False
             stack.append(v)
