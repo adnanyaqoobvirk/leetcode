@@ -7,13 +7,8 @@
 class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         closest = diff = inf
-        stack = [root]
-        while stack:
-            curr = stack.pop()
-            
-            if not curr:
-                continue
-                
+        curr = root
+        while curr:
             curr_diff = abs(curr.val - target)
             if curr_diff == diff:
                 closest = min(closest, curr.val)
@@ -22,6 +17,8 @@ class Solution:
                 
             diff = min(diff, curr_diff)
             
-            stack.append(curr.right)
-            stack.append(curr.left)
+            if target < curr.val:
+                curr = curr.left
+            else:
+                curr = curr.right
         return closest
