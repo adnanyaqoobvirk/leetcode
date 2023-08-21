@@ -6,24 +6,28 @@
 #         self.right = right
 class Solution:
     def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
-        stack = [root1]
-        while stack:
-            curr1 = stack.pop()
-            
-            if not curr1:
-                continue
-            
-            diff = target - curr1.val
-            curr2 = root2
-            while curr2:
-                if curr2.val == diff:
-                    return True
-                
-                if curr2.val < diff:
-                    curr2 = curr2.right
+        def getOrdered(curr: Optional[TreeNode]) -> List[int]:
+            res, stack = [], []
+            while curr or stack:
+                if curr:
+                    stack.append(curr)
+                    curr = curr.left
                 else:
-                    curr2 = curr2.left
-                    
-            stack.append(curr1.right)
-            stack.append(curr1.left)
+                    curr = stack.pop()
+                    res.append(curr.val)
+                    curr = curr.right
+            return res
+        
+        t1, t2 = getOrdered(root1), getOrdered(root2)
+        p1, p2 = 0, len(t2) - 1
+        while p1 < len(t1) and p2 >= 0:
+            if t1[p1] + t2[p2] == target:
+                return True
+            
+            if t1[p1] + t2[p2] < target:
+                p1 += 1
+            else:
+                p2 -= 1
         return False
+        
+        
