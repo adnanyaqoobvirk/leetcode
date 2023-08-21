@@ -18,16 +18,9 @@ class Solution:
                     curr = curr.right
             return res
         
-        t1, t2 = getOrdered(root1), getOrdered(root2)
-        p1, p2 = 0, len(t2) - 1
-        while p1 < len(t1) and p2 >= 0:
-            if t1[p1] + t2[p2] == target:
+        t2 = set(getOrdered(root2))
+        for v in getOrdered(root1):
+            if target - v in t2:
                 return True
-            
-            if t1[p1] + t2[p2] < target:
-                p1 += 1
-            else:
-                p2 -= 1
         return False
-        
         
