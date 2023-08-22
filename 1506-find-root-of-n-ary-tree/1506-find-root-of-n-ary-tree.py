@@ -8,10 +8,11 @@ class Node:
 
 class Solution:
     def findRoot(self, tree: List['Node']) -> 'Node':
-        hasParent = set()
+        xor = 0
         for node in tree:
+            xor ^= node.val
             for child in node.children:
-                hasParent.add(child)
+                xor ^= child.val
         for node in tree:
-            if node not in hasParent:
+            if node.val == xor:
                 return node
