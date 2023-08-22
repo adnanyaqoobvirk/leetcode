@@ -11,8 +11,17 @@ class Solution:
         if not root:
             return None
         
-        nroot = Node(root.val, [])
-        for child in root.children:
-            nroot.children.append(self.cloneTree(child))
-        
+        nroot = None
+        q = [(root, None)]
+        while q:
+            nq = []
+            for node, parent in q:
+                nnode = Node(node.val, [])
+                if not nroot:
+                    nroot = nnode
+                if parent:
+                    parent.children.append(nnode)
+                for child in node.children:
+                    nq.append((child, nnode))
+            q = nq
         return nroot
