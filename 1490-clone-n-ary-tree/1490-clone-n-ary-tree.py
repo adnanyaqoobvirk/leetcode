@@ -7,15 +7,12 @@ class Node:
 """
 
 class Solution:
-    def __init__(self) -> None:
-        self.seen = {}
-        
     def cloneTree(self, root: 'Node') -> 'Node':
-        if not root: return None
-
-        if root not in self.seen:
-            self.seen[root] = nroot = Node(root.val)
-            for child in root.children:
-                nroot.children.append(self.cloneTree(child))
-            
-        return self.seen[root]
+        if not root:
+            return None
+        
+        nroot = Node(root.val, [])
+        for child in root.children:
+            nroot.children.append(self.cloneTree(child))
+        
+        return nroot
