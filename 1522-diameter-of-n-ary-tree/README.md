@@ -1,11 +1,11 @@
-<h2>1522. Diameter of N-Ary Tree</h2><h3>Medium</h3><hr><div><p>Given a <code>root</code> of an <a href="https://leetcode.com/articles/introduction-to-n-ary-trees/" target="_blank">N-ary tree</a>, you need to compute the length of the diameter of the tree.</p>
+<h2><a href="https://leetcode.com/problems/diameter-of-n-ary-tree/">1522. Diameter of N-Ary Tree</a></h2><h3>Medium</h3><hr><div><p>Given a <code>root</code> of an <a href="https://leetcode.com/articles/introduction-to-n-ary-trees/" target="_blank">N-ary tree</a>, you need to compute the length of the diameter of the tree.</p>
 
 <p>The diameter of an N-ary tree is the length of the <strong>longest</strong> path between any two nodes in the tree. This path may or may not pass through the root.</p>
 
 <p>(<em>Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value.)</em></p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
 <p><img alt="" src="https://assets.leetcode.com/uploads/2020/07/19/sample_2_1897.png" style="width: 324px; height: 173px;"></p>
 
@@ -13,7 +13,7 @@
 <strong>Output:</strong> 3
 <strong>Explanation: </strong>Diameter is shown in red color.</pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <p><strong><img alt="" src="https://assets.leetcode.com/uploads/2020/07/19/sample_1_1897.png" style="width: 253px; height: 246px;"></strong></p>
 
@@ -21,7 +21,7 @@
 <strong>Output:</strong> 4
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
 <p><img alt="" src="https://assets.leetcode.com/uploads/2020/07/19/sample_3_1897.png" style="width: 369px; height: 326px;"></p>
 
