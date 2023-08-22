@@ -8,24 +8,21 @@ class Node:
 
 class Solution:
     def diameter(self, root: 'Node') -> int:
-        def helper(current: 'Node') -> int:
-            nonlocal dia
-            
-            if not current:
+        def helper(curr: 'Node') -> int:
+            if not curr:
                 return 0
             
             first_max = second_max = 0
-            for node in current.children:
-                curr = helper(node)
-                if curr > first_max:
-                    second_max, first_max = first_max, curr
-                elif curr > second_max:
-                    second_max = curr
-
-            dia = max(dia, first_max + second_max)
-
-            return 1 + first_max
-        
-        dia = 0
+            for child in curr.children:
+                h = helper(child)
+                if first_max < h:
+                    second_max, first_max = first_max, h
+                elif second_max < h:
+                    second_max = h
+            
+            self.d = max(self.d, first_max + second_max)
+            
+            return first_max + 1
+        self.d = 0
         helper(root)
-        return dia
+        return self.d
