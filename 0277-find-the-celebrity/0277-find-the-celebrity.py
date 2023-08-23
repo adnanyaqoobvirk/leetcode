@@ -4,14 +4,17 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        x = 0
+        x, seen = 0, {}
         for y in range(1, n):
-            if knows(x, y):
+            seen[(x, y)] = knows(x, y)
+            if seen[(x, y)]:
                 x = y
         
         count = 0
         for y in range(n):
-            if not knows(x, y) and knows(y, x):
+            xy = seen[(x, y)] if (x, y) in seen else knows(x, y)
+            yx = seen[(y, x)] if (y, x) in seen else knows(y, x)
+            if not xy and yx:
                 count += 1
         
         return -1 if count != n - 1 else x
