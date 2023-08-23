@@ -4,10 +4,8 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        q = list(range(n))
-        x = q.pop()
-        while q:
-            y = q.pop()
+        x = 0
+        for y in range(1, n):
             if knows(x, y):
                 x = y
         
