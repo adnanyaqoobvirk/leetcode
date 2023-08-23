@@ -1,16 +1,21 @@
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
-        uf = {i:i for i in range(n)}
-        
-        def find(node):
-            if uf[node] != node:
-                uf[node] = find(uf[node])
-            return uf[node]
-        
-        def union(node1, node2):
-            uf[find(node2)] = find(node1)
-            
+        graph = defaultdict(list)
         for src, dst in edges:
-            union(src, dst)
-        
-        return len(set(find(i) for i in range(n)))
+            graph[src].append(dst)
+            graph[dst].append(src)
+            
+        nodes = set(range(n))
+        res = 0
+        while nodes:
+            q = [nodes.pop()]
+            while q:
+                nq = []
+                for node in q:
+                    for nei in graph[node]:
+                        if nei in nodes:
+                            nq.append(nei)
+                            nodes.remove(nei)
+                q = nq
+            res += 1
+        return res
