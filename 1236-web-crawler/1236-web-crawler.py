@@ -11,17 +11,18 @@
 
 class Solution:
     def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
-        def get_hostname(url):
-            return url.split('/')[2]
-
-        start_hostname = get_hostname(startUrl)
-        visited = set()
-
-        def dfs(url, htmlParser):
-            visited.add(url)
-            for next_url in htmlParser.getUrls(url):
-                if get_hostname(next_url) == start_hostname and next_url not in visited:
-                    dfs(next_url, htmlParser)
-
-        dfs(startUrl, htmlParser)
-        return visited
+        res = []
+        host = f"http://{startUrl.split('/')[2]}"
+        q = [startUrl]
+        visited = {startUrl}
+        while q:
+            nq = []
+            for url in q:
+                res.append(url)
+                
+                for childUrl in htmlParser.getUrls(url):
+                    if childUrl.startswith(host) and childUrl not in visited:
+                        nq.append(childUrl)
+                        visited.add(childUrl)
+            q = nq
+        return res
