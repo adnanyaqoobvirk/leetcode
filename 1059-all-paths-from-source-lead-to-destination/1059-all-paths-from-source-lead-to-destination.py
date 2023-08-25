@@ -1,26 +1,27 @@
 class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        graph = defaultdict(set)
-        indegrees = defaultdict(int)
-        for src, dst in edges:
-            graph[src].add(dst)
-            indegrees[dst] += 1
+        def helper(node: int) -> bool:
+            if seen[node] == 2:
+                return True
             
-        if graph[destination]:
-            return False
+            if seen[node] == 1:
+                return False
+            
+            if node != destination and not graph[node]:
+                return False
+            
+            seen[node] = 1
+            for nei in graph[node]:
+                if not helper(nei):
+                    return False
+            seen[node] = 2
+            
+            return True
         
-        q = [source]
-        while q:
-            nq = []
-            for curr in q:
-                if not graph[curr] and curr != destination:
-                    return False
+        seen = defaultdict(int)
+        
+        graph = defaultdict(list)
+        for src, dst in edges:
+            graph[src].append(dst)
             
-                if indegrees[curr] < 0 and curr != destination:
-                    return False
-                
-                for child in graph[curr]:
-                    indegrees[child] -= 1
-                    nq.append(child)
-            q = nq
-        return True
+        return helper(source)
