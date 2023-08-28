@@ -8,7 +8,12 @@ class Solution:
                 parents[i][j] = find(*parents[i][j])
             return parents[i][j]
     
-        def union(pp: int, qp: int):
+        def union(i: int, j: int, x: int, y: int) -> bool:
+            pp, qp = find(i, j), find(x, y)
+            
+            if pp == qp:
+                return False
+            
             if rank[pp[0]][pp[1]] == rank[qp[0]][qp[1]]:
                 parents[qp[0]][qp[1]] = pp
                 rank[pp[0]][pp[1]] += 1
@@ -16,6 +21,8 @@ class Solution:
                 parents[qp[0]][qp[1]] = pp
             else:
                 parents[pp[0]][pp[1]] = qp
+                
+            return True
         
         res = []
         islands = 0
@@ -26,9 +33,7 @@ class Solution:
                 islands += 1
                 for x, y in [(i + 1, j), (i, j + 1), (i - 1, j), (i, j - 1)]:
                     if 0 <= x < m and 0 <= y < n and grid[x][y] == True:
-                        pp, qp = find(i, j), find(x, y)
-                        if pp != qp:
-                            union(pp, qp)
+                        if union(i, j, x, y):
                             islands -= 1
             res.append(islands)
         return res
