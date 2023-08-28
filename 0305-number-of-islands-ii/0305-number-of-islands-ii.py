@@ -1,28 +1,33 @@
+class DisjointSet:
+    def __init__(self, n):
+        self.parent = [i for i in range(n)]
+        self.rank = [0 for _ in range(n)]
+    
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    
+    def union(self, x, y):
+        x_p = self.find(x)
+        y_p = self.find(y)
+        
+        if x_p == y_p:
+            return False
+        
+        if self.rank[x_p] == self.rank[y_p]:
+            self.parent[x_p] = y_p
+            self.rank[y_p] += 1
+        elif self.rank[x_p] < self.rank[y_p]:
+            self.parent[x_p] = y_p
+        else:
+            self.parent[y_p] = x_p
+        
+        return True
+            
 class Solution:
     def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
-        parents = [[(i, j) for j in range(n)] for i in range(m)]
-        rank = [[0] * n for _ in range(m)]
-        
-        def find(i: int, j: int) -> Tuple[int, int]:
-            if parents[i][j] != (i, j):
-                parents[i][j] = find(*parents[i][j])
-            return parents[i][j]
-    
-        def union(i: int, j: int, x: int, y: int) -> bool:
-            pp, qp = find(i, j), find(x, y)
-            
-            if pp == qp:
-                return False
-            
-            if rank[pp[0]][pp[1]] == rank[qp[0]][qp[1]]:
-                parents[qp[0]][qp[1]] = pp
-                rank[pp[0]][pp[1]] += 1
-            elif rank[pp[0]][pp[1]] > rank[qp[0]][qp[1]]:
-                parents[qp[0]][qp[1]] = pp
-            else:
-                parents[pp[0]][pp[1]] = qp
-                
-            return True
+        ds = DisjointSet(m * n)
         
         res = []
         islands = 0
@@ -33,7 +38,7 @@ class Solution:
                 islands += 1
                 for x, y in [(i + 1, j), (i, j + 1), (i - 1, j), (i, j - 1)]:
                     if 0 <= x < m and 0 <= y < n and grid[x][y] == True:
-                        if union(i, j, x, y):
+                        if ds.union(i * n + j, x * n + y):
                             islands -= 1
             res.append(islands)
         return res
