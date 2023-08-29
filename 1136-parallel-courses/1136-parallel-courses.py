@@ -7,7 +7,7 @@ class Solution:
             indegrees[dst] += 1
     
         q = [i for i in range(1, n + 1) if indegrees[i] == 0]
-        semesters, seen = 0, set(q)
+        semesters, count = 0, len(q)
         while q:
             nq = []
             for src in q:
@@ -16,7 +16,7 @@ class Solution:
                     
                     if indegrees[dst] == 0:
                         nq.append(dst)
-                        seen.add(dst)
+                        count += 1
             q = nq
             semesters += 1
-        return semesters if len(seen) == n else -1
+        return semesters if count == n else -1
