@@ -5,7 +5,7 @@
 <p>Return <em>the <strong>minimum</strong> number of semesters needed to take all courses</em>. If there is no way to take all the courses, return <code>-1</code>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/02/24/course1graph.jpg" style="width: 222px; height: 222px;">
 <pre><strong>Input:</strong> n = 3, relations = [[1,3],[2,3]]
 <strong>Output:</strong> 2
@@ -14,7 +14,7 @@ In the first semester, you can take courses 1 and 2.
 In the second semester, you can take course 3.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/02/24/course2graph.jpg" style="width: 222px; height: 222px;">
 <pre><strong>Input:</strong> n = 3, relations = [[1,2],[2,3],[3,1]]
 <strong>Output:</strong> -1
