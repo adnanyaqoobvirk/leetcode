@@ -1,22 +1,22 @@
 class Solution:
     def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
-        graph, indegrees = defaultdict(list), defaultdict(int)
-        for p, c in relations:
-            graph[p].append(c)
-            indegrees[c] += 1
-        
-        q, ans = [c for c in range(n) if indegrees[c] == 0], 0
+        graph = defaultdict(list)
+        indegrees = defaultdict(int)
+        for src, dst in relations:
+            graph[src].append(dst)
+            indegrees[dst] += 1
+    
+        q = [i for i in range(1, n + 1) if indegrees[i] == 0]
+        semesters, seen = 0, set(q)
         while q:
             nq = []
-            
-            for p in q:
-                for c in graph[p]:
-                    indegrees[c] -= 1
-                    if indegrees[c] == 0:
-                        nq.append(c)
+            for src in q:
+                for dst in graph[src]:
+                    indegrees[dst] -= 1
+                    
+                    if indegrees[dst] == 0:
+                        nq.append(dst)
+                        seen.add(dst)
             q = nq
-            ans += 1
-        for c, degree in indegrees.items():
-            if degree > 0:
-                return -1
-        return ans
+            semesters += 1
+        return semesters if len(seen) == n else -1
