@@ -2,17 +2,19 @@ class Solution:
     def bestClosingTime(self, customers: str) -> int:
         n = len(customers)
         
-        ycounts = [0] * (n + 1)
-        for i in reversed(range(n)):
-            ycounts[i] = ycounts[i + 1] + (1 if customers[i] == 'Y' else 0)
+        min_penalty = 0
+        for c in customers:
+            if c == 'Y':
+                min_penalty += 1
         
-        hour = min_penalty = n
-        penalty = 0
-        for i in range(n + 1):
-            if penalty + ycounts[i] < min_penalty:
-                hour = i
-                min_penalty = penalty + ycounts[i]
-            if i < n:
-                penalty += (1 if customers[i] == 'N' else 0)
+        curr_penalty = min_penalty
+        min_hour = 0
+        
+        for i, c in enumerate(customers):
+            curr_penalty += -1 if c == 'Y' else 1
             
-        return hour
+            if curr_penalty < min_penalty:
+                min_hour = i + 1
+                min_penalty = curr_penalty
+        
+        return min_hour
