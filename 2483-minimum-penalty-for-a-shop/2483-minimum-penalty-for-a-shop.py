@@ -1,7 +1,5 @@
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
-        n = len(customers)
-        
         curr_penalty = min_penalty = min_hour = 0
         
         for i, c in enumerate(customers):
