@@ -6,12 +6,12 @@ class Solution:
         for i in reversed(range(n)):
             ycounts[i] = ycounts[i + 1] + (1 if customers[i] == 'Y' else 0)
         
-        hour = max_penalty = n
+        hour = min_penalty = n
         penalty = 0
         for i in range(n + 1):
-            if penalty + ycounts[i] < max_penalty:
+            if penalty + ycounts[i] < min_penalty:
                 hour = i
-                max_penalty = penalty + ycounts[i]
+                min_penalty = penalty + ycounts[i]
             if i < n:
                 penalty += (1 if customers[i] == 'N' else 0)
             
