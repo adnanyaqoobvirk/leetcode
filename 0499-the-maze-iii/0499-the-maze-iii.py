@@ -1,44 +1,32 @@
 class Solution:
     def findShortestWay(self, maze: List[List[int]], ball: List[int], hole: List[int]) -> str:
         m, n = len(maze), len(maze[0])
-        dmap = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-        cmap = ['d', 'r', 'u', 'l']
+        directions = [(1, 0, 'd'), (0, 1, 'r'), (-1, 0, 'u'), (0, -1, 'l')]
         
-        seen = set()
-        q = [(ball[0], ball[1], d, ()) for d in range(len(dmap))]
-        res = ""
-        finished = False
-        while q and not finished:
-            nq = []
+        visited = set()
+        h = [(0, "", ball[0], ball[1])]
+        while h:
+            dis, p, i, j = heappop(h)
             
-            for i, j, d, path in q:
-                if i == hole[0] and j == hole[1]:
-                    finished = True
-                    ins = "".join(cmap[c] for c in path)
-                    if not res or ins < res:
-                        res = ins
+            if i == hole[0] and j == hole[1]:
+                return p
+            
+            if (i, j) in visited:
+                continue 
+                    
+            visited.add((i, j))
+            
+            for di, dj, dr in directions:
+                x, y, ndis = i, j, dis
                 
-                if finished:
-                    continue
+                while 0 <= x + di < m and 0 <= y + dj < n and maze[di + x][dj + y] == 0:
+                    x += di
+                    y += dj
+                    ndis += 1
+                    
+                    if x == hole[0] and y == hole[1]:
+                        break
                 
-                seen.add((i, j, d))
-                di, dj = dmap[d]
-                x, y = i + di, j + dj
-                
-                if not (0 <= x < m and 0 <= y < n) or maze[x][y] == 1:
-                    for k, (di, dj) in enumerate(dmap):
-                        a, b = di + i, dj + j
-                        
-                        if 0 <= a < m and 0 <= b < n and maze[a][b] != 1 and (a, b, k) not in seen:
-                            nq.append((a, b, k, path + (k,)))
-                elif (x, y, d) not in seen:
-                    nq.append((x, y, d, path + (d,)))
-            q = nq
-        
-        ans = []
-        prev = ""
-        for curr in res:
-            if prev != curr:
-                ans.append(curr)
-            prev = curr
-        return "".join(ans) if ans else "impossible"
+                heappush(h, (ndis, p + dr, x, y))
+                    
+        return "impossible"
