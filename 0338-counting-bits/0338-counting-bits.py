@@ -1,10 +1,11 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        res = []
-        for num in range(n + 1):
-            count = 0
-            while num > 0:
-                num &= num - 1
-                count += 1
-            res.append(count)
+        res, p = [0], 0
+        for num in range(1, n + 1):
+            if 2 ** p == num:
+                res.append(1)
+                p += 1
+            else:
+                lp = 2 ** (p - 1)
+                res.append(res[lp] + res[num - lp])
         return res
