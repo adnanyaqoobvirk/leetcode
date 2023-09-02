@@ -9,7 +9,7 @@ class Trie:
             if c not in t:
                 t[c] = {}
             t = t[c]
-        t['#'] = {}
+        t["#"] = word
 
     def search(self, word: str) -> bool:
         t = self.trie
@@ -17,7 +17,8 @@ class Trie:
             if c not in t:
                 return False
             t = t[c]
-        return '#' in t
+        
+        return True if "#" in t else False
 
     def startsWith(self, prefix: str) -> bool:
         t = self.trie
