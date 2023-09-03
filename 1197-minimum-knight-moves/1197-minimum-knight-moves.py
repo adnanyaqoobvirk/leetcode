@@ -1,5 +1,6 @@
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
+        x, y = abs(x), abs(y)
         moves = [
             (-2, -1), (-2, 1),
             (-1, -2), (-1, 2),
@@ -15,11 +16,11 @@ class Solution:
                     return steps
                 
                 for di, dj in moves:
-                    xy = (i + di, j + dj)
+                    ab = (abs(i + di), abs(j + dj))
                     
-                    if xy not in seen:
-                        nq.append(xy)
-                        seen.add(xy)
+                    if ab not in seen:
+                        nq.append(ab)
+                        seen.add(ab)
             q = nq
             steps += 1
         return -1
