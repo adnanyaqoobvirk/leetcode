@@ -8,14 +8,11 @@ class Solution:
         if not head:
             return head
         
-        def helper(curr: ListNode) -> ListNode:
-            if not curr.next:
-                return curr
+        prev, curr = None, head
+        while curr:
+            nxt = curr.next
+            curr.next = prev
             
-            nhead = helper(curr.next)
-            curr.next.next = curr
-            curr.next = None
+            prev, curr = curr, nxt
             
-            return nhead
-        
-        return helper(head)
+        return prev
