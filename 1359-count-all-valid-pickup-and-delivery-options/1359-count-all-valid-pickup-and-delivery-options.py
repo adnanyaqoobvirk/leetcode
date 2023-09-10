@@ -11,4 +11,5 @@ class Solution:
                 return 1
             
             return (p * helper(p - 1, d)) % MOD + ((d - p) * helper(p, d - 1)) % MOD
+        
         return helper(n, n) % MOD
