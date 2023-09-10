@@ -1,20 +1,17 @@
 class Solution:
     def countOrders(self, n: int) -> int:
         @cache
-        def totalWays(unpicked, undelivered):
-            if not unpicked and not undelivered:
-                return 1
-
-            if (unpicked < 0 or undelivered < 0 or undelivered < unpicked):
+        def helper(p: int, d: int) -> int:
+            if p < 0 or d < 0:
                 return 0
-
-            ans = unpicked * totalWays(unpicked - 1, undelivered)
-            ans %= MOD
-
-            ans += (undelivered - unpicked) * totalWays(unpicked, undelivered - 1)
-            ans %= MOD
-
-            return ans
-        
-        MOD = 1_000_000_007
-        return totalWays(n, n)
+            
+            if p == 0 and d == 0:
+                return 1
+            elif p == 0:
+                return math.factorial(d)
+            
+            if d < p:
+                return 0
+            
+            return p * helper(p - 1, d) + (d - p) * helper(p, d - 1)
+        return helper(n, n) % (10 ** 9 + 7)
