@@ -1,16 +1,10 @@
 class Solution:
     def minDeletions(self, s: str) -> int:
-        h = [-count for _, count in Counter(s).items()]
-        heapify(h)
-        
-        res = 0
-        while h:
-            count = heappop(h)
-            
-            while h and h[0] == count:
-                ncount = heappop(h) + 1
-                if ncount != 0:
-                    heappush(h, ncount)
+        res, unique_counts = 0, set()
+        for count in Counter(s).values():
+            while count in unique_counts:
+                count -= 1
                 res += 1
-                
+            if count != 0:
+                unique_counts.add(count)
         return res
