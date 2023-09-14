@@ -3,24 +3,21 @@ class Solution:
         h = [(-count, char) for char, count in Counter(s).items()]
         heapify(h)
         
-        res = []
+        res, q = [], []
         while h:
-            count, char = heappop(h)
+            q.append(heappop(h))
             
-            counts = [(count + 1, char)] if count < -1 else []
+            if len(q) < k:
+                continue
+            
+            for count, char in q:
+                if count < -1:
+                    heappush(h, (count + 1, char))
+                res.append(char)
+            
+            q = []
+        
+        for _, char in q:
             res.append(char)
             
-            for _ in range(k - 1):
-                if not h:
-                    if count < -1:
-                        return ""
-                    break
-                    
-                ncount, nchar = heappop(h)
-                if ncount < -1:
-                    counts.append((ncount + 1, nchar))
-                res.append(nchar)
-            
-            for count, char in counts:
-                heappush(h, (count, char))
-        return "".join(res)
+        return "".join(res) if len(res) == len(s) else ""
