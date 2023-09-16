@@ -22,7 +22,7 @@ class Solution:
         
         m, n = len(heights), len(heights[0])
         
-        lo, hi = -1, 10 ** 6
+        lo, hi = -1, max(max(row) for row in heights)
         while lo + 1 < hi:
             mid = lo + hi >> 1
             
