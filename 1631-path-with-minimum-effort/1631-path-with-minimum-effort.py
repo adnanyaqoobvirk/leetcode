@@ -1,21 +1,17 @@
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
-        def valid(effort: int) -> bool:
-            seen = {(0, 0)}
-            q = [(0, 0)]
-            while q:
-                nq = []
-                for i, j in q:
-                    if i == m - 1 and j == n - 1:
+        def valid(i: int, j: int, effort: int) -> bool:
+            if i == m - 1 and j == n - 1:
+                return True
+            
+            for di, dj in neighbors:
+                x, y = i + di, j + dj
+
+                if 0 <= x < m and 0 <= y < n and (x, y) not in seen and abs(heights[i][j] - heights[x][y]) <= effort:
+                    seen.add((x, y))
+                    if valid(x, y, effort):
                         return True
-                    
-                    for di, dj in neighbors:
-                        x, y = i + di, j + dj
-                        
-                        if 0 <= x < m and 0 <= y < n and (x, y) not in seen and abs(heights[i][j] - heights[x][y]) <= effort:
-                            nq.append((x, y))
-                            seen.add((x, y))
-                q = nq
+            
             return False
         
         neighbors = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -26,7 +22,9 @@ class Solution:
         while lo + 1 < hi:
             mid = lo + hi >> 1
             
-            if valid(mid):
+            seen = {(0, 0)}
+            
+            if valid(0, 0, mid):
                 hi = mid
             else:
                 lo = mid
