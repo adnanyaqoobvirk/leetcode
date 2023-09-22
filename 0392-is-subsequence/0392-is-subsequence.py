@@ -1,12 +1,12 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        n = len(s)
-        
-        i = 0
-        for c in t:
-            if i == n:
-                break
-                
-            if s[i] == c:
-                i += 1
-        return i == n
+        LEFT_BOUND, RIGHT_BOUND = len(s), len(t)
+
+        p_left = p_right = 0
+        while p_left < LEFT_BOUND and p_right < RIGHT_BOUND:
+            # move both pointers or just the right pointer
+            if s[p_left] == t[p_right]:
+                p_left += 1
+            p_right += 1
+
+        return p_left == LEFT_BOUND
