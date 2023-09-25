@@ -1,12 +1,12 @@
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
-        A = [[0] * k for k in range(1, 102)]
-        A[0][0] = poured
-        for r in range(query_row + 1):
-            for c in range(r+1):
-                q = (A[r][c] - 1.0) / 2.0
-                if q > 0:
-                    A[r+1][c] += q
-                    A[r+1][c+1] += q
-
-        return min(1, A[query_row][query_glass])
+        @cache
+        def dp(i: int, j: int) -> float:
+            if i == 0 and j == 0:
+                return poured
+            
+            if i < 0 or j < 0:
+                return 0
+            
+            return max(0, dp(i - 1, j) - 1) / 2 + max(0, dp(i - 1, j - 1) - 1) / 2
+        return min(1, dp(query_row, query_glass))
