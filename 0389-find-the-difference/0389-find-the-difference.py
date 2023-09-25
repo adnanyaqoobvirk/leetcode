@@ -1,11 +1,8 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        res = 0
+        scounts = Counter(s)
+        tcounts = Counter(t)
         
-        for c in s:
-            res ^= ord(c)
-        
-        for c in t:
-            res ^= ord(c)
-        
-        return chr(res)
+        for c, count in tcounts.items():
+            if scounts[c] != count:
+                return c
