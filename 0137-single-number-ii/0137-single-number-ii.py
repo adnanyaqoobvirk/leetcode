@@ -6,8 +6,10 @@ class Solution:
             
             ones = 0
             for num in nums:
-                if abs(num) & mask:
+                if num & mask:
                     ones += 1
+            
             if ones % 3:
                 res |= mask
-        return -res if sum(1 for num in nums if num < 0) % 3 else res
+                
+        return (res - (1 << 32)) if res >= (1 << 31) else res
