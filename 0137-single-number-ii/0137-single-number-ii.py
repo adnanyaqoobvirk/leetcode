@@ -2,12 +2,7 @@ class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         nums.sort()
         
-        p, pcount = -inf, 3
-        for c in nums:
-            if c != p:
-                if pcount < 3:
-                    return p
-                pcount = 0
-            p = c
-            pcount += 1
-        return p
+        for i in range(0, len(nums) - 1, 3):
+            if nums[i] != nums[i + 1]:
+                return nums[i]
+        return nums[-1]
