@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         ans = 0
-        for i in reversed(range(len(s))):
+        for i in range(len(s) - 1, -1, -1):
             if s[i] == " ":
                 if ans > 0:
                     break
