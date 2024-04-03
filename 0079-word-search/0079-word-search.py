@@ -1,38 +1,28 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        def helper(i: int, j: int, pos: int) -> bool:
-            if pos == k:
+        def backtrack(i: int, j: int, k: int) -> bool:
+            if k >= l:
                 return True
             
-            if i < 0 or j < 0 or i >= m or j >= n:
+            if i < 0 or i >= m or j < 0 or j >= n:
                 return False
             
-            if board[i][j] != word[pos]:
+            if board[i][j] != word[k]:
                 return False
             
-            board[i][j] = '#'
+            board[i][j] = "."
             for a, b in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
-                if helper(a, b, pos + 1):
+                if backtrack(a, b, k + 1):
                     return True
-            board[i][j] = word[pos]
+            board[i][j] = word[k]
+            
             return False
         
-        m, n, k = len(board), len(board[0]), len(word)
-        
-        if k > m * n:
-            return False
-        
-        bcounts = defaultdict(int)
-        for row in board:
-            for col in row:
-                bcounts[col] += 1
-        
-        for c, count in Counter(word).items():
-            if bcounts[c] < count:
-                return False
-        
-        for x in range(m):
-            for y in range(n):
-                if helper(x, y, 0):
+        m, n = len(board), len(board[0])
+        l = len(word)
+        for i in range(m):
+            for j in range(n):
+                if backtrack(i, j, 0):
                     return True
+                
         return False
