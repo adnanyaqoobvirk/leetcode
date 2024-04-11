@@ -1,17 +1,18 @@
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
-        stack = []
-        removed = 0
-        for d in num:
-            while stack and stack[-1] > d and removed < k:
-                stack.pop()
-                removed += 1
-            if not stack and d == "0":
-                continue
-            stack.append(d)
-            
-        while stack and removed < k:
-            stack.pop()
-            removed += 1
-            
-        return "".join(stack) if stack else "0"
+        numStack = []
+        
+        # Construct a monotone increasing sequence of digits
+        for digit in num:
+            while k and numStack and numStack[-1] > digit:
+                numStack.pop()
+                k -= 1
+        
+            numStack.append(digit)
+        
+        # - Trunk the remaining K digits at the end
+        # - in the case k==0: return the entire list
+        finalStack = numStack[:-k] if k else numStack
+        
+        # trip the leading zeros
+        return "".join(finalStack).lstrip('0') or "0"
