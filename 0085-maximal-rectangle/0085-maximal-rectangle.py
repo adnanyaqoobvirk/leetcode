@@ -1,35 +1,17 @@
 class Solution:
     def maximalRectangle(self, matrix: List[List[str]]) -> int:
-        m, n = len(matrix), len(matrix[0])
-        heights = [0] * n
-        max_area = 0
-        for i in range(m):
-            for j in range(n):
-                if matrix[i][j] == '0':
-                    heights[j] = 0
-                else:
-                    heights[j] += int(matrix[i][j])
-            
-            smallest = [n] * n
-            stack = []
-            for i in reversed(range(n)):
-                while stack and heights[stack[-1]] >= heights[i]:
-                    stack.pop()
-                
-                if stack:
-                    smallest[i] = stack[-1]
-                
-                stack.append(i)
-            
-            stack = []
-            for i in range(n):
-                while stack and heights[stack[-1]] >= heights[i]:
-                    stack.pop()
-                
-                max_area = max(
-                    max_area,
-                    heights[i] * (smallest[i] - stack[-1] - 1 if stack else smallest[i])
-                )
-                
-                stack.append(i)
-        return max_area
+        maxarea = 0
+
+        dp = [[0] * len(matrix[0]) for _ in range(len(matrix))]
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] == '0': continue
+
+                # compute the maximum width and update dp with it
+                width = dp[i][j] = dp[i][j-1] + 1 if j else 1
+
+                # compute the maximum area rectangle with a lower right corner at [i, j]
+                for k in range(i, -1, -1):
+                    width = min(width, dp[k][j])
+                    maxarea = max(maxarea, width * (i-k+1))
+        return maxarea
