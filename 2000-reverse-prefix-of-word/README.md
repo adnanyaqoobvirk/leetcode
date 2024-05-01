@@ -1,4 +1,4 @@
-<h2>2000. Reverse Prefix of Word</h2><h3>Easy</h3><hr><div><p>Given a <strong>0-indexed</strong> string <code>word</code> and a character <code>ch</code>, <strong>reverse</strong> the segment of <code>word</code> that starts at index <code>0</code> and ends at the index of the <strong>first occurrence</strong> of <code>ch</code> (<strong>inclusive</strong>). If the character <code>ch</code> does not exist in <code>word</code>, do nothing.</p>
+<h2><a href="https://leetcode.com/problems/reverse-prefix-of-word/">2000. Reverse Prefix of Word</a></h2><h3>Easy</h3><hr><div><p>Given a <strong>0-indexed</strong> string <code>word</code> and a character <code>ch</code>, <strong>reverse</strong> the segment of <code>word</code> that starts at index <code>0</code> and ends at the index of the <strong>first occurrence</strong> of <code>ch</code> (<strong>inclusive</strong>). If the character <code>ch</code> does not exist in <code>word</code>, do nothing.</p>
 
 <ul>
 	<li>For example, if <code>word = "abcdefd"</code> and <code>ch = "d"</code>, then you should <strong>reverse</strong> the segment that starts at <code>0</code> and ends at <code>3</code> (<strong>inclusive</strong>). The resulting string will be <code>"<u>dcba</u>efd"</code>.</li>
@@ -7,7 +7,7 @@
 <p>Return <em>the resulting string</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> word = "<u>abcd</u>efd", ch = "d"
 <strong>Output:</strong> "<u>dcba</u>efd"
@@ -15,7 +15,7 @@
 Reverse the part of word from 0 to 3 (inclusive), the resulting string is "dcbaefd".
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> word = "<u>xyxz</u>xe", ch = "z"
 <strong>Output:</strong> "<u>zxyx</u>xe"
@@ -23,7 +23,7 @@ Reverse the part of word from 0 to 3 (inclusive), the resulting string is "dcbae
 Reverse the part of word from 0 to 3 (inclusive), the resulting string is "zxyxxe".
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
 <pre><strong>Input:</strong> word = "abcd", ch = "z"
 <strong>Output:</strong> "abcd"
