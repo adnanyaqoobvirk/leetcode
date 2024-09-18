@@ -1,27 +1,30 @@
 class Solution:
     def largestVariance(self, s: str) -> int:
         counts = Counter(s)
-        chars = counts.keys()
-        
-        ans = 0
-        for c1 in chars:
-            for c2 in chars:
-                if c1 == c2:
+        chars = list(counts.keys())
+        n = len(chars)
+        max_var = 0
+        for i in range(n):
+            for j in range(n):
+                if i == j:
                     continue
-                
-                c1_counts, c2_counts, reset = 0, 0, counts[c2]
+
+                ch1, ch2 = chars[i], chars[j]
+
+                ch1_count = 0
+                ch2_count = 0
+                ch2_remaining = counts[ch2]
                 for c in s:
-                    if c == c1:
-                        c1_counts += 1
-                    elif c == c2:
-                        reset -= 1
-                        c2_counts += 1
+                    if c == ch1:
+                        ch1_count += 1
+                    elif c == ch2:
+                        ch2_count += 1
+                        ch2_remaining -= 1
                     
-                    if c2_counts > 0:
-                        ans = max(ans, c1_counts - c2_counts)
-                        
-                    if reset > 0 and c1_counts < c2_counts:
-                        c1_counts = c2_counts = 0
-        return ans
+                    if ch2_count > 0:
+                        max_var = max(max_var, ch1_count - ch2_count)
                     
-                
+                    if ch2_remaining > 0 and ch1_count < ch2_count:
+                        ch1_count = 0
+                        ch2_count = 0
+        return max_var
