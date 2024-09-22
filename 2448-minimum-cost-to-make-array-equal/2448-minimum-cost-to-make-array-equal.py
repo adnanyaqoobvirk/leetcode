@@ -14,8 +14,7 @@ class Solution:
         curr_cost = total_cost
         for i in range(1, len(nums)):
             diff = nums_cost[i][0] - nums_cost[i - 1][0]
-            curr_cost += diff * pfix_cost[i - 1]
-            curr_cost -= diff * (pfix_cost[-1] - pfix_cost[i - 1])
+            curr_cost += diff * (2 * pfix_cost[i - 1] - pfix_cost[-1])
             min_cost = min(min_cost, curr_cost)
         
         return min_cost
