@@ -1,20 +1,23 @@
 class Solution:
     def minCost(self, nums: List[int], cost: List[int]) -> int:
-        nums_cost = sorted(zip(nums, cost))
+        def baseCost(base: int) -> int:
+            ans = 0
+            for i in range(len(nums)):
+                ans += abs(nums[i] - base) * cost[i]
+            return ans
 
-        pfix_cost = [nums_cost[0][1]]
-        for i in range(1, len(nums)):
-            pfix_cost.append(pfix_cost[-1] + nums_cost[i][1])
-        
-        total_cost = 0
-        for i in range(1, len(nums)):
-            total_cost += nums_cost[i][1] * (nums_cost[i][0] - nums_cost[0][0])
-        
-        min_cost = total_cost
-        curr_cost = total_cost
-        for i in range(1, len(nums)):
-            diff = nums_cost[i][0] - nums_cost[i - 1][0]
-            curr_cost += diff * (2 * pfix_cost[i - 1] - pfix_cost[-1])
-            min_cost = min(min_cost, curr_cost)
-        
+        min_cost = 0
+        lo, hi = min(nums) - 1, max(nums)
+        while lo + 1 < hi:
+            mid = lo + (hi - lo) // 2
+
+            cost1 = baseCost(mid)
+            cost2 = baseCost(mid + 1)
+
+            if cost1 <= cost2:
+                hi = mid
+                min_cost = cost1
+            else:
+                lo = mid
+                min_cost = cost2
         return min_cost
