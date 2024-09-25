@@ -1,14 +1,15 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        def backtrack(p: list) -> None:
-            if len(p) == n:
-                ans.append(p[::])
+        def backtrack(perm: List[int]) -> None:
+            if len(perm) == n:
+                ans.append(perm[::])
             else:
                 for num in nums:
-                    if num not in p:
-                        p.append(num)
-                        backtrack(p)
-                        p.pop()
-        ans, n = [], len(nums)
+                    if num not in perm:
+                        perm.append(num)
+                        backtrack(perm)
+                        perm.pop()
+        ans = []
+        n = len(nums)
         backtrack([])
         return ans
