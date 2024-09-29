@@ -1,19 +1,17 @@
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
-        current = sum(nums)
-        n = len(nums)
-        mini = inf
-        left = 0
+        @cache
+        def dp(l: int, r: int, xr: int) -> int:
+            if xr == 0:
+                return 0
 
-        for right in range(n):
-            # sum([0,..,left) + (right,...,n-1]) = x
-            current -= nums[right]
-            # if smaller, move `left` to left
-            while current < x and left <= right:
-                current += nums[left]
-                left += 1
-            # check if equal
-            if current == x:
-                mini = min(mini, (n-1-right)+left)
-
-        return mini if mini != inf else -1
+            if l > r or xr < 0:
+                return inf
+            
+            return 1 + min(
+                dp(l + 1, r, xr - nums[l]),
+                dp(l, r - 1, xr - nums[r])
+            )
+        
+        ans = dp(0, len(nums) - 1, x)
+        return -1 if ans == inf else ans
