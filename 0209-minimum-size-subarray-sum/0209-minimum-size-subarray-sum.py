@@ -1,33 +1,13 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        def valid(sl: int) -> bool:
-            total = 0
-            for i in range(sl):
-                total += nums[i]
-            
-            if total >= target:
-                return True
-            
-            left = 0
-            for right in range(sl, len(nums)):
-                total -= nums[left]
-                total += nums[right]
-                left += 1
-                
-                if total >= target:
-                    return True
-                
-            return False
-        
-        l, r = 0, len(nums)
-        while l + 1 < r:
-            m = l + r >> 1
-            if valid(m):
-                r = m
-            else:
-                l = m
-        
-        if r == len(nums) and not valid(len(nums)):
-            return 0
-        else:
-            return r
+        min_len = inf
+        curr_sum = 0
+        l = 0
+        for r in range(len(nums)):
+            curr_sum += nums[r]
+
+            while l <= r and curr_sum >= target:
+                min_len = min(min_len, r - l + 1)
+                curr_sum -= nums[l]
+                l += 1
+        return min_len if min_len != inf else 0
