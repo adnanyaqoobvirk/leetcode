@@ -4,16 +4,31 @@ class Solution:
         if n2 < n1:
             return False
         
-        counts1 = Counter(s1)
-        counts2 = Counter(s2[:n1])
+        counts1 = [0] * 26
+        counts2 = [0] * 26
 
-        if counts1 == counts2:
-            return True
+        for i in range(n1):
+            counts1[ord(s1[i]) - ord('a')] += 1
+            counts2[ord(s2[i]) - ord('a')] += 1
+        
+        matches = 0
+        for i in range(26):
+            if counts1[i] == counts2[i]:
+                matches += 1
         
         for i in range(n1, n2):
-            counts2[s2[i]] += 1
-            counts2[s2[i - n1]] -= 1
-        
-            if counts1 == counts2:
+            if matches == 26:
                 return True
+            
+            counts2[ord(s2[i]) - ord('a')] += 1
+            if counts2[ord(s2[i]) - ord('a')] == counts1[ord(s2[i]) - ord('a')]:
+                matches += 1
+            elif counts2[ord(s2[i]) - ord('a')] - 1 == counts1[ord(s2[i]) - ord('a')]:
+                matches -= 1
+            
+            counts2[ord(s2[i - n1]) - ord('a')] -= 1
+            if counts2[ord(s2[i - n1]) - ord('a')] == counts1[ord(s2[i - n1]) - ord('a')]:
+                matches += 1
+            elif counts2[ord(s2[i]) - ord('a')] + 1 == counts1[ord(s2[i]) - ord('a')]:
+                matches -= 1
         return False
