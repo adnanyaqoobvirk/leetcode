@@ -1,11 +1,24 @@
 class Solution:
     def hasAllCodes(self, s: str, k: int) -> bool:
-        MAX_SET_SIZE = 1 << k
-        BIT_MASK = MAX_SET_SIZE - 1
+        if k > len(s):
+            return False
+            
+        mask = 2 ** k - 1
+        seen = set(i for i in range(mask + 1))
+        num = 0
+        for i in range(k):
+            num = num << 1
+            num |= int(s[i])
         
-        code = int(s[0:k], 2)
-        codes = {code}
+        if num in seen:
+            seen.remove(num)
+        
         for i in range(k, len(s)):
-            code = (code << 1) & BIT_MASK | int(s[i])
-            codes.add(code)
-        return len(codes) == MAX_SET_SIZE
+            num = num << 1
+            num |= int(s[i])
+            num &= mask
+
+            if num in seen:
+                seen.remove(num)
+        
+        return not seen
