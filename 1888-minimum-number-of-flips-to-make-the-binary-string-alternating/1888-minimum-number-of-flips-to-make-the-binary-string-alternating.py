@@ -2,32 +2,47 @@ class Solution:
     def minFlips(self, s: str) -> int:
         n = len(s)
 
-        if n <= 1:
-            return 0
-        
-        if s[0] != s[-1]:
-            for i in range(1, n):
-                if s[i] == s[i - 1]:
-                    s = s[i:n] + s[:i]
-                    break
-        
-        ops = 0
-        pre = "0"
-        for cur in s:
-            if cur == pre:
-                ops += 1
-                pre = "0" if cur == "1" else "1"
-            else:
-                pre = cur
+        s = s + s
 
-        ans = ops
-        pre = "1"
-        ops = 0
-        for cur in s:
-            if cur == pre:
-                ops += 1
-                pre = "0" if cur == "1" else "1"
+        op0 = 0
+        op1 = 0
+        for i in range(n):
+            if s[i] == '0':
+                if i & 1:
+                    op0 += 1
+                else:
+                    op1 += 1
             else:
-                pre = cur
+                if i & 1:
+                    op1 += 1
+                else:
+                    op0 += 1
+        
+        ans = min(op0, op1)
+        l = 0
+        for r in range(n, len(s)):
+            if s[r] == '0':
+                if r & 1:
+                    op0 += 1
+                else:
+                    op1 += 1
+            else:
+                if r & 1:
+                    op1 += 1
+                else:
+                    op0 += 1
 
-        return min(ans, ops)
+            if s[l] == '0':
+                if l & 1:
+                    op0 -= 1
+                else:
+                    op1 -= 1
+            else:
+                if l & 1:
+                    op1 -= 1
+                else:
+                    op0 -= 1
+            
+            l += 1
+            ans = min(ans, op0, op1)
+        return ans
