@@ -1,13 +1,16 @@
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
-        longest = l = 0
-        counts = {}
+        chars = {}
+        max_len = 0
+        l = 0
         for r in range(len(s)):
-            counts[s[r]] = counts.get(s[r], 0) + 1
-            while len(counts) > 2:
-                counts[s[l]] -= 1
-                if counts[s[l]] == 0:
-                    del counts[s[l]]
+            chars[s[r]] = chars.get(s[r], 0) + 1
+
+            while l < r and len(chars) > 2:
+                chars[s[l]] -= 1
+                if chars[s[l]] == 0:
+                    del chars[s[l]]
                 l += 1
-            longest = max(longest, r - l + 1)
-        return longest
+            
+            max_len = max(max_len, r - l + 1)
+        return max_len
