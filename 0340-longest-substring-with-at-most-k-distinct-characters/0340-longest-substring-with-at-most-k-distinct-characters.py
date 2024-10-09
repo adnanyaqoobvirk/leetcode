@@ -6,7 +6,7 @@ class Solution:
         for r in range(len(s)):
             chars[s[r]] = chars.get(s[r], 0) + 1
 
-            while l < r and len(chars) > k:
+            while l <= r and len(chars) > k:
                 chars[s[l]] -= 1
                 if chars[s[l]] == 0:
                     del chars[s[l]]
