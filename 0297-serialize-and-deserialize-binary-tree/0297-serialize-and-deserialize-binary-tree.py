@@ -17,9 +17,10 @@ class Codec:
             if not curr:
                 ans.append("n")
             else:
-                ans.append(str(curr.val))
-                helper(curr.left)
                 helper(curr.right)
+                helper(curr.left)
+                ans.append(str(curr.val))
+
 
         ans = []
         helper(root)
@@ -45,7 +46,6 @@ class Codec:
                 return node
 
         nodes = data.split(",")
-        nodes.reverse()
 
         return helper()
         
