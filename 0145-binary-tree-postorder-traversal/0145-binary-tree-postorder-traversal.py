@@ -7,20 +7,22 @@
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         ans = deque()
-        while root:
-            if root.right:
-                pre = root.right
-                while pre.left and pre.left != root:
+        curr = root
+        while curr:
+            if not curr.right:
+                ans.appendleft(curr.val)
+                curr = curr.left
+            else:
+                pre = curr.right
+
+                while pre.left and pre.left != curr:
                     pre = pre.left
                 
                 if not pre.left:
-                    pre.left = root
-                    ans.appendleft(root.val)
-                    root = root.right
+                    ans.appendleft(curr.val)
+                    pre.left = curr
+                    curr = curr.right
                 else:
                     pre.left = None
-                    root = root.left
-            else:
-                ans.appendleft(root.val)
-                root = root.left
+                    curr = curr.left
         return ans
