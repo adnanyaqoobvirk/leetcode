@@ -1,13 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        bmap = {')': '(', '}': '{', ']': '['}
         stack = []
-        for b in s:
-            if b in bmap:
-                if stack and stack[-1] == bmap[b]:
-                    stack.pop()
-                else:
-                    return False
+        for c in s:
+            if c in "({[":
+                stack.append(c)
+            elif not stack:
+                return False
+            elif c == ")" and stack[-1] != "(":
+                return False
+            elif c == "}" and stack[-1] != "{":
+                return False
+            elif c == "]" and stack[-1] != "[":
+                return False
             else:
-                stack.append(b)
-        return not stack
+                stack.pop()
+        return True
