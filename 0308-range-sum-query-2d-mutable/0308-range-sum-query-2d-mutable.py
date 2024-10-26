@@ -34,10 +34,10 @@ class NumMatrix:
         self.bits[row].update(col, val)
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
-        ans = 0
+        total = 0
         for r in range(row1, row2 + 1):
-            ans += self.bits[r].query(col2) - self.bits[r].query(col1 - 1)
-        return ans
+            total += self.bits[r].query(col2) - self.bits[r].query(col1 - 1)
+        return total
 
 
 # Your NumMatrix object will be instantiated and called as such:
