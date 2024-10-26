@@ -2,18 +2,18 @@ class BIT2D:
     def __init__(self, matrix: List[List[int]]) -> None:
         self.m, self.n = len(matrix) + 1, len(matrix[0]) + 1
         self.matrix = [matrix[i][::] for i in range(self.m - 1)]
-        self.tree = [[0] * self.n for i in range(self.m)]
+        self.tree = [[0] + (matrix[i - 1] if i > 0 else [0] * (self.n - 1)) for i in range(self.m)]
         for i in range(1, self.m):
-            pi = i + (i & -i)
             for j in range(1, self.n):
-                self.tree[i][j] += self.matrix[i - 1][j - 1]
-                pj = j + (j & -j)
-                if pj < self.n:
-                    self.tree[i][pj] += self.tree[i][j]
-                if pi < self.m:
-                    self.tree[pi][j] += self.tree[i][j]
-                if pi < self.m and pj < self.n:
-                    self.tree[pi][pj] -= self.tree[i][j]
+                p = j + (j & -j)
+                if p < self.n:
+                    self.tree[i][p] += self.tree[i][j]
+        
+        for j in range(1, self.n):
+            for i in range(1, self.m):
+                p = i + (i & -i)
+                if p < self.m:
+                    self.tree[p][j] += self.tree[i][j]
     
     def query(self, i: int, c: int) -> int:
         i += 1
