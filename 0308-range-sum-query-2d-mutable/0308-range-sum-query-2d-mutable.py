@@ -1,44 +1,59 @@
-class BIT:
-    def __init__(self,  nums: List[int]) -> None:
-        self.nums = nums
-        self.n = len(nums) + 1
-        self.tree = [0] + nums
-        for i in range(1, self.n):
-            p = i + (i & -i)
-            if p < self.n:
-                self.tree[p] += self.tree[i]
+class BIT2D:
+    def __init__(self, matrix: List[List[int]]) -> None:
+        self.m, self.n = len(matrix) + 1, len(matrix[0]) + 1
+        self.matrix = [matrix[i][::] for i in range(self.m - 1)]
+        self.tree = [[0] * self.n for i in range(self.m)]
+        for i in range(1, self.m):
+            pi = i + (i & -i)
+            for j in range(1, self.n):
+                self.tree[i][j] += self.matrix[i - 1][j - 1]
+                pj = j + (j & -j)
+                if pj < self.n:
+                    self.tree[i][pj] += self.tree[i][j]
+                if pi < self.m:
+                    self.tree[pi][j] += self.tree[i][j]
+                if pi < self.m and pj < self.n:
+                    self.tree[pi][pj] -= self.tree[i][j]
     
-    def query(self, i: int) -> int:
+    def query(self, i: int, c: int) -> int:
         i += 1
+        c += 1
         total = 0
         while i > 0:
-            total += self.tree[i]
+            j = c
+            while j > 0:
+                total += self.tree[i][j]
+                j -= j & -j
             i -= i & -i
         return total
 
-    def update(self, i: int, v: int) -> None:
-        d = v - self.nums[i]
-        self.nums[i] = v
+    def update(self, i: int, c: int, v: int) -> None:
+        d = v - self.matrix[i][c]
+        self.matrix[i][c] = v
         i += 1
-        while i < self.n:
-            self.tree[i] += d
+        c += 1
+        while i < self.m:
+            j = c
+            while j < self.n:
+                self.tree[i][j] += d
+                j += j & -j
             i += i & -i
         
 class NumMatrix:
 
     def __init__(self, matrix: List[List[int]]):
-        self.m, self.n = len(matrix), len(matrix[0])
-        self.bits = [BIT(row) for row in matrix]
+        self.bit = BIT2D(matrix)
 
     def update(self, row: int, col: int, val: int) -> None:
-        self.bits[row].update(col, val)
+        self.bit.update(row, col, val)
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
-        total = 0
-        for r in range(row1, row2 + 1):
-            total += self.bits[r].query(col2) - self.bits[r].query(col1 - 1)
-        return total
-
+        return (
+            self.bit.query(row2, col2) - 
+            self.bit.query(row1 - 1, col2) - 
+            self.bit.query(row2, col1 - 1) + 
+            self.bit.query(row1 - 1, col1 - 1)
+        )
 
 # Your NumMatrix object will be instantiated and called as such:
 # obj = NumMatrix(matrix)
