@@ -1,45 +1,64 @@
-class SegTree:
-    def __init__(self, nums: List[int]) -> None:
-        self.n = len(nums)
-        self.stree = [0] * self.n + nums
-        for i in reversed(range(self.n)):
-            self.stree[i] = self.stree[i << 1] + self.stree[i << 1 | 1]
+class SegTree2D:
+    def __init__(self, matrix):
+        self.m, self.n = len(matrix), len(matrix[0])
+        self.t = [[0] * (2 * self.n) for _ in range(2 * self.m)]
 
-    def query(self, left: int, right: int) -> int:
-        l, r = left + self.n, right + self.n + 1
-        total = 0
+        for i in range(self.m):
+            for j in range(self.n):
+                self.update(i, j, matrix[i][j])
+    
+    def update(self, r, c, v):
+        r += self.m
+        c += self.n
+
+        d = v - self.t[r][c]
+        while r > 0:
+            j = c
+            while j > 0:
+                self.t[r][j] += d
+                j >>= 1
+            r >>= 1
+
+    def _query(self, i, l, r):
+        l += self.n
+        r += self.n + 1
+        ans = 0
         while l < r:
             if l & 1:
-                total += self.stree[l]
+                ans += self.t[i][l]
                 l += 1
             if r & 1:
                 r -= 1
-                total += self.stree[r]
+                ans += self.t[i][r]
             l >>= 1
             r >>= 1
-        return total
+        return ans
 
-    def update(self, idx: int, val: int) -> None:
-        i = idx + self.n
-        self.stree[i] = val
-        i >>= 1
-        while i > 0:
-            self.stree[i] = self.stree[i << 1] + self.stree[i << 1 | 1]
+    def query(self, r1, c1, r2, c2):
+        i = r1 + self.m
+        j = r2 + self.m + 1
+        ans = 0
+        while i < j:
+            if i & 1:
+                ans += self._query(i, c1, c2)
+                i += 1
+            if j & 1:
+                j -= 1
+                ans += self._query(j, c1, c2)
             i >>= 1
+            j >>= 1
+        return ans
 
 class NumMatrix:
 
     def __init__(self, matrix: List[List[int]]):
-        self.trees = [SegTree(row) for row in matrix]
+        self.t = SegTree2D(matrix)
 
     def update(self, row: int, col: int, val: int) -> None:
-        self.trees[row].update(col, val)
+        self.t.update(row, col, val)
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
-        total = 0
-        for r in range(row1, row2 + 1):
-            total += self.trees[r].query(col1, col2)
-        return total
+        return self.t.query(row1, col1, row2, col2)
 
 
 # Your NumMatrix object will be instantiated and called as such:
