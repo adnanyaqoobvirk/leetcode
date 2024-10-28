@@ -1,8 +1,8 @@
-from sortedcontainers import SortedSet
+from sortedcontainers import SortedList
 
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
-        sl = SortedSet()
+        sl = SortedList()
         ans = []
         for num in reversed(nums):
             sl.add(num)
