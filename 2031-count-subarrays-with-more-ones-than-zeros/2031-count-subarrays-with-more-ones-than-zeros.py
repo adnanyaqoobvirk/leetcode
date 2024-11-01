@@ -19,7 +19,7 @@ class Solution:
                     res.append(left[k])
                     k += 1
                 res.append(right[j])
-                
+
             for k in range(k, nl):
                 res.append(left[k])
             return res
@@ -30,4 +30,4 @@ class Solution:
         
         ans = [0]
         helper(0, len(psums) - 1)
-        return ans[0]
+        return ans[0] % (10**9 + 7)
