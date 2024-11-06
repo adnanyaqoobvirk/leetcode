@@ -20,7 +20,8 @@ class Solution:
             return 0
         
         for i in range(n, m):
-            rhash = ((rhash - pmax * (ord(haystack[i - n]) - sidx)) * P + ord(haystack[i]) - sidx) % M
+            rhash -= pmax * (ord(haystack[i - n]) - sidx)
+            rhash = (rhash * P + ord(haystack[i]) - sidx) % M
 
             if phash == rhash:
                 return i - n + 1
