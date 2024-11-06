@@ -5,23 +5,24 @@ class Solution:
         if m < n:
             return -1
 
-        P, M = 127, 10**9 + 7
+        sidx = ord('a') - 1
+        P, M = 29, 10**9 + 7
         pmax = 1
         phash = rhash = 0
         for i in range(n):
             if i > 0:
                 pmax = pmax * P
             
-            phash = (phash * P + ord(needle[i])) % M
-            rhash = (rhash * P + ord(haystack[i])) % M
+            phash = (phash * P + ord(needle[i]) - sidx) % M
+            rhash = (rhash * P + ord(haystack[i]) - sidx) % M
         
         if phash == rhash:
             return 0
         
         for i in range(n, m):
-            rhash = ((rhash - pmax * ord(haystack[i - n])) * P + ord(haystack[i])) % M
+            rhash = ((rhash - pmax * (ord(haystack[i - n]) - sidx)) * P + ord(haystack[i]) - sidx) % M
 
             if phash == rhash:
-                return i
+                return i - n + 1
         
         return -1
