@@ -1,11 +1,12 @@
 class Solution:
     def findLength(self, nums1: List[int], nums2: List[int]) -> int:
         m, n = len(nums1), len(nums2)
-        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        prev, curr = [0] * (n + 1), [0] * (n + 1)
         ans = 0
         for i in range(m):
             for j in range(n):
                 if nums1[i] == nums2[j]:
-                    dp[i + 1][j + 1] = 1 + dp[i][j]
-                    ans = max(ans, dp[i + 1][j + 1])
+                    curr[j + 1] = 1 + prev[j]
+                    ans = max(ans, curr[j + 1])
+            prev, curr = curr, prev
         return ans
