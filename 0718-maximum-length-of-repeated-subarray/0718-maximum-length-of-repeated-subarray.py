@@ -11,5 +11,6 @@ class Solution:
                 if nums1[i] == nums2[j]:
                     curr[j + 1] = 1 + prev[j]
                     ans = max(ans, curr[j + 1])
-            prev, curr = curr, [0] * (n + 1)
+                prev[j] = 0
+            prev, curr = curr, prev
         return ans
