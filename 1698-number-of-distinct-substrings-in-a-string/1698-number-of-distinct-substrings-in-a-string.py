@@ -1,18 +1,15 @@
 class Solution:
     def countDistinct(self, s: str) -> int:
-        P1, M1 = 127, 10**9 + 7
-        P2, M2 = 131, 10**9 + 9
-        n = len(s)
-        ans = 0
-        seen1, seen2 = set(), set()
-        for i in range(n):
-            h1 = h2 = 0
-            for j in range(i, n):
-                h1 = (h1 * P1 + ord(s[j])) % M1
-                h2 = (h2 * P2 + ord(s[j])) % M2
-                if h1 in seen1 and h2 in seen2:
-                    continue
-                seen1.add(h1)
-                seen2.add(h2)
-                ans += 1
+        P, M = 127, 2**40 + 2**8 + 0xb3
+        h = ans = 0
+        pmax = 1
+        for i in range(len(s)):
+            h = (h * P + ord(s[i])) % M
+            r, seen = h, {h}
+            for j in range(i + 1, len(s)):
+                r -= pmax * ord(s[j - i - 1])
+                r = (r * P + ord(s[j])) % M
+                seen.add(r)
+            ans += len(seen)
+            pmax = pmax * P % M
         return ans
