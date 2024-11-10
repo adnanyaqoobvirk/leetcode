@@ -5,26 +5,23 @@ class Solution:
         ans = inf
         curr = l = 0
         for r in range(len(nums)):
-            num = nums[r]
             for i in range(MAX_BITS):
-                if num <= 0:
+                mask = 1 << i
+                if mask > nums[r]:
                     break
-                if num & 1:
+                if nums[r] & mask:
                     freq[i] += 1
-                    curr |= 1 << i
-                num >>= 1
+                    curr |= mask
                 
             while l <= r and curr >= k:
                 ans = min(ans, r - l + 1)
-                num = nums[l]
                 for i in range(MAX_BITS):
-                    if num <= 0:
+                    mask = 1 << i
+                    if mask > nums[l]:
                         break
-                    if num & 1:
+                    if nums[l] & mask:
                         freq[i] -= 1
                         if freq[i] == 0:
-                            curr &= ~(1 << i)
-                    num >>= 1
+                            curr &= ~mask
                 l += 1
         return -1 if ans == inf else ans
-            
