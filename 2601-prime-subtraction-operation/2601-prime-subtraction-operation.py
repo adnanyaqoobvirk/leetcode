@@ -2,21 +2,29 @@ class Solution:
     def __init__(self):
         n = 1001
         primes = [True] * n
-        primes[1] = False
+        primes[0] = primes[1] = False
         p = 2
         while p * p <= n:
             if primes[p]:
                 for i in range(p * p, n, p):
                     primes[i] = False
             p += 1
-        self.primes = [p for p in range(len(primes)) if primes[p]]
+        
+        p = 0
+        for i in range(n):
+            if primes[i]:
+                primes[i] = p
+                p = i
+            else:
+                primes[i] = p
+
+        self.primes = primes
 
     def primeSubOperation(self, nums: List[int]) -> bool:
-        primes = self.primes
         prev = 0
         for num in nums:
-            i = bisect_left(primes, num - prev)
-            curr = num - primes[max(i - 1, 0)]
+            p = self.primes[num - prev]
+            curr = num - p
             if curr <= prev:
                 if num <= prev:
                     return False
