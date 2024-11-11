@@ -1,16 +1,11 @@
 class Solution:
     def countDistinct(self, s: str) -> int:
+        P, M = 127, 2**88 + 2**8 + 0x3b
         n = len(s)
-        dup = 0
-        trie = {}
+        seen = set()
         for i in range(n):
-            t = trie
+            h = 0
             for j in range(i, n):
-                if s[j] not in t:
-                    t[s[j]] = {}
-                t = t[s[j]]
-                if '#' in t:
-                    dup += 1
-                else:
-                    t["#"] = {}
-        return (n * (n + 1) // 2) - dup
+                h = (h * P + ord(s[j])) % M
+                seen.add(h)
+        return len(seen)
