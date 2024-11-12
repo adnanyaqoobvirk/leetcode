@@ -1,40 +1,33 @@
 class Solution:
     def longestDupSubstring(self, s: str) -> str:
-        def suffixArray(indices: List[int], order: int) -> List[int]:
-            buckets = defaultdict(list)
-            for i in indices:
-                buckets[s[i:i + order]].append(i)
+        def getIndex(l: int) -> int:
+            rhash = 0
+            pmax = 1
+            for i in range(l):
+                rhash = (rhash * P + ord(s[i])) % M
+                if i > 0:
+                    pmax = pmax * P % M
             
-            res = []
-            for b in buckets.keys():
-                if len(buckets[b]) > 1:
-                    res.extend(suffixArray(buckets[b], order * 2))
-                else:
-                    res.append(buckets[b][0])
-            return res
+            seen = {rhash}
+            for i in range(l, n):
+                rhash -= pmax * ord(s[i - l])
+                rhash = (rhash * P + ord(s[i])) % M
 
+                if rhash in seen:
+                    return i - l + 1
+                seen.add(rhash)
+            return -1
+
+        P, M = 127, 2**40 + 2**8 + 0xb3
         n = len(s)
-        sa = suffixArray(list(range(n)), 1)
-        
-        ranks = [0] * n
-        for i in range(n):
-            ranks[sa[i]] = i
-
-        idx = None
-        max_k = k = 0
-        for i in range(n):
-            if ranks[i] == n - 1:
-                k = 0
-                continue
-            
-            j = sa[ranks[i] + 1]
-            while i + k < n and j + k < n and s[i + k] == s[j + k]:
-                k += 1
-            
-            if max_k < k:
-                max_k = k
+        lo, hi = 0, n
+        idx = -1
+        while lo + 1 < hi:
+            mid = lo + (hi - lo) // 2
+            i = getIndex(mid)
+            if i > -1:
+                lo = mid
                 idx = i
-            
-            k = max(0, k - 1)
-        
-        return "" if max_k == 0 else s[idx:idx + max_k]
+            else:
+                hi = mid
+        return "" if lo == 0 else s[idx:idx + lo]
