@@ -1,38 +1,40 @@
 class Solution:
-    def search(self, L: int, a: int, MOD: int, n: int, nums: List[int]) -> str:
-        h = 0
-        for i in range(L):
-            h = (h * a + nums[i]) % MOD
-              
-        seen = collections.defaultdict(list)
-        seen[h].append(0)
-        
-        aL = pow(a, L, MOD) 
-        for start in range(1, n - L + 1):
-            h = (h * a - nums[start - 1] * aL + nums[start + L - 1]) % MOD
-            if h in seen:
-                current_substring = nums[start : start + L]
-                if any(current_substring == nums[index : index + L] for index in seen[h]):
-                    return start
-            seen[h].append(start)
-        return -1
-        
-    def longestDupSubstring(self, S: str) -> str:
-        MOD = 10**9 + 7
-        a = 26
-        n = len(S)
-        nums = [ord(S[i]) - ord('a') for i in range(n)]
-        
-        start = -1
-        left, right = 1, n - 1
-        while left <= right:
-            L = left + (right - left) // 2
-            start_of_duplicate = self.search(L, a, MOD, n, nums)
+    def longestDupSubstring(self, s: str) -> str:
+        def suffixArray(indices: List[int], order: int) -> List[int]:
+            buckets = defaultdict(list)
+            for i in indices:
+                buckets[s[i:i + order]].append(i)
             
-            if start_of_duplicate != -1:
-                left = L + 1
-                start = start_of_duplicate
-            else:
-                right = L - 1
-                
-        return S[start : start + left - 1]
+            res = []
+            for b in buckets.keys():
+                if len(buckets[b]) > 1:
+                    res.extend(suffixArray(buckets[b], order * 2))
+                else:
+                    res.append(buckets[b][0])
+            return res
+
+        n = len(s)
+        sa = suffixArray(list(range(n)), 1)
+        
+        ranks = [0] * n
+        for i in range(n):
+            ranks[sa[i]] = i
+
+        idx = None
+        max_k = k = 0
+        for i in range(n):
+            if ranks[i] == n - 1:
+                k = 0
+                continue
+            
+            j = sa[ranks[i] + 1]
+            while i + k < n and j + k < n and s[i + k] == s[j + k]:
+                k += 1
+            
+            if max_k < k:
+                max_k = k
+                idx = i
+            
+            k = max(0, k - 1)
+        
+        return "" if max_k == 0 else s[idx:idx + max_k]
