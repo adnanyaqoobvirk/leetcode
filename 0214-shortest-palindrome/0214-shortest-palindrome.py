@@ -1,6 +1,6 @@
 class Solution:
     def shortestPalindrome(self, s: str) -> str:
-        P, M = 127, 2**40 + 2**8 + 0xb3
+        P, M = 127, 2**24 + 2**8 + 0x93
         n = len(s)
         lhash = rhash = r = 0
         pmax = 1
