@@ -8,6 +8,6 @@ class Solution:
             lhash = (lhash * P + ord(s[i])) % M
             rhash = (rhash + ord(s[i]) * pmax) % M
             pmax = pmax * P % M
-            if lhash == rhash:
+            if lhash == rhash and s[:i + 1] == s[:i + 1][::-1]:
                 r = i
         return s[r + 1:][::-1] + s
