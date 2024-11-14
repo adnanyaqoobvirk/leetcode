@@ -1,19 +1,20 @@
 class Solution:
     def minimizedMaximum(self, n: int, quantities: List[int]) -> int:
-        def possible(guess: int) -> bool:
-            count = 0
+        def possible(x: int) -> bool:
+            r = n
             for q in quantities:
-                count += math.ceil(q / guess)
-                if count > n:
+                c = ceil(q / x)
+                if c > r:
                     return False
+                r -= c
             return True
+        
+        lo, hi = 0, max(quantities)
+        while lo + 1 < hi:
+            mid = lo + (hi - lo) // 2
 
-        m = len(quantities)
-        lo, hi = 1, max(quantities)
-        while lo < hi:
-            guess = lo + (hi - lo) // 2
-            if possible(guess):
-                hi = guess
+            if possible(mid):
+                hi = mid
             else:
-                lo = guess + 1
+                lo = mid
         return hi
