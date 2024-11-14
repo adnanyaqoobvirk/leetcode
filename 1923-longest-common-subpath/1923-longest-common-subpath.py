@@ -29,7 +29,7 @@ class Solution:
                 common = ncommon
             return True                
 
-        P, M = 10**5 + 1, 2**88 + 2**8 + 0x3b
+        P, M = 10**5 + 3, 2**40 + 2**8 + 0xb3
         lo, hi = 0, max(len(p) for p in paths) + 1
         while lo + 1 < hi:
             mid = lo + (hi - lo) // 2
