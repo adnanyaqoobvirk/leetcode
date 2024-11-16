@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k/">2997. Minimum Number of Operations to Make Array XOR Equal to K</a></h2><h3>Medium</h3><hr><div><p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and a positive integer <code>k</code>.</p>
+<h2><a href="https://leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k">2997. Minimum Number of Operations to Make Array XOR Equal to K</a></h2><h3>Medium</h3><hr><p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and a positive integer <code>k</code>.</p>
 
 <p>You can apply the following operation on the array <strong>any</strong> number of times:</p>
 
@@ -13,7 +13,8 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [2,1,3,4], k = 1
+<pre>
+<strong>Input:</strong> nums = [2,1,3,4], k = 1
 <strong>Output:</strong> 2
 <strong>Explanation:</strong> We can do the following operations:
 - Choose element 2 which is 3 == (011)<sub>2</sub>, we flip the first bit and we obtain (010)<sub>2</sub> == 2. nums becomes [2,1,2,4].
@@ -24,7 +25,8 @@ It can be shown that we cannot make the XOR equal to k in less than 2 operations
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [2,0,2,0], k = 0
+<pre>
+<strong>Input:</strong> nums = [2,0,2,0], k = 0
 <strong>Output:</strong> 0
 <strong>Explanation:</strong> The XOR of elements of the array is (2 XOR 0 XOR 2 XOR 0) == 0 == k. So no operation is needed.
 </pre>
@@ -37,4 +39,3 @@ It can be shown that we cannot make the XOR equal to k in less than 2 operations
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 	<li><code>0 &lt;= k &lt;= 10<sup>6</sup></code></li>
 </ul>
-</div>
