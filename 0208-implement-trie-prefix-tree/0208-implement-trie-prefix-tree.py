@@ -1,27 +1,26 @@
 class Trie:
 
     def __init__(self):
-        self.trie = {}
+        self.tree = {}
 
     def insert(self, word: str) -> None:
-        t = self.trie
+        t = self.tree
         for c in word:
             if c not in t:
                 t[c] = {}
             t = t[c]
-        t["#"] = word
+        t['#'] = True
 
     def search(self, word: str) -> bool:
-        t = self.trie
+        t = self.tree
         for c in word:
             if c not in t:
                 return False
             t = t[c]
-        
-        return True if "#" in t else False
+        return '#' in t
 
     def startsWith(self, prefix: str) -> bool:
-        t = self.trie
+        t = self.tree
         for c in prefix:
             if c not in t:
                 return False
