@@ -9,6 +9,8 @@ class Solution:
                 if 0 <= x < m and 0 <= y < n and board[x][y] in t and (x, y) not in seen:
                     seen.add((x, y))
                     backtrack(x, y, t[board[x][y]])
+                    if not t[board[x][y]]:
+                        del t[board[x][y]]
                     seen.remove((x, y))
 
         trie = {}
