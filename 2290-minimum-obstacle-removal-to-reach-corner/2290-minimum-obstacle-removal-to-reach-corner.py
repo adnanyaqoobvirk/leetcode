@@ -1,15 +1,21 @@
 class Solution:
     def minimumObstacles(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
-        h = [(0, 0, 0)]
-        d = defaultdict(lambda: inf)
-        d[(0, 0)] = 0
-        while h:
-            ud, ux, uy = heappop(h)
-            for vx, vy in [(ux + 1, uy), (ux - 1, uy), (ux, uy + 1), (ux, uy - 1)]:
-                if 0 <= vx < m and 0 <= vy < n:
-                    w = d[(ux, uy)] + grid[vx][vy]
-                    if w < d[(vx, vy)]:
-                        d[(vx, vy)] = w
-                        heappush(h, (w, vx, vy))
-        return d[(m - 1, n - 1)]
+        ti, tj = m - 1, n - 1
+        obs = defaultdict(lambda: inf)
+        obs[(0, 0)] = 0
+        q = deque([(0, 0)])
+        while q:
+            i, j = q.popleft()
+            if i == ti and j == tj:
+                return obs[(i, j)]
+            for x, y in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
+                if 0 <= x < m and 0 <= y < n and obs[(x, y)] == inf:
+                    if grid[x][y] == 1:
+                        q.append((x, y))
+                        obs[(x, y)] = obs[(i, j)] + 1
+                    else:
+                        q.appendleft((x, y))
+                        obs[(x, y)] = obs[(i, j)]
+        return -1
+            
