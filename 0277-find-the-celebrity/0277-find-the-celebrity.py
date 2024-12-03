@@ -4,14 +4,10 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        c = set(range(n))
-        while len(c) > 1:
-            a, b = c.pop(), c.pop()
+        a = 0
+        for b in range(1, n):
             if knows(a, b):
-                c.add(b)
-            else:
-                c.add(a)
-        a = c.pop()
+                a = b
         for b in range(n):
             if a != b:
                 if not knows(b, a):
