@@ -4,11 +4,18 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        nodes = {node for node in range(n)}
-        for a in range(n):
-            for b in range(a + 1, n):
-                if knows(b, a):
-                    nodes.discard(b)
+        c = set(range(n))
+        while len(c) > 1:
+            a, b = c.pop(), c.pop()
+            if knows(a, b):
+                c.add(b)
+            else:
+                c.add(a)
+        a = c.pop()
+        for b in range(n):
+            if a != b:
+                if not knows(b, a):
+                    return -1
                 if knows(a, b):
-                    nodes.discard(a)
-        return next(iter(nodes)) if len(nodes) == 1 else -1
+                    return -1
+        return a
