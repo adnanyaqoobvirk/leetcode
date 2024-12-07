@@ -3,7 +3,7 @@ class Solution:
         def valid(guess: int) -> bool:
             ops = 0
             for num in nums:
-                ops += ceil(num / guess) - 1
+                ops += (num - 1) // guess
                 if ops > maxOperations:
                     return False
             return True
