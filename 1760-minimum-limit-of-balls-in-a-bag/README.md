@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag/">1760. Minimum Limit of Balls in a Bag</a></h2><h3>Medium</h3><hr><div><p>You are given an integer array <code>nums</code> where the <code>i<sup>th</sup></code> bag contains <code>nums[i]</code> balls. You are also given an integer <code>maxOperations</code>.</p>
+<h2><a href="https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag">1760. Minimum Limit of Balls in a Bag</a></h2><h3>Medium</h3><hr><p>You are given an integer array <code>nums</code> where the <code>i<sup>th</sup></code> bag contains <code>nums[i]</code> balls. You are also given an integer <code>maxOperations</code>.</p>
 
 <p>You can perform the following operation at most <code>maxOperations</code> times:</p>
 
@@ -13,12 +13,13 @@
 
 <p>Your penalty is the <strong>maximum</strong> number of balls in a bag. You want to <strong>minimize</strong> your penalty after the operations.</p>
 
-<p>Return <em>the minimum possible penalty&nbsp;after performing the operations</em>.</p>
+<p>Return <em>the minimum possible penalty after performing the operations</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [9], maxOperations = 2
+<pre>
+<strong>Input:</strong> nums = [9], maxOperations = 2
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> 
 - Divide the bag with 9 balls into two bags of sizes 6 and 3. [<strong><u>9</u></strong>] -&gt; [6,3].
@@ -26,22 +27,17 @@
 The bag with the most number of balls has 3 balls, so your penalty is 3 and you should return 3.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [2,4,8,2], maxOperations = 4
+<pre>
+<strong>Input:</strong> nums = [2,4,8,2], maxOperations = 4
 <strong>Output:</strong> 2
 <strong>Explanation:</strong>
 - Divide the bag with 8 balls into two bags of sizes 4 and 4. [2,4,<strong><u>8</u></strong>,2] -&gt; [2,4,4,4,2].
 - Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,<strong><u>4</u></strong>,4,4,2] -&gt; [2,2,2,4,4,2].
 - Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,2,2,<strong><u>4</u></strong>,4,2] -&gt; [2,2,2,2,2,4,2].
 - Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,2,2,2,2,<strong><u>4</u></strong>,2] -&gt; [2,2,2,2,2,2,2,2].
-The bag with the most number of balls has 2 balls, so your penalty is 2 an you should return 2.
-</pre>
-
-<p><strong>Example 3:</strong></p>
-
-<pre><strong>Input:</strong> nums = [7,17], maxOperations = 2
-<strong>Output:</strong> 7
+The bag with the most number of balls has 2 balls, so your penalty is 2, and you should return 2.
 </pre>
 
 <p>&nbsp;</p>
@@ -51,4 +47,3 @@ The bag with the most number of balls has 2 balls, so your penalty is 2 an you s
 	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
 	<li><code>1 &lt;= maxOperations, nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
-</div>
