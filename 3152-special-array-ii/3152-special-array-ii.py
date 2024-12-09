@@ -3,9 +3,7 @@ class Solution:
         psums = [0]
         for i in range(1, len(nums)):
             psums.append(psums[-1])
-            if nums[i] & 1 and nums[i - 1] & 1:
-                continue
-            if not (nums[i] & 1) and not (nums[i - 1] & 1):
+            if nums[i] & 1 == nums[i - 1] & 1:
                 continue
             psums[i] += 1
         ans = []
