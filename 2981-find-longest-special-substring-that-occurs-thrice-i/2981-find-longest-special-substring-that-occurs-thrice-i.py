@@ -2,34 +2,19 @@ class Solution:
     def maximumLength(self, s: str) -> int:
         def valid(size: int) -> bool:
             counts = defaultdict(int)
-            ch = ""
-            count = 0
-            for i in range(size):
-                if ch != s[i]:
-                    ch = s[i]
-                    count = 1
-                else:
-                    count += 1
-            
-            if count == size:
-                counts[ch] += 1
-            
-            for i in range(size, len(s)):
-                if ch == s[i - size]:
-                    count -= 1
-
-                if ch != s[i]:
-                    ch = s[i]
-                    count = 1
-                else:
-                    count += 1
-                
-                if count == size:
-                    counts[ch] += 1
-                    if counts[ch] >= 3:
-                        return True
+            j = 0
+            for i in range(n):
+                if i - j + 1 > size:
+                    j += 1
+                if s[j] != s[i]:
+                    j = i
+                if i - j + 1 == size:
+                    counts[s[i] * size] += 1
+            for c in counts.values():
+                if c >= 3:
+                    return True
             return False
-        
+        n = len(s)
         lo, hi = 1, len(s) - 1
         while lo + 1 < hi:
             mid = lo + (hi - lo) // 2
