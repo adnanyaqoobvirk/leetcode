@@ -1,19 +1,19 @@
 class Solution:
     def maxLength(self, ribbons: List[int], k: int) -> int:
-        def possible(l):
-            cuts = 0
+        def valid(l: int) -> bool:
+            count = 0
             for r in ribbons:
-                cuts += r // l
-                if cuts >= k:
+                count += r // l
+                if count >= k:
                     return True
             return False
-        
-        lo, hi = 0, max(ribbons) + 1
+
+        lo, hi = 1, max(ribbons) + 1
         while lo + 1 < hi:
-            mid = lo + (hi - lo) // 2
-            
-            if possible(mid):
-                lo = mid
+            guess = lo + (hi - lo) // 2
+
+            if valid(guess):
+                lo = guess
             else:
-                hi = mid
-        return lo
+                hi = guess
+        return lo if valid(lo) else 0
