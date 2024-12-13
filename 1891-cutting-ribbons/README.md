@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/cutting-ribbons/">1891. Cutting Ribbons</a></h2><h3>Medium</h3><hr><div><p>You are given an integer array <code>ribbons</code>, where <code>ribbons[i]</code> represents the length of the <code>i<sup>th</sup></code> ribbon, and an integer <code>k</code>. You may cut any of the ribbons into any number of segments of <strong>positive integer</strong> lengths, or perform no cuts at all.</p>
+<h2><a href="https://leetcode.com/problems/cutting-ribbons">1891. Cutting Ribbons</a></h2><h3>Medium</h3><hr><p>You are given an integer array <code>ribbons</code>, where <code>ribbons[i]</code> represents the length of the <code>i<sup>th</sup></code> ribbon, and an integer <code>k</code>. You may cut any of the ribbons into any number of segments of <strong>positive integer</strong> lengths, or perform no cuts at all.</p>
 
 <ul>
 	<li>For example, if you have a ribbon of length <code>4</code>, you can:
@@ -13,14 +13,13 @@
 	</li>
 </ul>
 
-<p>Your goal is to obtain <code>k</code> ribbons of all the <strong>same positive integer length</strong>. You are allowed to throw away any excess ribbon as a result of cutting.</p>
-
-<p>Return <em>the <strong>maximum</strong> possible positive integer length that you can obtain </em><code>k</code><em> ribbons of</em><em>, or </em><code>0</code><em> if you cannot obtain </em><code>k</code><em> ribbons of the same length</em>.</p>
+<p>Your task is to determine the <strong>maximum</strong> length of ribbon, <code>x</code>, that allows you to cut <em>at least</em> <code>k</code> ribbons, each of length <code>x</code>. You can discard any leftover ribbon from the cuts. If it is <strong>impossible</strong> to cut <code>k</code> ribbons of the same length, return 0.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> ribbons = [9,7,5], k = 3
+<pre>
+<strong>Input:</strong> ribbons = [9,7,5], k = 3
 <strong>Output:</strong> 5
 <strong>Explanation:</strong>
 - Cut the first ribbon to two ribbons, one of length 5 and one of length 4.
@@ -30,7 +29,8 @@ Now you have 3 ribbons of length 5.</pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> ribbons = [7,5,9], k = 4
+<pre>
+<strong>Input:</strong> ribbons = [7,5,9], k = 4
 <strong>Output:</strong> 4
 <strong>Explanation:</strong>
 - Cut the first ribbon to two ribbons, one of length 4 and one of length 3.
@@ -41,7 +41,8 @@ Now you have 4 ribbons of length 4.
 
 <p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> ribbons = [5,7,9], k = 22
+<pre>
+<strong>Input:</strong> ribbons = [5,7,9], k = 22
 <strong>Output:</strong> 0
 <strong>Explanation:</strong> You cannot obtain k ribbons of the same positive integer length.
 </pre>
@@ -54,4 +55,3 @@ Now you have 4 ribbons of length 4.
 	<li><code>1 &lt;= ribbons[i] &lt;= 10<sup>5</sup></code></li>
 	<li><code>1 &lt;= k &lt;= 10<sup>9</sup></code></li>
 </ul>
-</div>
