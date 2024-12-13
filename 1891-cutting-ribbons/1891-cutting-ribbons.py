@@ -1,6 +1,9 @@
 class Solution:
     def maxLength(self, ribbons: List[int], k: int) -> int:
         def valid(l: int) -> bool:
+            if l == 0:
+                return True
+
             count = 0
             for r in ribbons:
                 count += r // l
@@ -8,7 +11,7 @@ class Solution:
                     return True
             return False
 
-        lo, hi = 1, max(ribbons) + 1
+        lo, hi = 0, max(ribbons) + 1
         while lo + 1 < hi:
             guess = lo + (hi - lo) // 2
 
@@ -16,4 +19,4 @@ class Solution:
                 lo = guess
             else:
                 hi = guess
-        return lo if valid(lo) else 0
+        return lo
