@@ -1,27 +1,23 @@
+class RString(str):
+    def __lt__(self, s):
+        return self.__gt__(s)
+        
 class Solution:
     def repeatLimitedString(self, s: str, repeatLimit: int) -> str:
-        h = [(-ord(char), -count) for char, count in Counter(s).items()]
+        h = list(Counter(RString(c) for c in s).items())
         heapify(h)
-        
-        res = []
-        prev_count, prev_char = 0, inf
+        ans = []
         while h:
-            ochar, count = heappop(h)
-            
-            if prev_count < 0 and prev_char < ochar:
-                res.append(chr(-ochar))
-                count += 1
+            ch, count = heappop(h)
+            if count <= repeatLimit:
+                ans.append(ch * count)
             else:
-                if -count > repeatLimit:
-                    res.append(repeatLimit * chr(-ochar))
-                    count += repeatLimit
-                else:
-                    res.append(chr(-ochar) * -count)
-                    count = 0
-            
-            if prev_count < 0:
-                heappush(h, (prev_char, prev_count))
-            
-            prev_char, prev_count = ochar, count
-        
-        return "".join(res)
+                ans.append(ch * repeatLimit)
+                if not h:
+                    break
+                nch, ncount = heappop(h)
+                ans.append(nch)
+                if ncount - 1 > 0:
+                    heappush(h, (nch, ncount - 1))
+                heappush(h, (ch, count - repeatLimit))
+        return "".join(ans)
