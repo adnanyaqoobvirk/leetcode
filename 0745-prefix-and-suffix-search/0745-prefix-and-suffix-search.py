@@ -22,12 +22,12 @@ class WordFilter:
         t1 = self.pt
         for c in pref:
             if c not in t1:
-                break
+                return -1
             t1 = t1[c]
         t2 = self.st
         for c in reversed(suff):
             if c not in t2:
-                break
+                return -1
             t2 = t2[c]
         for i in reversed(t1["#"]):
             if i in t2["#"]:
