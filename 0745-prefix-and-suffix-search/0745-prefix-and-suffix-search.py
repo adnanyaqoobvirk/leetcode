@@ -1,38 +1,42 @@
 class WordFilter:
 
     def __init__(self, words: List[str]):
-        self.pt = {"#": []}
+        self.trie = {"#": set()}
         for i, word in enumerate(words):
-            t = self.pt
+            t = self.trie
             for c in word:
                 if c not in t:
-                    t[c] = {"#": []}
-                t = t[c]
-                t["#"].append(i)
-        self.st = {"#": set()}
-        for i, word in enumerate(words):
-            t = self.st
-            for c in reversed(word):
-                if c not in t:
-                    t[c] = {"#": set()}
+                    t[c] = {"#": set(), "$": []}
                 t = t[c]
                 t["#"].add(i)
 
+            t = self.trie
+            for c in reversed(word):
+                if c not in t:
+                    t[c] = {"#": set(), "$": []}
+                t = t[c]
+                t["$"].append(i)
+
     def f(self, pref: str, suff: str) -> int:
-        t1 = self.pt
+        t = self.trie
         for c in pref:
-            if c not in t1:
+            if c not in t:
                 return -1
-            t1 = t1[c]
-        t2 = self.st
+            t = t[c]
+        pwords = t["#"]
+
+        t = self.trie
         for c in reversed(suff):
-            if c not in t2:
+            if c not in t:
                 return -1
-            t2 = t2[c]
-        for i in reversed(t1["#"]):
-            if i in t2["#"]:
+            t = t[c]
+        swords = t["$"]
+
+        for i in reversed(swords):
+            if i in pwords:
                 return i
         return -1
+        
 
 # Your WordFilter object will be instantiated and called as such:
 # obj = WordFilter(words)
