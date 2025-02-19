@@ -1,13 +1,19 @@
 class Solution:
     def getHappyString(self, n: int, k: int) -> str:
-        combs = ['a', 'b', 'c']
-        while len(combs[0]) != n:
-            ncombs = []
-            for comb in combs:
+        def backtrack() -> str:
+            if len(comb) == n:
+                combs[0] += 1
+                if combs[0] == k:
+                    return "".join(comb)
+            else:
                 for c in "abc":
-                    if comb[-1] != c:
-                        ncombs.append(comb + c)
-            combs = ncombs
-        return "" if len(combs) < k else combs[k - 1]
-                
-        
+                    if not comb or comb[-1] != c:
+                        comb.append(c)
+                        res = backtrack()
+                        if res:
+                            return res
+                        comb.pop()
+            return ""
+        comb = []
+        combs = [0]
+        return backtrack()
