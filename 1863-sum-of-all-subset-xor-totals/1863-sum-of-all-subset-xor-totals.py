@@ -1,13 +1,10 @@
 class Solution:
     def subsetXORSum(self, nums: List[int]) -> int:
         ans = 0
-        for i in range(2 ** len(nums)):
+        for s in range(1<<(len(nums))):
             xor = 0
-            j = 0
-            while i > 0:
-                if i & 1:
-                    xor ^= nums[j]
-                i >>= 1
-                j += 1
+            for i in range(len(nums)):
+                if s & (1<<i):
+                   xor ^= nums[i]
             ans += xor
         return ans
