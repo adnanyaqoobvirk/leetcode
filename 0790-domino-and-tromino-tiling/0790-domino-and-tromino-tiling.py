@@ -1,19 +1,16 @@
 class Solution:
     def numTilings(self, n: int) -> int:
-        if n <= 2:
-            return n
-    
+        @cache
+        def dp(m: int, t: bool = False) -> int:
+            if m == 0 and not t:
+                return 1
+
+            if m < 0:
+                return 0
+            
+            if t:
+                return (dp(m - 1, True) + dp(m - 1)) % MOD
+            else:
+                return (dp(m - 1) + dp(m - 2) + 2 * dp(m - 2, True)) % MOD
         MOD = 10**9 + 7
-        pprev, prev, curr = [1, 1], [2, 2], [0, 0]
-        for pos in range(n - 2):
-            curr[0] = (
-                prev[0] +
-                prev[1]
-            ) % MOD 
-            curr[1] = (
-                prev[1] + 
-                pprev[1] + 
-                2 * pprev[0]
-            ) % MOD
-            pprev, prev, curr = prev, curr, [0, 0]
-        return prev[1]
+        return dp(n)
