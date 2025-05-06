@@ -1,12 +1,11 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        @cache
-        def dp(i: int , j: int) -> int:
-            if i >= m or j >= n:
-                return 0
-            
-            if i == m - 1 and j == n - 1:
-                return 1
-            
-            return dp(i + 1, j) + dp(i, j + 1)
-        return dp(0, 0)
+        prev, curr = [0] * (n + 1), [0] * (n + 1)
+        curr[n - 1] = 1
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                if i == m - 1 and j == n - 1:
+                    continue
+                curr[j] = prev[j] + curr[j + 1]
+            prev, curr = curr, [0] * (n + 1)
+        return prev[0]
