@@ -7,5 +7,5 @@ class Solution:
                 if i == m - 1 and j == n - 1:
                     continue
                 curr[j] = prev[j] + curr[j + 1]
-            prev, curr = curr, [0] * (n + 1)
+            prev, curr = curr, prev
         return prev[0]
