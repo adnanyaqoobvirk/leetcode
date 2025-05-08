@@ -1,11 +1,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        prev, curr = [0] * (n + 1), [0] * (n + 1)
-        curr[n - 1] = 1
-        for i in reversed(range(m)):
-            for j in reversed(range(n)):
-                if i == m - 1 and j == n - 1:
-                    continue
-                curr[j] = prev[j] + curr[j + 1]
-            prev, curr = curr, prev
-        return prev[0]
+        res = 1
+        for i in range(1, m):
+            res *= (n - 1 + i) / i
+        return int(res) + 1 if res - int(res) >= 0.5 else int(res)
