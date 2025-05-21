@@ -1,15 +1,13 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        res = 0
-        for pos in range(32):
-            mask = 1 << pos
-            
-            ones = 0
+        bit_cnt = [0] * 33
+        for i in range(32):
             for num in nums:
-                if num & mask:
-                    ones += 1
-            
-            if ones % 3:
-                res |= mask
-                
-        return (res - (1 << 32)) if res >= (1 << 31) else res
+                bit_cnt[i] += int(abs(num) & (1 << i) >= 1)
+        for num in nums:
+            if num < 0:
+                bit_cnt[32] += 1
+        res = 0
+        for i in range(32):
+            res |= (bit_cnt[i] % 3) << i
+        return -res if bit_cnt[32] % 3 != 0 else res
