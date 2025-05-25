@@ -1,21 +1,30 @@
 class Solution:
     def findMaximumXOR(self, nums: List[int]) -> int:
+        def recurse(t1, t2) -> int:
+            if "#" in t1 and "#" in t2:
+                if t1 != t2:
+                    return t1["#"] ^ t2["#"]
+                else:
+                    return 0
+                
+            ans = 0
+            if 0 in t1 and 0 in t2:
+                ans = max(ans, recurse(t1[0], t2[0]))
+            if 1 in t1 and 0 in t2:
+                ans = max(ans, recurse(t1[1], t2[0]))
+            if 0 in t1 and 1 in t2:
+                ans = max(ans, recurse(t1[0], t2[1]))
+            if 1 in t1 and 1 in t2:
+                ans = max(ans, recurse(t1[1], t2[1]))
+            return ans
+        
         trie = {}
-        L = len(bin(max(nums))) - 1
-        max_xor = 0
-        for i in range(len(nums)):
-            t1 = t2 = trie
-            for j in reversed(range(L + 1)):
-                d = (nums[i] >> j) & 1
-                if (not d) in t1:
-                    t1 = t1[not d]
-                elif d in t1:
-                    t1 = t1[d]
-                if d not in t2:
-                    t2[d] = {}
-                t2 = t2[d]
-            t2["#"] = nums[i]
-            if i > 0:
-                max_xor = max(max_xor, nums[i] ^ t1["#"])
-        return max_xor
-            
+        for num in nums:
+            t = trie
+            for i in reversed(range(31)):
+                d = num >> i & 1
+                if d not in t:
+                    t[d] = {}
+                t = t[d]
+            t["#"] = num
+        return recurse(trie, trie)
