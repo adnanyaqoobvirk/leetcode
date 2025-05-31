@@ -1,19 +1,19 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
+        m, n = len(haystack), len(needle)
+
+        if n == 0:
+            return 0
+        
+        if n > m:
+            return -1
+        
         MOD = 10**9 + 7
         P = 29
 
-        m, n = len(haystack), len(needle)
-
-        if n == 0 or n > m:
-            return -1
-
-        h = 1
-        thash = 0
-        phash = 0
+        h = (P ** (n - 1)) % MOD
+        thash = phash = 0
         for i in range(n):
-            if i > 0:
-                h = h * P % MOD
             thash = (thash * P + ord(haystack[i])) % MOD
             phash = (phash * P + ord(needle[i])) % MOD
         
@@ -26,16 +26,6 @@ class Solution:
                     return i - n
             
             if i < m:
-                thash -= h * ord(haystack[i - n])
-                thash %= MOD
-
-                if thash < 0:
-                    thash += MOD
-                    
-                thash *= P
-                thash += ord(haystack[i])
-                thash %= MOD
-
-                if thash < 0:
-                    thash += MOD
+                thash = (thash - h * ord(haystack[i - n])) % MOD
+                thash = (thash * P + ord(haystack[i])) % MOD
         return -1
