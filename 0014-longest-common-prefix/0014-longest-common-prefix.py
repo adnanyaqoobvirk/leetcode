@@ -2,6 +2,8 @@ class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         trie = {}
         for s in strs:
+            if not s: return ""
+            
             t = trie
             for c in s:
                 if c not in t:
