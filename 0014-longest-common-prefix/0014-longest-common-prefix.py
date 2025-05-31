@@ -7,7 +7,7 @@ class Solution:
                 if c not in t:
                     t[c] = {}
                 t = t[c]
-            t["#"] = s
+            t["#"] = True
         
         prefix = []
         t = trie
