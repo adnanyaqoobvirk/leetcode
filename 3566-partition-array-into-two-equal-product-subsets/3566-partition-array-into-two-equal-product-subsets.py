@@ -1,13 +1,21 @@
 class Solution:
     def checkEqualPartitions(self, nums: List[int], target: int) -> bool:
+        @cache
+        def dp(i: int, t1: int, t2: int) -> bool:
+            if i == n: 
+                return t1 == 1 and t2 == 1
+            
+            if nums[i] == 0:
+                return False
+            
+            res = False
+            if t1 % nums[i] == 0:
+                res = res or dp(i + 1, t1 // nums[i], t2)
+            
+            if t2 % nums[i] == 0:
+                res = res or dp(i + 1, t1, t2 // nums[i])
+
+            return res
+            
         n = len(nums)
-        for ss in range((1 << n) + 1):
-            p1 = p2 = 1
-            for i in range(n):
-                if ss & (1 << i):
-                    p1 *= nums[i]
-                else:
-                    p2 *= nums[i]
-            if p1 == target == p2:
-                return True
-        return False
+        return dp(0, target, target)
