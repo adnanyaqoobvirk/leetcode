@@ -5,7 +5,7 @@ class Solution:
         pop = "*"
         num = 0
 
-        for c in s + "+":
+        for c in chain(s, "+"):
             if c == " ":
                 continue
             elif c.isdigit():
