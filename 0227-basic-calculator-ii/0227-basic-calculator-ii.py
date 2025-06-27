@@ -10,22 +10,16 @@ class Solution:
                 continue
             elif c.isdigit():
                 num = num * 10 + int(c)
-            elif c == "+" or c == "-":
-                if pop == "*":
-                    term *= num
-                else:
-                    term = int(term / num)
-                res += term
-                num = 0
-                term = -1 if c == "-" else 1
-                pop = "*"
             else:
-                if pop == "*":
-                    term *= num
-                else:
-                    term = int(term / num)
+                term = term * num if pop == "*" else int(term / num)
                 num = 0
-                pop = c
+
+                if c == "+" or c == "-":
+                    res += term
+                    term = -1 if c == "-" else 1
+                    pop = "*"
+                else:
+                    pop = c
         return res
                 
                 
