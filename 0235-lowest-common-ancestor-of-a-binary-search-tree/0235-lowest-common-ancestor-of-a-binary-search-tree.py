@@ -15,6 +15,6 @@ class Solution:
         
             if curr == p or curr == q or (left and right):
                 return curr
-            else:
-                return left or right
+            
+            return left or right
         return recurse(root)
