@@ -6,24 +6,31 @@
 #         self.right = right
 class Solution:
     def largestBSTSubtree(self, root: Optional[TreeNode]) -> int:
-        def helper(curr: Optional[TreeNode]) -> Tuple[int, int, int]:
-            if not curr:
-                return [0, inf, -inf]
+        def recurse(curr: Optional[TreeNode]) -> Tuple[int, int, bool, int]:
+            if not curr.left and not curr.right:
+                return curr.val, curr.val, True, 1
+            elif not curr.left:
+                rmin, rmax, rvalid, rcount = recurse(curr.right)
+                if rvalid and curr.val < rmin:
+                    return curr.val, rmax, True, rcount + 1
+                else:
+                    return inf, -inf, False, 1
+            elif not curr.right:
+                lmin, lmax, lvalid, lcount = recurse(curr.left)
+                if lvalid and lmax < curr.val:
+                    return lmin, curr.val, True, lcount + 1
+                else:
+                    return inf, -inf, False, 1
+            else:
+                lmin, lmax, lvalid, lcount = recurse(curr.left)
+                rmin, rmax, rvalid, rcount = recurse(curr.right)
+
+                if lvalid and rvalid and lmax < curr.val < rmin:
+                    return lmin, rmax, True, lcount + rcount + 1
+                else:
+                    return inf, -inf, False, max(lcount, rcount)
+        if not root:
+            return 0
+        _, _, _, res = recurse(root)
+        return res
             
-            left_count, left_min, left_max = helper(curr.left)
-            right_count, right_min, right_max = helper(curr.right)
-            
-            if left_count > 0 and left_max >= curr.val:
-                return [inf, -inf, inf]
-            
-            if right_count > 0 and right_min <= curr.val:
-                return [inf, -inf, inf]
-            
-            count = left_count + right_count + 1
-            self.largest = max(self.largest, count)
-            
-            return count, min(left_min, curr.val), max(right_max, curr.val)
-        
-        self.largest = 0
-        helper(root)
-        return self.largest
