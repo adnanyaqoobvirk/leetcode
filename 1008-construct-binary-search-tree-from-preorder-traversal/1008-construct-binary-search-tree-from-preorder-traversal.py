@@ -6,16 +6,11 @@
 #         self.right = right
 class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
-        root = TreeNode(preorder[0])
-        stack = [root]
-        for i in range(1, len(preorder)):
-            parent, child = stack[-1], TreeNode(preorder[i])
-            while stack and stack[-1].val < child.val:
-                parent = stack.pop()
-            
-            stack.append(child)
-            if child.val > parent.val:
-                parent.right = child
-            else:
-                parent.left = child
-        return root
+        def recurse(minv: int, maxv: int) -> Optional[TreeNode]:
+            if not vals or not (minv < vals[-1] < maxv):
+                return None
+
+            v = vals.pop()
+            return TreeNode(v, recurse(minv, v), recurse(v, maxv))
+        vals = preorder[::-1]
+        return recurse(0, 1001)
