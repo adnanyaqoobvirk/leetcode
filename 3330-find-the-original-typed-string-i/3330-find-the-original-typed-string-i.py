@@ -3,11 +3,11 @@ class Solution:
         cnt = 0
         pc = ""
         res = 1
-        for c in chain(word, " "):
+        for c in word:
             if pc == c:
                 cnt += 1
             else:
                 res += cnt
                 cnt = 0
                 pc = c
-        return res
+        return res + cnt
