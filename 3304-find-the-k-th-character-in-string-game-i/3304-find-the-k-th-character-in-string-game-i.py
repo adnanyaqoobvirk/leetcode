@@ -1,12 +1,13 @@
 class Solution:
     def kthCharacter(self, k: int) -> str:
-        word = [0]
-        l = 1
-        j = 0
-        for i in range(k - 1):
-            if j == l:
-                j = 0
-                l = len(word)
-            word.append((word[j] + 1) % 26)
-            j += 1
-        return chr(ord('a') + word[-1])
+        mid = k
+        if k & (k - 1) != 0:
+            mid = 1 << k.bit_length()
+        
+        ops = 0
+        while mid > 1:
+            mid >>= 1
+            if k > mid:
+                ops += 1
+                k = k - mid
+        return chr(ord("a") + (ops % 26))
