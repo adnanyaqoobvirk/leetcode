@@ -1,30 +1,35 @@
 class Solution:
     def wordSquares(self, words: List[str]) -> List[List[str]]:
-        def dfs(pos: int) -> None:
-            if len(comb) == 4:
-                ans.append(comb[::])
+        def backtrack(pos: int) -> None:
+            if len(square) == n:
+                res.append(square[::])
             else:
                 t = trie
-                for i in range(pos):
-                    if comb[i][pos] not in t:
+                for w in square:
+                    if w[pos] not in t:
                         return
-                    t = t[comb[i][pos]]
-                for word in t["#"]:
-                    comb.append(word)
-                    dfs(pos + 1)
-                    comb.pop()
+                    t = t[w[pos]]
 
-        trie = {"#": []}
-        for word in words:
+                for w in t["#"]:
+                    square.append(w)
+                    backtrack(pos + 1)
+                    square.pop()
+        
+        if not words:
+            return []
+
+        n = len(words[0])
+
+        trie = {"#": words}
+        for w in words:
             t = trie
-            t["#"].append(word)
-            for c in word:
+            for c in w:
                 if c not in t:
                     t[c] = {"#": []}
                 t = t[c]
-                t["#"].append(word)
-
-        ans = []
-        comb = []
-        dfs(0)
-        return ans
+                t["#"].append(w)
+        
+        square = []
+        res = []
+        backtrack(0)
+        return res
