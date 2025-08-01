@@ -8,18 +8,24 @@ class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        
-        col_map = defaultdict(list)
+            
+        negColumns = []
+        posColumns = []
         q = [(root, 0)]
         while q:
             nq = []
-            for curr, col in q:
-                col_map[col].append(curr.val)
-                
+            for curr, i in q:
+                if i < 0:
+                    if len(negColumns) < -i:
+                        negColumns.append([])
+                    negColumns[-i-1].append(curr.val)
+                else:
+                    if len(posColumns) < i + 1:
+                        posColumns.append([])
+                    posColumns[i].append(curr.val)
                 if curr.left:
-                    nq.append((curr.left, col - 1))
-                
+                    nq.append((curr.left, i - 1))
                 if curr.right:
-                    nq.append((curr.right, col + 1))
+                    nq.append((curr.right, i + 1))
             q = nq
-        return [col_map[i] for i in range(min(col_map), max(col_map) + 1)]
+        return negColumns[::-1] + posColumns
