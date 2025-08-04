@@ -1,13 +1,15 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
-        max_fruits = l = 0
-        counts = {}
+        baskets = {}
+        l = 0
+        ans = 0
         for r in range(len(fruits)):
-            counts[fruits[r]] = counts.get(fruits[r], 0) + 1
-            while len(counts) > 2:
-                counts[fruits[l]] -= 1
-                if counts[fruits[l]] == 0:
-                    del counts[fruits[l]]
+            baskets[fruits[r]] = baskets.get(fruits[r], 0) + 1
+
+            while l < r and len(baskets) > 2:
+                baskets[fruits[l]] -= 1
+                if baskets[fruits[l]] == 0:
+                    del baskets[fruits[l]]
                 l += 1
-            max_fruits = max(max_fruits, r - l + 1)
-        return max_fruits
+            ans = max(ans, r - l + 1)
+        return ans
