@@ -16,5 +16,5 @@ class Solution:
             for da, db in turns:
                 res += dp(a - da, b - db)
             return res * 0.25
-        turns = [(100, 0), (75, 25), (50, 50), (25, 75)]
-        return dp(n, n)
+        turns = [(4, 0), (3, 1), (2, 2), (1, 3)]
+        return dp(ceil(n / 25), ceil(n / 25))
