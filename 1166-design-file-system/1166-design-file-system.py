@@ -1,34 +1,34 @@
 class FileSystem:
 
     def __init__(self):
-        self.paths = defaultdict(int)
+        self.trie = {}
 
     def createPath(self, path: str, value: int) -> bool:
-        t = self.paths
-        spaths = path.split("/")
-        for i in range(1, len(spaths) - 1):
-            spath = spaths[i]
-            if spath not in t:
+        folders = path.split("/")
+        t = self.trie
+        for i in range(1, len(folders) - 1):
+            f = folders[i]
+            if not f or f not in t:
                 return False
-            else:
-                t = t[spath]
-        if spaths[-1] in t:
-            return False
+            t = t[f]
+        f = folders[-1]
+        if f not in t:
+            t[f] = {}
         else:
-            t[spaths[-1]] = {"#": value}
-            return True
+            return False
+        t[f]["#"] = value
+        return True
 
     def get(self, path: str) -> int:
-        t = self.paths
-        spaths = path.split("/")
-        for i in range(1, len(spaths)):
-            spath = spaths[i]
-            if spath not in t:
+        folders = path.split("/")
+        t = self.trie
+        for i in range(1, len(folders)):
+            f = folders[i]
+            if not f or f not in t:
                 return -1
-            else:
-                t = t[spath]
+            t = t[f]
         return t["#"]
-        
+
 
 # Your FileSystem object will be instantiated and called as such:
 # obj = FileSystem()
