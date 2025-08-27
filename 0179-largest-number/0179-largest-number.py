@@ -7,11 +7,5 @@ class SNum:
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
-        snums = [snum.v for snum in sorted((SNum(num) for num in nums), reverse=True)]
-        res = []
-        for snum in snums:
-            for c in snum:
-                if c == "0" and not res:
-                    continue
-                res.append(c)
-        return "".join(res) if res else "0"
+        res = "".join(snum.v for snum in sorted((SNum(num) for num in nums), reverse=True))
+        return "0" if res[0] == "0" else res
