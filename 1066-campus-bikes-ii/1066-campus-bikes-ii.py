@@ -1,15 +1,22 @@
 class Solution:
-    def assignBikes(self, workers, bikes):
-        def dis(i, j):
-            return abs(workers[i][0] - bikes[j][0]) + abs(workers[i][1] - bikes[j][1])
-        h = [[0, 0, 0]]
-        seen = set()
-        while True:
-            cost, i, taken = heapq.heappop(h)
-            if (i, taken) in seen: continue
-            seen.add((i, taken))
-            if i == len(workers):
-                return cost
-            for j in range(len(bikes)):
-                if taken & (1 << j) == 0:
-                    heapq.heappush(h, [cost + dis(i, j), i + 1, taken | (1 << j)])
+    def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> int:
+        @cache
+        def dp(pos: int, mask: int) -> int:
+            if mask.bit_count() >= n:
+                return 0
+            
+            if pos >= m:
+                return inf
+            
+            res = dp(pos + 1, mask)
+            for i in range(n):
+                if (1 << i) & mask:
+                    continue
+
+                d = abs(bikes[pos][0] - workers[i][0]) + abs(bikes[pos][1] - workers[i][1])
+                res = min(res, d + dp(pos + 1, mask | (1 << i)))
+            return res
+
+        m = len(bikes)
+        n = len(workers)
+        return dp(0, 0)
