@@ -1,14 +1,15 @@
 class Solution:
     def spellchecker(self, wordlist: List[str], queries: List[str]) -> List[str]:
-        vowels = set(list("aeiouAEIOU"))
+        vowels = set(list("aeiou"))
         wmap = {}
         for i, word in enumerate(wordlist):
             wmap[word] = i
             t1, t2 = [], []
             for j, c in enumerate(word):
-                t1.append((j, c.lower()))
+                c  = c.lower()
+                t1.append((j, c))
                 if c not in vowels:
-                    t2.append((j, c.lower()))
+                    t2.append((j, c))
             t1, t2 = tuple(t1), tuple(t2)
             if t1 not in wmap:
                 wmap[t1] = i
@@ -23,9 +24,10 @@ class Solution:
 
             t1, t2 = [], []
             for j, c in enumerate(q):
-                t1.append((j, c.lower()))
+                c = c.lower()
+                t1.append((j, c))
                 if c not in vowels:
-                    t2.append((j, c.lower()))
+                    t2.append((j, c))
             
             t1, t2 = tuple(t1), tuple(t2)
             if t1 in wmap:
