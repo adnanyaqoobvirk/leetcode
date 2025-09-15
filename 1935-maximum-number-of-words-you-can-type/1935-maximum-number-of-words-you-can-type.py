@@ -3,11 +3,11 @@ class Solution:
         brokenLetters = set(list(brokenLetters))
         valid = True
         ans = 0
-        for c in chain(text, " "):
+        for c in text:
             if c == " ":
                 if valid:
                     ans += 1
                 valid = True
             elif c in brokenLetters:
                 valid = False
-        return ans
+        return ans + 1 if valid else ans
