@@ -1,19 +1,27 @@
-from sortedcontainers import SortedSet
-
 class FoodRatings:
 
     def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
-        self.cmap = defaultdict(SortedSet)
+        self.cmap = defaultdict(list)
         self.fmap = {}
         for i in range(len(foods)):
             self.fmap[foods[i]] = [ratings[i], cuisines[i]]
-            self.cmap[cuisines[i]].add((-ratings[i], foods[i])) 
+            self.cmap[cuisines[i]].append((-ratings[i], foods[i]))
+        for l in self.cmap.values():
+            heapify(l)
 
     def changeRating(self, food: str, newRating: int) -> None:
         oldRating, cuisine = self.fmap[food]
-        self.cmap[cuisine].remove((-oldRating, food))
-        self.cmap[cuisine].add((-newRating, food))
+        clist = self.cmap[cuisine]
+        
+        heappush(clist, (-newRating, food))
         self.fmap[food][0] = newRating
+
+        while clist:
+            rating, food = clist[0]
+            if self.fmap[food][0] != -rating:
+                heappop(clist)
+            else:
+                break
 
     def highestRated(self, cuisine: str) -> str:
         return self.cmap[cuisine][0][1]
