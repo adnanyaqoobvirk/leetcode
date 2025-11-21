@@ -1,15 +1,22 @@
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
-        letters = set(s)
-        ans = 0
+        char_positions = defaultdict(list)
+        for i in range(len(s)):
+            char = s[i]
+            if len(char_positions[char]) < 2:
+                char_positions[char].append(i)
+            else:
+                char_positions[char][1] = i
         
-        for letter in letters:
-            i, j = s.index(letter), s.rindex(letter)
-            between = set()
+        subsequence_count = 0
+        for char, positions in char_positions.items():
+            if len(positions) < 2:
+                continue
             
-            for k in range(i + 1, j):
-                between.add(s[k])
+            unique_chars = set()
+            for i in range(positions[0] + 1, positions[1]):
+                unique_chars.add(s[i])
             
-            ans += len(between)
-
-        return ans
+            if len(unique_chars) >= 1:
+                subsequence_count += len(unique_chars)
+        return subsequence_count
