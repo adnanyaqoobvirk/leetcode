@@ -42,24 +42,21 @@
 #        """
 
 class Solution:
-    def getMaxDepth(self, nestedList: List[NestedInteger]) -> int:
-        max_depth = 1
-        for node in nestedList:
-            if not node.isInteger():
-                max_depth = max(max_depth, 1 + self.getMaxDepth(node.getList()))
-        return max_depth
-
     def depthSumInverse(self, nestedList: List[NestedInteger]) -> int:
-        max_depth = self.getMaxDepth(nestedList)
-
+        max_depth = 0
         result = 0
+        node_val_sum = 0
         stack = [(nestedList, 1)]
         while stack:
             nlist, depth = stack.pop()
 
+            max_depth = max(max_depth, depth)
+
             for node in nlist:
                 if node.isInteger():
-                    result += node.getInteger() * (max_depth - depth + 1)
+                    node_val = node.getInteger()
+                    result -= node_val * depth
+                    node_val_sum += node_val
                 else:
                     stack.append((node.getList(), depth + 1))
-        return result
+        return result + ((max_depth + 1) * node_val_sum)
