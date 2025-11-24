@@ -3,6 +3,6 @@ class Solution:
         x = 0
         result = []
         for num in nums:
-            x = x * 2 + num
-            result.append(x % 5 == 0)
+            x = (x * 2 + num) % 5
+            result.append(x == 0)
         return result
