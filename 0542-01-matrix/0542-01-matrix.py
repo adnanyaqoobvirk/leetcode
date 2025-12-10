@@ -1,24 +1,25 @@
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
         m, n = len(mat), len(mat[0])
-        q, seen = [], set()
+
+        distances = [[inf] * n for _ in range(m)]
         for i in range(m):
             for j in range(n):
                 if mat[i][j] == 0:
-                    q.append((i, j))
-                    seen.add((i, j))
+                    distances[i][j] = 0
+                    continue
+
+                for x, y in [(i - 1, j), (i, j - 1)]:
+                    if 0 <= x < m and 0 <= y < n:
+                        distances[i][j] = min(distances[i][j], distances[x][y] + 1)
         
-        d, ans = 0, [[0] * n for _ in range(m)]
-        while q:
-            nq = []
-            
-            for i, j in q:
-                ans[i][j] = d
-                
-                for t in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
-                    if 0 <= t[0] < m and 0 <= t[1] < n and t not in seen:
-                        seen.add(t)
-                        nq.append(t)
-            d += 1
-            q = nq
-        return ans
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                if mat[i][j] == 0:
+                    continue
+
+                for x, y in [(i + 1, j), (i, j + 1)]:
+                    if 0 <= x < m and 0 <= y < n:
+                        distances[i][j] = min(distances[i][j], distances[x][y] + 1)
+
+        return distances
