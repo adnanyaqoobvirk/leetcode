@@ -6,21 +6,24 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 """
 
+from typing import Optional
 class Solution:
-    def cloneGraph(self, node: 'Node') -> 'Node':
-        if not node:
-            return node
-        m, visited, queue = {}, set(), collections.deque([node])
-        while queue:
-            n = queue.popleft()
-            if n in visited:
-                continue
-            visited.add(n)
-            if n not in m:
-                m[n] = Node(n.val)
-            for neigh in n.neighbors:
-                if neigh not in m:
-                    m[neigh] = Node(neigh.val)
-                m[n].neighbors.append(m[neigh])
-                queue.append(neigh)
-        return m[node]
+    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        def dfs(curr: Optional['Node']) -> Optional['Node']:
+            if not curr:
+                return None
+
+            new_curr = Node(curr.val)
+            node_map[curr] = new_curr
+            
+            for nei in curr.neighbors:
+                if nei not in node_map:
+                    new_nei = dfs(nei)
+                    node_map[nei] = new_nei
+                
+                new_curr.neighbors.append(node_map[nei])
+            
+            return new_curr
+        
+        node_map = {}
+        return dfs(node)
