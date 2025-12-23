@@ -1,5 +1,5 @@
 class Solution:
-    def maxTwoEvents(self, events: List[List[int]]) -> int:
+    def maxTwoEvents(self, events):
         times = []
         for e in events:
             # 1 denotes start time.
