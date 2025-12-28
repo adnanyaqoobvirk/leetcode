@@ -3,17 +3,14 @@ class Solution:
         def possible(k):
             hours = 0
             for p in piles:
-                hours += math.ceil(p / k)
-                if hours > h:
-                    return False
-            return True
+                hours += ceil(p / k)
+            return hours <= h
         
-        lo, hi = math.ceil(sum(piles) / h) - 1, max(piles)
+        lo, hi = 0, max(piles)
         while lo + 1 < hi:
-            guess = lo + (hi - lo) // 2
-            
-            if possible(guess):
-                hi = guess
+            k = lo + hi >> 1
+            if possible(k):
+                hi = k
             else:
-                lo = guess
+                lo = k
         return hi
