@@ -3,5 +3,5 @@ class Solution:
         MOD = 10**9 + 7
         aba = abc = 6
         for _ in range(n - 1):
-            abc, aba = (2 * abc + 2 * aba) % MOD, (2 * abc + 3 * aba) % MOD
+            abc, aba = (2 * abc + 2 * aba), (2 * abc + 3 * aba)
         return (aba + abc) % MOD
