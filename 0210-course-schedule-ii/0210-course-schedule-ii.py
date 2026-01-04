@@ -18,7 +18,7 @@ class Solution:
         
         adj = defaultdict(list)
         for dst, src in prerequisites:
-            adj[src].append(dst)
+            adj[dst].append(src)
         
         visiting = set()
         processed = set()
@@ -31,4 +31,4 @@ class Solution:
             if not dfs(course):
                 return []
         
-        return ordered_courses[::-1]
+        return ordered_courses
