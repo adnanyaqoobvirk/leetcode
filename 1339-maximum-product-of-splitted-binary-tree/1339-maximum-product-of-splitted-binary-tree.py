@@ -6,24 +6,29 @@
 #         self.right = right
 class Solution:
     def maxProduct(self, root: Optional[TreeNode]) -> int:
-        def calcNodeSums(curr):
+        total = 0
+        stack = [root]
+        while stack:
+            curr = stack.pop()
             if not curr:
-                return 0
-            
-            nodeSums[curr] = curr.val + calcNodeSums(curr.left) + calcNodeSums(curr.right)
-            return nodeSums[curr]
+                continue
+            total += curr.val
+            stack.append(curr.left)
+            stack.append(curr.right)
         
-        def getMaxProduct(curr):
-            if not curr:
-                return 0
-            
-            return max(
-                getMaxProduct(curr.left),
-                getMaxProduct(curr.right),
-                (nodeSums[root] - nodeSums[curr.left]) * nodeSums[curr.left],
-                (nodeSums[root] - nodeSums[curr.right]) * nodeSums[curr.right]
-            )
-        
-        nodeSums = defaultdict(int)
-        calcNodeSums(root)
-        return getMaxProduct(root) % (10**9 + 7)
+        max_product = 0
+        node_sums = defaultdict(int)
+        stack = [(root, False)]
+        while stack:
+            curr, done = stack.pop()
+
+            if done:
+                node_sums[curr] = node_sums[curr.left] + node_sums[curr.right] + curr.val
+                max_product = max(max_product, (total - node_sums[curr]) * node_sums[curr])
+            else:
+                stack.append((curr, True))
+                if curr.right:
+                    stack.append((curr.right, False))
+                if curr.left:
+                    stack.append((curr.left, False))
+        return max_product % (10**9 + 7)
