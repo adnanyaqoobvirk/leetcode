@@ -26,12 +26,12 @@ class Solution:
         num = 0
         while i < n and s[i] in DIGITS:
             num = num * 10 + int(s[i])
-            i += 1
-        num = sign * num
+            
+            if sign * num <= MIN_ALLOWED:
+                return MIN_ALLOWED
+            elif sign * num >= MAX_ALLOWED:
+                return MAX_ALLOWED
 
-        if num < MIN_ALLOWED:
-            num = MIN_ALLOWED
-        elif num > MAX_ALLOWED:
-            num = MAX_ALLOWED
+            i += 1
         
-        return num
+        return sign * num
