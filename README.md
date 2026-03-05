@@ -32,12 +32,14 @@ Leetcode solutions
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
 ## Dynamic Programming
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
