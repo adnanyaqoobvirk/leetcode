@@ -2,8 +2,6 @@ class Solution:
     def minFlips(self, s: str) -> int:
         n = len(s)
 
-        s = s + s
-
         op0 = 0
         op1 = 0
         for i in range(n):
@@ -19,15 +17,18 @@ class Solution:
                     op0 += 1
         
         ans = min(op0, op1)
+        if not n & 1:
+            return ans
+            
         l = 0
-        for r in range(n, len(s)):
+        for r in range(n):
             if s[r] == '0':
-                if r & 1:
+                if (r + 1) & 1:
                     op0 += 1
                 else:
                     op1 += 1
             else:
-                if r & 1:
+                if (r + 1) & 1:
                     op1 += 1
                 else:
                     op0 += 1
