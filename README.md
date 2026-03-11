@@ -66,4 +66,12 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1009-complement-of-base-10-integer](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1009-complement-of-base-10-integer/) | Easy |
+## Math
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
+## Geometry
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
 <!---LeetCode Topics End-->
