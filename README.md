@@ -25,6 +25,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2375-construct-smallest-number-from-di-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2375-construct-smallest-number-from-di-string/) | Medium |
+| [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -74,4 +75,20 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
+## Binary Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
+## Union-Find
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
+## Graph Theory
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
+## Minimum Spanning Tree
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
 <!---LeetCode Topics End-->
