@@ -25,6 +25,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2375-construct-smallest-number-from-di-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2375-construct-smallest-number-from-di-string/) | Medium |
+| [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 | [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
 ## Recursion
 | Problem Name | Difficulty |
@@ -43,6 +44,7 @@ Leetcode solutions
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
+| [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 ## Dynamic Programming
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -71,6 +73,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
+| [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 ## Geometry
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -78,6 +81,7 @@ Leetcode solutions
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 | [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
 ## Union-Find
 | Problem Name | Difficulty |
@@ -91,4 +95,8 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
+## Heap (Priority Queue)
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 <!---LeetCode Topics End-->
