@@ -14,6 +14,7 @@ Leetcode solutions
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2375-construct-smallest-number-from-di-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2375-construct-smallest-number-from-di-string/) | Medium |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
+| [2839-check-if-strings-can-be-made-equal-with-operations-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2839-check-if-strings-can-be-made-equal-with-operations-i/) | Easy |
 ## Backtracking
 | Problem Name | Difficulty |
 | ------- | ------- |
