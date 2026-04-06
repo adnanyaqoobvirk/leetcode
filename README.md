@@ -46,6 +46,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
+| [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
 | [2075-decode-the-slanted-ciphertext](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2075-decode-the-slanted-ciphertext/) | Medium |
@@ -53,6 +54,7 @@ Leetcode solutions
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
@@ -106,6 +108,7 @@ Leetcode solutions
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3548-equal-sum-grid-partition-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3548-equal-sum-grid-partition-ii/) | Hard |
