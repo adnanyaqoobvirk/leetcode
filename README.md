@@ -62,6 +62,7 @@ Leetcode solutions
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
+| [1848-minimum-distance-to-the-target-element](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1848-minimum-distance-to-the-target-element/) | Easy |
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
 | [1886-determine-whether-matrix-can-be-obtained-by-rotation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1886-determine-whether-matrix-can-be-obtained-by-rotation/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
