@@ -47,6 +47,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
+| [0755-pour-water](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0755-pour-water/) | Medium |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
@@ -57,6 +58,7 @@ Leetcode solutions
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0755-pour-water](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0755-pour-water/) | Medium |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
