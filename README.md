@@ -69,6 +69,7 @@ Leetcode solutions
 | [1886-determine-whether-matrix-can-be-obtained-by-rotation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1886-determine-whether-matrix-can-be-obtained-by-rotation/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
+| [2463-minimum-total-distance-traveled](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3070-count-submatrices-with-top-left-element-and-sum-less-than-k](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3070-count-submatrices-with-top-left-element-and-sum-less-than-k/) | Medium |
@@ -91,6 +92,7 @@ Leetcode solutions
 | [1320-minimum-distance-to-type-a-word-using-two-fingers](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1320-minimum-distance-to-type-a-word-using-two-fingers/) | Hard |
 | [1888-minimum-number-of-flips-to-make-the-binary-string-alternating](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1888-minimum-number-of-flips-to-make-the-binary-string-alternating/) | Medium |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
+| [2463-minimum-total-distance-traveled](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
 | [3418-maximum-amount-of-money-robot-can-earn](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
 | [3661-maximum-walls-destroyed-by-robots](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3661-maximum-walls-destroyed-by-robots/) | Hard |
@@ -179,6 +181,7 @@ Leetcode solutions
 | ------- | ------- |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
+| [2463-minimum-total-distance-traveled](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 | [3661-maximum-walls-destroyed-by-robots](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3661-maximum-walls-destroyed-by-robots/) | Hard |
