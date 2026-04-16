@@ -76,6 +76,7 @@ Leetcode solutions
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3070-count-submatrices-with-top-left-element-and-sum-less-than-k](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3070-count-submatrices-with-top-left-element-and-sum-less-than-k/) | Medium |
+| [3196-maximize-total-cost-of-alternating-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3196-maximize-total-cost-of-alternating-subarrays/) | Medium |
 | [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 | [3418-maximum-amount-of-money-robot-can-earn](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
@@ -98,6 +99,7 @@ Leetcode solutions
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
 | [2463-minimum-total-distance-traveled](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
+| [3196-maximize-total-cost-of-alternating-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3196-maximize-total-cost-of-alternating-subarrays/) | Medium |
 | [3418-maximum-amount-of-money-robot-can-earn](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
 | [3661-maximum-walls-destroyed-by-robots](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3661-maximum-walls-destroyed-by-robots/) | Hard |
 ## Matrix
