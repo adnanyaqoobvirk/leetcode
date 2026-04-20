@@ -1,8 +1,10 @@
 class Solution:
     def maxValue(self, nums: List[int]) -> List[int]:
-        min_values = [inf] * (len(nums) + 1)
+        n = len(nums)
+
+        min_values = [inf] * (n + 1)
         min_value = inf
-        for i in reversed(range(len(nums))):
+        for i in reversed(range(n)):
             min_value = min(min_value, nums[i])
             min_values[i] = min_value
 
