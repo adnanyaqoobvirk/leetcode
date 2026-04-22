@@ -63,6 +63,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0163-missing-ranges](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0163-missing-ranges/) | Easy |
+| [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 | [0755-pour-water](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0755-pour-water/) | Medium |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
@@ -195,6 +196,7 @@ Leetcode solutions
 ## Design
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 | [1622-fancy-sequence](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1622-fancy-sequence/) | Hard |
 | [2069-walking-robot-simulation-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2069-walking-robot-simulation-ii/) | Medium |
 ## Segment Tree
@@ -245,4 +247,12 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2452-words-within-two-edits-of-dictionary](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2452-words-within-two-edits-of-dictionary/) | Medium |
+## Queue
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
+## Iterator
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 <!---LeetCode Topics End-->
