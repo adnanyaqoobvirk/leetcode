@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/all-paths-from-source-lead-to-destination/">1059. All Paths from Source Lead to Destination</a></h2><h3>Medium</h3><hr><div><p>Given the <code>edges</code> of a directed graph where <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates there is an edge between nodes <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code>, and two nodes <code>source</code> and <code>destination</code> of this graph, determine whether or not all paths starting from <code>source</code> eventually, end at <code>destination</code>, that is:</p>
+<h2><a href="https://leetcode.com/problems/all-paths-from-source-lead-to-destination">1059. All Paths from Source Lead to Destination</a></h2><h3>Medium</h3><hr><p>Given the <code>edges</code> of a directed graph where <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates there is an edge between nodes <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code>, and two nodes <code>source</code> and <code>destination</code> of this graph, determine whether or not all paths starting from <code>source</code> eventually, end at <code>destination</code>, that is:</p>
 
 <ul>
 	<li>At least one path exists from the <code>source</code> node to the <code>destination</code> node</li>
@@ -10,22 +10,25 @@
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/16/485_example_1.png" style="width: 200px; height: 208px;">
-<pre><strong>Input:</strong> n = 3, edges = [[0,1],[0,2]], source = 0, destination = 2
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/16/485_example_1.png" style="width: 200px; height: 208px;" />
+<pre>
+<strong>Input:</strong> n = 3, edges = [[0,1],[0,2]], source = 0, destination = 2
 <strong>Output:</strong> false
 <strong>Explanation:</strong> It is possible to reach and get stuck on both node 1 and node 2.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/16/485_example_2.png" style="width: 200px; height: 230px;">
-<pre><strong>Input:</strong> n = 4, edges = [[0,1],[0,3],[1,2],[2,1]], source = 0, destination = 3
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/16/485_example_2.png" style="width: 200px; height: 230px;" />
+<pre>
+<strong>Input:</strong> n = 4, edges = [[0,1],[0,3],[1,2],[2,1]], source = 0, destination = 3
 <strong>Output:</strong> false
 <strong>Explanation:</strong> We have two possibilities: to end at node 3, or to loop over node 1 and node 2 indefinitely.
 </pre>
 
 <p><strong class="example">Example 3:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/16/485_example_3.png" style="width: 200px; height: 183px;">
-<pre><strong>Input:</strong> n = 4, edges = [[0,1],[0,2],[1,3],[2,3]], source = 0, destination = 3
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/16/485_example_3.png" style="width: 200px; height: 183px;" />
+<pre>
+<strong>Input:</strong> n = 4, edges = [[0,1],[0,2],[1,3],[2,3]], source = 0, destination = 3
 <strong>Output:</strong> true
 </pre>
 
@@ -41,4 +44,3 @@
 	<li><code>0 &lt;= destination &lt;= n - 1</code></li>
 	<li>The given graph may have self-loops and parallel edges.</li>
 </ul>
-</div>
