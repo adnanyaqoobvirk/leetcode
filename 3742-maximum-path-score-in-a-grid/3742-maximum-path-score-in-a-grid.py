@@ -16,5 +16,5 @@ class Solution:
                         continue
             
                     curr[j][r] = score + max(curr[j + 1][r - cost], prev[j][r - cost])
-            prev, curr = curr, prev
+            prev, curr = curr, [[-inf] * (k + 2) for _ in range(n + 1)]
         return -1 if prev[0][k] == -inf else prev[0][k]
