@@ -1,7 +1,7 @@
 class Solution:
     def maxPathScore(self, grid: List[List[int]], k: int) -> int:
         m, n = len(grid), len(grid[0])
-        dp = [[[-inf] * (k + 2) for _ in range(n + 1)] for _ in range(m + 1)]
+        curr, prev = [[-inf] * (k + 2) for _ in range(n + 1)], [[-inf] * (k + 2) for _ in range(n + 1)]
         for i in reversed(range(m)):
             for j in reversed(range(n)):
                 for r in reversed(range(k + 1)):
@@ -12,8 +12,9 @@ class Solution:
                         continue
 
                     if i == m - 1 and j == n - 1:
-                        dp[i][j][r] = score
+                        curr[j][r] = score
                         continue
             
-                    dp[i][j][r] = score + max(dp[i][j + 1][r - cost], dp[i + 1][j][r - cost])
-        return -1 if dp[0][0][k] == -inf else dp[0][0][k]
+                    curr[j][r] = score + max(curr[j + 1][r - cost], prev[j][r - cost])
+            prev, curr = curr, prev
+        return -1 if prev[0][k] == -inf else prev[0][k]
