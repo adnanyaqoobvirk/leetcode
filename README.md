@@ -24,6 +24,7 @@ Leetcode solutions
 | [2833-furthest-point-from-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2833-furthest-point-from-origin/) | Easy |
 | [2839-check-if-strings-can-be-made-equal-with-operations-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2839-check-if-strings-can-be-made-equal-with-operations-i/) | Easy |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
+| [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 | [3474-lexicographically-smallest-generated-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3474-lexicographically-smallest-generated-string/) | Hard |
 ## Backtracking
 | Problem Name | Difficulty |
@@ -42,6 +43,7 @@ Leetcode solutions
 | [2078-two-furthest-houses-with-different-colors](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
 | [2375-construct-smallest-number-from-di-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2375-construct-smallest-number-from-di-string/) | Medium |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
+| [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 | [3474-lexicographically-smallest-generated-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3474-lexicographically-smallest-generated-string/) | Hard |
 | [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
@@ -165,6 +167,7 @@ Leetcode solutions
 | [2537-count-the-number-of-good-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2537-count-the-number-of-good-subarrays/) | Medium |
 | [2615-sum-of-distances](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2615-sum-of-distances/) | Medium |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
+| [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 | [3488-closest-equal-element-queries](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 | [3548-equal-sum-grid-partition-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3548-equal-sum-grid-partition-ii/) | Hard |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3740-minimum-distance-between-three-equal-elements-i/) | Easy |
@@ -240,6 +243,7 @@ Leetcode solutions
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
 | [2463-minimum-total-distance-traveled](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
+| [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 | [3464-maximize-the-distance-between-points-on-a-square](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 | [3661-maximum-walls-destroyed-by-robots](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3661-maximum-walls-destroyed-by-robots/) | Hard |
@@ -305,6 +309,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2833-furthest-point-from-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2833-furthest-point-from-origin/) | Easy |
+| [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 ## Topological Sort
 | Problem Name | Difficulty |
 | ------- | ------- |
