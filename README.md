@@ -120,6 +120,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
+| [0788-rotated-digits](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0788-rotated-digits/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1320-minimum-distance-to-type-a-word-using-two-fingers](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1320-minimum-distance-to-type-a-word-using-two-fingers/) | Hard |
 | [1888-minimum-number-of-flips-to-make-the-binary-string-alternating](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1888-minimum-number-of-flips-to-make-the-binary-string-alternating/) | Medium |
@@ -184,6 +185,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
+| [0788-rotated-digits](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0788-rotated-digits/) | Medium |
 | [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
 | [1622-fancy-sequence](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1622-fancy-sequence/) | Hard |
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
