@@ -67,6 +67,7 @@ Leetcode solutions
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0048-rotate-image](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0048-rotate-image/) | Medium |
 | [0163-missing-ranges](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0163-missing-ranges/) | Easy |
 | [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
@@ -137,6 +138,7 @@ Leetcode solutions
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0048-rotate-image](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0048-rotate-image/) | Medium |
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
@@ -185,6 +187,7 @@ Leetcode solutions
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0048-rotate-image](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0048-rotate-image/) | Medium |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
 | [0788-rotated-digits](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0788-rotated-digits/) | Medium |
 | [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
