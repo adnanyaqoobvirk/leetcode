@@ -3,15 +3,12 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        m = len(matrix)
-        for first in range(m // 2):
-            last = m - 1 - first
+        n = len(matrix)
+        for i in range(n // 2):
+            for j in range(ceil(n / 2)):
+                tmp = matrix[i][j]
 
-            for c in range(first, last):
-                offset = c - first
-
-                top = matrix[first][c]
-                matrix[first][c] = matrix[last - offset][first]
-                matrix[last - offset][first] = matrix[last][last - offset]
-                matrix[last][last - offset] = matrix[first + offset][last]
-                matrix[first + offset][last] = top
+                matrix[i][j] = matrix[n - j - 1][i]
+                matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1]
+                matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1]
+                matrix[j][n - i - 1] = tmp
