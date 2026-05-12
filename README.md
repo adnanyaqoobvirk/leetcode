@@ -41,6 +41,7 @@ Leetcode solutions
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
 | [2078-two-furthest-houses-with-different-colors](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
 | [2375-construct-smallest-number-from-di-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2375-construct-smallest-number-from-di-string/) | Medium |
@@ -83,6 +84,7 @@ Leetcode solutions
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
@@ -261,6 +263,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0759-employee-free-time](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0759-employee-free-time/) | Hard |
+| [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
