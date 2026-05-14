@@ -106,6 +106,7 @@ Leetcode solutions
 | [2553-separate-the-digits-in-an-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2553-separate-the-digits-in-an-array/) | Easy |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
 | [2615-sum-of-distances](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2615-sum-of-distances/) | Medium |
+| [2784-check-if-array-is-good](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2784-check-if-array-is-good/) | Easy |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3070-count-submatrices-with-top-left-element-and-sum-less-than-k](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3070-count-submatrices-with-top-left-element-and-sum-less-than-k/) | Medium |
 | [3196-maximize-total-cost-of-alternating-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3196-maximize-total-cost-of-alternating-subarrays/) | Medium |
@@ -186,6 +187,7 @@ Leetcode solutions
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2537-count-the-number-of-good-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2537-count-the-number-of-good-subarrays/) | Medium |
 | [2615-sum-of-distances](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2615-sum-of-distances/) | Medium |
+| [2784-check-if-array-is-good](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2784-check-if-array-is-good/) | Easy |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 | [3488-closest-equal-element-queries](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
@@ -270,6 +272,7 @@ Leetcode solutions
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
 | [2463-minimum-total-distance-traveled](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
+| [2784-check-if-array-is-good](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2784-check-if-array-is-good/) | Easy |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 | [3464-maximize-the-distance-between-points-on-a-square](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
