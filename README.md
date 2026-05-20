@@ -63,6 +63,7 @@ Leetcode solutions
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
 | [1706-where-will-the-ball-fall](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1706-where-will-the-ball-fall/) | Medium |
 | [1914-cyclically-rotating-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
+| [2061-number-of-spaces-cleaning-robot-cleaned](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2061-number-of-spaces-cleaning-robot-cleaned/) | Medium |
 | [2069-walking-robot-simulation-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2069-walking-robot-simulation-ii/) | Medium |
 | [2075-decode-the-slanted-ciphertext](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2075-decode-the-slanted-ciphertext/) | Medium |
 | [2553-separate-the-digits-in-an-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2553-separate-the-digits-in-an-array/) | Easy |
@@ -100,6 +101,7 @@ Leetcode solutions
 | [1914-cyclically-rotating-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
+| [2061-number-of-spaces-cleaning-robot-cleaned](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2061-number-of-spaces-cleaning-robot-cleaned/) | Medium |
 | [2078-two-furthest-houses-with-different-colors](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
 | [2452-words-within-two-edits-of-dictionary](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2452-words-within-two-edits-of-dictionary/) | Medium |
@@ -165,6 +167,7 @@ Leetcode solutions
 | [1886-determine-whether-matrix-can-be-obtained-by-rotation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1886-determine-whether-matrix-can-be-obtained-by-rotation/) | Easy |
 | [1914-cyclically-rotating-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1914-cyclically-rotating-a-grid/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
+| [2061-number-of-spaces-cleaning-robot-cleaned](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2061-number-of-spaces-cleaning-robot-cleaned/) | Medium |
 | [2304-minimum-path-cost-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2304-minimum-path-cost-in-a-grid/) | Medium |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
