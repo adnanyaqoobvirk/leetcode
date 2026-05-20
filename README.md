@@ -110,6 +110,7 @@ Leetcode solutions
 | [2553-separate-the-digits-in-an-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2553-separate-the-digits-in-an-array/) | Easy |
 | [2573-find-the-string-with-lcp](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2573-find-the-string-with-lcp/) | Hard |
 | [2615-sum-of-distances](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2615-sum-of-distances/) | Medium |
+| [2657-find-the-prefix-common-array-of-two-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2657-find-the-prefix-common-array-of-two-arrays/) | Medium |
 | [2784-check-if-array-is-good](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2784-check-if-array-is-good/) | Easy |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3070-count-submatrices-with-top-left-element-and-sum-less-than-k](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3070-count-submatrices-with-top-left-element-and-sum-less-than-k/) | Medium |
@@ -192,6 +193,7 @@ Leetcode solutions
 | [2537-count-the-number-of-good-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2537-count-the-number-of-good-subarrays/) | Medium |
 | [2540-minimum-common-value](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2540-minimum-common-value/) | Easy |
 | [2615-sum-of-distances](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2615-sum-of-distances/) | Medium |
+| [2657-find-the-prefix-common-array-of-two-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2657-find-the-prefix-common-array-of-two-arrays/) | Medium |
 | [2784-check-if-array-is-good](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2784-check-if-array-is-good/) | Easy |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
@@ -205,6 +207,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1009-complement-of-base-10-integer](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1009-complement-of-base-10-integer/) | Easy |
+| [2657-find-the-prefix-common-array-of-two-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2657-find-the-prefix-common-array-of-two-arrays/) | Medium |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
