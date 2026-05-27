@@ -28,6 +28,7 @@ Leetcode solutions
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3043-find-the-length-of-the-longest-common-prefix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3043-find-the-length-of-the-longest-common-prefix/) | Medium |
 | [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
+| [3120-count-the-number-of-special-characters-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3120-count-the-number-of-special-characters-i/) | Easy |
 | [3474-lexicographically-smallest-generated-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3474-lexicographically-smallest-generated-string/) | Hard |
 ## Backtracking
 | Problem Name | Difficulty |
@@ -209,6 +210,7 @@ Leetcode solutions
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
 | [3043-find-the-length-of-the-longest-common-prefix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3043-find-the-length-of-the-longest-common-prefix/) | Medium |
 | [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
+| [3120-count-the-number-of-special-characters-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3120-count-the-number-of-special-characters-i/) | Easy |
 | [3488-closest-equal-element-queries](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 | [3548-equal-sum-grid-partition-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3548-equal-sum-grid-partition-ii/) | Hard |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
