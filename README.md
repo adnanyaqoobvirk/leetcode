@@ -87,6 +87,7 @@ Leetcode solutions
 | [0755-pour-water](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0755-pour-water/) | Medium |
 | [0759-employee-free-time](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0759-employee-free-time/) | Hard |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
+| [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1306-jump-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1306-jump-game-iii/) | Medium |
@@ -151,6 +152,7 @@ Leetcode solutions
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
 | [0788-rotated-digits](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0788-rotated-digits/) | Medium |
+| [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1320-minimum-distance-to-type-a-word-using-two-fingers](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1320-minimum-distance-to-type-a-word-using-two-fingers/) | Hard |
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
@@ -234,6 +236,7 @@ Leetcode solutions
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
 | [0788-rotated-digits](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0788-rotated-digits/) | Medium |
+| [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 | [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
 | [1622-fancy-sequence](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1622-fancy-sequence/) | Hard |
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
@@ -407,4 +410,5 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
+| [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 <!---LeetCode Topics End-->
