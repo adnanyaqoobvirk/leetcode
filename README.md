@@ -281,6 +281,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1059-all-paths-from-source-lead-to-destination](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1059-all-paths-from-source-lead-to-destination/) | Medium |
+| [3310-remove-methods-from-project](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3310-remove-methods-from-project/) | Medium |
 | [3600-maximize-spanning-tree-stability-with-upgrades](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3600-maximize-spanning-tree-stability-with-upgrades/) | Hard |
 ## Minimum Spanning Tree
 | Problem Name | Difficulty |
@@ -362,6 +363,7 @@ Leetcode solutions
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1722-minimize-hamming-distance-after-swap-operations](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
+| [3310-remove-methods-from-project](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3310-remove-methods-from-project/) | Medium |
 ## Trie
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -386,6 +388,7 @@ Leetcode solutions
 | [1306-jump-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1306-jump-game-iii/) | Medium |
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
+| [3310-remove-methods-from-project](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3310-remove-methods-from-project/) | Medium |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 ## Counting
 | Problem Name | Difficulty |
