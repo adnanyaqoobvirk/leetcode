@@ -137,6 +137,7 @@ Leetcode solutions
 | [3546-equal-sum-grid-partition-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3546-equal-sum-grid-partition-i/) | Medium |
 | [3548-equal-sum-grid-partition-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3548-equal-sum-grid-partition-ii/) | Hard |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
+| [3568-minimum-moves-to-clean-the-classroom](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3568-minimum-moves-to-clean-the-classroom/) | Medium |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 | [3653-xor-after-range-multiplication-queries-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
@@ -195,6 +196,7 @@ Leetcode solutions
 | [3546-equal-sum-grid-partition-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3546-equal-sum-grid-partition-i/) | Medium |
 | [3548-equal-sum-grid-partition-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3548-equal-sum-grid-partition-ii/) | Hard |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
+| [3568-minimum-moves-to-clean-the-classroom](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3568-minimum-moves-to-clean-the-classroom/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 | [3742-maximum-path-score-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3742-maximum-path-score-in-a-grid/) | Medium |
 ## Sliding Window
@@ -223,6 +225,7 @@ Leetcode solutions
 | [3121-count-the-number-of-special-characters-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3121-count-the-number-of-special-characters-ii/) | Medium |
 | [3488-closest-equal-element-queries](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 | [3548-equal-sum-grid-partition-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3548-equal-sum-grid-partition-ii/) | Hard |
+| [3568-minimum-moves-to-clean-the-classroom](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3568-minimum-moves-to-clean-the-classroom/) | Medium |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 | [3731-find-missing-elements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3731-find-missing-elements/) | Easy |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3740-minimum-distance-between-three-equal-elements-i/) | Easy |
@@ -233,6 +236,7 @@ Leetcode solutions
 | ------- | ------- |
 | [1009-complement-of-base-10-integer](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1009-complement-of-base-10-integer/) | Easy |
 | [2657-find-the-prefix-common-array-of-two-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2657-find-the-prefix-common-array-of-two-arrays/) | Medium |
+| [3568-minimum-moves-to-clean-the-classroom](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3568-minimum-moves-to-clean-the-classroom/) | Medium |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -389,6 +393,7 @@ Leetcode solutions
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [3310-remove-methods-from-project](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3310-remove-methods-from-project/) | Medium |
+| [3568-minimum-moves-to-clean-the-classroom](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3568-minimum-moves-to-clean-the-classroom/) | Medium |
 | [3629-minimum-jumps-to-reach-end-via-prime-teleportation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3629-minimum-jumps-to-reach-end-via-prime-teleportation/) | Medium |
 ## Counting
 | Problem Name | Difficulty |
