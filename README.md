@@ -11,6 +11,7 @@ Leetcode solutions
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1320-minimum-distance-to-type-a-word-using-two-fingers](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1320-minimum-distance-to-type-a-word-using-two-fingers/) | Hard |
 | [1415-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1415-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/) | Medium |
+| [1427-perform-string-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1427-perform-string-shifts/) | Easy |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
 | [1758-minimum-changes-to-make-alternating-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1758-minimum-changes-to-make-alternating-binary-string/) | Easy |
@@ -98,6 +99,7 @@ Leetcode solutions
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1406-stone-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1406-stone-game-iii/) | Hard |
+| [1427-perform-string-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1427-perform-string-shifts/) | Easy |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
@@ -254,6 +256,7 @@ Leetcode solutions
 | [1056-confusing-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1056-confusing-number/) | Easy |
 | [1401-circle-and-rectangle-overlapping](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1401-circle-and-rectangle-overlapping/) | Medium |
 | [1406-stone-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1406-stone-game-iii/) | Hard |
+| [1427-perform-string-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1427-perform-string-shifts/) | Easy |
 | [1622-fancy-sequence](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1622-fancy-sequence/) | Hard |
 | [1878-get-biggest-three-rhombus-sums-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1878-get-biggest-three-rhombus-sums-in-a-grid/) | Medium |
 | [2033-minimum-operations-to-make-a-uni-value-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2033-minimum-operations-to-make-a-uni-value-grid/) | Medium |
