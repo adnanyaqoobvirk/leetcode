@@ -1,13 +1,18 @@
 class Solution:
     def confusingNumber(self, n: int) -> bool:
-        invalids = {2, 3, 4, 5, 7}
-        valids = {0: 0, 1: 1, 6: 9, 8: 8, 9: 6}
-        new = 0
-        i = n
-        while i > 0:
-            i, d = divmod(i, 10)
+        invalids = set([2, 3, 4, 5, 7])
+        m = n
+        rn = 0
+        while m > 0:
+            m, d = divmod(m, 10)
+
             if d in invalids:
                 return False
-            new = new * 10 + valids[d]
-        return new != n
-        
+            elif d == 6:
+                d = 9
+                print(d)
+            elif d == 9:
+                d = 6
+                
+            rn = rn * 10 + d
+        return rn != n
