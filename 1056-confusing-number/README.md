@@ -1,4 +1,4 @@
-<h2>1056. Confusing Number</h2><h3>Easy</h3><hr><div><p>A <strong>confusing number</strong> is a number that when rotated <code>180</code> degrees becomes a different number with <strong>each digit valid</strong>.</p>
+<h2><a href="https://leetcode.com/problems/confusing-number">1056. Confusing Number</a></h2><h3>Easy</h3><hr><p>A <strong>confusing number</strong> is a number that when rotated <code>180</code> degrees becomes a different number with <strong>each digit valid</strong>.</p>
 
 <p>We can rotate digits of a number by <code>180</code> degrees to form new digits.</p>
 
@@ -16,32 +16,28 @@
 <p>Given an integer <code>n</code>, return <code>true</code><em> if it is a <strong>confusing number</strong>, or </em><code>false</code><em> otherwise</em>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/23/1268_1.png" style="width: 281px; height: 121px;">
-<pre><strong>Input:</strong> n = 6
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/23/1268_1.png" style="width: 281px; height: 121px;" />
+<pre>
+<strong>Input:</strong> n = 6
 <strong>Output:</strong> true
 <strong>Explanation:</strong> We get 9 after rotating 6, 9 is a valid number, and 9 != 6.
 </pre>
 
-<p><strong>Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/23/1268_2.png" style="width: 312px; height: 121px;">
-<pre><strong>Input:</strong> n = 89
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/23/1268_2.png" style="width: 312px; height: 121px;" />
+<pre>
+<strong>Input:</strong> n = 89
 <strong>Output:</strong> true
-<strong>Explanation:</strong> We get 68 after rotating 89, 86 is a valid number and 86 != 89.
+<strong>Explanation:</strong> We get 68 after rotating 89, 68 is a valid number and 68 != 89.
 </pre>
 
-<p><strong>Example 3:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/26/1268_3.png" style="width: 301px; height: 121px;">
-<pre><strong>Input:</strong> n = 11
+<p><strong class="example">Example 3:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/03/26/1268_3.png" style="width: 301px; height: 121px;" />
+<pre>
+<strong>Input:</strong> n = 11
 <strong>Output:</strong> false
 <strong>Explanation:</strong> We get 11 after rotating 11, 11 is a valid number but the value remains the same, thus 11 is not a confusing number
-</pre>
-
-<p><strong>Example 4:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/03/23/1268_4.png" style="width: 302px; height: 121px;">
-<pre><strong>Input:</strong> n = 25
-<strong>Output:</strong> false
-<strong>Explanation:</strong> We get an invalid number after rotating 25.
 </pre>
 
 <p>&nbsp;</p>
@@ -50,4 +46,3 @@
 <ul>
 	<li><code>0 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
-</div>
