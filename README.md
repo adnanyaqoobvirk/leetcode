@@ -45,6 +45,7 @@ Leetcode solutions
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0280-wiggle-sort](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0280-wiggle-sort/) | Medium |
 | [0624-maximum-distance-in-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0624-maximum-distance-in-arrays/) | Medium |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
@@ -82,6 +83,7 @@ Leetcode solutions
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
 | [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
 | [0163-missing-ranges](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0163-missing-ranges/) | Easy |
+| [0280-wiggle-sort](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0280-wiggle-sort/) | Medium |
 | [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
@@ -316,6 +318,7 @@ Leetcode solutions
 ## Sorting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0280-wiggle-sort](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0280-wiggle-sort/) | Medium |
 | [0759-employee-free-time](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0759-employee-free-time/) | Hard |
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
