@@ -1,4 +1,4 @@
-<h2>1427. Perform String Shifts</h2><h3>Easy</h3><hr><div><p>You are given a string <code>s</code> containing lowercase English letters, and a matrix <code>shift</code>, where <code>shift[i] = [direction<sub>i</sub>, amount<sub>i</sub>]</code>:</p>
+<h2><a href="https://leetcode.com/problems/perform-string-shifts">1427. Perform String Shifts</a></h2><h3>Easy</h3><hr><p>You are given a string <code>s</code> containing lowercase English letters, and a matrix <code>shift</code>, where <code>shift[i] = [direction<sub>i</sub>, amount<sub>i</sub>]</code>:</p>
 
 <ul>
 	<li><code>direction<sub>i</sub></code> can be <code>0</code> (for left shift) or <code>1</code> (for right shift).</li>
@@ -10,23 +10,25 @@
 <p>Return the final string after all operations.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> s = "abc", shift = [[0,1],[1,2]]
-<strong>Output:</strong> "cab"
+<pre>
+<strong>Input:</strong> s = &quot;abc&quot;, shift = [[0,1],[1,2]]
+<strong>Output:</strong> &quot;cab&quot;
 <strong>Explanation:</strong>&nbsp;
-[0,1] means shift to left by 1. "abc" -&gt; "bca"
-[1,2] means shift to right by 2. "bca" -&gt; "cab"</pre>
+[0,1] means shift to left by 1. &quot;abc&quot; -&gt; &quot;bca&quot;
+[1,2] means shift to right by 2. &quot;bca&quot; -&gt; &quot;cab&quot;</pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> s = "abcdefg", shift = [[1,1],[1,1],[0,2],[1,3]]
-<strong>Output:</strong> "efgabcd"
+<pre>
+<strong>Input:</strong> s = &quot;abcdefg&quot;, shift = [[1,1],[1,1],[0,2],[1,3]]
+<strong>Output:</strong> &quot;efgabcd&quot;
 <strong>Explanation:</strong>&nbsp; 
-[1,1] means shift to right by 1. "abcdefg" -&gt; "gabcdef"
-[1,1] means shift to right by 1. "gabcdef" -&gt; "fgabcde"
-[0,2] means shift to left by 2. "fgabcde" -&gt; "abcdefg"
-[1,3] means shift to right by 3. "abcdefg" -&gt; "efgabcd"</pre>
+[1,1] means shift to right by 1. &quot;abcdefg&quot; -&gt; &quot;gabcdef&quot;
+[1,1] means shift to right by 1. &quot;gabcdef&quot; -&gt; &quot;fgabcde&quot;
+[0,2] means shift to left by 2. &quot;fgabcde&quot; -&gt; &quot;abcdefg&quot;
+[1,3] means shift to right by 3. &quot;abcdefg&quot; -&gt; &quot;efgabcd&quot;</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
@@ -39,4 +41,3 @@
 	<li><code>direction<sub>i</sub></code><sub> </sub>is either <code>0</code> or <code>1</code>.</li>
 	<li><code>0 &lt;= amount<sub>i</sub> &lt;= 100</code></li>
 </ul>
-</div>
