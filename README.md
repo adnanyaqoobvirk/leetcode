@@ -9,6 +9,7 @@ Leetcode solutions
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
 | [0161-one-edit-distance](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0161-one-edit-distance/) | Medium |
 | [0186-reverse-words-in-a-string-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0186-reverse-words-in-a-string-ii/) | Medium |
+| [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
 | [0796-rotate-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0796-rotate-string/) | Easy |
 | [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
@@ -216,6 +217,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
+| [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [1871-jump-game-vii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1871-jump-game-vii/) | Medium |
 | [1888-minimum-number-of-flips-to-make-the-binary-string-alternating](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1888-minimum-number-of-flips-to-make-the-binary-string-alternating/) | Medium |
 | [2537-count-the-number-of-good-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2537-count-the-number-of-good-subarrays/) | Medium |
@@ -223,6 +225,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
+| [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
