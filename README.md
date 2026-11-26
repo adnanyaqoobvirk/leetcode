@@ -10,6 +10,7 @@ Leetcode solutions
 | [0186-reverse-words-in-a-string-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0186-reverse-words-in-a-string-ii/) | Medium |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
 | [0796-rotate-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0796-rotate-string/) | Easy |
+| [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1320-minimum-distance-to-type-a-word-using-two-fingers](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1320-minimum-distance-to-type-a-word-using-two-fingers/) | Hard |
 | [1415-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1415-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/) | Medium |
@@ -50,6 +51,7 @@ Leetcode solutions
 | ------- | ------- |
 | [0280-wiggle-sort](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0280-wiggle-sort/) | Medium |
 | [0624-maximum-distance-in-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0624-maximum-distance-in-arrays/) | Medium |
+| [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
 | [2078-two-furthest-houses-with-different-colors](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
@@ -280,6 +282,7 @@ Leetcode solutions
 | ------- | ------- |
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
 | [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
+| [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [2540-minimum-common-value](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2540-minimum-common-value/) | Easy |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
@@ -357,6 +360,7 @@ Leetcode solutions
 | [0061-rotate-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0061-rotate-list/) | Medium |
 | [0161-one-edit-distance](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0161-one-edit-distance/) | Medium |
 | [0186-reverse-words-in-a-string-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0186-reverse-words-in-a-string-ii/) | Medium |
+| [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [1861-rotating-the-box](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1861-rotating-the-box/) | Medium |
 | [2540-minimum-common-value](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2540-minimum-common-value/) | Easy |
