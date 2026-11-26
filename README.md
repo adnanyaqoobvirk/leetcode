@@ -6,6 +6,7 @@ Leetcode solutions
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0161-one-edit-distance](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0161-one-edit-distance/) | Medium |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
 | [0796-rotate-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0796-rotate-string/) | Easy |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
@@ -353,6 +354,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0061-rotate-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0061-rotate-list/) | Medium |
+| [0161-one-edit-distance](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0161-one-edit-distance/) | Medium |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [1861-rotating-the-box](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1861-rotating-the-box/) | Medium |
 | [2540-minimum-common-value](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2540-minimum-common-value/) | Easy |
