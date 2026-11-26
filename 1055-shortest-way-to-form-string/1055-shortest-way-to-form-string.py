@@ -1,28 +1,20 @@
 class Solution:
     def shortestWay(self, source: str, target: str) -> int:
-        imap = defaultdict(list)
-        for i, c in enumerate(source):
-            imap[c].append(i)
-            
-        scount, spos = 1, -1
-        for c in target:
-            ilist = imap[c]
-            
-            if not ilist:
-                return -1
-            
-            l, h = -1, len(ilist) - 1
-            while l + 1 < h:
-                m = (l + h) >> 1
-                
-                if ilist[m] > spos:
-                    h = m
-                else:
-                    l = m
-            if ilist[h] <= spos:
-                scount += 1
-                spos = ilist[0]
-            else:
-                spos = ilist[h]
-        return scount
+        index = defaultdict(list)
+        for i in range(len(source)):
+            index[source[i]].append(i)
         
+        min_ss_count = 1
+        j = 0
+        for c in target:
+            if not index[c]:
+                return -1
+
+            idx = bisect_left(index[c], j)
+
+            if idx == len(index[c]):
+                min_ss_count += 1
+                j = index[c][0] + 1
+            else:
+                j = index[c][idx] + 1
+        return min_ss_count
