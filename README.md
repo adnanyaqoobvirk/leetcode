@@ -94,6 +94,7 @@ Leetcode solutions
 | [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
+| [0487-max-consecutive-ones-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0487-max-consecutive-ones-ii/) | Medium |
 | [0624-maximum-distance-in-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0624-maximum-distance-in-arrays/) | Medium |
 | [0755-pour-water](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0755-pour-water/) | Medium |
 | [0759-employee-free-time](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0759-employee-free-time/) | Hard |
@@ -168,6 +169,7 @@ Leetcode solutions
 | ------- | ------- |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
+| [0487-max-consecutive-ones-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0487-max-consecutive-ones-ii/) | Medium |
 | [0788-rotated-digits](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0788-rotated-digits/) | Medium |
 | [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
@@ -218,6 +220,7 @@ Leetcode solutions
 | ------- | ------- |
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
+| [0487-max-consecutive-ones-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0487-max-consecutive-ones-ii/) | Medium |
 | [1871-jump-game-vii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1871-jump-game-vii/) | Medium |
 | [1888-minimum-number-of-flips-to-make-the-binary-string-alternating](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1888-minimum-number-of-flips-to-make-the-binary-string-alternating/) | Medium |
 | [2537-count-the-number-of-good-subarrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2537-count-the-number-of-good-subarrays/) | Medium |
