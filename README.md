@@ -9,6 +9,7 @@ Leetcode solutions
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
 | [0161-one-edit-distance](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0161-one-edit-distance/) | Medium |
 | [0186-reverse-words-in-a-string-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0186-reverse-words-in-a-string-ii/) | Medium |
+| [0249-group-shifted-strings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0249-group-shifted-strings/) | Medium |
 | [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
@@ -94,6 +95,7 @@ Leetcode solutions
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
 | [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
 | [0163-missing-ranges](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0163-missing-ranges/) | Easy |
+| [0249-group-shifted-strings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0249-group-shifted-strings/) | Medium |
 | [0280-wiggle-sort](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0280-wiggle-sort/) | Medium |
 | [0281-zigzag-iterator](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0281-zigzag-iterator/) | Medium |
 | [0396-rotate-function](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0396-rotate-function/) | Medium |
@@ -235,6 +237,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
+| [0249-group-shifted-strings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0249-group-shifted-strings/) | Medium |
 | [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0734-sentence-similarity](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0734-sentence-similarity/) | Easy |
