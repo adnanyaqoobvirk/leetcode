@@ -115,6 +115,7 @@ Leetcode solutions
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1406-stone-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1406-stone-game-iii/) | Hard |
+| [1426-counting-elements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1426-counting-elements/) | Easy |
 | [1427-perform-string-shifts](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1427-perform-string-shifts/) | Easy |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
@@ -248,6 +249,7 @@ Leetcode solutions
 | [1133-largest-unique-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1133-largest-unique-number/) | Easy |
 | [1165-single-row-keyboard](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1165-single-row-keyboard/) | Easy |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
+| [1426-counting-elements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1426-counting-elements/) | Easy |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
 | [1674-minimum-moves-to-make-array-complementary](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1674-minimum-moves-to-make-array-complementary/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
