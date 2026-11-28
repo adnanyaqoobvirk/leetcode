@@ -1,9 +1,13 @@
 class Solution:
     def canPermutePalindrome(self, s: str) -> bool:
-        mid = False
-        for freq in Counter(s).values():
-            if freq & 1:
-                if mid:
+        counts = defaultdict(int)
+        for c in s:
+            counts[c] += 1
+        
+        odd_seen = False
+        for c, count in counts.items():
+            if count & 1:
+                if odd_seen:
                     return False
-                mid = True
+                odd_seen = True
         return True
