@@ -1,11 +1,12 @@
 class Solution:
-    def groupStrings(self, strings: List[str]) -> List[List[str]]:
-        mapping = defaultdict(list)
+    def groupStrings(self, strings: list[str]) -> list[list[str]]:
+        shiftMap = defaultdict(list)
         for s in strings:
-            mapping[
-                "".join(
-                    f"{(ord(s[i]) - ord(s[i - 1])) % 26:2}" 
-                    for i in range(1, len(s))
-                )
-            ].append(s)
-        return mapping.values()
+            shift = []
+            prev = s[0]
+            for i in range(1, len(s)):
+                curr = s[i]
+                shift.append((ord(curr) - ord(prev)) % 26)
+                prev = curr
+            shiftMap[tuple(shift)].append(s)
+        return list(shiftMap.values())
