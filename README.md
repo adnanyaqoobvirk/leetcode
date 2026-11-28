@@ -9,6 +9,7 @@ Leetcode solutions
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
 | [0161-one-edit-distance](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0161-one-edit-distance/) | Medium |
 | [0186-reverse-words-in-a-string-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0186-reverse-words-in-a-string-ii/) | Medium |
+| [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
 | [0796-rotate-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0796-rotate-string/) | Easy |
@@ -231,6 +232,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
+| [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0760-find-anagram-mappings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0760-find-anagram-mappings/) | Easy |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
@@ -260,6 +262,7 @@ Leetcode solutions
 ## Bit Manipulation
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [1009-complement-of-base-10-integer](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1009-complement-of-base-10-integer/) | Easy |
 | [2657-find-the-prefix-common-array-of-two-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2657-find-the-prefix-common-array-of-two-arrays/) | Medium |
 | [3568-minimum-moves-to-clean-the-classroom](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3568-minimum-moves-to-clean-the-classroom/) | Medium |
