@@ -110,6 +110,7 @@ Leetcode solutions
 | [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
 | [1133-largest-unique-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1133-largest-unique-number/) | Easy |
+| [1198-find-smallest-common-element-in-all-rows](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1198-find-smallest-common-element-in-all-rows/) | Medium |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1306-jump-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1306-jump-game-iii/) | Medium |
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
@@ -201,6 +202,7 @@ Leetcode solutions
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0048-rotate-image](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0048-rotate-image/) | Medium |
+| [1198-find-smallest-common-element-in-all-rows](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1198-find-smallest-common-element-in-all-rows/) | Medium |
 | [1391-check-if-there-is-a-valid-path-in-a-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1391-check-if-there-is-a-valid-path-in-a-grid/) | Medium |
 | [1559-detect-cycles-in-2d-grid](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1559-detect-cycles-in-2d-grid/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
@@ -248,6 +250,7 @@ Leetcode solutions
 | [1100-find-k-length-substrings-with-no-repeated-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1100-find-k-length-substrings-with-no-repeated-characters/) | Medium |
 | [1133-largest-unique-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1133-largest-unique-number/) | Easy |
 | [1165-single-row-keyboard](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1165-single-row-keyboard/) | Easy |
+| [1198-find-smallest-common-element-in-all-rows](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1198-find-smallest-common-element-in-all-rows/) | Medium |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1426-counting-elements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1426-counting-elements/) | Easy |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
@@ -312,6 +315,7 @@ Leetcode solutions
 | [0153-find-minimum-in-rotated-sorted-array](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0153-find-minimum-in-rotated-sorted-array/) | Medium |
 | [0154-find-minimum-in-rotated-sorted-array-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0154-find-minimum-in-rotated-sorted-array-ii/) | Hard |
 | [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
+| [1198-find-smallest-common-element-in-all-rows](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1198-find-smallest-common-element-in-all-rows/) | Medium |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [2540-minimum-common-value](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2540-minimum-common-value/) | Easy |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
@@ -449,6 +453,7 @@ Leetcode solutions
 ## Counting
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1198-find-smallest-common-element-in-all-rows](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1198-find-smallest-common-element-in-all-rows/) | Medium |
 | [2833-furthest-point-from-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/2833-furthest-point-from-origin/) | Easy |
 | [3085-minimum-deletions-to-make-string-k-special](https://github.com/adnanyaqoobvirk/leetcode/tree/main/3085-minimum-deletions-to-make-string-k-special/) | Medium |
 ## Topological Sort
