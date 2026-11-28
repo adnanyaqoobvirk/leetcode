@@ -16,6 +16,7 @@ Leetcode solutions
 | [0796-rotate-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0796-rotate-string/) | Easy |
 | [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
 | [1100-find-k-length-substrings-with-no-repeated-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1100-find-k-length-substrings-with-no-repeated-characters/) | Medium |
+| [1165-single-row-keyboard](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1165-single-row-keyboard/) | Easy |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1320-minimum-distance-to-type-a-word-using-two-fingers](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1320-minimum-distance-to-type-a-word-using-two-fingers/) | Hard |
 | [1415-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1415-the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/) | Medium |
@@ -240,6 +241,7 @@ Leetcode solutions
 | [0760-find-anagram-mappings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0760-find-anagram-mappings/) | Easy |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1100-find-k-length-substrings-with-no-repeated-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1100-find-k-length-substrings-with-no-repeated-characters/) | Medium |
+| [1165-single-row-keyboard](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1165-single-row-keyboard/) | Easy |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
 | [1674-minimum-moves-to-make-array-complementary](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1674-minimum-moves-to-make-array-complementary/) | Medium |
