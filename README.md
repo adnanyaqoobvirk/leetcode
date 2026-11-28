@@ -109,6 +109,7 @@ Leetcode solutions
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [0877-stone-game](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0877-stone-game/) | Medium |
 | [1035-uncrossed-lines](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1035-uncrossed-lines/) | Medium |
+| [1133-largest-unique-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1133-largest-unique-number/) | Easy |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1306-jump-game-iii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1306-jump-game-iii/) | Medium |
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
@@ -244,6 +245,7 @@ Leetcode solutions
 | [0760-find-anagram-mappings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0760-find-anagram-mappings/) | Easy |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1100-find-k-length-substrings-with-no-repeated-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1100-find-k-length-substrings-with-no-repeated-characters/) | Medium |
+| [1133-largest-unique-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1133-largest-unique-number/) | Easy |
 | [1165-single-row-keyboard](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1165-single-row-keyboard/) | Easy |
 | [1257-smallest-common-region](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1257-smallest-common-region/) | Medium |
 | [1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1452-people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/) | Medium |
@@ -354,6 +356,7 @@ Leetcode solutions
 | ------- | ------- |
 | [0280-wiggle-sort](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0280-wiggle-sort/) | Medium |
 | [0759-employee-free-time](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0759-employee-free-time/) | Hard |
+| [1133-largest-unique-number](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1133-largest-unique-number/) | Easy |
 | [1340-jump-game-v](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1340-jump-game-v/) | Hard |
 | [1665-minimum-initial-energy-to-finish-tasks](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1665-minimum-initial-energy-to-finish-tasks/) | Hard |
 | [1727-largest-submatrix-with-rearrangements](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1727-largest-submatrix-with-rearrangements/) | Medium |
