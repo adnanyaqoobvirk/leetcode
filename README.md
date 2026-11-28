@@ -12,6 +12,7 @@ Leetcode solutions
 | [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
 | [0657-robot-return-to-origin](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0657-robot-return-to-origin/) | Easy |
+| [0734-sentence-similarity](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0734-sentence-similarity/) | Easy |
 | [0796-rotate-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0796-rotate-string/) | Easy |
 | [1055-shortest-way-to-form-string](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1055-shortest-way-to-form-string/) | Medium |
 | [1100-find-k-length-substrings-with-no-repeated-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1100-find-k-length-substrings-with-no-repeated-characters/) | Medium |
@@ -98,6 +99,7 @@ Leetcode solutions
 | [0486-predict-the-winner](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0486-predict-the-winner/) | Medium |
 | [0487-max-consecutive-ones-ii](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0487-max-consecutive-ones-ii/) | Medium |
 | [0624-maximum-distance-in-arrays](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0624-maximum-distance-in-arrays/) | Medium |
+| [0734-sentence-similarity](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0734-sentence-similarity/) | Easy |
 | [0755-pour-water](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0755-pour-water/) | Medium |
 | [0759-employee-free-time](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0759-employee-free-time/) | Hard |
 | [0760-find-anagram-mappings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0760-find-anagram-mappings/) | Easy |
@@ -234,6 +236,7 @@ Leetcode solutions
 | [0159-longest-substring-with-at-most-two-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0159-longest-substring-with-at-most-two-distinct-characters/) | Medium |
 | [0266-palindrome-permutation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0266-palindrome-permutation/) | Easy |
 | [0340-longest-substring-with-at-most-k-distinct-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0340-longest-substring-with-at-most-k-distinct-characters/) | Medium |
+| [0734-sentence-similarity](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0734-sentence-similarity/) | Easy |
 | [0760-find-anagram-mappings](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0760-find-anagram-mappings/) | Easy |
 | [0874-walking-robot-simulation](https://github.com/adnanyaqoobvirk/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1100-find-k-length-substrings-with-no-repeated-characters](https://github.com/adnanyaqoobvirk/leetcode/tree/main/1100-find-k-length-substrings-with-no-repeated-characters/) | Medium |
